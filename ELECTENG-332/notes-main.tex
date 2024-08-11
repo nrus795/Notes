@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{report}
 
 % Preamble: Packages and custom settings
 \usepackage[utf8]{inputenc} % Allows UTF-8 encoding
@@ -13,29 +13,58 @@
 \usepackage{tikz}           % For diagrams and graphics
 \usepackage{booktabs}       % Improved tables
 
-% Geometry setup
-\geometry{margin=1in}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
 
-% Header and footer customization
 \pagestyle{fancy}
-\fancyhead[L]{Nicholas Russell} % Left header
-\fancyhead[C]{ELECTENG 332 Notes} % Center header
-\fancyhead[R]{\today} % Right header
-\fancyfoot[C]{\thepage} % Center footer with page number
+\fancyhead[L]{Nicholas Russell}
+\fancyhead[C]{ELECTENG 332 Notes}
+\fancyhead[R]{\today}
+\fancyfoot[C]{\thepage}
 
-% Title, Author, and Date
 \title{ELECTENG 332 Notes}
 \author{Nicholas Russell}
 \date{\today}
 
 \begin{document}
 
-\maketitle % Creates the title page
+\maketitle
+\tableofcontents
+\newpage
 
-\tableofcontents % Generates a table of contents
+\chapter{Module 1: [Module Name]}
+\section{Introduction}
+Provide a brief introduction to this module.
 
-\newpage % Start a new page after the table of contents
+\section{Topic 1: [Topic Name]}
+Discuss the first major topic in this module.
 
+\subsection{Subtopic 1.1}
+Go into more detail about the first subtopic.
 
+\subsection{Subtopic 1.2}
+Further details on another subtopic.
+
+\section{Topic 2: [Another Topic Name]}
+Discuss another major topic in this module.
+
+\clearpage
+
+\chapter{Module 2: [Module Name]}
+\section{Introduction}
+Briefly introduce the second module.
+
+\section{Topic 1: [Topic Name]}
+Start with the first major topic for this module.
+
+\subsection{Subtopic 2.1}
+Detailed explanation of the first subtopic.
+
+\subsection{Subtopic 2.2}
+Further explanation or examples.
+
+\section{Topic 2: [Another Topic Name]}
+Continue with additional content for this module.
+
+% Continue adding more chapters as needed...
 
 \end{document}
