@@ -13,9 +13,14 @@
 \usepackage{tikz}           % For diagrams and graphics
 \usepackage{circuitikz}     % For circuits!
 \usepackage{booktabs}       % Improved tables
-
-\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
-
+\usepackage{physics}       % Easier differential notation
+\usepackage{siunitx}        % SI units
+\usepackage{setspace}
+\usepackage{appendix}
+\usepackage{pythontex}
+\AtBeginDocument{\RenewCommandCopy{\qty}{\SI}}
+\onehalfspacing
+\geometry{margin=2cm,a4paper,textwidth=16cm}
 \pagestyle{fancy}
 \fancyhead[L]{Nicholas Russell}
 \fancyhead[C]{ELECTENG 332 Notes}
@@ -31,41 +36,44 @@
 \maketitle
 \tableofcontents
 \newpage
-$$ (x+1)(x-1) $$
-\chapter{Module 1: [Module Name]}
-\section{Introduction}
-Provide a brief introduction to this module.
 
-\section{Topic 1: [Topic Name]}
-Discuss the first major topic in this module.
+\chapter{Module 1: Basics of Signals and Systems}
 
-\subsection{Subtopic 1.1}
-Go into more detail about the first subtopic.
+\section{Learning Outcomes}
 
-\subsection{Subtopic 1.2}
-Further details on another subtopic.
 
-\section{Topic 2: [Another Topic Name]}
-Discuss another major topic in this module.
+\section{Topic 1: Importance of Exponential Functions}
+
+
+\section{Topic 2: Concept of Engineering Infinity}
+
+
+\section{Topic 3: Concept of Complex Frequency}
+
 
 \clearpage
 
-\chapter{Module 2: [Module Name]}
-\section{Introduction}
-Briefly introduce the second module.
+\chapter{Module 2: Mathematical Modelling of Dynamic Systems}
+
 
 \section{Topic 1: [Topic Name]}
-Start with the first major topic for this module.
 
-\subsection{Subtopic 2.1}
-Detailed explanation of the first subtopic.
 
-\subsection{Subtopic 2.2}
-Further explanation or examples.
 
 \section{Topic 2: [Another Topic Name]}
-Continue with additional content for this module.
 
-% Continue adding more chapters as needed...
+
+\clearpage
+
+\chapter{Module 3: Concept of Block Diagram Representation \&
+Characteristics of Feedback Systems}
+
+\clearpage
+
+\chapter{Module 4: Time Domain Analysis of Linear Systems}
+
+\clearpage
+
+\chapter{Stability Analysis of Linear Systems}
 
 \end{document}
