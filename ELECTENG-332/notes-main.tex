@@ -1,7 +1,7 @@
 \documentclass[12pt]{report}
 
 % Preamble: Packages and custom settings
-\usepackage[T1]{fontenc}    % Uses modern font encoding
+\usepackage{fontenc}[T1]      % Font encoding
 \usepackage{amsmath}        % Math environments
 \usepackage{amsfonts}       % Math fonts
 \usepackage{amssymb}        % Math symbols
@@ -22,7 +22,6 @@
 \usepackage{cancel}         % Cancel terms in equations
 \usepackage{mathtools}      % Extra math tools
 \usepackage{titlesec}       % Modern section titles
-\usepackage{fontspec}
 \usepackage{bookmark}
 
 % Custom commands
@@ -37,9 +36,7 @@
   \renewcommand{\headrulewidth}{0.4pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
-\setmainfont{Calibri} % Set the main font to Calibri
-\setsansfont{Arial} % Set the sans-serif font to Arial
-\setmonofont{Courier New} % Set the monospace font to Courier New
+
 \setlength{\headheight}{16.5pt}
 % Custom section titles
 \titleformat{\chapter}[display]
@@ -96,6 +93,17 @@
 \chapter{\textcolor{blue}{Module 1: Basics of Signals and Systems}}
 
 \section{Learning Outcomes}
+
+\begin{enumerate}[label=\blacktriangleright, leftmargin=*, itemsep=0.5em]
+    \item Uniqueness of the Exponential Signal
+    \item Concept of Engineering Infinity
+    \item Concept of Complex Frequency
+    \item Classification of Signals: Energy \& Power
+    \item Classification of System
+    \item What is a Control System
+    \item Classification of a Control System: Open-loop \& Closed-loop
+\end{enumerate}
+
 
 \section{Topic 1: Importance of Exponential Functions}
 
