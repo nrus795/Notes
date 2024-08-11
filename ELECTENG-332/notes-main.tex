@@ -22,20 +22,25 @@
 \usepackage{cancel}         % Cancel terms in equations
 \usepackage{mathtools}      % Extra math tools
 \usepackage{titlesec}       % Modern section titles
-
+\usepackage{fontspec}
+\usepackage{bookmark}
 
 % Custom commands
 \onehalfspacing{}
 \geometry{margin=2cm,a4paper}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\textbf{Nicholas Russell}}
-\fancyhead[C]{\textit{ELECTENG 332 Notes}}
-\fancyhead[R]{\today}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.4pt} % Thin line under the header
-\renewcommand{\footrulewidth}{0pt}   % No line above the footer
-
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\textbf{Nicholas Russell}}%
+  \fancyhead[C]{\textit{ELECTENG 332 Notes}}%
+  \fancyhead[R]{\date{August 10th, 2024}}%
+  \fancyfoot[C]{\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\setmainfont{Calibri} % Set the main font to Calibri
+\setsansfont{Arial} % Set the sans-serif font to Arial
+\setmonofont{Courier New} % Set the monospace font to Courier New
+\setlength{\headheight}{16.5pt}
 % Custom section titles
 \titleformat{\chapter}[display]
   {\normalfont\LARGE\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\LARGE}
@@ -48,7 +53,7 @@
 % Document information
 \title{ELECTENG 332 Notes}
 \author{Nicholas Russell}
-\date{\today}
+\date{August 10th, 2024}
 
 % Document content
 \begin{document}
