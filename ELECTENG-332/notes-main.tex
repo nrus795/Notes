@@ -1,9 +1,10 @@
 \documentclass[12pt]{report}
 
 % Preamble: Packages and custom settings
-\usepackage[utf8]{inputenc} % Allows UTF-8 encoding
 \usepackage[T1]{fontenc}    % Uses modern font encoding
-\usepackage{amsmath, amssymb} % Math symbols and environments
+\usepackage{amsmath}        % Math environments
+\usepackage{amsfonts}       % Math fonts
+\usepackage{amssymb}        % Math symbols
 \usepackage{graphicx}       % For including images
 \usepackage{hyperref}       % For clickable links and cross-references
 \usepackage{enumitem}       % Customized lists
@@ -13,67 +14,108 @@
 \usepackage{tikz}           % For diagrams and graphics
 \usepackage{circuitikz}     % For circuits!
 \usepackage{booktabs}       % Improved tables
-\usepackage{physics}       % Easier differential notation
 \usepackage{siunitx}        % SI units
-\usepackage{setspace}
-\usepackage{appendix}
-\usepackage{pythontex}
-\AtBeginDocument{\RenewCommandCopy{\qty}{\SI}}
-\onehalfspacing
-\geometry{margin=2cm,a4paper,textwidth=16cm}
+\usepackage{setspace}       % Custom line spacing
+\usepackage{appendix}       % Appendices
+\usepackage{pythontex}      % For Python code
+\usepackage{commath}        % For derivatives
+\usepackage{cancel}         % Cancel terms in equations
+\usepackage{mathtools}      % Extra math tools
+\usepackage{titlesec}       % Modern section titles
+
+
+% Custom commands
+\onehalfspacing{}
+\geometry{margin=2cm,a4paper}
 \pagestyle{fancy}
-\fancyhead[L]{Nicholas Russell}
-\fancyhead[C]{ELECTENG 332 Notes}
+\fancyhf{}
+\fancyhead[L]{\textbf{Nicholas Russell}}
+\fancyhead[C]{\textit{ELECTENG 332 Notes}}
 \fancyhead[R]{\today}
 \fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt} % Thin line under the header
+\renewcommand{\footrulewidth}{0pt}   % No line above the footer
 
+% Custom section titles
+\titleformat{\chapter}[display]
+  {\normalfont\LARGE\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\LARGE}
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+\titlespacing*{\section}{0pt}{20pt}{10pt}
+
+
+% Document information
 \title{ELECTENG 332 Notes}
 \author{Nicholas Russell}
 \date{\today}
 
+% Document content
 \begin{document}
 
-\maketitle
+\begin{titlepage}
+\centering
+
+\includegraphics[width=0.7\textwidth]{DECSE-HC-4C-01.png}\\[1cm] % University Dept. Logo
+
+
+% University and Course Information
+{\LARGE \textbf{ELECTENG 332}}\\[0.5cm]
+{\Large Notes on Control Systems}\\[0.5cm]
+
+% Add a personal touch with a subtitle or quote
+{\textit{Dear god help me, not another one \dots}}\\[2cm]
+
+% Your Name and Date
+{\large by}\\[0.3cm]
+{\large \textbf{Nicholas Russell}}\\[1.4cm]
+{\large \date{August 10th, 2024}}
+
+\vfill % Push the following text to the bottom of the page
+
+% Department/University Information
+{\large Department of Electrical, Computer, and Software Engineering}\\[0.3cm]
+{\large Faculty of Engineering}\\[0.3cm]
+{\large University of Auckland}
+
+
+
+
+\end{titlepage}
+
+
+
 \tableofcontents
 \newpage
 
-\chapter{Module 1: Basics of Signals and Systems}
+\chapter{\textcolor{blue}{Module 1: Basics of Signals and Systems}}
 
 \section{Learning Outcomes}
 
-
 \section{Topic 1: Importance of Exponential Functions}
-
 
 \section{Topic 2: Concept of Engineering Infinity}
 
-
 \section{Topic 3: Concept of Complex Frequency}
-
 
 \clearpage
 
-\chapter{Module 2: Mathematical Modelling of Dynamic Systems}
-
+\chapter{\textcolor{blue}{Module 2: Mathematical Modelling of Dynamic Systems}}
 
 \section{Topic 1: [Topic Name]}
 
-
-
 \section{Topic 2: [Another Topic Name]}
 
+\clearpage
+
+\chapter{\textcolor{blue}{Module 3: Concept of Block Diagram Representation \& Characteristics of Feedback Systems}}
 
 \clearpage
 
-\chapter{Module 3: Concept of Block Diagram Representation \&
-Characteristics of Feedback Systems}
+\chapter{\textcolor{blue}{Module 4: Time Domain Analysis of Linear Systems}}
 
 \clearpage
 
-\chapter{Module 4: Time Domain Analysis of Linear Systems}
-
-\clearpage
-
-\chapter{Stability Analysis of Linear Systems}
+\chapter{\textcolor{blue}{Stability Analysis of Linear Systems}}
 
 \end{document}
