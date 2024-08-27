@@ -1,0 +1,98 @@
+\documentclass[../notes-main.tex]{subfiles}
+\begin{document}
+\section{Topic 3: Concept of Complex Frequency}
+Complex frequency is found commonly in electrical engineering. It is often notated as \( j\omega \) or \( s = \sigma \pm j \omega \). These frequencies always come in pairs, so the use of \( \pm \) is implicit to this, as complex numbers have complex conjugates, i.e.
+\(s = \sigma + j \omega \) has the conjugate \(s = \sigma - j\omega \).
+
+\begin{figure}[H]
+    \centering
+    \tikzsetnextfilename{complex_plane_diagram} 
+    \begin{tikzpicture}
+        \begin{axis}[
+                axis equal,
+                axis x line = middle,
+                axis y line = middle,
+                xmin=-2, xmax=2,
+                ymin=-2, ymax=2,
+                xlabel={Re(z)},
+                ylabel={Im(z)},
+                grid=major,
+                enlargelimits=true,
+            ]
+            % Plot the circle |z| = sqrt(2)
+            \addplot[domain=0:360, samples=200, smooth, very thick]({sqrt(2)*cos(x)}, {sqrt(2)*sin(x)});
+            \addplot[only marks, mark=*, red, mark size=2pt] coordinates {%
+                    (1,1) (-1,1) (1,-1) (-1,-1)
+                };
+            % Draw vectors from origin to each point
+            \addplot[->, black, very thick, >= latex] coordinates {(0,0) (1,1)};
+            \addplot[->, black, very thick, >= latex] coordinates {(0,0) (-1,1)};
+            \addplot[->, black, very thick, >= latex] coordinates {(0,0) (1,-1)};
+            \addplot[->, black, very thick, >= latex] coordinates {(0,0) (-1,-1)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Plot of the circle \(|z| = \sqrt{2}\)}\label{fig:pgfplots-complex-plane-1}
+\end{figure}
+\vspace{-1em}
+\noindent This is also backed up by De Moivre's Formula, which is defined mathematically as:
+\begin{gather*}
+    \forall x \in \mathbb{R}, \quad \forall n \in \mathbb{Z}, \\
+    e^{j n x} = \cos(n x) + j \sin(n x)
+\end{gather*}
+Or more generally for our applications:
+\begin{gather*}
+    e^{jx} = \cos(x) + j\sin(x) \\
+    \text{Where} \, x \in \mathbb{R}\, \text{(\(x\) is Real)} \\
+    \text{and} \, j \equiv i = \sqrt{-1}.
+\end{gather*}
+\noindent This means that:
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            \textcolor{red}{\emph{A complex frequency \(j\omega \) represents a pure sinusoidal signal of frequency \(\omega \) \unit{\radian\per\second}}}
+        \end{center}
+    \end{mdframed}\label{fig:complex-sinusoid-def-1}
+    \vspace{-1em}\caption{Complex Sinusoidal Signal}
+\end{figure}
+\vspace{-1em}
+\noindent For example, if a signal has a complex frequency  \complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\radian\per\sec}, then this corresponds to a pure sinusoid of frequency \SI{314}{\radian\per\sec} (i.e. \SI{50}{\hertz}). Furthermore:
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            \textcolor{red}{%
+                \emph{A complex frequency \(s = \sigma + j\omega \) represents an exponentially
+                    damped signal of frequency \(\omega \) \unit{\radian\per\second}, and decays/amplifies at a rate decided by \(\sigma \).}}
+        \end{center}
+    \end{mdframed}\label{fig:exp-damped-sinusoid-def-1}
+    \vspace{-1em}\caption{Exponentially Damped Signal}
+\end{figure}
+\vspace{-1em}
+\noindent For example, the signal \( e^{- 10t}\sin(40\pi t) \) would look like this:
+\begin{figure}[H]
+    \centering
+    \tikzsetnextfilename{exp_damped_sinusoid_plot}
+    \begin{tikzpicture}
+        \begin{axis}[
+                domain=0:1, % Domain for the variable t
+                samples=1000, % Number of samples to plot (higher for smoother curve)
+                xlabel={$t$},
+                ylabel={$e^{-10t} \sin(40\pi t)$},
+                grid=major,
+                thick,
+                enlargelimits=true,
+                axis y line = center,
+                axis x line = left,
+                ymin=-1, ymax=1,
+                xmin=0, xmax=1,
+                ytick={-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1},
+            ]
+            % Plot the function e^{-10t} * sin(40*pi*t)
+            \addplot[blue, thick] {exp(-10*x) * sin(deg(40*pi*x))};
+        \end{axis}
+    \end{tikzpicture}
+    \vspace{-1em}\caption{Plot of the signal \(e^{-10t}\sin(40\pi t)\).}\label{fig:exp-damped-sinusoid-plot-1}
+\end{figure}
+\vspace{-1em}
+\end{document}

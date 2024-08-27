@@ -1,0 +1,144 @@
+\documentclass[../notes-main.tex]{subfiles}
+\begin{document}
+\section{Topic 5: What are Systems?}
+The term \emph{system} is derived from the Greek word \emph{systema}, which means an organised relationship among functioning units or components. It is often used to describe any orderly arrangement of ideas or constructs.\\
+According to the Webster's Dictionary,
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            \textcolor{blue}{%
+                \emph{``A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control\dots''}}
+        \end{center}
+    \end{mdframed}\label{fig:system-def-1}
+    \vspace{-1em}\caption{Dictionary Definition of a System}
+\end{figure}
+\noindent According to the International Council on Systems Engineering (INCOSE),
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            \textcolor{red}{%
+                \emph{A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not.}}\\ The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
+        \end{center}
+    \end{mdframed}\label{fig:system-def-2}
+    \vspace{-1em}\caption{Definition of a System}
+\end{figure}
+\noindent It is difficult to give a single and precise definition of the term \emph{system}, which will suit to different perspectives of different people. In practice, what is meant by ``the system'' depends on the objectives of a particular study.\\
+From the control engineering perspective, \textcolor{red}{the system is any interconnection of components to achieve desired objectives.} It is characterised by its \textbf{\textcolor{blue}{inputs}}, \textbf{\textcolor{blue}{outputs}}, and the rules of operations or laws. For example:
+\begin{itemize}
+    \item[\textcolor{blue}{a.}] The laws of operation in electrical systems are Ohm's law, which gives the voltage-current relationships for resistors, capacitors and inductors, and Kirchhoff's laws, which govern the laws of interconnection of various electrical components.
+    \item[\textcolor{blue}{b.}] Similarly, in mechanical systems, the laws of operation are Newton's laws. These laws can be used to derive mathematical models of the system.
+\end{itemize}
+\subsection{System as an Operator}
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            A system is defined mathematically \textcolor{red}{as a transformation which maps an input signal \(x(t)\) to an output signal \(y(t)\)} as shown in Figure:~\ref{fig:system-operator-def-2}. For a continuous time system, the input-output mapping is expressed as:
+            \[
+                \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \quad \text{where} \; \mathcal{S} \; \text{is an operator.}
+            \]
+        \end{center}
+    \end{mdframed}\label{fig:system-operator-def-1}
+    \vspace{-1em}\caption{System as an Operator Definition}
+\end{figure}
+\vspace{-1em}
+\begin{figure}[H]
+    \centering
+    \tikzsetnextfilename{system_operator_diagram}
+    \begin{mdframed}
+        \begin{center}
+            \begin{tikzpicture}[auto, thick, node distance=2cm, >=Stealth]
+                \node (input) at (0,0) {\(x(t)\)};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=1.5cm of input] (system) {\large \(\mathcal{S}\)};
+                \node [right=1.5cm of system] (output) {\(y(t) = \mathcal{S}[x(t)]\)};
+                \draw [->] (input) -- node[above] {\scriptsize Input} (system);
+                \draw [->] (system) -- node[above] {\scriptsize Output} (output);
+            \end{tikzpicture}
+        \end{center}
+    \end{mdframed}
+    \vspace{-1em}\caption{System as an Operator}\label{fig:system-operator-def-2}
+\end{figure}
+\vspace{-1em}
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            \textcolor{red}{%
+                A control system may be defined as an interconnection of components which are configured to provide a desired response.}
+        \end{center}
+    \end{mdframed}\label{fig:system-interconnect-def-1}
+    \vspace{-1em}\caption{System Interconnection Definition}
+\end{figure}
+\subsection{Classification of Systems}
+The basis of classifying systems are many. They can be classified according to the following:
+\begin{itemize}
+    \item[\textcolor{blue}{a.}] \textbf{The Time Frame:} (\emph{discrete, continuous or hybrid});
+    \item[\textcolor{blue}{b.}] \textbf{System Complexity:} (\emph{physical, conceptual and esoteric});
+    \item[\textcolor{blue}{c.}] \textbf{Uncertainties:} (\emph{deterministic and stochastic});
+    \item[\textcolor{blue}{d.}] \textbf{Nature and type of components:} (\emph{static or dynamic, linear or nonlinear, time-invariant or time variant, lumped or distributed etc});
+\end{itemize}
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{itemize}
+            \item Linear and nonlinear systems;
+            \item Time-invariant and time-variant systems;
+            \item Static (memory less) and dynamic (with memory) systems;
+            \item Causal and Non-causal systems;
+            \item Lumped and distributed parameter systems;
+            \item Deterministic and stochastic systems;
+            \item Continuous and discrete systems;
+        \end{itemize}
+    \end{mdframed}\label{fig:system-type-list-1}
+    \vspace{-1em}\caption{System Classification Types}
+\end{figure}
+\vspace{-1em}
+\subsection{Linear and Nonlinear Systems}
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            A system is said to be linear provided it satisfies the \textcolor{red}{\emph{principle of superposition}} which is the combination of the \textcolor{blue}{\emph{additive}} and \textcolor{blue}{\emph{homogeneity}} properties. Otherwise, it is \emph{non-linear}
+        \end{center}
+    \end{mdframed}\label{fig:linear-nonlinear-system-def-1}
+    \vspace{-1em}\caption{Linear \& Non-linear System Definition}
+\end{figure}
+\noindent \textcolor{red}{\textbf{Additive Property:}} Assume the system initially at rest.
+\begin{enumerate}[label=\blacktriangleright, leftmargin=*, itemsep=0.5em]
+    \item Suppose an input \(x_1(t)\) to this system produces an output \(y_1(t)\) and an input \(x_2(t)\) produces an output \(y_2(t)\).
+    \item If the system is linear, then the application of the input \(x_1(t) + x_2(t)\) will produce an output \(y_1(t) + y_2(t)\). Thus if
+\end{enumerate}
+\[
+    \textcolor{blue}{x_1(t) \rightarrow y_1(t) \quad \text{and} \quad x_2(t) \rightarrow y_2(t)}, \quad \text{then} \quad \textcolor{red}{x_1(t) + x_2(t) \rightarrow y_1(t) + y_2(t)}
+\]
+\begin{figure}[H]
+    \centering
+    \tikzsetnextfilename{additive_property_diagram}
+    \begin{mdframed}
+        \begin{center}
+            \begin{tikzpicture}[auto, thick, node distance=2cm, >=Stealth]
+                \node (input1) at (0,0) {\(x_1(t)\)};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input1] (system1) {\large \(\mathcal{S}\)};
+                \node [right of=system1] (output1) {\(y_1(t)\)};
+                \node (input2) [right=1cm of output1] {\(x_2(t)\)};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input2] (system2) {\large \(\mathcal{S}\)};
+                \node [right of=system2] (output2) {\(y_2(t)\)};
+                \node [below=0.5cm of input1] (additivity) {Additivity};
+                \node [right=0.5cm of additivity] (arrow) {\Huge \(\Rightarrow\)};
+                \node (combined_input) [right=1.2cm of arrow] {\(x_1(t) + x_2(t)\)};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=1cm of combined_input] (combined_system) {\large \(\mathcal{S}\)};
+                \node [right=1cm of combined_system] (combined_output) {\(y_1(t) + y_2(t)\)};
+                \draw [->] (input1) -- (system1);
+                \draw [->] (system1) -- (output1);
+                \draw [->] (input2) -- (system2);
+                \draw [->] (system2) -- (output2);
+                \draw [->] (combined_input) -- (combined_system);
+                \draw [->] (combined_system) -- (combined_output);
+            \end{tikzpicture}
+        \end{center}
+    \end{mdframed}
+    \vspace{-1em}\caption{Additive Property}\label{fig:additive-property-def-2}
+\end{figure}
+\end{document}

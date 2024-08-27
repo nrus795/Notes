@@ -29,6 +29,7 @@
 % Tikz libraries
 \usetikzlibrary{positioning, arrows.meta, external}
 \tikzexternalize[prefix=tikz/] % Save tikz figures to a folder
+\tikzset{external/up to date check=md5} % Check for changes using md5
 % SI unit settings
 \sisetup{per-mode = symbol}
 % spacing and margins
@@ -58,7 +59,6 @@
   {\normalfont\Large\bfseries}{\thesection}{1em}{}
 \titlespacing*{\chapter}{0pt}{20pt}{10pt}
 \titlespacing*{\section}{0pt}{20pt}{10pt}
-
 % Document information
 \title{ELECTENG 332 Notes}
 \author{Nicholas Russell}
@@ -84,13 +84,13 @@
 \end{titlepage}
 \tableofcontents
 \newpage
-\subfile{chapters/module1_signals_systems} % Module 1 as a subfile
+\subfile{chapters/module1/module1_signals_systems} % Module 1 as a subfile
 \clearpage
-\include{chapters/module2_modeling_dynamic_systems}
+\subfile{chapters/module2/module2_modeling_dynamic_systems} % Module 2 as a subfile
 \clearpage
-\include{chapters/module3_block_feedback}
+\subfile{chapters/module3/module3_block_feedback} % Module 3 as a subfile
 \clearpage
-\include{chapters/module4_time_domain}
+\subfile{chapters/module4/module4_time_domain} % Module 4 as a subfile
 \clearpage
-\include{chapters/module5_stability_linear}
+\subfile{chapters/module5/module5_stability_linear} % Module 5 as a subfile
 \end{document}
