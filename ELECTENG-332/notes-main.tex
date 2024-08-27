@@ -118,7 +118,7 @@ has properties that make it mathematically unique.
 Consider a signal \(e^{-at}\). The time constant for this signal is \(T = \frac{1}{a}\). Theoretically, the signal is meant to decay to zero as time approaches infinity, i.e.
 \[ 
     \lim_{t \to \infty} e^{-at} = 0 
-\] 
+\]
 But in practice, this is not the case, as its value will be very, very small after five time constants \(5T\). This is the \emph{Concept of Engineering Infinity}.
 
 \section{Topic 3: Concept of Complex Frequency}
@@ -254,7 +254,7 @@ It is difficult to find a unique definition of a signal. However in the context 
                 A signal is said to be a \emph{power signal} if and only if the average power of the signal is finite and non-zero.}
         \end{center}
     \end{mdframed}\label{fig:power-signal-def-1}
-    \vspace{-1em}\caption{Power Signals} 
+    \vspace{-1em}\caption{Power Signals}
 \end{figure}
 \vspace{-1em}
 \noindent The instantaneous power \(p(t)\) of a signal \(x(t)\) is expressed as:
@@ -295,7 +295,7 @@ Since power equals to the time average of the energy, the average power is given
                 \item[\textcolor{blue}{b.}] However, \textcolor{blue}{a signal can belong to neither of the above two categories.}
                 \item[\textcolor{blue}{c.}] The signals which are both deterministic and non-periodic have finite energy and therefore are energy signals.\,\textcolor{red}{Most of the signals, in practice, belong to this category.}
                 \item[\textcolor{blue}{d.}] \textcolor{blue}{Periodic signals and random signals} are essentially \textcolor{red}{power signals.}
-                \item[\textcolor{blue}{e.}] Periodic signals for which the area under \(\abs{x(t)}^2\) over one period is finite are power signals.  
+                \item[\textcolor{blue}{e.}] Periodic signals for which the area under \(\abs{x(t)}^2\) over one period is finite are power signals.
             \end{itemize}
         \end{center}
     \end{mdframed}\label{fig:energy-power-relationship-2}
@@ -307,10 +307,10 @@ Since power equals to the time average of the energy, the average power is given
 Consider a unit step function defined as:
 \[
     \textcolor{blue}{u(t) =
-    \begin{cases}
-        1 & t \geq 0 \\
-        0 & \text{otherwise}
-    \end{cases}}
+        \begin{cases}
+            1 & t \geq 0         \\
+            0 & \text{otherwise}
+        \end{cases}}
 \]
 Determine whether this is an energy signal or a power signal or neither.\\
 \noindent \textbf{Solution:} Let us compute the energy of this signal as:
@@ -340,8 +340,8 @@ Consider a ramp function defined as:
 \[
     r(t) =
     \begin{cases}
-        At & t \geq 0 \\
-        0 & \text{otherwise}
+        At & t \geq 0         \\
+        0  & \text{otherwise}
     \end{cases}
 \]
 Classify this signal as an energy, power, or neither.\\
@@ -363,7 +363,7 @@ According to the Webster's Dictionary,
     \begin{mdframed}
         \begin{center}
             \textcolor{blue}{%
-            \emph{``A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control\dots''}}
+                \emph{``A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control\dots''}}
         \end{center}
     \end{mdframed}\label{fig:system-def-1}
     \vspace{-1em}\caption{Dictionary Definition of a System}
@@ -374,7 +374,7 @@ According to the Webster's Dictionary,
     \begin{mdframed}
         \begin{center}
             \textcolor{red}{%
-            \emph{A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not.}}\\ The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
+                \emph{A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not.}}\\ The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
         \end{center}
     \end{mdframed}\label{fig:system-def-2}
     \vspace{-1em}\caption{Definition of a System}
@@ -390,10 +390,10 @@ From the control engineering perspective, \textcolor{red}{the system is any inte
     \centering
     \begin{mdframed}
         \begin{center}
-           A system is defined mathematically \textcolor{red}{as a transformation which maps an input signal \(x(t)\) to an output signal \(y(t)\)} as shown in Figure:~\ref{fig:system-operator-def-2}. For a continuous time system, the input-output mapping is expressed as:
-           \[
+            A system is defined mathematically \textcolor{red}{as a transformation which maps an input signal \(x(t)\) to an output signal \(y(t)\)} as shown in Figure:~\ref{fig:system-operator-def-2}. For a continuous time system, the input-output mapping is expressed as:
+            \[
                 \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \quad \text{where} \; \mathcal{S} \; \text{is an operator.}
-           \]
+            \]
         \end{center}
     \end{mdframed}\label{fig:system-operator-def-1}
     \vspace{-1em}\caption{System as an Operator Definition}
@@ -404,8 +404,8 @@ From the control engineering perspective, \textcolor{red}{the system is any inte
     \begin{mdframed}
         \begin{center}
             \begin{tikzpicture}[auto, thick, node distance=2cm, >=Stealth]
-                \node (input) at (0,0) {$x(t)$};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=1.5cm of input] (system) {\large $\mathcal{S}$};
+                \node (input) at (0,0) {\(x(t)\)};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=1.5cm of input] (system) {\large \(\mathcal{S}\)};
                 \node [right=1.5cm of system] (output) {\(y(t) = \mathcal{S}[x(t)]\)};
                 \draw [->] (input) -- node[above] {\scriptsize Input} (system);
                 \draw [->] (system) -- node[above] {\scriptsize Output} (output);
@@ -430,8 +430,8 @@ The basis of classifying systems are many. They can be classified according to t
 \begin{itemize}
     \item[\textcolor{blue}{a.}] \textbf{The Time Frame:} (\emph{discrete, continuous or hybrid});
     \item[\textcolor{blue}{b.}] \textbf{System Complexity:} (\emph{physical, conceptual and esoteric});
-    \item[\textcolor{blue}{c.}] \textbf{Uncertainties:} (\emph{deterministic and stochastic}); 
-    \item[\textcolor{blue}{d.}] \textbf{Nature and type of components:} (\emph{static or dynamic, linear or nonlinear, time-invariant or time variant, lumped or distributed etc});  
+    \item[\textcolor{blue}{c.}] \textbf{Uncertainties:} (\emph{deterministic and stochastic});
+    \item[\textcolor{blue}{d.}] \textbf{Nature and type of components:} (\emph{static or dynamic, linear or nonlinear, time-invariant or time variant, lumped or distributed etc});
 \end{itemize}
 \begin{figure}[H]
     \centering
@@ -454,7 +454,7 @@ The basis of classifying systems are many. They can be classified according to t
     \centering
     \begin{mdframed}
         \begin{center}
-            A system is said to be linear provided it satisfies the \textcolor{red}{\emph{principle of superposition}} which is the combination of the \textcolor{blue}{\emph{additive}} and \textcolor{blue}{\emph{homogeneity}} properties. Otherwise, it is \emph{non-linear} 
+            A system is said to be linear provided it satisfies the \textcolor{red}{\emph{principle of superposition}} which is the combination of the \textcolor{blue}{\emph{additive}} and \textcolor{blue}{\emph{homogeneity}} properties. Otherwise, it is \emph{non-linear}
         \end{center}
     \end{mdframed}\label{fig:linear-nonlinear-system-def-1}
     \vspace{-1em}\caption{Linear \& Non-linear System Definition}
@@ -471,25 +471,25 @@ The basis of classifying systems are many. They can be classified according to t
     \centering
     \begin{mdframed}
         \begin{center}
-        \begin{tikzpicture}[auto, thick, node distance=2cm, >=Stealth]
-            \node (input1) at (0,0) {$x_1(t)$};
-            \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input1] (system1) {\large $\mathcal{S}$};
-            \node [right of=system1] (output1) {$y_1(t)$};
-            \node (input2) [right=1cm of output1] {$x_2(t)$};
-            \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input2] (system2) {\large $\mathcal{S}$};
-            \node [right of=system2] (output2) {$y_2(t)$};
-            \node [below=0.5cm of input1] (additivity) {Additivity};
-            \node [right=0.5cm of additivity] (arrow) {\Huge $\Rightarrow$};
-            \node (combined_input) [right=1.2cm of arrow] {$x_1(t) + x_2(t)$};
-            \node [draw, rectangle, minimum height=2em, minimum width=3em, right=1cm of combined_input] (combined_system) {\large $\mathcal{S}$};
-            \node [right=1cm of combined_system] (combined_output) {$y_1(t) + y_2(t)$};
-            \draw [->] (input1) -- (system1);
-            \draw [->] (system1) -- (output1);
-            \draw [->] (input2) -- (system2);
-            \draw [->] (system2) -- (output2);
-            \draw [->] (combined_input) -- (combined_system);
-            \draw [->] (combined_system) -- (combined_output);
-        \end{tikzpicture}
+            \begin{tikzpicture}[auto, thick, node distance=2cm, >=Stealth]
+                \node (input1) at (0,0) {\(x_1(t)\)};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input1] (system1) {\large \(\mathcal{S}\)};
+                \node [right of=system1] (output1) {\(y_1(t)\)};
+                \node (input2) [right=1cm of output1] {\(x_2(t)\)};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input2] (system2) {\large \(\mathcal{S}\)};
+                \node [right of=system2] (output2) {\(y_2(t)\)};
+                \node [below=0.5cm of input1] (additivity) {Additivity};
+                \node [right=0.5cm of additivity] (arrow) {\Huge \(\Rightarrow\)};
+                \node (combined_input) [right=1.2cm of arrow] {\(x_1(t) + x_2(t)\)};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=1cm of combined_input] (combined_system) {\large \(\mathcal{S}\)};
+                \node [right=1cm of combined_system] (combined_output) {\(y_1(t) + y_2(t)\)};
+                \draw [->] (input1) -- (system1);
+                \draw [->] (system1) -- (output1);
+                \draw [->] (input2) -- (system2);
+                \draw [->] (system2) -- (output2);
+                \draw [->] (combined_input) -- (combined_system);
+                \draw [->] (combined_system) -- (combined_output);
+            \end{tikzpicture}
         \end{center}
     \end{mdframed}
     \vspace{-1em}\caption{Additive Property}\label{fig:additive-property-def-2}
