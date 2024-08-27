@@ -145,11 +145,36 @@ The basis of classifying systems are many. They can be classified according to t
 \textcolor{red}{\textbf{Principle of Homogeneity or Scaling:}}
 \begin{enumerate}[label=\blacktriangleright, leftmargin=*, itemsep=0.5em]
     \item Let an input \textcolor{red}{(\emph{cause})} \(x(t)\) produce an output \textcolor{red}{(\emph{effect})} \(y(t)\). If the system is linear then,
-    \item Scaling the input (\emph{cause}) \(x(t)\) by a factor \(``a''\) will scale the output (\emph{effect}) \(y(t)\) by the same factor.
-    \item Thus, if the \textcolor{blue}{input \(x(t)\) results in \(y(t)\)}, then the \textcolor{red}{scaled input \(ax(t)\)} gives the output \textcolor{red}{\(ay(t)\)} where \(``a''\) can either be a real or imaginary number. Thus, for a linear system:
+    \item Scaling the input (\emph{cause}) \(x(t)\) by a factor ``\(a\)'' will scale the output (\emph{effect}) \(y(t)\) by the same factor.
+    \item Thus, if the \textcolor{blue}{input \(x(t)\) results in \(y(t)\)}, then the \textcolor{red}{scaled input \(ax(t)\)} gives the output \textcolor{red}{\(ay(t)\)} where ``\(a\)'' can either be a real or imaginary number. Thus, for a linear system:
 \end{enumerate}
 \[
     \textcolor{red}{x(t) \rightarrow y(t) \quad \Rightarrow ax(t) \rightarrow ay(t)}
 \]
-
+\begin{figure}[H]
+    \centering
+    \tikzsetnextfilename{homogeneity_property_diagram}
+    \begin{mdframed}
+        \begin{center}
+            \begin{tikzpicture}[auto, thick, node distance=2cm, >=Stealth]
+                % Nodes
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, fill=white, text height=1.5ex, text depth=.25ex, line width=0.8pt, draw=blue] (system1) {\large \(\mathcal{S}\)};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, fill=white, text height=1.5ex, text depth=.25ex, line width=0.8pt, draw=blue, right=5cm of system1] (system2) {\large \(\mathcal{S}\)};
+                \node [left=1.5cm of system1] (input1) {\large \(x(t)\)};
+                \node [right=1.5cm of system1] (output1) {\large \(y(t)\)};
+                \node [left=1.5cm of system2] (input2) {\large \(ax(t)\)};
+                \node [right=1.5cm of system2] (output2) {\large \(ay(t)\)};
+                \node [above=0.5cm of system1, xshift=2.5cm] (homogeneity) {\large Homogeneity};
+                \node [above=0.5cm of system1, xshift=4.25cm] (arrow) {\Huge \(\Rightarrow\)};
+            
+                % Arrows
+                \draw [->] (input1) -- (system1);
+                \draw [->] (system1) -- (output1);
+                \draw [->] (input2) -- (system2);
+                \draw [->] (system2) -- (output2);
+            \end{tikzpicture}
+        \end{center}
+    \end{mdframed}
+    \vspace{-1em}\caption{Homogeneity Property}\label{fig:homogeneity-property-def-1}
+\end{figure}
 \end{document}
