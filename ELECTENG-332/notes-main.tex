@@ -25,7 +25,8 @@
 \usepackage{bookmark}       % Improved bookmarks for navigation
 \usepackage{float}          % Improved figure placement
 \usepackage{mdframed}       % Framed text blocks
-\usetikzlibrary{positioning, arrows.meta} % For arrows in tikz
+\usetikzlibrary{positioning, arrows.meta, external} % For arrows in tikz
+\tikzexternalize[prefix=tikz/] % Save tikz figures to a folder
 % Custom commands and settings
 \sisetup{per-mode = symbol}
 \onehalfspacing%
@@ -94,5 +95,4 @@
 \include{chapters/module4_time_domain}
 \clearpage
 \include{chapters/module5_stability_linear}
-
 \end{document}
