@@ -25,10 +25,13 @@
 \usepackage{bookmark}       % Improved bookmarks for navigation
 \usepackage{float}          % Improved figure placement
 \usepackage{mdframed}       % Framed text blocks
-\usetikzlibrary{positioning, arrows.meta, external} % For arrows in tikz
+\usepackage{subfiles}       % Subfiles package
+% Tikz libraries
+\usetikzlibrary{positioning, arrows.meta, external}
 \tikzexternalize[prefix=tikz/] % Save tikz figures to a folder
-% Custom commands and settings
+% SI unit settings
 \sisetup{per-mode = symbol}
+% spacing and margins
 \onehalfspacing%
 \geometry{%
     a4paper,
@@ -37,6 +40,7 @@
     top=2cm,
     bottom=2cm
 }
+% Header and footer settings
 \fancypagestyle{plain}{%
   \fancyhf{}%
   \fancyhead[L]{\textbf{Nicholas Russell}}%
@@ -46,10 +50,7 @@
   \renewcommand{\headrulewidth}{0.4pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
-
-
 \setlength{\headheight}{16.5pt}
-
 % Custom section titles
 \titleformat{\chapter}[display]
   {\normalfont\LARGE\bfseries}{\textcolor{blue}{Module {\thechapter}:}}{1pt}{}
@@ -66,27 +67,24 @@
 % Document content
 \begin{document}
 \pagestyle{plain}
+% Title page
 \begin{titlepage}
     \centering
-    \includegraphics[width=0.8\textwidth]{DECSE-HC-4C-01.png}\\[1cm] % University Dept. Logo
-    % University and Course Information
+    \includegraphics[width=0.8\textwidth]{DECSE-HC-4C-01.png}\\[1cm]
     {\LARGE \textbf{ELECTENG 332}}\\[0.5cm]
     {\Large Notes on Control Systems}\\[0.5cm]
-    % Add a personal touch with a subtitle or quote
     {\textit{Dear god help me, not another one\dots\ }}\\[2cm]
-    % Your Name and Date
     {\large by}\\[0.3cm]
     {\large \textbf{Nicholas Russell}}\\[1.4cm]
     {\large August 10th, 2024}
-    \vfill % Push the following text to the bottom of the page
-    % Department/University Information
+    \vfill
     {\large Department of Electrical, Computer, and Software Engineering}\\[0.3cm]
     {\large Faculty of Engineering}\\[0.3cm]
     {\large University of Auckland}
 \end{titlepage}
 \tableofcontents
 \newpage
-\include{chapters/module1_signals_systems}
+\subfile{chapters/module1_signals_systems} % Module 1 as a subfile
 \clearpage
 \include{chapters/module2_modeling_dynamic_systems}
 \clearpage
