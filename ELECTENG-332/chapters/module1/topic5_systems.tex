@@ -39,6 +39,7 @@ From the control engineering perspective, \textcolor{red}{the system is any inte
             A system is defined mathematically \textcolor{red}{as a transformation which maps an input signal \(x(t)\) to an output signal \(y(t)\)} as shown in Figure:~\ref{fig:system-operator-def-2}. For a continuous time system, the input-output mapping is expressed as:
             \begin{equation}
                 \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \quad \text{where} \; \mathcal{S} \; \text{is an operator.}
+                \label{eq:system-operator-def-1}
             \end{equation}
         \end{center}
     \end{mdframed}\label{fig:system-operator-def-1}
@@ -113,7 +114,8 @@ The basis of classifying systems are many. They can be classified according to t
 \end{enumerate}
 \begin{equation}
     \textcolor{blue}{x_1(t) \rightarrow y_1(t) \quad \text{and} \quad x_2(t) \rightarrow y_2(t)}, \quad \text{then} \quad \textcolor{red}{x_1(t) + x_2(t) \rightarrow y_1(t) + y_2(t)}
-\end{equation}\label{eq:linear-system-additive-property}
+    \label{eq:linear-system-additive-property}
+\end{equation}
 \begin{figure}[H]
     \centering
     \tikzsetnextfilename{additive_property_diagram}
@@ -150,25 +152,27 @@ The basis of classifying systems are many. They can be classified according to t
 \end{enumerate}
 \begin{equation}
     \textcolor{red}{x(t) \rightarrow y(t) \quad \Rightarrow ax(t) \rightarrow ay(t)}
-\end{equation}\label{eq:linear-system-homogeneity-property}
+    \label{eq:linear-system-homogeneity-property}
+\end{equation}
 \begin{figure}[H]
     \centering
     \tikzsetnextfilename{homogeneity_property_diagram}
     \begin{mdframed}
         \begin{center}
-            \begin{tikzpicture}[auto, thick, node distance=2cm, >=Stealth]
-                \node (input1) at (0,0) {\(x(t)\)};
+            \begin{tikzpicture}[auto, thick, node distance=2cm, >=Latex]
+                \node (input1) at (0,0) {};
                 \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input1] (system1) {\large \(\mathcal{S}\)};
-                \node [right of=system1] (output1) {\(y(t)\)};
-                \node (homogeneity) [right=1cm of output1] {Homogeneity};
-                \node (arrow) [right=0.5cm of homogeneity] {\Huge \(\Rightarrow\)};
-                \node (input2) [right=0.5cm of arrow] {\(ax(t)\)};
+                \node [right of=system1] (output1) {};
+                \node (homogeneity_start) [right=0.1cm of output1] {};
+                \node (homogeneity_end) [right=4cm of homogeneity_start] {};
+                \node (input2) [right=0.01cm of homogeneity_end] {};
                 \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input2] (system2) {\large \(\mathcal{S}\)};
-                \node [right of=system2] (output2) {\(ay(t)\)};
-                \draw [->] (input1) -- (system1);
-                \draw [->] (system1) -- (output1);
-                \draw [->] (input2) -- (system2);
-                \draw [->] (system2) -- (output2);
+                \node [right of=system2] (output2) {};
+                \draw [->] (input1) -- node[above,midway] {\(x(t)\)} (system1);
+                \draw [->] (system1) -- node[above,midway] {\(y(t)\)} (output1);
+                \draw [->] (input2) -- node[above,midway] {\(ax(t)\)} (system2);
+                \draw [->] (system2) -- node[above,midway] {\(ay(t)\)} (output2);
+                \draw [->, double equal sign distance] (homogeneity_start) -- node[above,midway] {\textbf{Homogeneity}} (homogeneity_end);
             \end{tikzpicture}
         \end{center}
     \end{mdframed}
@@ -176,4 +180,111 @@ The basis of classifying systems are many. They can be classified according to t
 \end{figure}
 \newpage
 \subsubsection{\textcolor{red}{Principle of Superposition:}}
+This is the combination of both the additive and homogeneity properties for a linear system. (For those definitions, See Equations:~\ref{eq:linear-system-additive-property} and ~\ref{eq:linear-system-homogeneity-property}).
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            If the zero state response of a linear system due to a finite \(N\text{-number}\) of inputs \(x_1(t), x_2(t), \dots, x_N(t)\) equals to \(y_1(t), y_2(t), \dots, y_N(t)\) respectively, then the response of the system to the linear combination of these inputs
+            \begin{equation}
+                a_1x_1(t) + a_2x_2(t) + a_3x_3(t) + \dots\dots + a_Nx_N(t)
+                \label{eq:linear-system-superposition-input}
+            \end{equation}
+            \noindent is given by the linear combination of the individual outputs i.e.
+            \begin{equation}
+                a_1y_1(t) + a_2y_2(t) + a_3y_3(t) + \dots\dots + a_Ny_N(t)
+                \label{eq:linear-system-superposition-output}
+            \end{equation}
+            \noindent where \(a_1, a_2, a_3, \dots, a_N\) are arbitrary constants (either real or imaginary).   
+            Thus, if 
+            \begin{equation}
+                \textcolor{blue}{x_1(t) \rightarrow y_1(t), \quad x_2(t) \rightarrow y_2(t), \dots, x_N(t) \rightarrow y_N(t)}
+                \label{eq:linear-system-superposition-def-eq-1}
+            \end{equation}
+            then, for all \(a_1, a_2, \dots, a_N\)
+            \begin{equation}
+                \textcolor{blue}{a_1x_1(t) + a_2x_2(t) + \ldots  a_Nx_N(t)\rightarrow}\ \textcolor{red}{ a_1y_1(t) + a_2y_2(t) + \ldots  a_Ny_N(t)}
+                \label{eq:linear-system-superposition-def-eq-2}
+            \end{equation}          
+        \end{center}
+    \end{mdframed}\label{fig:linear-system-superposition-def-1}
+    \vspace{-1em}\caption{Superposition Principle Definition}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \tikzsetnextfilename{superposition_principle_diagram}
+    \begin{mdframed}
+        \begin{center}
+            \begin{tikzpicture}[auto, thick, node distance=2cm, >=Latex]
+                
+                % Individual systems
+                \node (input1) at (0,0) {};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=of input1] (system1) {\large \(\mathcal{S}\)};
+                \node [right=of system1] (output1) {};
+                
+                \node [below=1cm of input1] (input2) {};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=of input2] (system2) {\large \(\mathcal{S}\)};
+                \node [right=of system2] (output2) {};
+                
+                \node [below=1cm of input2] (inputN) {};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=of inputN] (systemN) {\large \(\mathcal{S}\)};
+                \node [right=of systemN] (outputN) {};
+                
+                % Vertical dots
+                % \node at ($(system2)!0.4!(systemN)$) {\large \(\vdots\)};
+                \draw [loosely dotted, very thick] (system2.south) -- (systemN.north);
+                % Explicit positions for Superposition start and end nodes
+                \node (superposition_start) [right=0.01cm of output2] {};
+                \node (superposition_end) [right=4cm of superposition_start] {};
+            
+                % Position combined system relative to superposition_end
+                \node (input_combined) [right=0.01cm of superposition_end] {};
+                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=of input_combined] (system_combined) {\large \(\mathcal{S}\)};
+                \node [right=of system_combined] (output_combined) {};
+                \draw [->] (input1) -- node[above,midway] {\(x_1(t)\)} (system1);
+                \draw [->] (system1) -- node[above,midway] {\(y_1(t)\)} (output1);
+                \draw [->] (input2) -- node[above,midway] {\(x_2(t)\)} (system2);
+                \draw [->] (system2) -- node[above,midway] {\(y_2(t)\)} (output2);
+                \draw [->] (inputN) -- node[above,midway] {\(x_N(t)\)} (systemN);
+                \draw [->] (systemN) -- node[above,midway] {\(y_N(t)\)} (outputN);
+                \draw [->, double equal sign distance] (superposition_start) -- node[above,midway] {\textbf{Superposition}} (superposition_end);
+                \draw [->] (input_combined) -- node[above,midway] {\footnotesize\(\sum_{i=1}^{N} a_i x_i(t)\)} (system_combined);
+                \draw [->] (system_combined) -- node[above,midway] {\footnotesize\(\sum_{i=1}^{N} a_i y_i(t)\)} (output_combined);
+            
+            \end{tikzpicture}
+                       
+        \end{center}
+    \end{mdframed}
+    \vspace{-1em}\caption{Superposition Principle Diagram}\label{fig:superposition-principle-def-2}
+\end{figure}
+\vspace{-1em}
+\newpage
+\noindent In more mathematical terms:
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            Let \(\mathcal{S}\) be a linear system, and let \(x_1(t), x_2(t), \dots, x_N(t)\) be inputs with corresponding outputs \(y_1(t), y_2(t), \dots, y_N(t)\), such that \(\mathcal{S}(x_i(t)) = y_i(t)\) for each \(i \in \{1, 2, \dots, N\}\). Then, for any constants \(a_1, a_2, \dots, a_N \in \mathbb{C}\), the system's response to the linear combination of the inputs is given by the corresponding linear combination of the outputs.
+
+            Formally:
+            \begin{gather}
+                \forall N \in \mathbb{N}, \\
+                \forall \{a_i \in \mathbb{C}, x_i(t) \in \mathbb{C}, y_i(t) \in \mathbb{C}\}_{i=1}^N, \\
+                \text{if} \ \mathcal{S}(x_i(t)) = y_i(t) \ \text{for all} \ i, \\
+                \text{then} \ \mathcal{S}\left(\sum_{i=1}^{N} a_i x_i(t)\right) = \sum_{i=1}^{N} a_i y_i(t).
+                \label{eq:linear-system-superposition-nerd}
+            \end{gather}
+
+            In this definition:
+            \begin{itemize}
+                \item \(\mathbb{N}\) denotes the set of natural numbers \(\{1,2,\dots\}\), representing the number of inputs;
+                \item \(\mathbb{C}\) denotes the set of complex numbers, allowing for both real and imaginary components in the coefficients, inputs, and outputs;
+                \item The system \(\mathcal{S}\) maps each input \(x_i(t)\) to its corresponding output \(y_i(t)\);
+                \item The statement asserts that the linear combination of inputs yields the linear combination of outputs, which is the core of the superposition principle.
+            \end{itemize}
+        \end{center}
+    \end{mdframed}
+    \vspace{-1em}\caption{Superposition Principle Mathematical Definition}
+\end{figure}
+
 \end{document}
