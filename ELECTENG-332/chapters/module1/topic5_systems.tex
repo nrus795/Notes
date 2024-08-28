@@ -12,7 +12,7 @@ According to the Webster's Dictionary,
                 \emph{``A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control\dots''}}
         \end{center}
     \end{mdframed}\label{fig:system-def-1}
-    \vspace{-1em}\caption{Dictionary Definition of a System}
+    \vspace{-1em}
 \end{figure}
 \noindent According to the International Council on Systems Engineering (INCOSE),
 \begin{figure}[H]
@@ -23,7 +23,7 @@ According to the Webster's Dictionary,
                 \emph{A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not.}}\\ The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
         \end{center}
     \end{mdframed}\label{fig:system-def-2}
-    \vspace{-1em}\caption{Definition of a System}
+    \vspace{-1em}
 \end{figure}
 \noindent It is difficult to give a single and precise definition of the term \emph{system}, which will suit to different perspectives of different people. In practice, what is meant by ``the system'' depends on the objectives of a particular study.\\
 From the control engineering perspective, \textcolor{red}{the system is any interconnection of components to achieve desired objectives.} It is characterised by its \textbf{\textcolor{blue}{inputs}}, \textbf{\textcolor{blue}{outputs}}, and the rules of operations or laws. For example:
@@ -31,6 +31,7 @@ From the control engineering perspective, \textcolor{red}{the system is any inte
     \item[\textcolor{blue}{a.}] The laws of operation in electrical systems are Ohm's law, which gives the voltage-current relationships for resistors, capacitors and inductors, and Kirchhoff's laws, which govern the laws of interconnection of various electrical components.
     \item[\textcolor{blue}{b.}] Similarly, in mechanical systems, the laws of operation are Newton's laws. These laws can be used to derive mathematical models of the system.
 \end{itemize}
+
 \subsection{System as an Operator}
 \begin{figure}[H]
     \centering
@@ -43,7 +44,7 @@ From the control engineering perspective, \textcolor{red}{the system is any inte
             \end{equation}
         \end{center}
     \end{mdframed}\label{fig:system-operator-def-1}
-    \vspace{-1em}\caption{System as an Operator Definition}
+    \vspace{-1em}
 \end{figure}
 \vspace{-1em}
 \begin{figure}[H]
@@ -51,12 +52,12 @@ From the control engineering perspective, \textcolor{red}{the system is any inte
     \tikzsetnextfilename{system_operator_diagram}
     \begin{mdframed}
         \begin{center}
-            \begin{tikzpicture}[auto, thick, node distance=2cm, >=Stealth]
-                \node (input) at (0,0) {\(x(t)\)};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=1.5cm of input] (system) {\large \(\mathcal{S}\)};
-                \node [right=1.5cm of system] (output) {\(y(t) = \mathcal{S}[x(t)]\)};
-                \draw [->] (input) -- node[above] {\scriptsize Input} (system);
-                \draw [->] (system) -- node[above] {\scriptsize Output} (output);
+            \begin{tikzpicture}[auto, thick, node distance=3cm, >=Latex]
+                \node (input) at (0,0) {};
+                \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input] (system) {\large \(\mathcal{S}\)};
+                \node [right=of system] (output) {};
+                \draw [->] (input) -- node[above,midway] {\small\(x(t)\)} (system);
+                \draw [->] (system) -- node[above,midway] {\small\(y(t) = \mathcal{S}[x(t)]\)} (output);
             \end{tikzpicture}
         \end{center}
     \end{mdframed}
@@ -71,7 +72,7 @@ From the control engineering perspective, \textcolor{red}{the system is any inte
                 A control system may be defined as an interconnection of components which are configured to provide a desired response.}
         \end{center}
     \end{mdframed}\label{fig:system-interconnect-def-1}
-    \vspace{-1em}\caption{System Interconnection Definition}
+    \vspace{-1em}
 \end{figure}
 \subsection{Classification of Systems}
 The basis of classifying systems are many. They can be classified according to the following:
@@ -94,7 +95,7 @@ The basis of classifying systems are many. They can be classified according to t
             \item Continuous and discrete systems;
         \end{itemize}
     \end{mdframed}\label{fig:system-type-list-1}
-    \vspace{-1em}\caption{System Classification Types}
+    \vspace{-1em}
 \end{figure}
 \vspace{-1em}
 \subsection{Linear and Nonlinear Systems}
@@ -105,7 +106,7 @@ The basis of classifying systems are many. They can be classified according to t
             A system is said to be linear provided it satisfies the \textcolor{red}{\emph{principle of superposition}} which is the combination of the \textcolor{blue}{\emph{additive}} and \textcolor{blue}{\emph{homogeneity}} properties. Otherwise, it is \emph{non-linear}
         \end{center}
     \end{mdframed}\label{fig:linear-nonlinear-system-def-1}
-    \vspace{-1em}\caption{Linear \& Non-linear System Definition}
+    \vspace{-1em}
 \end{figure}
 \subsubsection{\textcolor{red}{Principle of Additivity:}} Assume the system initially at rest.
 \begin{enumerate}[label=\blacktriangleright, leftmargin=*, itemsep=0.5em]
@@ -121,28 +122,30 @@ The basis of classifying systems are many. They can be classified according to t
     \tikzsetnextfilename{additive_property_diagram}
     \begin{mdframed}
         \begin{center}
-            \begin{tikzpicture}[auto, thick, node distance=2cm, >=Stealth]
-                \node (input1) at (0,0) {\(x_1(t)\)};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input1] (system1) {\large \(\mathcal{S}\)};
-                \node [right of=system1] (output1) {\(y_1(t)\)};
-                \node (input2) [right=1cm of output1] {\(x_2(t)\)};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input2] (system2) {\large \(\mathcal{S}\)};
-                \node [right of=system2] (output2) {\(y_2(t)\)};
-                \node [below=0.5cm of input1] (additivity) {Additivity};
-                \node [right=0.5cm of additivity] (arrow) {\Huge \(\Rightarrow\)};
-                \node (combined_input) [right=1.2cm of arrow] {\(x_1(t) + x_2(t)\)};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=1cm of combined_input] (combined_system) {\large \(\mathcal{S}\)};
-                \node [right=1cm of combined_system] (combined_output) {\(y_1(t) + y_2(t)\)};
-                \draw [->] (input1) -- (system1);
-                \draw [->] (system1) -- (output1);
-                \draw [->] (input2) -- (system2);
-                \draw [->] (system2) -- (output2);
-                \draw [->] (combined_input) -- (combined_system);
-                \draw [->] (combined_system) -- (combined_output);
+            \begin{tikzpicture}[auto, thick, node distance=2cm, >=Latex]
+                \node (input1) at (0,0) {};
+                \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input1] (system1) {\large \(\mathcal{S}\)};
+                \node [right=of system1] (output1) {};
+                \node (input2) [below=1cm of input1] {};
+                \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input2] (system2) {\large \(\mathcal{S}\)};
+                \node [right=of system2] (output2) {};
+                \node [below=0.45cm of output1] (midpoint_systems) {};
+                \node [right=0.01cm of midpoint_systems] (additivity_start){};
+                \node [right=4cm of additivity_start] (additivity_end){};
+                \node (input_combined) [right=0.01cm of additivity_end] {};
+                \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input_combined] (system_combined) {\large \(\mathcal{S}\)};
+                \node [right=of system_combined] (output_combined) {};
+                \draw [->] (input1) -- node[above,midway] {\(x_1(t)\)} (system1);
+                \draw [->] (system1) -- node[above,midway] {\(y_1(t)\)} (output1);
+                \draw [->] (input2) -- node[above,midway] {\(x_2(t)\)} (system2);
+                \draw [->] (system2) -- node[above,midway] {\(y_2(t)\)} (output2);
+                \draw [->] (input_combined) -- node[above,midway] {\scriptsize\(x_1(t) + x_2(t)\)} (system_combined);
+                \draw [->] (system_combined) -- node[above,midway] {\scriptsize\(y_1(t) + y_2(t)\)} (output_combined);
+                \draw [->, double equal sign distance] (additivity_start) -- node[above,midway] {\textbf{Additivity}} (additivity_end);
             \end{tikzpicture}
         \end{center}
     \end{mdframed}
-    \vspace{-1em}\caption{Additive Property}\label{fig:additive-property-def-2}
+    \vspace{-1em}\caption{Principle of Additivity}\label{fig:additive-property-def-2}
 \end{figure}
 \subsubsection{\textcolor{red}{Principle of Homogeneity or Scaling:}}
 \begin{enumerate}[label=\blacktriangleright, leftmargin=*, itemsep=0.5em]
@@ -161,12 +164,12 @@ The basis of classifying systems are many. They can be classified according to t
         \begin{center}
             \begin{tikzpicture}[auto, thick, node distance=2cm, >=Latex]
                 \node (input1) at (0,0) {};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input1] (system1) {\large \(\mathcal{S}\)};
+                \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right of=input1] (system1) {\large \(\mathcal{S}\)};
                 \node [right of=system1] (output1) {};
                 \node (homogeneity_start) [right=0.1cm of output1] {};
                 \node (homogeneity_end) [right=4cm of homogeneity_start] {};
                 \node (input2) [right=0.01cm of homogeneity_end] {};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right of=input2] (system2) {\large \(\mathcal{S}\)};
+                \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right of=input2] (system2) {\large \(\mathcal{S}\)};
                 \node [right of=system2] (output2) {};
                 \draw [->] (input1) -- node[above,midway] {\(x(t)\)} (system1);
                 \draw [->] (system1) -- node[above,midway] {\(y(t)\)} (output1);
@@ -176,7 +179,7 @@ The basis of classifying systems are many. They can be classified according to t
             \end{tikzpicture}
         \end{center}
     \end{mdframed}
-    \vspace{-1em}\caption{Homogeneity Property}\label{fig:homogeneity-property-def-1}
+    \vspace{-1em}\caption{Principle of Homogeneity}\label{fig:homogeneity-property-def-1}
 \end{figure}
 \newpage
 \subsubsection{\textcolor{red}{Principle of Superposition:}}
@@ -208,7 +211,7 @@ This is the combination of both the additive and homogeneity properties for a li
             \end{equation}          
         \end{center}
     \end{mdframed}\label{fig:linear-system-superposition-def-1}
-    \vspace{-1em}\caption{Superposition Principle Definition}
+    \vspace{-1em}
 \end{figure}
 \begin{figure}[H]
     \centering
@@ -216,30 +219,20 @@ This is the combination of both the additive and homogeneity properties for a li
     \begin{mdframed}
         \begin{center}
             \begin{tikzpicture}[auto, thick, node distance=2cm, >=Latex]
-                
-                % Individual systems
                 \node (input1) at (0,0) {};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=of input1] (system1) {\large \(\mathcal{S}\)};
+                \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input1] (system1) {\large \(\mathcal{S}\)};
                 \node [right=of system1] (output1) {};
-                
                 \node [below=1cm of input1] (input2) {};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=of input2] (system2) {\large \(\mathcal{S}\)};
+                \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input2] (system2) {\large \(\mathcal{S}\)};
                 \node [right=of system2] (output2) {};
-                
                 \node [below=1cm of input2] (inputN) {};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=of inputN] (systemN) {\large \(\mathcal{S}\)};
+                \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of inputN] (systemN) {\large \(\mathcal{S}\)};
                 \node [right=of systemN] (outputN) {};
-                
-                % Vertical dots
-                % \node at ($(system2)!0.4!(systemN)$) {\large \(\vdots\)};
                 \draw [loosely dotted, very thick] (system2.south) -- (systemN.north);
-                % Explicit positions for Superposition start and end nodes
                 \node (superposition_start) [right=0.01cm of output2] {};
                 \node (superposition_end) [right=4cm of superposition_start] {};
-            
-                % Position combined system relative to superposition_end
                 \node (input_combined) [right=0.01cm of superposition_end] {};
-                \node [draw, rectangle, minimum height=2em, minimum width=3em, right=of input_combined] (system_combined) {\large \(\mathcal{S}\)};
+                \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input_combined] (system_combined) {\large \(\mathcal{S}\)};
                 \node [right=of system_combined] (output_combined) {};
                 \draw [->] (input1) -- node[above,midway] {\(x_1(t)\)} (system1);
                 \draw [->] (system1) -- node[above,midway] {\(y_1(t)\)} (output1);
@@ -250,7 +243,6 @@ This is the combination of both the additive and homogeneity properties for a li
                 \draw [->, double equal sign distance] (superposition_start) -- node[above,midway] {\textbf{Superposition}} (superposition_end);
                 \draw [->] (input_combined) -- node[above,midway] {\footnotesize\(\sum_{i=1}^{N} a_i x_i(t)\)} (system_combined);
                 \draw [->] (system_combined) -- node[above,midway] {\footnotesize\(\sum_{i=1}^{N} a_i y_i(t)\)} (output_combined);
-            
             \end{tikzpicture}
                        
         \end{center}
@@ -260,10 +252,11 @@ This is the combination of both the additive and homogeneity properties for a li
 \vspace{-1em}
 \newpage
 \noindent In more mathematical terms:
+
 \begin{figure}[H]
     \centering
     \begin{mdframed}
-        \begin{center}
+        
             Let \(\mathcal{S}\) be a linear system, and let \(x_1(t), x_2(t), \dots, x_N(t)\) be inputs with corresponding outputs \(y_1(t), y_2(t), \dots, y_N(t)\), such that \(\mathcal{S}(x_i(t)) = y_i(t)\) for each \(i \in \{1, 2, \dots, N\}\). Then, for any constants \(a_1, a_2, \dots, a_N \in \mathbb{C}\), the system's response to the linear combination of the inputs is given by the corresponding linear combination of the outputs.
 
             Formally:
@@ -282,9 +275,60 @@ This is the combination of both the additive and homogeneity properties for a li
                 \item The system \(\mathcal{S}\) maps each input \(x_i(t)\) to its corresponding output \(y_i(t)\);
                 \item The statement asserts that the linear combination of inputs yields the linear combination of outputs, which is the core of the superposition principle.
             \end{itemize}
-        \end{center}
+        
     \end{mdframed}
-    \vspace{-1em}\caption{Superposition Principle Mathematical Definition}
+    \vspace{-1em}\label{fig:linear-system-superposition-nerd-1}
 \end{figure}
+\subsection{Example: Linear and Nonlinear Systems}
+Test the linearity/non-linearity of the system whose relation between the output \(y(t)\) and input \(x(t)\) is expressed as:
+\begin{equation}
+    y(t) = mx(t) + c
+    \label{eq:linear-nonlinear-system-example-io-relation}
+\end{equation}
+\noindent where \(m\) is a constant.\\
+\textbf{Solution:}
+Let \(x_1(t)\) and \(x_2(t)\) be the two distinct inputs applied to the system. The outputs corresponding to these inputs are
+\begin{equation}
+    y_1(t) = mx_1(t) + c, \quad \& \quad y_2(t) = mx_2(t) + c
+    \label{eq:linear-nonlinear-system-example-outputs}
+\end{equation}
+\noindent Let us apply an input, which is the linear combination of inputs \(x_1(t)\) and \(x_2(t)\) i.e.
+\begin{equation}
+    x(t) = ax_1(t) + bx_2(t)
+    \label{eq:linear-nonlinear-system-example-input}
+\end{equation}
+\noindent The output due to this input is
+\begin{equation}
+    y(t) = m[ax_1(t) + bx_2(t)] + c \neq ay_1(t) + by_2(t)
+\end{equation}
+\noindent Hence, the system is \textcolor{red}{\emph{non-linear}}.
 
+\subsection{Time-invariant and Time-varying Systems}
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            \textcolor{red}{\textbf{Definition:}} A system is \textcolor{blue}{time invariant} of a time shift in the input signal results in an identical time shift in the output signal. For example, in a time-invariant system, \textcolor{red}{if an input \(u(t)\) produces an output \(y(t)\), then application of a delayed input \(u(t - d)\) results in \(y(t - d)\)}. Mathematically, if
+            \begin{gather}
+                \textcolor{blue}{y(t) = \mathcal{S}[u(t)]}, \quad \text{then}\\ \textcolor{red}{y(t - d) = \mathcal{S}[u(t - d)]}
+                \label{eq:time-invariant-system-def-1}
+            \end{gather}
+        \end{center}
+    \end{mdframed}\label{fig:time-invariant-system-def-1}
+    \vspace{-1em}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \begin{mdframed}
+        \begin{center}
+            \textcolor{red}{\textbf{Remark 1:}} If the input-output relation of a system is described by a linear differential equation of the form
+            \begin{gather}
+                \od[n]{y}{t} + a_1\od[n-1]{y}{t} + \dots + a_{n-1} \od{y}{t} + a_ny\\ 
+                = b_0\od[m]{u}{t} + b_1\od[m-1]{u}{t} + \dots + b_{m-1}\od{u}{t} + b_mu
+            \end{gather}
+            then, this system is time invariant \textcolor{red}{if the coefficients \(a_i, i = 1,2,\ldots,n\) and \(b_i, i = 0,1,\ldots,m\) are constants} (i.e. if \(\forall a_i, \ i \in \mathbb{N}\ (\text{starting at 1})\ \& \ \forall b_i, \ i \in \mathbb{N}\ (\text{starting at 0})\)). If these coefficients are functions of time, then the system is a \textbf{linear time-varying} system.
+        \end{center}
+    \end{mdframed}\label{fig:time-varying-system-def-1}
+    \vspace{-1em}
+\end{figure}
 \end{document}

@@ -1,19 +1,21 @@
 % !TeX root = ..\..\notes-main.tex
+% TODO Expand more on this topic, it's a bit too short on its own.
 \documentclass[../notes-main.tex]{subfiles}
 \begin{document}
 \section{Topic 1: Importance of Exponential Functions}
 The Exponential function, written as either
 \(e^{ax}\) or \(e^{at}\) depending on whether it is \(f(t)\) or \(f(x)\),
 has properties that make it mathematically unique.
-
 \begin{enumerate}
     \item The derivative (rate of change) of the exponential function is the exponential function itself. More generally, this is a function whose rate of change is proportional to the function itself.
           \begin{equation}
               \od{e^{ax}}{x} = ae^{ax}
-          \end{equation}\label{eq:exp-deriv}
+              \label{eq:exp-deriv}
+          \end{equation}
     \item The integral of the exponential function is also the exponential function itself.
           \begin{equation}
               \int e^{ax} \dif x = \frac{1}{a}e^{ax}
-          \end{equation}\label{eq:exp-integral}
+              \label{eq:exp-integral}
+          \end{equation}
 \end{enumerate}
 \end{document}

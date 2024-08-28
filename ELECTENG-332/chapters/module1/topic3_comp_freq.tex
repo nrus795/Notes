@@ -7,7 +7,7 @@ Complex frequency is found commonly in electrical engineering. It is often notat
 \begin{figure}[H]
     \centering
     \tikzsetnextfilename{complex_plane_diagram} 
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=1.5]
         \begin{axis}[
                 axis equal,
                 axis x line = middle,
@@ -37,13 +37,15 @@ Complex frequency is found commonly in electrical engineering. It is often notat
 \begin{gather}
     \forall x \in \mathbb{R}, \quad \forall n \in \mathbb{Z}, \\
     e^{j n x} = \cos(n x) + j \sin(n x)
-\end{gather}\label{eq:de-moivre-formula}
+    \label{eq:de-moivre-formula}
+\end{gather}
 Or more generally for our applications:
 \begin{gather}
     e^{jx} = \cos(x) + j\sin(x) \\
     \text{Where} \, x \in \mathbb{R}\, \text{(\(x\) is Real)} \\
     \text{and} \, j \equiv i = \sqrt{-1}.
-\end{gather}\label{eq:de-moivre-formula-general}
+    \label{eq:de-moivre-formula-general}
+\end{gather}
 \noindent This means that:
 \begin{figure}[H]
     \centering
@@ -52,10 +54,11 @@ Or more generally for our applications:
             \textcolor{red}{\emph{A complex frequency \(j\omega \) represents a pure sinusoidal signal of frequency \(\omega \) \unit{\radian\per\second}}}
         \end{center}
     \end{mdframed}\label{fig:complex-sinusoid-def-1}
-    \vspace{-1em}\caption{Complex Sinusoidal Signal}
+    \vspace{-1em}
 \end{figure}
 \vspace{-1em}
-\noindent For example, if a signal has a complex frequency  \complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\radian\per\sec}, then this corresponds to a pure sinusoid of frequency \SI{314}{\radian\per\sec} (i.e. \SI{50}{\hertz}). Furthermore:
+\noindent For example, if a signal has a complex frequency  \complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\radian\per\sec}, then this corresponds to a pure sinusoid of frequency \SI{314}{\radian\per\sec} (i.e. \SI{50}{\hertz}).\\ 
+Furthermore:
 \begin{figure}[H]
     \centering
     \begin{mdframed}
@@ -65,14 +68,14 @@ Or more generally for our applications:
                     damped signal of frequency \(\omega \) \unit{\radian\per\second}, and decays/amplifies at a rate decided by \(\sigma \).}}
         \end{center}
     \end{mdframed}\label{fig:exp-damped-sinusoid-def-1}
-    \vspace{-1em}\caption{Exponentially Damped Signal}
+    \vspace{-1em}
 \end{figure}
 \vspace{-1em}
 \noindent For example, the signal \(f(t) = e^{- 10t}\sin(40\pi t) \) would look like this:
 \begin{figure}[H]
     \centering
     \tikzsetnextfilename{exp_damped_sinusoid_plot}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[scale=1.5]
         \begin{axis}[
                 domain=0:1, 
                 samples=1000,
