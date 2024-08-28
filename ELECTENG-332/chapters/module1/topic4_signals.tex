@@ -43,21 +43,21 @@ It is difficult to find a unique definition of a signal. However in the context 
 \end{figure}
 \vspace{-1em}
 \noindent The instantaneous power \(p(t)\) of a signal \(x(t)\) is expressed as:
-\[
+\begin{equation}
     \textcolor{red}{p(t) = x^2(t)}
-\]
+\end{equation}\label{eq:instantaneous-power-def}
 The total energy of a continuous-time signal \(x(t)\) is given by:
-\[
+\begin{equation}
     \textcolor{blue}{E = \lim_{T \to \infty} \int_{-T/2}^{T/2} x^2(t) \dif t = \int_{-\infty}^{\infty} x^2(t) \dif t}
-\]
+\end{equation}\label{eq:continuous-time-energy-def}
 For a complex valued signal:
-\[
+\begin{equation}
     \textcolor{red}{E = \int_{-\infty}^{\infty} \abs{x(t)}^2 \dif t}
-\]
+\end{equation}\label{eq:complex-signal-energy-def}
 Since power equals to the time average of the energy, the average power is given by:
-\[
+\begin{equation}
     \textcolor{blue}{P = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} x^2(t) \dif t = \frac{E}{T}}
-\]
+\end{equation}\label{eq:average-power-def}
 \newpage
 \noindent Note that during calculation of energy, we average the power over an infinitely large interval.
 \begin{figure}[H]
@@ -90,53 +90,53 @@ Since power equals to the time average of the energy, the average power is given
 \subsection{Examples}
 \subsubsection{Example 1: Unit Step Function}
 Consider a unit step function defined as:
-\[
+\begin{equation}
     \textcolor{blue}{u(t) =
         \begin{cases}
             1 & t \geq 0         \\
             0 & \text{otherwise}
         \end{cases}}
-\]
+\end{equation}\label{eq:unit-step-function-example}
 Determine whether this is an energy signal or a power signal or neither.\\
 \noindent \textbf{Solution:} Let us compute the energy of this signal as:
-\[
+\begin{equation}
     E = \int_{-\infty}^{\infty} {[u(t)]}^2 \dif t = \int_{0}^{\infty} {[0]}^2 \dif t = \int_{0}^{\infty} {[1]}^2 \dif t = \infty
-\]
+\end{equation}\label{eq:unit-step-energy}
 Since the energy of this signal is infinite, it cannot be an energy signal. Let us compute the power of this signal as:
-\[
+\begin{equation}
     \textcolor{blue}{P = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} {[u(t)]}^2 \dif t = \lim_{T \to \infty} \frac{1}{T} \int_{0}^{T/2} {[u(t)]}^2 \dif t = \frac{1}{2}}
-\]
+\end{equation}\label{eq:unit-step-power}
 The power of this signal is finite. Hence,\,\textcolor{red}{this is a power signal.}
 
 \subsubsection{Example 2: Exponential Function}
 Consider an exponential function defined as:
-\[
+\begin{equation}
     x(t) = e^{-at}u(t), \, \text{where} \; u(t) \;\text{is the unit step signal},\, a > 0
-\]
+\end{equation}\label{eq:exp-function-example}
 Classify this signal as an energy, power, or neither.\\
 \noindent \textbf{Solution:} Let us compute the energy of this signal as:
-\[
+\begin{equation}
     E = \int_{-\infty}^{\infty} {[x(t)]}^2 \dif t = \int_{0}^{\infty} {[e^{-at}]}^2 \dif t = \int_{0}^{\infty} e^{-2at} \dif t = \frac{1}{2a} < \infty
-\]
+\end{equation}\label{eq:exp-function-energy}
 Thus, \(x(t) = e^{-at}u(t)\) is an \textcolor{red}{energy signal.}
 
 \subsubsection{Example 3: Ramp Function}
 Consider a ramp function defined as:
-\[
+\begin{equation}
     r(t) =
     \begin{cases}
         At & t \geq 0         \\
         0  & \text{otherwise}
     \end{cases}
-\]
+\end{equation}\label{eq:ramp-function-example}
 Classify this signal as an energy, power, or neither.\\
 \noindent \textbf{Solution:} Let us compute the energy of this signal as:
-\[
+\begin{equation}
     E = \int_{-\infty}^{\infty} {r(t)}^2 \dif t = \int_{-\infty}^{0} {[0]}^2 \dif t = \int_{0}^{\infty} A^2 t^2 \dif t = A^2 \frac{T^3}{3} \Bigg|_{0}^{\infty} = \infty
-\]
+\end{equation}\label{eq:ramp-function-energy}
 Since the energy of this signal is infinite, it cannot be an energy signal. Let us compute the power of this signal as:
-\[
+\begin{equation}
     P = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} {[r(t)]}^2 \dif t = \lim_{T \to \infty} \frac{1}{T} \int_{0}^{T/2} A^2 t^2 \dif t = A^2 \lim_{T \to \infty} \frac{1}{T} \frac{T^3}{3} \Bigg|_{0}^{\infty} = \infty
-\]
+\end{equation}\label{eq:ramp-function-power}
 The power of this signal is infinite. Hence, this is \textcolor{red}{neither a power nor an energy signal.}
 \end{document}

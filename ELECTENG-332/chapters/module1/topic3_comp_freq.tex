@@ -4,7 +4,6 @@
 \section{Topic 3: Concept of Complex Frequency}
 Complex frequency is found commonly in electrical engineering. It is often notated as \( j\omega \) or \( s = \sigma \pm j \omega \). These frequencies always come in pairs, so the use of \( \pm \) is implicit to this, as complex numbers have complex conjugates, i.e.
 \(s = \sigma + j \omega \) has the conjugate \(s = \sigma - j\omega \).
-
 \begin{figure}[H]
     \centering
     \tikzsetnextfilename{complex_plane_diagram} 
@@ -25,7 +24,6 @@ Complex frequency is found commonly in electrical engineering. It is often notat
             \addplot[only marks, mark=*, red, mark size=2pt] coordinates {%
                     (1,1) (-1,1) (1,-1) (-1,-1)
                 };
-            % Draw vectors from origin to each point
             \addplot[->, black, very thick, >= latex] coordinates {(0,0) (1,1)};
             \addplot[->, black, very thick, >= latex] coordinates {(0,0) (-1,1)};
             \addplot[->, black, very thick, >= latex] coordinates {(0,0) (1,-1)};
@@ -36,16 +34,16 @@ Complex frequency is found commonly in electrical engineering. It is often notat
 \end{figure}
 \vspace{-1em}
 \noindent This is also backed up by De Moivre's Formula, which is defined mathematically as:
-\begin{gather*}
+\begin{gather}
     \forall x \in \mathbb{R}, \quad \forall n \in \mathbb{Z}, \\
     e^{j n x} = \cos(n x) + j \sin(n x)
-\end{gather*}
+\end{gather}\label{eq:de-moivre-formula}
 Or more generally for our applications:
-\begin{gather*}
+\begin{gather}
     e^{jx} = \cos(x) + j\sin(x) \\
     \text{Where} \, x \in \mathbb{R}\, \text{(\(x\) is Real)} \\
     \text{and} \, j \equiv i = \sqrt{-1}.
-\end{gather*}
+\end{gather}\label{eq:de-moivre-formula-general}
 \noindent This means that:
 \begin{figure}[H]
     \centering
@@ -70,16 +68,16 @@ Or more generally for our applications:
     \vspace{-1em}\caption{Exponentially Damped Signal}
 \end{figure}
 \vspace{-1em}
-\noindent For example, the signal \( e^{- 10t}\sin(40\pi t) \) would look like this:
+\noindent For example, the signal \(f(t) = e^{- 10t}\sin(40\pi t) \) would look like this:
 \begin{figure}[H]
     \centering
     \tikzsetnextfilename{exp_damped_sinusoid_plot}
     \begin{tikzpicture}
         \begin{axis}[
-                domain=0:1, % Domain for the variable t
-                samples=1000, % Number of samples to plot (higher for smoother curve)
-                xlabel={$t$},
-                ylabel={$e^{-10t} \sin(40\pi t)$},
+                domain=0:1, 
+                samples=1000,
+                xlabel={\(t\)},
+                ylabel={\(f(t) = e^{-10t} \sin(40\pi t)\)},
                 grid=major,
                 thick,
                 enlargelimits=true,
@@ -93,7 +91,7 @@ Or more generally for our applications:
             \addplot[blue, thick] {exp(-10*x) * sin(deg(40*pi*x))};
         \end{axis}
     \end{tikzpicture}
-    \vspace{-1em}\caption{Plot of the signal \(e^{-10t}\sin(40\pi t)\).}\label{fig:exp-damped-sinusoid-plot-1}
+    \vspace{-1em}\caption{Plot of the signal \(f(t) = e^{- 10t}\sin(40\pi t)\).}\label{fig:exp-damped-sinusoid-plot-1}
 \end{figure}
 \vspace{-1em}
 \end{document}
