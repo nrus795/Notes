@@ -26,6 +26,7 @@
 \usepackage{float}          % Improved figure placement
 \usepackage{mdframed}       % Framed text blocks
 \usepackage{subfiles}       % Subfiles package
+\usepackage{mymacros}
 % Tikz libraries
 \usetikzlibrary{positioning, arrows.meta, external}
 \tikzexternalize[prefix=tikz/] % Save tikz figures to a folder
@@ -60,8 +61,10 @@
 \titlespacing*{\chapter}{0pt}{20pt}{10pt}
 \titlespacing*{\section}{0pt}{20pt}{10pt}
 % Custom commands
+
+
 \renewcommand{\theequation}{\arabic{equation}}
-\definecolor{borderblue}{HTML}{0099FF}  % Define the border color #0099FF
+
 % Document information
 \title{ELECTENG 332 Notes}
 \author{Nicholas Russell}

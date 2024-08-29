@@ -1,0 +1,16 @@
+% mymacros.sty
+\ProvidesPackage{mymacros}
+
+\usepackage{amsmath, amssymb, siunitx, graphicx, tikz, mdframed, xcolor, commath}
+
+% Define colors
+\definecolor{borderblue}{HTML}{0099FF}
+
+% Custom macros
+\DeclareSIUnit{\rads}{\radian\per\second}
+\newcommand{\bluetext}[1]{\textcolor{blue}{#1}}
+\newcommand{\redtext}[1]{\textcolor{red}{#1}}
+\newcommand{\deriv}[3]{\od[#1]{#2}{#3}}
+\newcommand{\freq}[1]{\SI{#1}{\rads}}
+\newcommand{\compfreq}[1]{\complexqty[output-complex-root=j, complex-root-position=before-number]{#1}{\rads}}
+\newcommand{\expfn}[2]{e^{#1#2}}
