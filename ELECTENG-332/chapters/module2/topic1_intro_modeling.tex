@@ -1,0 +1,50 @@
+% !TeX root = ..\..\notes-main.tex
+\documentclass[../notes-main.tex]{subfiles}
+\begin{document}
+
+
+
+\section{Introduction to Modeling}
+Common man observes the physical phenomena around him; the scientist encodes them into models.
+
+\section{Definition of a Model}
+\begin{itemize}
+    \item A model of a system is a tool we use to answer questions about the system without having to do an experiment.
+    \item A collection of mathematical relationships between system/process variables which purports to describe the behavior of a physical system.
+    \item A convenient surrogate of the physical system.
+\end{itemize}
+
+\section{Types of Models and Their Significance}
+\begin{itemize}
+    \item To investigate system response under various input conditions both rapidly, and inexpensively, without tampering with the actual physical entity.
+    \item Analytically design controllers.
+\end{itemize}
+
+\section{Basic Concepts: Poles, Zeros, and System Order}
+\textbf{Poles and Zeros}
+\begin{itemize}
+    \item Physical phenomena can be categorized essentially into:
+    \begin{enumerate}
+        \item Energy dissipation
+        \item Energy absorption or storage
+    \end{enumerate}
+    \item Familiar models: Resistance, Capacitance, and Inductance
+    \begin{itemize}
+        \item Resistance models the phenomenon of energy dissipation.
+        \item Capacitance and Inductance model the phenomenon of energy absorption or storage.
+    \end{itemize}
+\end{itemize}
+
+\textbf{System Order}
+\begin{itemize}
+    \item The order of a system equals the number of independent energy-storing elements of the system.
+    \item Example:
+    \begin{itemize}
+        \item R-Circuit: No. of Energy storing elements = 0 Order = 0
+        \item R-L Circuit: No. of Energy storing elements = 1 Order = 1
+        \item R-C Circuit: No. of Energy storing elements = 1 Order = 1
+        \item R-L-C Circuit: No. of Energy storing elements = 2 Order = 2
+    \end{itemize}
+\end{itemize}
+
+\end{document}

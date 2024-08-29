@@ -1,0 +1,83 @@
+% !TeX root = ..\..\notes-main.tex
+\documentclass[../notes-main.tex]{subfiles}
+\begin{document}
+
+\section{Differential Equation Models of Simple Dynamical Systems}
+
+Input-output relationships for various systems such as electrical, mechanical, hydraulic, thermal systems.
+
+Irrespective of their complexity, each of the systems is composed of few simple basic components which include resistors, inductors, capacitors, masses, springs, dampers, cross-sectional areas of fluid tanks, and thermal capacities.
+
+\section{Modelling of Electrical Systems-1}
+
+The basic elements of electrical systems are the resistor, inductor, and capacitor, shown in Figure, and the variables of interest are voltages and currents. The differential equation models of electrical systems will be derived by balancing the voltages and currents by applying the well-known Ohm’s law and Kirchhoff’s laws.
+
+\subsection{Resistor}
+
+If the resistor, with resistance \( R \), is linear, then the voltage drop \( v(t) \) across the resistor is proportional to the current \( i(t) \) flowing through the resistor and is expressed as:
+\[
+v(t) = R i(t)
+\]
+
+\subsection{Inductor}
+
+At any instant, the voltage drop \( v(t) \) across the inductor \( L \) is proportional to the rate of change of current and is given by:
+\[
+v(t) = L \frac{di(t)}{dt}
+\]
+
+\subsection{Capacitor}
+
+The voltage drop \( v(t) \) across a capacitor \( C \) is proportional to the integral of the current through the capacitor:
+\[
+v(t) = \frac{1}{C} \int i(t) \, dt
+\]
+Alternatively, the current through the capacitor \( i(t) \) is proportional to the rate of change of voltage across the capacitor and is given by:
+\[
+i(t) = C \frac{dv(t)}{dt}
+\]
+
+% Insert Diagram Placeholder Here
+
+\section{Modelling of Electrical Systems-2}
+
+Consider the electrical circuit consisting of a resistor and an inductor shown in Fig 4.
+
+% Insert Diagram Placeholder Here
+
+Applying Kirchhoff’s voltage law to this circuit, we have:
+\[
+R i(t) + L \frac{di(t)}{dt} = v(t)
+\]
+
+\section{Modelling of Electrical Systems-3}
+
+Next, let us consider the electrical circuit consisting of a resistor and a capacitor shown in Fig 5.
+
+% Insert Diagram Placeholder Here
+
+Applying Kirchhoff’s voltage law to this circuit, we have:
+\[
+R i(t) + \frac{1}{C} \int i(t) \, dt = v(t)
+\]
+or,
+\[
+R \frac{di(t)}{dt} + \frac{1}{C} i(t) = \frac{dv(t)}{dt}
+\]
+
+\section{Modelling of Electrical Systems-4}
+
+Let us model a circuit where all three passive elements—resistor, inductor, and capacitor—are connected in series (see Fig 6).
+
+% Insert Diagram Placeholder Here
+
+Applying Kirchhoff’s voltage law to this circuit, we have:
+\[
+R i(t) + L \frac{di(t)}{dt} + \frac{1}{C} \int i(t) \, dt = v(t)
+\]
+or,
+\[
+L \frac{d^2i(t)}{dt^2} + R \frac{di(t)}{dt} + \frac{1}{C} i(t) = \frac{dv(t)}{dt}
+\]
+
+\end{document}
