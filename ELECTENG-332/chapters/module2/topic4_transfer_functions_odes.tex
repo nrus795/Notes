@@ -1,0 +1,206 @@
+% !TeX root = ..\..\notes-main.tex
+% !TODO URGENT: Fix the formatting and content.
+\documentclass[../notes-main.tex]{subfiles}
+\begin{document}
+
+\section{Impulse Response Model of a Linear Time Invariant System}
+
+What is the impulse response function of a system?
+
+The response (output) of a system when the input is an impulse.
+
+Why is it so important?
+
+- If we know the impulse response function (model) of a system, i.e., the response of a system to an impulse input, the response of the system to any arbitrary input \( u(t) \) can be found by convolving the impulse response function \( h(t) \) with the input \( u(t) \).
+- The convolution relation is given as:
+\[
+y(t) = \int_{0}^{t} h(\tau)u(t-\tau)d\tau = \int_{0}^{t} h(t-\tau)u(\tau)d\tau
+\]
+\fxerror{FIXME: Check the content.}
+\section{Transfer Function Model of Linear Time Invariant System-1}
+
+- Note that the impulse response model of Eqn(13) is the time-domain description of the system.
+- Let us apply the Laplace transform to the impulse response model of Eqn(13). This gives:
+\[
+Y(s) = \mathcal{L}[y(t)] = \int_{0}^{\infty} y(t)e^{-st}dt = \int_{0}^{\infty} \left[\int_{0}^{t} h(t-\tau)u(\tau)d\tau\right]e^{-st}dt
+\]
+- Since \( h(t-\tau) = 0 \) for \( \tau > t \), the upper limit \( t \) of the integration in this equation can be set to \( \infty \). Thus:
+\[
+Y(s) = \int_{0}^{\infty} \left[\int_{0}^{\infty} h(t-\tau)u(\tau)d\tau\right]e^{-st}dt
+\]
+
+\section{Transfer Function Model of Linear Time Invariant System-2}
+
+- Let us substitute \( \theta = t-\tau \) in the equation:
+\[
+Y(s) = \int_{0}^{\infty} \left[\int_{0}^{\infty} h(\theta)e^{-s\theta}d\theta\right]e^{-s\tau}u(\tau)d\tau
+\]
+- Since \( h(\theta) = 0 \) for \( \theta < 0 \), we can express the equation as:
+\[
+Y(s) = \left[\int_{0}^{\infty} h(\theta)e^{-s\theta}d\theta\right]\left[\int_{0}^{\infty} u(\tau)e^{-s\tau}d\tau\right] = H(s)U(s)
+\]
+where \( H(s) \) is the transfer function of the system.
+\fxerror{check content.}
+\section{Transfer Function Model of Linear Time Invariant System-3}
+
+- The transfer function \( H(s) \) is defined as the Laplace transform of the impulse response:
+\[
+H(s) = \int_{0}^{\infty} h(t) e^{-st} dt
+\]
+- The transfer function is a powerful tool in analyzing the system's behavior in the frequency domain.
+\fxerror{This is all wrong. doesn't follow the slide it's based on.}
+
+\section{Computation of Transfer Function Model from Differential Equation Model}
+
+To compute the transfer function from a differential equation:
+\begin{enumerate}
+    \item Derive the differential equation model of the system.
+    \item Select the output \( y(t) \) and input \( u(t) \).
+    \item Take the Laplace transform of the differential equation with zero initial conditions.
+    \item Solve for \(\frac{Y(s)}{U(s)}\) to find the transfer function.
+\end{enumerate}
+
+\section{Example-1: Computation of Transfer Function Model}
+
+Consider a system whose differential equation model is given by:
+\[
+\ddot{y}(t) + a_1\dot{y}(t) + a_2y(t) = b_0\dot{u}(t) + b_1u(t)
+\]
+Compute the transfer function model of the system considering \( y(t) \) as the output and \( u(t) \) as the input.
+
+Solution:
+
+Step-1: Take the Laplace transform of the differential equation model with zero initial conditions. This gives:
+\[
+s^2Y(s) + a_1sY(s) + a_2Y(s) = b_0sU(s) + b1U(s)
+\]
+
+Step-2: Take the ratio of \( Y(s) \) to \( U(s) \) to get the transfer function \( H(s) \) as follows:
+\[
+H(s) = \frac{Y(s)}{U(s)} = \frac{b_0s + b_1}{s^2 + a_1s + a_2}
+\]
+\fxerror{Make this a proper formatted example, and check the notes and crossref.}
+\section{Example-2: Computation of Transfer Function Model}
+
+Consider a system whose differential equation model is given by:
+\[
+\frac{d^3y(t)}{dt^3} + 3\frac{d^2y(t)}{dt^2} + 5\frac{dy(t)}{dt} + y(t) = \frac{d^3u(t)}{dt^3} + 4\frac{d^2u(t)}{dt^2} + 6\frac{du(t)}{dt} + 8u(t)
+\]
+Compute the transfer function model of the system considering \( y(t) \) as the output and \( u(t) \) as the input.
+
+Solution:
+
+Step-1: Take the Laplace transform of the differential equation model with zero initial conditions. This gives:
+\[
+s^3Y(s) + 3s^2Y(s) + 5sY(s) + Y(s) = s^3U(s) + 4s^2U(s) + 6sU(s) + 8U(s)
+\]
+
+Step-2: Take the ratio of \( Y(s) \) to \( U(s) \) to get the transfer function \( G(s) \) as follows:
+\[
+G(s) = \frac{Y(s)}{U(s)} = \frac{s^3 + 4s^2 + 6s + 8}{s^3 + 3s^2 + 5s + 1}
+\]
+\fxerror{Make this a proper formatted example, and check the notes and crossref. Same as above\dots}
+\section{Example-3: Computation of Transfer Function Model}
+
+Consider a general n-th order linear time-invariant system whose differential equation model is given by:
+\[
+a_0\frac{d^ny(t)}{dt^n} + a_1\frac{d^{n-1}y(t)}{dt^{n-1}} + \cdots + a_{n-1}\frac{dy(t)}{dt} + a_ny(t) = b_0\frac{d^mu(t)}{dt^m} + b_1\frac{d^{m-1}u(t)}{dt^{m-1}} + \cdots + b_{m-1}\frac{du(t)}{dt} + b_mu(t)
+\]
+Compute the transfer function model of the system considering \( y(t) \) as the output and \( u(t) \) as the input.
+
+Solution:
+
+Step-1: Take the Laplace transform of both sides of the differential equation model with zero initial conditions. This gives:
+\[
+a_0s^nY(s) + a_1s^{n-1}Y(s) + \cdots + a_nY(s) = b_0s^mU(s) + b_1s^{m-1}U(s) + \cdots + b_mU(s)
+\]
+
+Step-2: Take the ratio of \( Y(s) \) to \( U(s) \) to get the transfer function \( G(s) \) as follows:
+\[
+G(s) = \frac{Y(s)}{U(s)} = \frac{b_0s^m + b_1s^{m-1} + \cdots + b_m}{a_0s^n + a_1s^{n-1} + \cdots + a_n}
+\]
+\fxerror{Same shit.}
+\section{Conversion of Transfer Function Model to Differential Equation Model}
+
+To convert a transfer function back to a differential equation model:
+\begin{enumerate}
+    \item Express the transfer function in algebraic form.
+    \item Take the inverse Laplace transform of the expression to obtain the differential equation.
+\end{enumerate}
+
+
+\section{Transfer Function Model of R-L Circuit}
+
+Consider the RL circuit shown in the figure below:
+
+The dynamics of the system is given by:
+\[
+Ri(t) + L\frac{di(t)}{dt} = v_i(t)
+\]
+Taking the Laplace transform of  gives:
+\[
+RI(s) + LsI(s) = V_i(s) \quad \text{or} \quad I(s)[R+Ls] = V_i(s) \quad \text{or} \quad I(s) = \frac{V_i(s)}{R+Ls}
+\]
+The voltage across the inductor is considered as the output. Thus:
+\[
+v_o(t) = L\frac{di(t)}{dt} \quad \Rightarrow \quad V_o(s) = LsI(s)
+\]
+Substituting the value of \( I(s) \) from  in  gives:
+\[
+V_o(s) = \frac{LsV_i(s)}{R+Ls} \quad \text{or} \quad \frac{V_o(s)}{V_i(s)} = \frac{Ls}{R+Ls} = \frac{s}{s+\frac{R}{L}}
+\]
+
+\section{Transfer Function Model of R-C Circuit}
+
+Consider the RC circuit shown in the figure below:
+
+The dynamics of the system is given by:
+\[
+Ri(t) + \frac{1}{C}\int i(t)dt = v_i(t)
+\]
+Taking the Laplace transform of  gives:
+\[
+RI(s) + \frac{I(s)}{Cs} = V_i(s) \quad \text{or} \quad I(s)[RCs + 1] = CsV_i(s) \quad \text{or} \quad I(s) = \frac{CsV_i(s)}{RCs + 1}
+\]
+The voltage across the resistor is considered as the output. Thus:
+\[
+v_o(t) = Ri(t) \quad \Rightarrow \quad V_o(s) = RI(s)
+\]
+Substituting the value of \( I(s) \) from Eqn(24) in Eqn(25) gives:
+\[
+V_o(s) = \frac{RCsV_i(s)}{RCs + 1} \quad \text{or} \quad \frac{V_o(s)}{V_i(s)} = \frac{RCs}{RCs + 1} = \frac{s}{s+\frac{1}{RC}}
+\]
+\section{Example-1: Converting Transfer Function Model to Differential Equation Model}
+
+Write the differential equation model of a system whose transfer function model is given by:
+\[
+G(s) = \frac{Y(s)}{U(s)} = \frac{1}{s^2 + 5s + 6}
+\]
+Solution:
+
+Let us express it as an algebraic equation:
+\[
+s^2Y(s) + 5sY(s) + 6Y(s) = U(s)
+\]
+Substituting the terms \( s^2Y(s) \) by \( \ddot{y}(t) \), \( sY(s) \) by \( \dot{y}(t) \), \( Y(s) \) by \( y(t) \), and \( U(s) \) by \( u(t) \) gives:
+\[
+\ddot{y}(t) + 5\dot{y}(t) + 6y(t) = u(t)
+\]
+\fxerror{Different smell.}
+\section{Example-2: Converting Transfer Function Model to Differential Equation Model}
+
+Write the differential equation model of a system whose transfer function model is given by:
+\[
+G(s) = \frac{Y(s)}{U(s)} = \frac{5(s+2)(s+4)}{(s+1)(s+3)(s+5)}
+\]
+Solution:
+
+Now express it as an algebraic equation:
+\[
+s^3Y(s) + 9s^2Y(s) + 23sY(s) + 15Y(s) = 5s^2U(s) + 30sU(s) + 40U(s)
+\]
+Substituting the terms \( s^3Y(s) \) by \( \frac{d^3y(t)}{dt^3} \), \( s^2Y(s) \) by \( \frac{d^2y(t)}{dt^2} \), \( sY(s) \) by \( \frac{dy(t)}{dt} \), and so on gives:
+\[
+\frac{d^3y(t)}{dt^3} + 9\frac{d^2y(t)}{dt^2} + 23\frac{dy(t)}{dt} + 15y(t) = 5\frac{d^2u(t)}{dt^2} + 30\frac{du(t)}{dt} + 40u(t)
+\]
+\end{document}

@@ -80,6 +80,7 @@ acs-*.bib
 
 # fixme
 *.lox
+*.notes
 
 # feynmf/feynmp
 *.mf

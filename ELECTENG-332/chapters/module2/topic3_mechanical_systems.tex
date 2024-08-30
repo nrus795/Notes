@@ -1,0 +1,79 @@
+% !TeX root = ..\..\notes-main.tex
+\documentclass[../notes-main.tex]{subfiles}
+\begin{document}
+
+\section{Modelling of Mechanical Systems}
+
+\subsection{Modelling of Mechanical Translational Systems}
+
+Mechanical systems can either be translational, rotational, or a combination of both. The basic components of translational systems are mass, spring, and damper. The variables of interest are displacement, velocity, acceleration, and force.
+
+\subsubsection{Force-Mass System}
+
+Consider a rigid body with mass \( m \). According to Newton’s second law, the relationship between the applied force \( f(t) \) and its acceleration \( a(t) \) is:
+\[
+f(t) = m a(t) = m \frac{d^2x(t)}{dt^2} = m \frac{dv(t)}{dt}
+\]
+where \( v(t) \) is the linear velocity and \( x(t) \) is the displacement.
+
+\subsubsection{Force-Spring System}
+
+A spring is an elastic object that stores mechanical (potential) energy. For a linear spring, the force \( f(t) \) is directly proportional to the displacement \( x(t) \):
+\[
+f(t) = K x(t) = K \int v(t) \, dt
+\]
+where \( K \) is the spring constant (Nm\(^{-1}\)) and \( v(t) \) is the velocity.
+
+\subsubsection{Viscous Damper}
+
+Frictional forces oppose the motion between two surfaces and can be modeled by a viscous damper (dashpot). The frictional force \( f(t) \) is linearly proportional to the velocity:
+\[
+f(t) = B \frac{dx(t)}{dt} = B v(t)
+\]
+where \( B \) is the viscous frictional coefficient.
+
+\subsubsection{Example: Mass-Spring-Damper System}
+
+Consider the mass-spring-damper system shown in Figure 8. Applying Newton’s law to the free body diagram gives the force equation:
+\[
+m \frac{d^2x(t)}{dt^2} + B \frac{dx(t)}{dt} + K x(t) = f(t)
+\]
+where \( x(t) \) is the displacement, \( \frac{dx(t)}{dt} \) is the velocity, and \( \frac{d^2x(t)}{dt^2} \) is the acceleration.
+
+\subsection{Modelling of Mechanical Rotational Systems}
+
+When a body rotates about a fixed axis, the resulting motion is termed rotational motion. The basic components of rotational systems are inertia, torsional spring, and rotational damper.
+
+\subsubsection{Torque-Inertia System}
+
+The inertia of a rotational system is represented by the moment of inertia \( J \). For a body with inertia \( J \), the relationship between the applied torque \( T(t) \) and the resulting angular acceleration \( \alpha(t) \) is:
+\[
+T(t) = J \alpha(t) = J \frac{d\omega(t)}{dt} = J \frac{d^2\theta(t)}{dt^2}
+\]
+where \( \theta(t) \) is the angular displacement and \( \omega(t) \) is the angular velocity.
+
+\subsubsection{Torsional Spring}
+
+For a torsional spring, the torque \( T(t) \) is directly proportional to the angular displacement \( \theta(t) \):
+\[
+T(t) = K \theta(t) = K \int \omega(t) \, dt
+\]
+where \( K \) is the torsional spring constant.
+
+\subsubsection{Rotational Dashpot}
+
+Similar to translational systems, rotational systems can experience frictional forces, which can be modeled by a rotational damper. The torque \( T(t) \) due to friction is proportional to the angular velocity:
+\[
+T(t) = B \frac{d\theta(t)}{dt} = B \omega(t)
+\]
+where \( B \) is the rotational frictional coefficient.
+
+\subsubsection{Example: Simple Rotational System}
+
+Consider the rotational system shown below. The body rotates at a speed \( \omega(t) \). Applying Newton’s law to the free body diagram, the torque equation is:
+\[
+J \frac{d^2\theta(t)}{dt^2} + B \frac{d\theta(t)}{dt} + K \theta(t) = T(t)
+\]
+where \( \theta(t) \) is the angular displacement, \( \frac{d\theta(t)}{dt} \) is the angular velocity, and \( \frac{d^2\theta(t)}{dt^2} \) is the angular acceleration.
+
+\end{document}
