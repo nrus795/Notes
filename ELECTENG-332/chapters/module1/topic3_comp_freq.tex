@@ -30,48 +30,37 @@ Complex frequency is found commonly in electrical engineering. It is often notat
             \addplot[->, black, very thick, >= latex] coordinates {(0,0) (-1,-1)};
         \end{axis}
     \end{tikzpicture}
-    \caption{Plot of the circle \(|z| = \sqrt{2}\)}\label{fig:pgfplots-complex-plane-1}
+    \caption{Plot of the circle \(|z| = \sqrt{2}\)}\label{fig:pgfplots-complex-plane-diagram}
 \end{figure}
-\vspace{-1em}
 \noindent This is also backed up by De Moivre's Formula, which is defined mathematically as:
 \begin{gather}
     \forall x \in \mathbb{R}, \quad \forall n \in \mathbb{Z}, \\
-    e^{j n x} = \cos(n x) + j \sin(n x)
+    \expfn{-jn}{x} = \cos(n x) + j \sin(n x)
     \label{eq:de-moivre-formula}
 \end{gather}
 Or more generally for our applications:
 \begin{gather}
-    e^{jx} = \cos(x) + j\sin(x) \\
+    \expfn{j}{x} = \cos(x) + j\sin(x) \\
     \text{Where} \, x \in \mathbb{R}\, \text{(\(x\) is Real)} \\
     \text{and} \, j \equiv i = \sqrt{-1}.
     \label{eq:de-moivre-formula-general}
 \end{gather}
 \noindent This means that:
-\begin{figure}[H]
-    \centering
-    \begin{mdframed}
-        \begin{center}
-            \textcolor{red}{\emph{A complex frequency \(j\omega \) represents a pure sinusoidal signal of frequency \(\omega \) \unit{\radian\per\second}}}
-        \end{center}
-    \end{mdframed}\label{fig:complex-sinusoid-def-1}
-    \vspace{-1em}
-\end{figure}
-\vspace{-1em}
-\noindent For example, if a signal has a complex frequency  \complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\radian\per\sec}, then this corresponds to a pure sinusoid of frequency \SI{314}{\radian\per\sec} (i.e. \SI{50}{\hertz}).\\ 
+\begin{mdframed}
+    \begin{center}
+        \redtext{\emph{A complex frequency \(j\omega \) represents a pure sinusoidal signal of frequency \(\omega \) \unit{\rads}}}
+    \end{center}
+\end{mdframed}\label{fig:complex-sinusoid-def-1}
+\noindent For example, if a signal has a complex frequency  \compfreq{314}, then this corresponds to a pure sinusoid of frequency \freq{314} (i.e. \SI{50}{\hertz}).\\ 
 Furthermore:
-\begin{figure}[H]
-    \centering
-    \begin{mdframed}
-        \begin{center}
-            \textcolor{red}{%
-                \emph{A complex frequency \(s = \sigma + j\omega \) represents an exponentially
-                    damped signal of frequency \(\omega \) \unit{\radian\per\second}, and decays/amplifies at a rate decided by \(\sigma \).}}
-        \end{center}
-    \end{mdframed}\label{fig:exp-damped-sinusoid-def-1}
-    \vspace{-1em}
-\end{figure}
-\vspace{-1em}
-\noindent For example, the signal \(f(t) = e^{- 10t}\sin(40\pi t) \) would look like this:
+\begin{mdframed}
+    \begin{center}
+        \redtext{%
+            \emph{A complex frequency \(s = \sigma + j\omega \) represents an exponentially
+                damped signal of frequency \(\omega \) \unit{\rads}, and decays/amplifies at a rate decided by \(\sigma \).}}
+    \end{center}
+\end{mdframed}\label{fig:exp-sinusoid-def-sigma}
+\noindent For example, the signal \(f(t) = \expfn{-10}{t}\sin(40\pi t) \) would look like this:
 \begin{figure}[H]
     \centering
     \tikzsetnextfilename{exp_damped_sinusoid_plot}
@@ -80,7 +69,7 @@ Furthermore:
                 domain=0:1, 
                 samples=1000,
                 xlabel={\(t\)},
-                ylabel={\(f(t) = e^{-10t} \sin(40\pi t)\)},
+                ylabel={\(f(t) = \expfn{-10}{t} \sin(40\pi t)\)},
                 grid=major,
                 thick,
                 enlargelimits=true,
@@ -90,11 +79,8 @@ Furthermore:
                 xmin=0, xmax=1,
                 ytick={-1,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1},
             ]
-            % Plot the function e^{-10t} * sin(40*pi*t)
             \addplot[blue, thick] {exp(-10*x) * sin(deg(40*pi*x))};
         \end{axis}
-    \end{tikzpicture}
-    \vspace{-1em}\caption{Plot of the signal \(f(t) = e^{- 10t}\sin(40\pi t)\).}\label{fig:exp-damped-sinusoid-plot-1}
+    \end{tikzpicture}\caption{Plot of the signal \(f(t) = \expfn{-10}{t}\sin(40\pi t)\).}\label{fig:exp-damped-sinusoid-plot-pgf}
 \end{figure}
-\vspace{-1em}
 \end{document}

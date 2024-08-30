@@ -5,7 +5,7 @@
 \usepackage{amsfonts}       % Math fonts
 \usepackage{amssymb}        % Math symbols
 \usepackage{graphicx}       % For including images
-\usepackage{hyperref}       % For clickable links and cross-references
+\usepackage[pdfpagelabels]{hyperref}       % For clickable links and cross-references
 \usepackage{enumitem}       % Customized lists
 \usepackage{geometry}       % Control page margins
 \usepackage{fancyhdr}       % Customize headers and footers
@@ -30,7 +30,7 @@
 
 % Tikz libraries
 \usetikzlibrary{positioning, arrows.meta, external}
-\tikzexternalize[prefix=tikz/] % Save tikz figures to a folder
+\tikzexternalize[prefix=./tikz/] % Save tikz figures to a folder
 \tikzset{external/up to date check=md5} % Check for changes using md5
 % SI unit settings
 \sisetup{per-mode = symbol}
@@ -43,6 +43,7 @@
     top=2cm,
     bottom=2cm
 }
+\setlength{\marginparwidth}{2cm}
 % Header and footer settings
 \fancypagestyle{plain}{%
   \fancyhf{}%
@@ -73,6 +74,7 @@
 \begin{document}
 \pagestyle{plain}
 % Title page
+\pagenumbering{Alph}
 \begin{titlepage}
     \centering
     \includegraphics[width=0.8\textwidth]{DECSE-HC-4C-01.png}\\[1cm]
@@ -88,6 +90,7 @@
     {\large University of Auckland}
 \end{titlepage}
 \tableofcontents
+\pagenumbering{arabic}
 \newpage
 \subfile{chapters/module1/module1_signals_systems} % Module 1 as a subfile
 \clearpage
