@@ -10,6 +10,9 @@ format:
     #     latex-tinytex: false
     pdf:
         latex-engine: latexmk
+        pdf-engine: latexmk
+        keep-tex: true
+        latex-tinytex: false
         pdf-engine-opts: 
         - "-lualatex"
         - "-shell-escape"
@@ -17,6 +20,8 @@ format:
         - "-file-line-error"
         - "-synctex=1"
         - "-outdir=build"
-        - "-aux-dir=aux"
+        - "-auxdir=auxdir"
+        
 
 ---
+deez nuts
