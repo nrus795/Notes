@@ -1,0 +1,22 @@
+## Topic 1: The Importance of the Exponential Function
+
+::: {#topic1}
+The Exponential function, written as either $e^{ax}$ or $e^{at}$ depending on whether it is $f(t)$ or $f(x)$, has properties that make it mathematically unique.
+
+1.  The derivative (rate of change) of the exponential function is the exponential function itself. More generally, this is a function whose rate of change is proportional to the function itself.
+
+    $$
+    \deriv{\expfn{a}{x}}{x} = a\expfn{a}{x}
+    $$ {#exp-deriv}
+
+2.  The integral of the exponential function is also the exponential function itself.
+
+    $$
+    \int \expfn{a}{x} \dif x = \frac{1}{a}\expfn{a}{x}
+    $$
+:::
+
+## Topic 2: The Concept of Engineering Infinity
+
+::: {#topic2}
+:::

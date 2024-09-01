@@ -1,0 +1,33 @@
+
+
+
+title-meta: "ELECTENG 332 Notes"
+author-meta: "Nicholas Russell"
+date-meta: "10th August 2024"
+include-in-header: 
+    - "preamble.tex"
+include-before-body: 
+    - "titlepage.tex"
+format:
+  pdf:
+    pdf-engine: latexmk
+    pdf-engine-opts: 
+      - "-synctex=1"
+      - "-interaction=nonstopmode"
+      - "-file-line-error"
+      - "-lualatex"
+      - "-shell-escape"
+    geometry: 
+      - "top=2cm"
+      - "bottom=2cm"
+      - "left=1.5cm"
+      - "right=1.5cm"
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    keep-tex: true
+    hyperrefoptions: 
+      - "pdfpagelabels"
+    documentclass: report
+    fontsize: 12pt
+    papersize: a4
