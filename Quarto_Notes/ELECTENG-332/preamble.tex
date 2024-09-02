@@ -5,9 +5,11 @@
 \usepackage{amssymb}        % Math symbols
 \usepackage{amsfonts}       % Math fonts
 \usepackage{mathtools}      % Extra math tools
+\usepackage{physics}        % For partial derivatives
 \usepackage{siunitx}        % SI units
 \sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
 \usepackage{commath}        % For derivatives
+
 \usepackage{graphicx}       % For including images
 \usepackage{xcolor}         % Color text, if needed
 \usepackage{xparse}
@@ -29,7 +31,7 @@
 % Document navigation
 \usepackage[pdfpagelabels]{hyperref}       % For clickable links and cross-references
 \usepackage{bookmark}       % Improved bookmarks for navigation
-
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
 % spacing and margins
 \onehalfspacing%
 % \geometry{%
@@ -69,11 +71,3 @@
 \DeclareSIUnit{\rads}{\radian\per\second}
 \newcommand{\bluetext}[1]{\textcolor{blue}{#1}}
 \newcommand{\redtext}[1]{\textcolor{red}{#1}}
-\NewDocumentCommand{\deriv}{m m o}{%
-  \IfValueTF{#3}
-    {\od[#3]{#1}{#2}}  % If the third argument is provided
-    {\od{#1}{#2}}      % If the third argument is not provided
-}
-\newcommand{\freq}[1]{\SI{#1}{\rads}}
-\newcommand{\compfreq}[1]{\complexqty[output-complex-root=j, complex-root-position=before-number]{#1}{\rads}}
-\newcommand{\expfn}[2]{e^{#1#2}}

@@ -1,0 +1,38 @@
+::: {#topic3}
+## Topic 3: The Concept of Complex Frequency
+
+Complex frequency is found commonly in electrical engineering. It is often notated as $j\omega$ or $s = \sigma \pm j\omega$. These frequencies always come in pairs, so the use of $\pm$ is implicit to this, as complex numbers have complex conjugates (normally notated by $z^*$ or $\bar{z}$). i.e. $s = \sigma + j\omega$ has the conjugate $s=\sigma - j\omega$.
+```{python}
+import matplotlib.pyplot as plt
+import numpy as np
+
+fig, ax = plt.subplots()
+ax.set_aspect('equal')
+ax.set_xlim(-2, 2)
+ax.set_ylim(-2, 2)
+ax.set_xlabel('Re(z)')
+ax.set_ylabel('Im(z)')
+ax.grid(True)
+
+theta = np.linspace(0, 2 * np.pi, 200)
+x = np.sqrt(2) * np.cos(theta)
+y = np.sqrt(2) * np.sin(theta)
+ax.plot(x, y, 'k-', linewidth=2)
+
+points = [(1, 1), (-1, 1), (1, -1), (-1, -1)]
+for point in points:
+    ax.plot(point[0], point[1], 'ro')
+
+arrows = [(0, 0, 1, 1), (0, 0, -1, 1), (0, 0, 1, -1), (0, 0, -1, -1)]
+for arrow in arrows:
+    ax.arrow(arrow[0], arrow[1], arrow[2], arrow[3], head_width=0.1, head_length=0.1, fc='black', ec='black')
+
+ax.spines['left'].set_position('zero')
+ax.spines['bottom'].set_position('zero')
+ax.spines['right'].set_color('none')
+ax.spines['top'].set_color('none')
+
+plt.show()
+```
+
+:::

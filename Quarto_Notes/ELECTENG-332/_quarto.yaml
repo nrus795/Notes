@@ -22,6 +22,7 @@ format:
       - "bottom=2cm"
       - "left=1.5cm"
       - "right=1.5cm"
+      - "marginparsep=2cm"
     toc: true
     toc-depth: 3
     number-sections: true

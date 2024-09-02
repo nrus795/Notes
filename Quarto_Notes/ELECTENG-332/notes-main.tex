@@ -40,7 +40,7 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm,marginparsep=2cm]{geometry}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
@@ -100,9 +100,11 @@
 \usepackage{amssymb}        % Math symbols
 \usepackage{amsfonts}       % Math fonts
 \usepackage{mathtools}      % Extra math tools
+\usepackage{physics}        % For partial derivatives
 \usepackage{siunitx}        % SI units
 \sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
 \usepackage{commath}        % For derivatives
+
 \usepackage{graphicx}       % For including images
 \usepackage{xcolor}         % Color text, if needed
 \usepackage{xparse}
@@ -124,7 +126,7 @@
 % Document navigation
 \usepackage[pdfpagelabels]{hyperref}       % For clickable links and cross-references
 \usepackage{bookmark}       % Improved bookmarks for navigation
-
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
 % spacing and margins
 \onehalfspacing%
 % \geometry{%
@@ -164,14 +166,6 @@
 \DeclareSIUnit{\rads}{\radian\per\second}
 \newcommand{\bluetext}[1]{\textcolor{blue}{#1}}
 \newcommand{\redtext}[1]{\textcolor{red}{#1}}
-\NewDocumentCommand{\deriv}{m m o}{%
-  \IfValueTF{#3}
-    {\od[#3]{#1}{#2}}  % If the third argument is provided
-    {\od{#1}{#2}}      % If the third argument is not provided
-}
-\newcommand{\freq}[1]{\SI{#1}{\rads}}
-\newcommand{\compfreq}[1]{\complexqty[output-complex-root=j, complex-root-position=before-number]{#1}{\rads}}
-\newcommand{\expfn}[2]{e^{#1#2}}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -259,6 +253,7 @@
 \tableofcontents
 }
 
+\phantomsection\label{module1}
 \chapter{Basics of Signals and
 Systems}\label{basics-of-signals-and-systems}
 
@@ -276,15 +271,15 @@ Systems}\label{basics-of-signals-and-systems}
     \item Classification of a Control System: Open-loop \& Closed-loop
 \end{enumerate}
 
-\newpage
+\newpage{}
 
+\phantomsection\label{topic1}
 \section{Topic 1: The Importance of the Exponential
 Function}\label{topic-1-the-importance-of-the-exponential-function}
 
-\phantomsection\label{topic1}
-The Exponential function, written as either \(\expfn{a}{x}\) or
-\(\expfn{a}{t}\) depending on whether it is \(f(t)\) or \(f(x)\), has
-properties that make it mathematically unique.
+The Exponential function, written as either \(e^{ax}\) or \(e^{at}\)
+depending on whether it is \(f(t)\) or \(f(x)\), has properties that
+make it mathematically unique.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -293,32 +288,45 @@ properties that make it mathematically unique.
   exponential function itself. More generally, this is a function whose
   rate of change is proportional to the function itself.
 
-  \begin{equation}
-  \deriv{\expfn{a}{x}}{x} = a\expfn{a}{x}
-  \label{eq:exp-deriv}
+  \phantomsection\label{exp-derivative}
+  \begin{equation} 
+  \label{eq:exp-derivative}     
+  \dv{e^{ax}}{x} = a e^{ax} 
   \end{equation}
 \item
   The integral of the exponential function is also the exponential
   function itself.
 
-  \begin{equation}
-      \int \expfn{a}{x} \dif x = \frac{1}{a}\expfn{a}{x}
-  \label{eq:exp-integral}
-  \end{equation}
+  \phantomsection\label{exp-integral}
+  \begin{equation} 
+  \label{eq:exp-integral}     
+  \int e^{ax} \dd{x} = \frac{1}{a} e^{ax} \end{equation}
 \end{enumerate}
 
+\phantomsection\label{topic2}
 \section{Topic 2: The Concept of Engineering
 Infinity}\label{topic-2-the-concept-of-engineering-infinity}
 
-\phantomsection\label{topic2}
+Consider a signal \(e^{-at}\). The time constant for this signal is
+\(T = \frac{1}{a}\). Theoretically, the signal is meant to decay to zero
+as time approaches infinity, i.e.
 
-\newpage
+\phantomsection\label{engineering-infinity}
+\begin{equation} 
+\label{eq:eng-infinity}     
+\lim_{t \to \infty} e^{-at} = 0  \end{equation}
 
-\newpage
+But in practice, this is not the case, as its value will be very, very
+small after five time constants \(5T\) (or \(5\tau\)). This is the
+\textcolor{red}{\textbf{\textit{Concept of Engineering Infinity}}}. The
+signal will never reach zero, but it will be so small that it can be
+considered zero for all practical purposes. This is a very important
+concept in control systems, as it allows us to simplify our calculations
+and analysis.
 
-\newpage
+\newpage{}
 
-\newpage
+\newpage{}
 
 \clearpage
 
