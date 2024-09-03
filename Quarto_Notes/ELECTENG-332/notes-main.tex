@@ -326,6 +326,57 @@ and analysis.
 
 \newpage{}
 
+\phantomsection\label{topic3}
+\section{Topic 3: The Concept of Complex
+Frequency}\label{topic-3-the-concept-of-complex-frequency}
+
+Complex frequency is found commonly in electrical engineering. It is
+often notated as \(j\omega\) or \(s = \sigma \pm j\omega\). These
+frequencies always come in pairs, so the use of \(\pm\) is implicit to
+this, as complex numbers have complex conjugates (normally notated by
+\(z^*\) or \(\bar{z}\)). i.e.~\(s = \sigma + j\omega\) has the conjugate
+\(s=\sigma - j\omega\).
+
+\phantomsection\label{argand-figure}
+\begin{figure}
+
+{\centering \includegraphics{notes-main_files/figure-pdf/figargand-output-1.pdf}
+
+}
+
+\caption{Argand diagram of \(|z| = \sqrt{2}\)}
+
+\end{figure}%
+
+\phantomsection\label{de-moivre-formula}
+This is also backed up by De Moivre's formula which is defined
+mathematically as:
+
+\begin{gather}
+    \label{eq:de-moivre-formula}
+    \forall x \in \mathbb{R}, \quad \forall n \in \mathbb{Z}, \\
+    e^{jnx} = \cos(n x) + j \sin(n x)  
+\end{gather}
+
+\phantomsection\label{de-moivre-formula-general}
+Or more generally for our applications (this is also known as Euler's
+formula):
+
+\begin{gather}
+    \label{eq:de-moivre-formula-general}
+    e^{jx} = \cos(x) + j \sin(x) \\
+    \text{Where} \, x \in \mathbb{R}\, \text{(\(x\) is real)} \\
+    \text{and} \, j \equiv i = \sqrt{-1}
+\end{gather}
+
+\phantomsection\label{complex-sinusoid-def-1}
+This means that:\\
+\begin{mdframed}
+    \begin{center}
+        \redtext{\emph{A complex frequency \(j\omega \) represents a pure sinusoidal signal of frequency \(\omega \) \unit{\rads}}}
+    \end{center}
+\end{mdframed}
+
 \newpage{}
 
 \clearpage

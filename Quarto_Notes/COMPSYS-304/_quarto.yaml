@@ -1,10 +1,4 @@
-title-meta: "ELECTENG 332 Notes"
-author-meta: "Nicholas Russell"
-date-meta: "10th August 2024"
-include-in-header: 
-    - "preamble.tex"
-include-before-body: 
-    - "titlepage.tex"
+title-meta: "COMPSYS-304"
 format:
   pdf:
     pdf-engine: latexmk
