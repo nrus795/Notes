@@ -1,4 +1,18 @@
-title-meta: "COMPSYS-304"
+project: 
+  type: book
+
+book:
+  chapters:
+    - index.qmd
+    - part: "Lectures 1 - 3"
+      chapters:
+        - lecture1-3/01-introduction.qmd
+        - lecture1-3/02-basics-of-computer-architecture.qmd
+
+title: "COMPSYS 304: Computer Architecture"
+subtitle: "Lecture Notes"
+author: "Nicholas Russell"
+date: "3/09/2024"
 format:
   pdf:
     pdf-engine: latexmk
