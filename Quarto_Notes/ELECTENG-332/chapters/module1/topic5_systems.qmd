@@ -34,7 +34,7 @@ According to the International Council on Systems Engineering (INCOSE),\\
 ### The System as an Operator
 ```{=latex}
 \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{The System Operator}}]    
-A system is defined mathematically \textcolor{red}{as a transformation which maps an input signal \(x(t)\) to an output signal \(y(t)\)}.For a continuous time system, the input-output mapping is expressed as:
+A system is defined mathematically \textcolor{red}{as a transformation which maps an input signal \(x(t)\) to an output signal \(y(t)\)}. For a continuous time system, the input-output mapping is expressed as:
 \begin{equation}
     \label{eq:system-operator-def-equation}
     \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \quad \text{where} \; \mathcal{S} \; \text{is an operator.}
@@ -48,6 +48,8 @@ A system is defined mathematically \textcolor{red}{as a transformation which map
         \draw [->] (system) -- node[above,midway] {\small\(y(t) = \mathcal{S}[x(t)]\)} (output);
     \end{tikzpicture}
 \end{center}
+\redtext{%
+        A control system may be defined as an interconnection of components which are configured to provide a desired response.}
 \end{tcolorbox}
 ```
 

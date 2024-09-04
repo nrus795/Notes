@@ -19,7 +19,7 @@
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage[]{lmodern}
+\usepackage{lmodern}
 \ifPDFTeX\else  
     % xetex/luatex font selection
 \fi
@@ -639,6 +639,8 @@ A system is defined mathematically \textcolor{red}{as a transformation which map
         \draw [->] (system) -- node[above,midway] {\small\(y(t) = \mathcal{S}[x(t)]\)} (output);
     \end{tikzpicture}
 \end{center}
+\redtext{%
+        A control system may be defined as an interconnection of components which are configured to provide a desired response.}
 \end{tcolorbox}
 
 \subsection{Classification of Systems}\label{classification-of-systems}
