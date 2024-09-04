@@ -5,27 +5,27 @@
 The term *system* is derived from the Greek word *systema*, which means an organised relationship among functioning units or components. It is often used to describe any orderly arrangement of ideas or constructs.
 ```{=latex}
 According to the Webster's Dictionary, \\
-\begin{mdframed}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol]
     \begin{center}
         \textcolor{blue}{%
             \emph{``A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control\dots''}}
     \end{center}
-\end{mdframed}\label{fig:system-def-webster}
+\end{tcolorbox}\label{fig:system-def-webster}
 According to the International Council on Systems Engineering (INCOSE),\\
-\begin{mdframed}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol]
     \begin{center}
-        \redtext{%
+        \textcolor{red}{%
             \emph{A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not.}}\\ The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
     \end{center}
-\end{mdframed}\label{fig:system-def-incose}
+\end{tcolorbox}\label{fig:system-def-incose}
 \begin{center}
     \begin{itemize}
         \item It is difficult to give a single and precise definition of the term \emph{system}, which will suit to different perspectives of different people. \\
         \item In practice, what is meant by ``the system'' depends on the objectives of a particular study.\\
-        \item From the control engineering perspective, \redtext{the system is any interconnection of components to achieve desired objectives.} It is characterised by its \bluetext{\textbf{inputs}}, \bluetext{\textbf{outputs}}, and the rules of operations or laws. For example:
+        \item From the control engineering perspective, \textcolor{red}{the system is any interconnection of components to achieve desired objectives.} It is characterised by its \textcolor{blue}{\textbf{inputs}}, \textcolor{blue}{\textbf{outputs}}, and the rules of operations or laws. For example:
               \begin{itemize}
-                  \item[\bluetext{a.}] The laws of operation in electrical systems are Ohm's law, which gives the voltage-current relationships for resistors, capacitors and inductors, and Kirchhoff's laws, which govern the laws of interconnection of various electrical components.
-                  \item[\bluetext{b.}] Similarly, in mechanical systems, the laws of operation are Newton's laws. These laws can be used to derive mathematical models of the system.
+                  \item[\textcolor{blue}{a.}] The laws of operation in electrical systems are Ohm's law, which gives the voltage-current relationships for resistors, capacitors and inductors, and Kirchhoff's laws, which govern the laws of interconnection of various electrical components.
+                  \item[\textcolor{blue}{b.}] Similarly, in mechanical systems, the laws of operation are Newton's laws. These laws can be used to derive mathematical models of the system.
               \end{itemize}
     \end{itemize}
 \end{center}
@@ -34,23 +34,206 @@ According to the International Council on Systems Engineering (INCOSE),\\
 ### The System as an Operator
 ```{=latex}
 \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{The System Operator}}]    
-A system is defined mathematically \textcolor{red}{as a transformation which maps an input signal \(x(t)\) to an output signal \(y(t)\)}. For a continuous time system, the input-output mapping is expressed as:
-\begin{equation}
-    \label{eq:system-operator-def-equation}
-    \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \quad \text{where} \; \mathcal{S} \; \text{is an operator.}
-\end{equation}
-\begin{center}
-    \begin{tikzpicture}[auto, thick, node distance=3cm, >=Latex]
-        \node (input) at (0,0) {};
-        \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input] (system) {\large \(\mathcal{S}\)};
-        \node [right=of system] (output) {};
-        \draw [->] (input) -- node[above,midway] {\small\(x(t)\)} (system);
-        \draw [->] (system) -- node[above,midway] {\small\(y(t) = \mathcal{S}[x(t)]\)} (output);
-    \end{tikzpicture}
-\end{center}
-\redtext{%
-        A control system may be defined as an interconnection of components which are configured to provide a desired response.}
+    A system is defined mathematically \textcolor{red}{as a transformation which maps an input signal \(x(t)\) to an output signal \(y(t)\)}. For a continuous time system, the input-output mapping is expressed as:
+    \begin{equation}
+        \label{eq:system-operator-def-equation}
+        \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \quad \text{where} \; \mathcal{S} \; \text{is an operator.}
+    \end{equation}
+    \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{System Operator Diagram}}]
+        \begin{figure}[H]
+        \label{fig:system-operator-diagram-tikz}
+            \begin{center}
+                \begin{tikzpicture}[auto, thick, node distance=3cm, >=Latex]
+                    \node (input) at (0,0) {};
+                    \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input] (system) {\large \(\mathcal{S}\)};
+                    \node [right=of system] (output) {};
+                    \draw [->] (input) -- node[above,midway] {\small\(x(t)\)} (system);
+                    \draw [->] (system) -- node[above,midway] {\small\(y(t) = \mathcal{S}[x(t)]\)} (output);
+                \end{tikzpicture}
+            \end{center}
+            \caption{System Operator Diagram}
+        \end{figure}
+    \end{tcolorbox}
+    \textcolor{red}{%
+            A control system may be defined as an interconnection of components which are configured to provide a desired response.}
 \end{tcolorbox}
 ```
 
 ### Classification of Systems
+
+The basis of classifying systems are many. They can be classified according to the following:
+
+```{=latex}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Types of System Classifications}}]
+\label{fig:system-type-list-tc}
+    \begin{itemize}
+        \item[\textcolor{blue}{a.}] \textbf{The Time Frame:} (\emph{discrete, continuous or hybrid});
+        \item[\textcolor{blue}{b.}] \textbf{System Complexity:} (\emph{physical, conceptual and esoteric});
+        \item[\textcolor{blue}{c.}] \textbf{Uncertainties:} (\emph{deterministic and stochastic});
+        \item[\textcolor{blue}{d.}] \textbf{Nature and type of components:} (\emph{static or dynamic, linear or nonlinear, time-invariant or time variant, lumped or distributed etc});
+    \end{itemize}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Types of System Classifications}}]
+\begin{itemize}
+            \item Linear and nonlinear systems;
+            \item Time-invariant and time-variant systems;
+            \item Static (memory less) and dynamic (with memory) systems;
+            \item Causal and Non-causal systems;
+            \item Lumped and distributed parameter systems;
+            \item Deterministic and stochastic systems;
+            \item Continuous and discrete systems;
+        \end{itemize}
+\end{tcolorbox}
+```
+### Linear and Nonlinear Systems
+```{=latex}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Linear and Nonlinear Systems}}]
+    \begin{center}
+        A system is said to be linear provided it satisfies the \textcolor{red}{\emph{principle of superposition}} which is the combination of the \textcolor{blue}{\emph{additive}} and \textcolor{blue}{\emph{homogeneity}} properties. Otherwise, it is \emph{non-linear}
+    \end{center}
+\end{tcolorbox}\label{fig:linear-nonlinear-system-def-md}
+```
+#### Principle of Additivity
+
+Assume the system initially at rest.
+
+```{=latex}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Principle of Additivity}}]
+    \begin{enumerate}[label=\(\blacktriangleright\), leftmargin=*, itemsep=0.5em]
+        \item Suppose an input \(x_1(t)\) to this system produces an output \(y_1(t)\) and an input \(x_2(t)\) produces an output \(y_2(t)\).
+        \item If the system is linear, then the application of the input \(x_1(t) + x_2(t)\) will produce an output \(y_1(t) + y_2(t)\). Thus if
+    \end{enumerate}
+    \begin{equation}
+        \label{eq:linear-system-additive-property-equation}
+        \textcolor{blue}{x_1(t) \rightarrow y_1(t) \quad \text{and} \quad x_2(t) \rightarrow y_2(t)}, \quad \text{then} \quad \textcolor{red}{x_1(t) + x_2(t) \rightarrow y_1(t) + y_2(t)}
+    \end{equation}
+    \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Additivity Property Diagram}}]
+        \begin{figure}[H]
+            \label{fig:additive-property-diagram-tikz}
+            \begin{center}
+                \begin{tikzpicture}[auto, thick, node distance=2cm, >=Latex]
+                    \node (input1) at (0,0) {};
+                    \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input1] (system1) {\large \(\mathcal{S}\)};
+                    \node [right=of system1] (output1) {};
+                    \node (input2) [below=1cm of input1] {};
+                    \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input2] (system2) {\large \(\mathcal{S}\)};
+                    \node [right=of system2] (output2) {};
+                    \node [below=0.45cm of output1] (midpoint_systems) {};
+                    \node [right=0.01cm of midpoint_systems] (additivity_start){};
+                    \node [right=4cm of additivity_start] (additivity_end){};
+                    \node (input_combined) [right=0.01cm of additivity_end] {};
+                    \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input_combined] (system_combined) {\large \(\mathcal{S}\)};
+                    \node [right=of system_combined] (output_combined) {};
+                    \draw [->] (input1) -- node[above,midway] {\(x_1(t)\)} (system1);
+                    \draw [->] (system1) -- node[above,midway] {\(y_1(t)\)} (output1);
+                    \draw [->] (input2) -- node[above,midway] {\(x_2(t)\)} (system2);
+                    \draw [->] (system2) -- node[above,midway] {\(y_2(t)\)} (output2);
+                    \draw [->] (input_combined) -- node[above,midway] {\scriptsize\(x_1(t) + x_2(t)\)} (system_combined);
+                    \draw [->] (system_combined) -- node[above,midway] {\scriptsize\(y_1(t) + y_2(t)\)} (output_combined);
+                    \draw [->, double equal sign distance] (additivity_start) -- node[above,midway] {\textbf{Additivity}} (additivity_end);
+                \end{tikzpicture}
+            \end{center}
+            \caption{Principle of Additivity}
+        \end{figure}
+    \end{tcolorbox}
+\end{tcolorbox}
+```
+#### Principle of Homogeneity or Scaling
+```{=latex}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Principle of Homogeneity}}]
+    \begin{enumerate}[label=\(\blacktriangleright\), leftmargin=*, itemsep=0.5em]
+        \item Let an input \textcolor{red}{(\emph{cause})} \(x(t)\) produce an output \textcolor{red}{(\emph{effect})} \(y(t)\). If the system is linear then,
+        \item Scaling the input (\emph{cause}) \(x(t)\) by a factor ``\(a\)'' will scale the output (\emph{effect}) \(y(t)\) by the same factor.
+        \item Thus, if the \textcolor{blue}{input \(x(t)\) results in \(y(t)\)}, then the  \textcolor{red}{scaled input \(ax(t)\)} gives the output \textcolor{red}{\(ay(t)\)} where ``\(a\)'' can either be a real or imaginary number. Thus, for a linear system:
+    \end{enumerate}
+    \begin{equation}
+        \label{eq:linear-system-homogeneity-property-equation}
+        \textcolor{red}{x(t) \rightarrow y(t) \quad \Rightarrow ax(t) \rightarrow ay(t)}
+    \end{equation}
+    \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Homogeneity Property Diagram}}]
+        \begin{figure}[H]   
+            \begin{center}
+            \label{fig:homogeneity-property-diagram-tikz}
+                \begin{tikzpicture}[auto, thick, node distance=2cm, >=Latex]
+                    \node (input1) at (0,0) {};
+                    \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right of=input1] (system1) {\large \(\mathcal{S}\)};
+                    \node [right of=system1] (output1) {};
+                    \node (homogeneity_start) [right=0.1cm of output1] {};
+                    \node (homogeneity_end) [right=4cm of homogeneity_start] {};
+                    \node (input2) [right=0.01cm of homogeneity_end] {};
+                    \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right of=input2] (system2) {\large \(\mathcal{S}\)};
+                    \node [right of=system2] (output2) {};
+                    \draw [->] (input1) -- node[above,midway] {\(x(t)\)} (system1);
+                    \draw [->] (system1) -- node[above,midway] {\(y(t)\)} (output1);
+                    \draw [->] (input2) -- node[above,midway] {\(ax(t)\)} (system2);
+                    \draw [->] (system2) -- node[above,midway] {\(ay(t)\)} (output2);
+                    \draw [->, double equal sign distance] (homogeneity_start) -- node[above,midway] {\textbf{Homogeneity}} (homogeneity_end);
+                \end{tikzpicture}
+            \end{center}
+            \caption{Principle of Homogeneity}
+        \end{figure}
+    \end{tcolorbox}
+\end{tcolorbox}
+```
+#### Principle of Superposition
+
+This is the combination of both the additive and homogeneity properties for a linear system.
+
+```{=latex}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Principle of Superposition}}]
+    If the zero state response of a linear system due to a finite \(N\text{-number}\) of inputs \(x_1(t), x_2(t), \dots, x_N(t)\) equals to \(y_1(t), y_2(t), \dots, y_N(t)\) respectively, then the response of the system to the linear combination of these inputs
+    \begin{equation}
+        \label{eq:linear-superposition-input-equation}
+        a_1x_1(t) + a_2x_2(t) + a_3x_3(t) + \dots\dots + a_Nx_N(t)
+    \end{equation}
+    is given by the linear combination of the individual outputs i.e.
+    \begin{equation}
+        \label{eq:linear-superposition-output-equation}
+        a_1y_1(t) + a_2y_2(t) + a_3y_3(t) + \dots\dots + a_Ny_N(t)
+    \end{equation}
+    where \(a_1, a_2, a_3, \dots, a_N\) are arbitrary constants (either real or imaginary).   
+    Thus, if 
+    \begin{equation}
+        \label{eq:linear-superposition-equation-noconstants}
+        \textcolor{blue}{x_1(t) \rightarrow y_1(t), \quad x_2(t) \rightarrow y_2(t), \dots, x_N(t) \rightarrow y_N(t)}
+    \end{equation}
+    then, for all \(a_1, a_2, \dots, a_N\)
+    \begin{equation}
+        \label{eq:linear-superposition-equation-constants}
+        \textcolor{blue}{a_1x_1(t) + a_2x_2(t) + \ldots  a_Nx_N(t)\rightarrow}\ \textcolor{red}{ a_1y_1(t) + a_2y_2(t) + \ldots  a_Ny_N(t)}
+    \end{equation}
+    \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Superposition Principle Diagram}}]
+        \begin{figure}[H]
+            \begin{center}
+                \label{fig:superposition-principle-diagram-tikz}
+                \begin{tikzpicture}[auto, thick, node distance=2cm, >=Latex]
+                    \node (input1) at (0,0) {};
+                    \node [draw, rectangle, minimum height=2em, minimum width=3em, right= of input1] (system1) {\large \(\mathcal{S}\)};
+                    \node [right=of system1] (output1) {};
+                    \node [below=1cm of input1] (input2) {};
+                    \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input2] (system2) {\large \(\mathcal{S}\)};
+                    \node [right=of system2] (output2) {};
+                    \node [below=1cm of input2] (inputN) {};
+                    \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of inputN] (systemN) {\large \(\mathcal{S}\)};
+                    \node [right=of systemN] (outputN) {};
+                    \draw [loosely dotted, very thick] (system2.south) -- (systemN.north);
+                    \node (superposition_start) [right=0.01cm of output2] {};
+                    \node (superposition_end) [right=4cm of superposition_start] {};
+                    \node (input_combined) [right=0.01cm of superposition_end] {};
+                    \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input_combined] (system_combined) {\large \(\mathcal{S}\)};
+                    \node [right=of system_combined] (output_combined) {};
+                    \draw [->] (input1) -- node[above,midway] {\(x_1(t)\)} (system1);
+                    \draw [->] (system1) -- node[above,midway] {\(y_1(t)\)} (output1);
+                    \draw [->] (input2) -- node[above,midway] {\(x_2(t)\)} (system2);
+                    \draw [->] (system2) -- node[above,midway] {\(y_2(t)\)} (output2);
+                    \draw [->] (inputN) -- node[above,midway] {\(x_N(t)\)} (systemN);
+                    \draw [->] (systemN) -- node[above,midway] {\(y_N(t)\)} (outputN);
+                    \draw [->, double equal sign distance] (superposition_start) -- node[above,midway] {\textbf{Superposition}} (superposition_end);
+                    \draw [->] (input_combined) -- node[above,midway] {\footnotesize\(\sum_{i=1}^{N} a_i x_i(t)\)} (system_combined);
+                    \draw [->] (system_combined) -- node[above,midway] {\footnotesize\(\sum_{i=1}^{N} a_i y_i(t)\)} (output_combined);
+                \end{tikzpicture}\caption{Superposition Principle Diagram}
+            \end{center}
+        \end{figure}
+    \end{tcolorbox}
+\end{tcolorbox}
+```

@@ -92,11 +92,11 @@ Or more generally for our applications (this is also known as Euler's formula):
 ```{=latex}
 %| label: complex-sinusoid-def-1
 This means that:\\
-\begin{mdframed}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol]
     \begin{center}
         \textcolor{red}{\emph{A complex frequency \(j\omega \) represents a pure sinusoidal signal of frequency \(\omega \) \unit{\rads}}}
     \end{center}
-\end{mdframed}
+\end{tcolorbox}
 ```
 
 For example, if a signal has a complex frequency $\complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\rads}$, then this responds to a pure sinusoid of frequency $\qty{314}{\rads}$ (i.e. $\qty{50}{\hertz}$).
@@ -104,11 +104,11 @@ For example, if a signal has a complex frequency $\complexqty[output-complex-roo
 ```{=latex}
 %| label: exp-damped-sinusoid-def
 Furthermore:\\
-\begin{mdframed}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol]
     \begin{center}
         \textcolor{red}{\emph{A complex frequency \(s = \sigma + j\omega\) represents an exponentially damped signal of frequency \(j\omega\) \unit{\rads}, and decays/amplifies at a rate decided by \(\sigma\).}}
     \end{center}
-\end{mdframed}
+\end{tcolorbox}
 ```
 
 For example, the signal $f(t) =  e^{-10t} \sin(40\pi t)$ would look like this:
