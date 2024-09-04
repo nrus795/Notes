@@ -19,7 +19,7 @@
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
+\usepackage[]{lmodern}
 \ifPDFTeX\else  
     % xetex/luatex font selection
 \fi
@@ -67,46 +67,6 @@
 \fi
 \makeatother
 
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{241,243,245}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
-\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -152,7 +112,7 @@
 \usepackage{enumitem}       % Customized lists
 \usepackage{float}          % Improved figure placement
 \usepackage{tikz}           % Core TikZ package
-\usetikzlibrary{positioning, arrows.meta, external}
+\usetikzlibrary{positioning, arrows.meta}
 \usepackage{circuitikz}     % For circuits!
 \usepackage{pgfplots}       % For plots
 \pgfplotsset{compat=1.18}   % Set compatibility to 1.18
@@ -176,6 +136,7 @@
 %     bottom=2cm
 % }
 \setlength{\marginparwidth}{2cm}
+
 % Header and footer settings
 \fancypagestyle{plain}{%
   \fancyhf{}%
@@ -186,12 +147,10 @@
   \renewcommand{\headrulewidth}{0.4pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
+\pagestyle{plain}
 \setlength{\headheight}{16.5pt}
-\renewcommand{\thepart}{\arabic{part}}
-\titleformat{\part}
-  {\normalfont\Huge\bfseries}{\textcolor{blue}{Module {\thepart}:}}{1pt}{}
 \titleformat{\chapter}
-  {\normalfont\Large\bfseries}{\thechapter}{1em}{}
+  {\normalfont\LARGE\bfseries}{\textcolor{blue}{Module {\thechapter}: }}{1pt}{}
 \titleformat{\section}
   {\normalfont\Large\bfseries}{\thesection}{1em}{}
 \titlespacing*{\chapter}{0pt}{20pt}{10pt}
@@ -210,9 +169,6 @@
 \newcommand{\bluetext}[1]{\textcolor{blue}{#1}}
 \newcommand{\redtext}[1]{\textcolor{red}{#1}}
 
-\makeatletter
-\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
-\makeatother
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -296,88 +252,15 @@
 \renewcommand*\contentsname{Table of contents}
 {
 \hypersetup{linkcolor=}
-\setcounter{tocdepth}{2}
+\setcounter{tocdepth}{3}
 \tableofcontents
 }
 
-\bookmarksetup{startatroot}
-
-\chapter*{Introduction}\label{introduction}
-\addcontentsline{toc}{chapter}{Introduction}
-
-\markboth{Introduction}{Introduction}
-
-These notes are compiled from the lectures of ELECTENG 332: Signals and
-Systems at The University of Auckland. They are intended as a personal
-reference to assist with assignments, exam preparation, and
-understanding key concepts in control systems and signal analysis.
-
-The notes cover various topics, including signal modeling, feedback
-systems, and time-domain analysis, which are crucial for the analysis
-and design of control systems. Feel free to add personal insights or
-additional references as you study these materials.
-
-\section*{Organisation of the Notes}\label{organisation-of-the-notes}
-\addcontentsline{toc}{section}{Organisation of the Notes}
-
-\markright{Organisation of the Notes}
-
-The notes are divided into modules, with each section corresponding to
-specific topics covered in the course. Here's how they are organized:
-
-\begin{itemize}
-\item
-  \textbf{Module 1: Basics of Signals and Systems}\\
-  Key topics include time-domain representation, Laplace transforms, and
-  system responses.
-\item
-  \textbf{Module 2: Mathematical Modeling of Dynamic Systems}\\
-  Covers the mathematical modeling of electrical and mechanical systems
-  using block diagrams and differential equations.
-\item
-  \textbf{Module 3: Block Diagrams \& Feedback Systems Overview}\\
-  Discusses the fundamentals of feedback control, including system
-  stability, noise reduction, and transient response characteristics.
-\item
-  \textbf{Module 4: Time Domain Analysis of Linear Systems}\\
-  Provides a detailed analysis of transient and steady-state responses,
-  including rise time, settling time, and peak overshoot.
-\item
-  \textbf{Module 5: Stability Analysis of Linear Systems}\\
-  Focuses on analyzing the stability of linear systems using different
-  criteria such as the Routh-Hurwitz criterion.
-\end{itemize}
-
-\section*{How I Use These Notes}\label{how-i-use-these-notes}
-\addcontentsline{toc}{section}{How I Use These Notes}
-
-\markright{How I Use These Notes}
-
-These notes are a living document that I update as I gain a deeper
-understanding of the material. Here's how I use them:
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Quick Reference}: For quick lookups, the Table of Contents
-  helps navigate directly to the relevant section.
-\item
-  \textbf{In-Depth Study}: For exam preparation, I revisit each module,
-  ensuring I understand each concept before moving on.
-\item
-  \textbf{Personal Insights}: I add thoughts, extra readings, and
-  questions for further study.
-\end{itemize}
-
-Exercises and examples are included to enhance the understanding of more
-complex topics, such as feedback control and stability analysis.
-
-\part{Basics of Signals and Systems}
+\chapter{Basics of Signals and
+Systems}\label{basics-of-signals-and-systems}
 
 \section*{Learning Outcomes}\label{learning-outcomes}
 \addcontentsline{toc}{section}{Learning Outcomes}
-
-\markright{Learning Outcomes}
 
 \begin{enumerate}[label=\(\blacktriangleright\), leftmargin=*, itemsep=0.5em]
     \item Uniqueness of the Exponential Signal
@@ -389,7 +272,9 @@ complex topics, such as feedback control and stability analysis.
     \item Classification of a Control System: Open-loop \& Closed-loop
 \end{enumerate}
 
-\chapter{Topic 1: The Importance of the Exponential
+\newpage{}
+
+\section{Topic 1: The Importance of the Exponential
 Function}\label{topic-1-the-importance-of-the-exponential-function}
 
 The Exponential function, written as either \(e^{ax}\) or \(e^{at}\)
@@ -419,7 +304,7 @@ make it mathematically unique.
   \end{equation}
 \end{enumerate}
 
-\chapter{Topic 2: The Concept of Engineering
+\section{Topic 2: The Concept of Engineering
 Infinity}\label{topic-2-the-concept-of-engineering-infinity}
 
 Consider a signal \(e^{-at}\). The time constant for this signal is
@@ -440,7 +325,9 @@ considered zero for all practical purposes. This is a very important
 concept in control systems, as it allows us to simplify our calculations
 and analysis.
 
-\chapter{Topic 3: The Concept of Complex
+\newpage{}
+
+\section{Topic 3: The Concept of Complex
 Frequency}\label{topic-3-the-concept-of-complex-frequency}
 
 Complex frequency is found commonly in electrical engineering. It is
@@ -452,7 +339,7 @@ this, as complex numbers have complex conjugates (normally notated by
 
 \begin{figure}
 
-{\centering \includegraphics{chapters/module1/topic3_comp_freq_files/figure-pdf/argand-output-1.pdf}
+{\centering \includegraphics{index_files/figure-pdf/argand-output-1.pdf}
 
 }
 
@@ -463,67 +350,64 @@ this, as complex numbers have complex conjugates (normally notated by
 This is also backed up by De Moivre's formula which is defined
 mathematically as:
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\%| label: de{-}moivre{-}formula}
-\NormalTok{\textbackslash{}begin\{gather\}}
-\NormalTok{    \textbackslash{}label\{eq:de{-}moivre{-}formula\}}
-\NormalTok{    \textbackslash{}forall x \textbackslash{}in \textbackslash{}mathbb\{R\}, \textbackslash{}quad \textbackslash{}forall n \textbackslash{}in \textbackslash{}mathbb\{Z\}, \textbackslash{}\textbackslash{}}
-\NormalTok{    e\^{}\{jnx\} = \textbackslash{}cos(n x) + j \textbackslash{}sin(n x)  }
-\NormalTok{\textbackslash{}end\{gather\}}
-\end{Highlighting}
-\end{Shaded}
+%| label: de-moivre-formula
+\begin{gather}
+    \label{eq:de-moivre-formula}
+    \forall x \in \mathbb{R}, \quad \forall n \in \mathbb{Z}, \\
+    e^{jnx} = \cos(n x) + j \sin(n x)  
+\end{gather}
 
 Or more generally for our applications (this is also known as Euler's
 formula):
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\%| label: de{-}moivre{-}formula{-}general}
-\NormalTok{\textbackslash{}begin\{gather\}}
-\NormalTok{    \textbackslash{}label\{eq:de{-}moivre{-}formula{-}general\}}
-\NormalTok{    e\^{}\{jx\} = \textbackslash{}cos(x) + j \textbackslash{}sin(x) \textbackslash{}\textbackslash{}}
-\NormalTok{    \textbackslash{}text\{Where\} \textbackslash{}, x \textbackslash{}in \textbackslash{}mathbb\{R\}\textbackslash{}, \textbackslash{}text\{(\textbackslash{}(x\textbackslash{}) is real)\} \textbackslash{}\textbackslash{}}
-\NormalTok{    \textbackslash{}text\{and\} \textbackslash{}, j \textbackslash{}equiv i = \textbackslash{}sqrt\{{-}1\}}
-\NormalTok{\textbackslash{}end\{gather\}}
-\end{Highlighting}
-\end{Shaded}
+%| label: de-moivre-formula-general
+\begin{gather}
+    \label{eq:de-moivre-formula-general}
+    e^{jx} = \cos(x) + j \sin(x) \\
+    \text{Where} \, x \in \mathbb{R}\, \text{(\(x\) is real)} \\
+    \text{and} \, j \equiv i = \sqrt{-1}
+\end{gather}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\%| label: complex{-}sinusoid{-}def{-}1}
-\NormalTok{This means that:\textbackslash{}\textbackslash{}}
-\NormalTok{\textbackslash{}begin\{mdframed\}}
-\NormalTok{    \textbackslash{}begin\{center\}}
-\NormalTok{        \textbackslash{}textcolor\{red\}\{\textbackslash{}emph\{A complex frequency \textbackslash{}(j\textbackslash{}omega \textbackslash{}) represents a pure sinusoidal signal of frequency \textbackslash{}(\textbackslash{}omega \textbackslash{}) \textbackslash{}unit\{\textbackslash{}rads\}\}\}}
-\NormalTok{    \textbackslash{}end\{center\}}
-\NormalTok{\textbackslash{}end\{mdframed\}}
-\end{Highlighting}
-\end{Shaded}
+%| label: complex-sinusoid-def-1
+This means that:\\
+\begin{mdframed}
+    \begin{center}
+        \textcolor{red}{\emph{A complex frequency \(j\omega \) represents a pure sinusoidal signal of frequency \(\omega \) \unit{\rads}}}
+    \end{center}
+\end{mdframed}
 
 For example, if a signal has a complex frequency
 \(\complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\rads}\),
 then this responds to a pure sinusoid of frequency \(\qty{314}{\rads}\)
 (i.e.~\(\qty{50}{\hertz}\)).
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\%| label: exp{-}damped{-}sinusoid{-}def}
-\NormalTok{Furthermore:\textbackslash{}\textbackslash{}}
-\NormalTok{\textbackslash{}begin\{mdframed\}}
-\NormalTok{    \textbackslash{}begin\{center\}}
-\NormalTok{        \textbackslash{}textcolor\{red\}\{\textbackslash{}emph\{A complex frequency \textbackslash{}(s = \textbackslash{}sigma + j\textbackslash{}omega\textbackslash{}) represents an exponentially damped signal of frequency \textbackslash{}(j\textbackslash{}omega\textbackslash{}) \textbackslash{}unit\{\textbackslash{}rads\}, and decays/amplifies at a rate decided by \textbackslash{}(\textbackslash{}sigma\textbackslash{}).\}\}}
-\NormalTok{    \textbackslash{}end\{center\}}
-\NormalTok{\textbackslash{}end\{mdframed\}}
-\end{Highlighting}
-\end{Shaded}
+%| label: exp-damped-sinusoid-def
+Furthermore:\\
+\begin{mdframed}
+    \begin{center}
+        \textcolor{red}{\emph{A complex frequency \(s = \sigma + j\omega\) represents an exponentially damped signal of frequency \(j\omega\) \unit{\rads}, and decays/amplifies at a rate decided by \(\sigma\).}}
+    \end{center}
+\end{mdframed}
 
 For example, the signal \(f(t) =  e^{-10t} \sin(40\pi t)\) would look
 like this:
 
-\chapter{Topic 4: What are Signals?}\label{topic-4-what-are-signals}
+\begin{figure}
 
-\section{Introduction:}\label{introduction-1}
+{\centering \includegraphics{index_files/figure-pdf/exp-damped-sinusoid-output-1.pdf}
+
+}
+
+\caption{Exponentially damped sinusoid signal,
+\(f(t) =  e^{-10t} \sin(40\pi t)\)}
+
+\end{figure}%
+
+\newpage{}
+
+\section{Topic 4: What are Signals?}\label{topic-4-what-are-signals}
+
+\subsection{Introduction}\label{introduction}
 
 %| label: signal-def
 It is difficult to find a unique definition of a signal. However in the context of this course, we give a workable definition which suits most of out purposes as:\\
@@ -538,54 +422,46 @@ Images from remote space probes, Voltages generated by the heart and
 brain, Radar and Sonar echoes, Seismic vibrations, Signals from GPS
 satellites, Signals from human genes, and countless other applications.
 
-\section{Energy and Power Signals:}\label{energy-and-power-signals}
+\subsection{Energy and Power Signals}\label{energy-and-power-signals}
 
-%| label: energy-signal-def-tcbox
 \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\bluetext{\textbf{Energy Signals}}]\label{fig:energy-signal-def-tcbox}
     \begin{center}
         \textcolor{red}{A signal is said to be an \emph{energy signal} if and only if it has finite energy.}
     \end{center}
 \end{tcolorbox}
-
-%| label: power-signal-def-tcbox
 \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\textbf{Power Signals}}]\label{fig:power-signal-def-tcbox}
     \begin{center}
         \bluetext{A signal is said to be a \emph{power signal} if and only if the average power of the signal is finite and non-zero.}
     \end{center}
 \end{tcolorbox}
-
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\textbf{Instantaneous Power}}]\label{fig:instantaneous-power-def}
 The instantaneous power \(p(t)\) of a signal \(x(t)\) is expressed as:
-
-%| label: instantaneous-power-def
-\begin{equation}
-    \label{eq:instantaneous-power-def}
-    \textcolor{red}{p(t) = x^2(t)}
-\end{equation}
-
+    \begin{equation}
+        \label{eq:instantaneous-power-def}
+        \textcolor{red}{p(t) = x^2(t)}
+    \end{equation}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\textbf{Continuous-Time Signal Energy}}]\label{fig:continuous-time-energy-def}
 The total energy of a continuous-time signal \(x(t)\) is given by:
-
-%| label: continuous-time-energy-def
-\begin{equation}
-    \label{eq:continuous-time-energy-def}     
-    \bluetext{E = \lim_{T \to \infty}\int_{-T/2}^{T/2} x^2(t) \dd{t} = \int_{-\infty}^{\infty} x^2(t) \dd{t}} 
-\end{equation}
-
+    \begin{equation}
+        \label{eq:continuous-time-energy-def}     
+        \bluetext{E = \lim_{T \to \infty}\int_{-T/2}^{T/2} x^2(t) \dd{t} = \int_{-\infty}^{\infty} x^2(t) \dd{t}} 
+    \end{equation}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\textbf{Complex Valued Signal Energy}}]\label{fig:complex-signal-energy-def}
 For a complex valued signal:
-
-%| label: complex-signal-energy-def
-\begin{equation}
-    \label{eq:complex-signal-energy-def}
-    \textcolor{red}{E = \int_{-\infty}^{\infty} \abs{x(t)}^2 \dd{t}} 
-\end{equation}
-
-Since power equals to the time average of the energy, the average power
-of a signal \(x(t)\) is given by:
-
-%| label: average-power-def
-\begin{equation}     
-    \label{eq:average-power-def}     
-    \textcolor{blue}{P = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} x^2(t) \dd{t} = \frac{E}{T}}
-\end{equation}
+    \begin{equation}
+        \label{eq:complex-signal-energy-def}
+        \textcolor{red}{E = \int_{-\infty}^{\infty} \abs{x(t)}^2 \dd{t}} 
+    \end{equation}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\textbf{Average Power}}]\label{fig:average-power-def}
+Since power equals to the time average of the energy, the average power is given by:
+    \begin{equation}     
+        \label{eq:average-power-def}     
+        \textcolor{blue}{P = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} x^2(t) \dd{t} = \frac{E}{T}}
+    \end{equation}
+\end{tcolorbox}
 
 %| label: energy-power-relationship
 Note that during calculation of energy, we average the power over an indefinitely large interval.\\ \begin{mdframed}\label{fig:energy-power-relationship-1}     
@@ -609,10 +485,10 @@ Furthermore, some additional concepts of note:\\
     \end{center} 
 \end{mdframed}
 
-\section{Examples:}\label{examples}
+\subsection{Examples}\label{examples}
 
-\subsection{Example 1: Unit Step
-Function:}\label{example-1-unit-step-function}
+\subsubsection{Example 1: Unit Step
+Function}\label{example-1-unit-step-function}
 
 Consider a unit step function defined as:
 
@@ -627,6 +503,7 @@ Consider a unit step function defined as:
 \end{equation}
 
 Determine whether this is an energy signal or a power signal or neither.
+
 \textbf{Solution:} Let us compute the energy of this signal as:
 
 %| label: unit-step-energy
@@ -647,8 +524,8 @@ signal. Let us compute the power of this signal as:
 The power of this signal is finite. Hence,
 \(\textcolor{red}{\text{this is a power signal.}}\)
 
-\subsection{Example 2: Exponential
-Function:}\label{example-2-exponential-function}
+\subsubsection{Example 2: Exponential
+Function}\label{example-2-exponential-function}
 
 Consider an exponential function defined as:
 
@@ -658,8 +535,9 @@ Consider an exponential function defined as:
     x(t) = e^{-at}u(t), \, \text{where} \; u(t) \;\text{is the unit step signal},\, a > 0 
 \end{equation}
 
-Classify this signal as an energy, power, or neither. \textbf{Solution:}
-Let us compute the energy of this signal as:
+Classify this signal as an energy, power, or neither.
+
+\textbf{Solution:} Let us compute the energy of this signal as:
 
 %| label: exp-function-energy
 \begin{equation}     
@@ -670,7 +548,7 @@ E = \int_{-\infty}^{\infty} {[x(t)]}^2  \dd{t} = \int_{0}^{\infty} {[e^{-at}]}^2
 Thus, \(x(t) = e^{-at} u(t)\) is an
 \(\textcolor{red}{\text{energy signal}}\).
 
-\subsection{Example 3: Ramp Function:}\label{example-3-ramp-function}
+\subsubsection{Example 3: Ramp Function:}\label{example-3-ramp-function}
 
 Consider a ramp function defined as:
 
@@ -684,8 +562,9 @@ r(t) =
     \end{cases} 
 \end{equation}
 
-Classify this signal as an energy, power, or neither. \textbf{Solution:}
-Let us compute the energy of this signal as:
+Classify this signal as an energy, power, or neither.
+
+\textbf{Solution:} Let us compute the energy of this signal as:
 
 %| label: ramp-function-energy
 \begin{equation}     
@@ -704,6 +583,69 @@ P = \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2} {[r(t)]}^2 \dd{t} = \lim_{
 
 The power of this signal is infinite. Hence, this is
 \(\textcolor{red}{\text{neither a power nor an energy signal.}}\).
+
+\newpage{}
+
+\section{Topic 5: What are Systems?}\label{topic-5-what-are-systems}
+
+\subsection{Introduction}\label{introduction-1}
+
+The term \emph{system} is derived from the Greek word \emph{systema},
+which means an organised relationship among functioning units or
+components. It is often used to describe any orderly arrangement of
+ideas or constructs.
+
+According to the Webster's Dictionary, \\
+\begin{mdframed}
+    \begin{center}
+        \textcolor{blue}{%
+            \emph{``A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control\dots''}}
+    \end{center}
+\end{mdframed}\label{fig:system-def-webster}
+According to the International Council on Systems Engineering (INCOSE),\\
+\begin{mdframed}
+    \begin{center}
+        \redtext{%
+            \emph{A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not.}}\\ The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
+    \end{center}
+\end{mdframed}\label{fig:system-def-incose}
+\begin{center}
+    \begin{itemize}
+        \item It is difficult to give a single and precise definition of the term \emph{system}, which will suit to different perspectives of different people. \\
+        \item In practice, what is meant by ``the system'' depends on the objectives of a particular study.\\
+        \item From the control engineering perspective, \redtext{the system is any interconnection of components to achieve desired objectives.} It is characterised by its \bluetext{\textbf{inputs}}, \bluetext{\textbf{outputs}}, and the rules of operations or laws. For example:
+              \begin{itemize}
+                  \item[\bluetext{a.}] The laws of operation in electrical systems are Ohm's law, which gives the voltage-current relationships for resistors, capacitors and inductors, and Kirchhoff's laws, which govern the laws of interconnection of various electrical components.
+                  \item[\bluetext{b.}] Similarly, in mechanical systems, the laws of operation are Newton's laws. These laws can be used to derive mathematical models of the system.
+              \end{itemize}
+    \end{itemize}
+\end{center}
+\newpage
+
+\subsection{The System as an Operator}\label{the-system-as-an-operator}
+
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{The System Operator}}]    
+A system is defined mathematically \textcolor{red}{as a transformation which maps an input signal \(x(t)\) to an output signal \(y(t)\)}.For a continuous time system, the input-output mapping is expressed as:
+\begin{equation}
+    \label{eq:system-operator-def-equation}
+    \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \quad \text{where} \; \mathcal{S} \; \text{is an operator.}
+\end{equation}
+\begin{center}
+    \begin{tikzpicture}[auto, thick, node distance=3cm, >=Latex]
+        \node (input) at (0,0) {};
+        \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input] (system) {\large \(\mathcal{S}\)};
+        \node [right=of system] (output) {};
+        \draw [->] (input) -- node[above,midway] {\small\(x(t)\)} (system);
+        \draw [->] (system) -- node[above,midway] {\small\(y(t) = \mathcal{S}[x(t)]\)} (output);
+    \end{tikzpicture}
+\end{center}
+\end{tcolorbox}
+
+\subsection{Classification of Systems}\label{classification-of-systems}
+
+\newpage{}
+
+\newpage{}
 
 
 

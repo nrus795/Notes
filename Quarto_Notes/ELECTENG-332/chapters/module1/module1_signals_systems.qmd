@@ -1,10 +1,7 @@
 <!-- module 1 basics of signals and systems -->
-
-# Basics of Signals and Systems
-
-::: {#learningoutcomesmodule1}
+#  Basics of Signals and Systems
 ## Learning Outcomes {.unnumbered}
-
+```{=latex}
 \begin{enumerate}[label=\(\blacktriangleright\), leftmargin=*, itemsep=0.5em]
     \item Uniqueness of the Exponential Signal
     \item Concept of Engineering Infinity
@@ -14,4 +11,4 @@
     \item What is a Control System
     \item Classification of a Control System: Open-loop \& Closed-loop
 \end{enumerate}
-:::
+```

@@ -1,0 +1,54 @@
+## Topic 5: What are Systems?
+
+### Introduction
+
+The term *system* is derived from the Greek word *systema*, which means an organised relationship among functioning units or components. It is often used to describe any orderly arrangement of ideas or constructs.
+```{=latex}
+According to the Webster's Dictionary, \\
+\begin{mdframed}
+    \begin{center}
+        \textcolor{blue}{%
+            \emph{``A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control\dots''}}
+    \end{center}
+\end{mdframed}\label{fig:system-def-webster}
+According to the International Council on Systems Engineering (INCOSE),\\
+\begin{mdframed}
+    \begin{center}
+        \redtext{%
+            \emph{A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not.}}\\ The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
+    \end{center}
+\end{mdframed}\label{fig:system-def-incose}
+\begin{center}
+    \begin{itemize}
+        \item It is difficult to give a single and precise definition of the term \emph{system}, which will suit to different perspectives of different people. \\
+        \item In practice, what is meant by ``the system'' depends on the objectives of a particular study.\\
+        \item From the control engineering perspective, \redtext{the system is any interconnection of components to achieve desired objectives.} It is characterised by its \bluetext{\textbf{inputs}}, \bluetext{\textbf{outputs}}, and the rules of operations or laws. For example:
+              \begin{itemize}
+                  \item[\bluetext{a.}] The laws of operation in electrical systems are Ohm's law, which gives the voltage-current relationships for resistors, capacitors and inductors, and Kirchhoff's laws, which govern the laws of interconnection of various electrical components.
+                  \item[\bluetext{b.}] Similarly, in mechanical systems, the laws of operation are Newton's laws. These laws can be used to derive mathematical models of the system.
+              \end{itemize}
+    \end{itemize}
+\end{center}
+\newpage
+```
+### The System as an Operator
+```{=latex}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{The System Operator}}]    
+A system is defined mathematically \textcolor{red}{as a transformation which maps an input signal \(x(t)\) to an output signal \(y(t)\)}.For a continuous time system, the input-output mapping is expressed as:
+\begin{equation}
+    \label{eq:system-operator-def-equation}
+    \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \quad \text{where} \; \mathcal{S} \; \text{is an operator.}
+\end{equation}
+\begin{center}
+    \begin{tikzpicture}[auto, thick, node distance=3cm, >=Latex]
+        \node (input) at (0,0) {};
+        \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input] (system) {\large \(\mathcal{S}\)};
+        \node [right=of system] (output) {};
+        \draw [->] (input) -- node[above,midway] {\small\(x(t)\)} (system);
+        \draw [->] (system) -- node[above,midway] {\small\(y(t) = \mathcal{S}[x(t)]\)} (output);
+    \end{tikzpicture}
+\end{center}
+\end{tcolorbox}
+```
+
+### Classification of Systems

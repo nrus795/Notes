@@ -1,9 +1,6 @@
-:::::::: {#topic3}
-# Topic 3: The Concept of Complex Frequency
-
+## Topic 3: The Concept of Complex Frequency
 Complex frequency is found commonly in electrical engineering. It is often notated as $j\omega$ or $s = \sigma \pm j\omega$. These frequencies always come in pairs, so the use of $\pm$ is implicit to this, as complex numbers have complex conjugates (normally notated by $z^*$ or $\bar{z}$). i.e. $s = \sigma + j\omega$ has the conjugate $s=\sigma - j\omega$.
 
-::: {#argand-figure}
 ```{python}
 #| fig-align: center
 #| fig-cap: Argand diagram of $|z| = \sqrt{2}$
@@ -66,22 +63,22 @@ ax.set_yticks([-2, -1, 1, 2])
 # Display the plot
 plt.show()
 ```
-:::
 
-::: {#de-moivre-formula}
+
 This is also backed up by De Moivre's formula which is defined mathematically as:
 ```{=latex}
+%| label: de-moivre-formula
 \begin{gather}
     \label{eq:de-moivre-formula}
     \forall x \in \mathbb{R}, \quad \forall n \in \mathbb{Z}, \\
     e^{jnx} = \cos(n x) + j \sin(n x)  
 \end{gather}
 ```
-:::
 
-::: {#de-moivre-formula-general}
 Or more generally for our applications (this is also known as Euler's formula):
+
 ```{=latex}
+%| label: de-moivre-formula-general
 \begin{gather}
     \label{eq:de-moivre-formula-general}
     e^{jx} = \cos(x) + j \sin(x) \\
@@ -89,33 +86,69 @@ Or more generally for our applications (this is also known as Euler's formula):
     \text{and} \, j \equiv i = \sqrt{-1}
 \end{gather}
 ```
-:::
 
-::: {#complex-sinusoid-def-1}
+
+
 ```{=latex}
+%| label: complex-sinusoid-def-1
 This means that:\\
 \begin{mdframed}
     \begin{center}
-        \redtext{\emph{A complex frequency \(j\omega \) represents a pure sinusoidal signal of frequency \(\omega \) \unit{\rads}}}
+        \textcolor{red}{\emph{A complex frequency \(j\omega \) represents a pure sinusoidal signal of frequency \(\omega \) \unit{\rads}}}
     \end{center}
 \end{mdframed}
 ```
-:::
 
 For example, if a signal has a complex frequency $\complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\rads}$, then this responds to a pure sinusoid of frequency $\qty{314}{\rads}$ (i.e. $\qty{50}{\hertz}$).
 
-::: {#exp-damped-sinusoid-def}
 ```{=latex}
+%| label: exp-damped-sinusoid-def
 Furthermore:\\
 \begin{mdframed}
     \begin{center}
-        \redtext{\emph{A complex frequency \(s = \sigma + j\omega\) represents an exponentially damped signal of frequency \(j\omega\) \unit{\rads}, and decays/amplifies at a rate decided by \(\sigma\).}}
+        \textcolor{red}{\emph{A complex frequency \(s = \sigma + j\omega\) represents an exponentially damped signal of frequency \(j\omega\) \unit{\rads}, and decays/amplifies at a rate decided by \(\sigma\).}}
     \end{center}
 \end{mdframed}
 ```
-:::
+
 For example, the signal $f(t) =  e^{-10t} \sin(40\pi t)$ would look like this:
-<!-- ::: {#exp-damped-sinusoid-plot}
-python plot/figure
-::: -->
-::::::::
+
+```{python}
+#| fig-align: center
+#| fig-cap: Exponentially damped sinusoid signal, $f(t) =  e^{-10t} \sin(40\pi t)$
+#| label: exp-damped-sinusoid
+#| echo: false
+#| width: 6in
+#| height: 4in
+import matplotlib.pyplot as plt
+from matplotlib import font_manager
+import numpy as np
+font_dirs = ["C:/Users/narus/AppData/Local/Microsoft/Windows/Fonts/"]
+font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
+for font_file in font_files:
+    font_manager.fontManager.addfont(font_file)
+
+plt.rcParams.update({
+    'font.family': 'latin modern math',
+    'mathtext.fontset': 'cm',
+    'font.size': 9  # Set the font size
+})
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.set_ylim(-1, 1)
+ax.set_xlim(0, 0.5)
+t = np.linspace(0, 0.5, 2000)
+f = np.exp(-10*t) * np.sin(40*np.pi*t)
+f2 = np.exp(-10*t)
+f3 = -f2
+ax.plot(t, f)
+ax.plot(t, f2, linestyle='--')
+ax.plot(t, f3, linestyle='--')
+ax.set_xlabel(r'$t$')
+ax.set_ylabel(r'$f(t)$', rotation=0)
+plt.grid(True, alpha=0.5)
+ax.set_xticks([0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5])
+ax.set_yticks([-1,-0.8,-0.6,-0.4,-0.2, 0, 0.2,0.4,0.6,0.8, 1])
+ax.set_aspect('auto')
+ax.legend(['Exponential Damped Sinusoid', ], loc='upper right')
+plt.show()
+```

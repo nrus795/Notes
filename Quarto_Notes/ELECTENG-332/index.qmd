@@ -1,35 +1,14 @@
-# Introduction {.unnumbered}
-
-These notes are compiled from the lectures of ELECTENG 332: Signals and Systems at The University of Auckland. They are intended as a personal reference to assist with assignments, exam preparation, and understanding key concepts in control systems and signal analysis.
-
-The notes cover various topics, including signal modeling, feedback systems, and time-domain analysis, which are crucial for the analysis and design of control systems. Feel free to add personal insights or additional references as you study these materials.
-
-# Organisation of the Notes {.unnumbered}
-
-The notes are divided into modules, with each section corresponding to specific topics covered in the course. Here’s how they are organized:
-
--   **Module 1: Basics of Signals and Systems**  
-    Key topics include time-domain representation, Laplace transforms, and system responses.
-    
--   **Module 2: Mathematical Modeling of Dynamic Systems**  
-    Covers the mathematical modeling of electrical and mechanical systems using block diagrams and differential equations.
-
--   **Module 3: Block Diagrams & Feedback Systems Overview**  
-    Discusses the fundamentals of feedback control, including system stability, noise reduction, and transient response characteristics.
-
--   **Module 4: Time Domain Analysis of Linear Systems**  
-    Provides a detailed analysis of transient and steady-state responses, including rise time, settling time, and peak overshoot.
-
--   **Module 5: Stability Analysis of Linear Systems**  
-    Focuses on analyzing the stability of linear systems using different criteria such as the Routh-Hurwitz criterion.
-
-# How I Use These Notes {.unnumbered}
-
-These notes are a living document that I update as I gain a deeper understanding of the material. Here’s how I use them:
-
--   **Quick Reference**: For quick lookups, the Table of Contents helps navigate directly to the relevant section.
--   **In-Depth Study**: For exam preparation, I revisit each module, ensuring I understand each concept before moving on.
--   **Personal Insights**: I add thoughts, extra readings, and questions for further study.
-
-Exercises and examples are included to enhance the understanding of more complex topics, such as feedback control and stability analysis.
+{{< include chapters/module1/module1_signals_systems.qmd >}}
+{{< pagebreak >}}
+{{< include chapters/module1/topic1_expfn.qmd >}}
+{{< include chapters/module1/topic2_eng_ifty.qmd >}}
+{{< pagebreak >}}
+{{< include chapters/module1/topic3_comp_freq.qmd >}}
+{{< pagebreak >}}
+{{< include chapters/module1/topic4_signals.qmd >}}
+{{< pagebreak >}}
+{{< include chapters/module1/topic5_systems.qmd >}}
+{{< pagebreak >}}
+{{< include chapters/module1/topic6_control_systems.qmd >}}
+{{< pagebreak >}}
 

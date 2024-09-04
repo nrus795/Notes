@@ -17,12 +17,10 @@
 \usepackage{enumitem}       % Customized lists
 \usepackage{float}          % Improved figure placement
 \usepackage{tikz}           % Core TikZ package
-\usetikzlibrary{positioning, arrows.meta, external}
+\usetikzlibrary{positioning, arrows.meta}
 \usepackage{circuitikz}     % For circuits!
 \usepackage{pgfplots}       % For plots
 \pgfplotsset{compat=1.18}   % Set compatibility to 1.18
-\tikzexternalize[prefix=tikz/] % Save tikz figures to a folder
-\tikzset{external/up to date check=md5} % Check for changes using md5
 \usepackage{fancyhdr}       % Customize headers and footers
 \usepackage{appendix}       % Appendices
 \usepackage{cancel}         % Cancel terms in equations
@@ -43,6 +41,7 @@
 %     bottom=2cm
 % }
 \setlength{\marginparwidth}{2cm}
+
 % Header and footer settings
 \fancypagestyle{plain}{%
   \fancyhf{}%
@@ -53,9 +52,10 @@
   \renewcommand{\headrulewidth}{0.4pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
+\pagestyle{plain}
 \setlength{\headheight}{16.5pt}
-\titleformat{\chapter}[display]
-  {\normalfont\LARGE\bfseries}{\textcolor{blue}{Module {\thechapter}:}}{1pt}{}
+\titleformat{\chapter}
+  {\normalfont\LARGE\bfseries}{\textcolor{blue}{Module {\thechapter}: }}{1pt}{}
 \titleformat{\section}
   {\normalfont\Large\bfseries}{\thesection}{1em}{}
 \titlespacing*{\chapter}{0pt}{20pt}{10pt}
