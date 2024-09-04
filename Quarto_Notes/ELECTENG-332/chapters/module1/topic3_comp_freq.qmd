@@ -1,5 +1,5 @@
-::::::: {#topic3}
-## Topic 3: The Concept of Complex Frequency
+:::::::: {#topic3}
+# Topic 3: The Concept of Complex Frequency
 
 Complex frequency is found commonly in electrical engineering. It is often notated as $j\omega$ or $s = \sigma \pm j\omega$. These frequencies always come in pairs, so the use of $\pm$ is implicit to this, as complex numbers have complex conjugates (normally notated by $z^*$ or $\bar{z}$). i.e. $s = \sigma + j\omega$ has the conjugate $s=\sigma - j\omega$.
 
@@ -7,7 +7,7 @@ Complex frequency is found commonly in electrical engineering. It is often notat
 ```{python}
 #| fig-align: center
 #| fig-cap: Argand diagram of $|z| = \sqrt{2}$
-#| label: fig:argand
+#| label: argand
 #| echo: false
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
@@ -101,4 +101,21 @@ This means that:\\
 \end{mdframed}
 ```
 :::
-:::::::
+
+For example, if a signal has a complex frequency $\complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\rads}$, then this responds to a pure sinusoid of frequency $\qty{314}{\rads}$ (i.e. $\qty{50}{\hertz}$).
+
+::: {#exp-damped-sinusoid-def}
+```{=latex}
+Furthermore:\\
+\begin{mdframed}
+    \begin{center}
+        \redtext{\emph{A complex frequency \(s = \sigma + j\omega\) represents an exponentially damped signal of frequency \(j\omega\) \unit{\rads}, and decays/amplifies at a rate decided by \(\sigma\).}}
+    \end{center}
+\end{mdframed}
+```
+:::
+For example, the signal $f(t) =  e^{-10t} \sin(40\pi t)$ would look like this:
+<!-- ::: {#exp-damped-sinusoid-plot}
+python plot/figure
+::: -->
+::::::::

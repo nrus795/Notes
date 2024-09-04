@@ -20,7 +20,8 @@ The Exponential function, written as either $e^{ax}$ or $e^{at}$ depending on wh
     ```{=latex}
     \begin{equation} 
     \label{eq:exp-integral}     
-    \int e^{ax} \dd{x} = \frac{1}{a} e^{ax} \end{equation}
+    \int e^{ax} \dd{x} = \frac{1}{a} e^{ax} 
+    \end{equation}
     ```
     :::
 :::
@@ -34,7 +35,8 @@ Consider a signal $e^{-at}$. The time constant for this signal is $T = \frac{1}{
 ```{=latex}
 \begin{equation} 
 \label{eq:eng-infinity}     
-\lim_{t \to \infty} e^{-at} = 0  \end{equation}
+\lim_{t \to \infty} e^{-at} = 0  
+\end{equation}
 ```
 :::
 
