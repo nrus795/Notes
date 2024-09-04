@@ -29,6 +29,5 @@ format:
     documentclass: report
     fontsize: 12pt
     papersize: a4
-    fontfamily: lmodern
 
 
