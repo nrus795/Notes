@@ -93,6 +93,13 @@
 \def\fps@figure{htbp}
 \makeatother
 
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
+\definecolor{boxheadcol}{HTML}{D6D6F0} % #D6D6F0
+\definecolor{boxbodycol}{HTML}{EBEBF7} % #EBEBF7
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
 \makeatother
@@ -179,18 +186,24 @@
 
 \bookmarksetup{startatroot}
 
-\chapter{Introduction}\label{introduction}
+\chapter*{Introduction}\label{introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+\markboth{Introduction}{Introduction}
 
 These notes are compiled from the lectures of COMPSYS 304. They are
 intended as a personal reference to help with assignments, exam
 preparation, and understanding key concepts in Computer Architecture.
 
-The notes are organized by lecture and cover a wide range of topics from
+The notes are organised by lecture and cover a wide range of topics from
 basic computer architecture principles to more advanced subjects like
 MIPS implementation and performance analysis. Feel free to add personal
 insights, additional readings, or questions as you review this material.
 
-\section{Organization of the Notes}\label{organization-of-the-notes}
+\section*{Organisation of the Notes}\label{organisation-of-the-notes}
+\addcontentsline{toc}{section}{Organisation of the Notes}
+
+\markright{Organisation of the Notes}
 
 The notes are divided by lecture content, with each section
 corresponding to a specific set of topics. Here's how they're organized:
@@ -199,7 +212,7 @@ corresponding to a specific set of topics. Here's how they're organized:
 \item
   \textbf{Lecture 1-3: Basics of Computer Architecture}\\
   Key topics include Instruction Set Architecture (ISA), memory
-  hierarchy, and basic CPU organization.
+  hierarchy, and basic CPU organisation.
 \item
   \textbf{Lecture 4-6: MIPS Architecture}\\
   Covers the MIPS instruction set, control flow, and subroutine
@@ -218,7 +231,10 @@ corresponding to a specific set of topics. Here's how they're organized:
   performance.
 \end{itemize}
 
-\section{How I Use These Notes}\label{how-i-use-these-notes}
+\section*{How I Use These Notes}\label{how-i-use-these-notes}
+\addcontentsline{toc}{section}{How I Use These Notes}
+
+\markright{How I Use These Notes}
 
 These notes are a living document, and I intend to update them as I gain
 a deeper understanding of the material. Here's how I use them:
@@ -244,64 +260,107 @@ my understanding of the more complex topics.
 \chapter{Introduction \& Course
 Overview}\label{introduction-course-overview}
 
+\phantomsection\label{01Introduction}
 This chapter provides an introduction to the course, some background,
 and an overview of the course itself.
 
+\phantomsection\label{CourseBackground}
 \section{Background}\label{background}
 
+\phantomsection\label{BackgroundIntro}
 In the last six decades, computer technology has made incredible
-progress due to innovations in both semiconductor technology and
-computer architecture.
+progress due to innovations in both \textbf{semiconductor technology}
+and computer \textbf{architecture}.
 
-What do we mean from ``Performance''?
+\phantomsection\label{PerformanceQuestion}
+\subsection{\texorpdfstring{What do we mean from
+\emph{Performance}?}{What do we mean from Performance?}}\label{what-do-we-mean-from-performance}
 
 The relative performance can be measured by standard benchmarks, which
 depend on the specific target applications.
 
-Performance depends on clock frequency and other factors, as discussed
-more in later chapters.
+\textbf{\emph{Performance depends on clock frequency and other factors,
+as discussed more in later chapters.}}
 
-Intel X86 Processor from 1978 to 2018: - Intel 8086 (1978): 1 core, 1 W,
-5 - 10 MHz - Core i7-8086K (2018): 6 cores, 95 W, 4 GHz
+\phantomsection\label{IntelX86}
+\subsection{Intel X86 Processor from 1978 to
+2018:}\label{intel-x86-processor-from-1978-to-2018}
 
+\begin{itemize}
+\item
+  \textbf{Intel 8086} - (1978): 1 core, 1 W, 5 - 10 MHz
+\item
+  \textbf{Core i7-8086K} - (2018): 6 cores, 95 W, 4 GHz
+\end{itemize}
+
+\phantomsection\label{CourseDetails}
 \section{Course Details}\label{course-details}
 
+\phantomsection\label{LearningOutcomes}
 \subsection{Learning outcomes}\label{learning-outcomes}
 
-The main learning outcomes of this course are: - To understand the
-basics of modern computer architectures and quantative principles of
-computer design in order to develop a conceptual understanding of issues
-involved in designing a high performance computer system. - To use and
-apply this knowledge to design computer systems or select computers for
-specific tasks. This course will give you an understanding of the
-effects of design decisions on system performance and makes you a
-well-informed consumer in addition to a processor designer.
+The main learning outcomes of this course are:
 
-Recommended Textbook: - David A. Patterson and John L. Hennessey,
-Computer Organization and Design: The Hardware/Software Interface, Fifth
-edition, 2013 by Elsevier/Morgan Kaufmann Publishers (or 3rd or 4th
-editions). - Lecture notes provided on canvas (these will be summarised
-in these notes).
+\begin{itemize}
+\item
+  \textbf{To understand the basics of modern computer architectures and
+  quantitative principles of computer design in order to develop a
+  conceptual understanding of issues involved in designing a high
+  performance computer system.}
+\item
+  \textbf{To use and apply this knowledge to design computer systems or
+  select computers for specific tasks. This course will give you an
+  understanding of the effects of design decisions on system performance
+  and makes you a well-informed consumer in addition to a processor
+  designer.}
+\end{itemize}
 
+Recommended Textbook:
+
+\begin{itemize}
+\item
+  David A. Patterson and John L. Hennessey, Computer Organization and
+  Design: The Hardware/Software Interface, Fifth edition, 2013 by
+  Elsevier/Morgan Kaufmann Publishers (or 3rd or 4th editions).
+\item
+  Lecture notes provided on canvas (these will be summarised in these
+  notes).
+\end{itemize}
+
+\phantomsection\label{CourseOverview}
 \subsection{Course Overview (learning
 outcomes)}\label{course-overview-learning-outcomes}
 
-Part 1: in this part you will learn to: - Design and evaluate the
-instruction set architectures (both RISC and CISC) and how it can be
-related to the hardware/software interface in a computer system with a
-quick review of assembly programming. - Understand different processor
-implementation methods including the basic single-cycle implementation
-and how it can be extended to a multi-cycle, pipelined and superscalar
-implementations. - Understand performance evaluation techniques and
-their relation to the target applications and the processor workload.
+\textbf{Part 1:} \emph{In this part you will learn to:}
 
-Part 2: in this part you will learn to: - Understand the memory
-hierarchy in a modern computer system and its impact on the performance
-of the system. This includes physical and virtual memory systems and
-basics of cache memories. - Understand some basic principles of parallel
-computing using special topics in this course (more advanced materials
-covered in some elective courses).
+\begin{itemize}
+\item
+  Design and evaluate the instruction set architectures (both RISC and
+  CISC) and how it can be related to the hardware/software interface in
+  a computer system with a quick review of assembly programming.
+\item
+  Understand different processor implementation methods including the
+  basic single-cycle implementation and how it can be extended to a
+  multi-cycle, pipelined and superscalar implementations.
+\item
+  Understand performance evaluation techniques and their relation to the
+  target applications and the processor workload.
+\end{itemize}
 
+\textbf{Part 2:} \emph{In this part you will learn to:}
+
+\begin{itemize}
+\item
+  Understand the memory hierarchy in a modern computer system and its
+  impact on the performance of the system. This includes physical and
+  virtual memory systems and basics of cache memories.
+\item
+  Understand some basic principles of parallel computing using special
+  topics in this course (more advanced materials covered in some
+  elective courses).
+\end{itemize}
+
+\phantomsection\label{Assessment}
 \subsection{Assessment}\label{assessment}
 
 Three assignments and one test in addition to the final exam. The first
@@ -311,12 +370,129 @@ second assignment is related to processor implementation and performance
 issues. The third assignment is related to memory hierarchy system and
 multiprocessing.
 
-The test only covers the first part of the course. The final exam covers
-the whole course. - Assignment 1: 8\% due Fri. 9 August. - Assignment 2:
-7\% due Fri. 23 August. - Assignment 3: 15\% due Fri. 4 October. - Test:
-20\% (in week 7, Wednesday 11 September) - Final exam: 50\%
+\textbf{The test only covers the first part of the course. The final
+exam covers the whole course.}
 
-\chapter{}\label{section}
+\begin{itemize}
+\item
+  \textbf{Assignment 1: 8\% due Fri. 9 August.}
+\item
+  \textbf{Assignment 2: 7\% due Fri. 23 August.}
+\item
+  \textbf{Assignment 3: 15\% due Fri. 4 October.}
+\item
+  \textbf{Test: 20\% (in week 7, Wednesday 11 September)}
+\item
+  \textbf{Final exam: 50\%}
+\end{itemize}
+
+\chapter{Basics of Computer
+Architecture}\label{basics-of-computer-architecture}
+
+\phantomsection\label{02BasicsComputerArch}
+This chapter begins the journey into the content of this course.
+
+\phantomsection\label{WhatIsComputerArchitecture}
+\section{What is Computer
+Architecture?}\label{what-is-computer-architecture}
+
+\begin{itemize}
+\item
+  \textbf{ISA:} The programmer-visible instructions --- ISA serves as
+  the boundary between the hardware and software.
+\item
+  \textbf{Organization:} high-level aspects of computer design (e.g.~the
+  internal design of the CPU, the memory system, the interconnection
+  structure, \ldots)
+\item
+  \textbf{Hardware:} detailed logic design, circuit-level design,
+  packaging technology, etc.
+\end{itemize}
+
+\phantomsection\label{ReviewMemOrg}
+\section{Review: Memory Organization}\label{review-memory-organization}
+
+\begin{itemize}
+\item
+  Memory is viewed as a large, one-dimensional array, which has an
+  address range.
+\item
+  A memory address is an index into the array
+\item
+  The index usually points to a byte of memory.
+\item
+  To access a larger word (e.g., a 32-bit word or 4 bytes), four
+  consecutive memory locations are accessed.
+\end{itemize}
+
+\emph{Memory access time} is the amount of time required to read
+(usually one byte) or write data (usually one byte) from/to memory.
+
+\phantomsection\label{MemVsCPUSpeed}
+\section{An Overview of Memory Speed vs.~CPU
+Speed}\label{an-overview-of-memory-speed-vs.-cpu-speed}
+
+The rate of memory speed increase has been less than processors speed
+increase
+
+Fast memory is more expensive per bit than slow memory, so a
+\textbf{memory hierarchy} is often used to give a performance close to
+the fastest memory with a lower average cost per bit.
+
+\phantomsection\label{ProcessorAndMemoryHierarchy}
+\section{Processor and Memory
+Hierarchy}\label{processor-and-memory-hierarchy}
+
+\begin{figure}[h]
+    \centering
+    \begin{minipage}{0.6\textwidth}
+        \centering
+        \includegraphics[height=15cm,width=10cm, keepaspectratio=false]{images/processorhierarchy.png}
+    \end{minipage}%
+    \hspace{0.5cm}
+    \begin{minipage}{0.4\textwidth}
+        \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\emph{Processor Registers: }}\textcolor{blue}{The smallest and fastest memory for CPU.}]
+            Typically, 32 to 64 registers, each of them may be 32 or 64 bits with typical access time of \textcolor{blue}{\emph{nanoseconds or less}}.
+        \end{tcolorbox}
+        \vspace{10pt}
+        \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\emph{Cache Memory: }}\textcolor{blue}{Slower than registers.}]
+            Typically 8 to 256 Kbytes with an access time about \textcolor{blue}{\emph{a few nanoseconds or less}}.
+        \end{tcolorbox}
+        \vspace{10pt}
+        \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\emph{Main Memory: }}\textcolor{blue}{Slower than cache memory.}]
+            Hundreds of Mega bytes with an access time about \textcolor{blue}{\emph{tens of nanoseconds}}.
+        \end{tcolorbox}
+    \end{minipage}
+\end{figure}
+
+\phantomsection\label{IntelProcessorExample}
+\section{Example of Intel Processors}\label{example-of-intel-processors}
+
+\begin{figure}[h]
+\centering
+    \begin{minipage}{0.48\textwidth}
+        \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\emph{Pentium Processor Architecture (simplified)}}]
+            An example of architectural innovations made by processor designers (to improve computer systems performance).\\
+            \textcolor{red}{(Source: Intel)}
+        \end{tcolorbox}
+    \end{minipage}%
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=8cm, height=4cm, keepaspectratio=false]{images/22pentium.png}
+    \end{minipage}
+    \vspace{0.5cm} % Add some vertical space between the first and second row
+
+    \begin{minipage}{0.48\textwidth}
+        \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\emph{Intel Core i7}}]
+            The Core i7 die and major components. (more than 700 million transistors in a die with an area of \qty{263}{\mm\squared} in 45nm technology).\\
+            \textcolor{red}{(Source: Intel)}
+        \end{tcolorbox}
+    \end{minipage}%
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=8cm, height=4cm, keepaspectratio=false]{images/corei7diagram.png}
+    \end{minipage}
+\end{figure}
 
 
 

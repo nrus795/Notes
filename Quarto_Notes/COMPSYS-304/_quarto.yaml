@@ -1,6 +1,7 @@
 project: 
   type: book
-
+include-in-header: 
+ - preamble.tex
 book:
   chapters:
     - index.qmd

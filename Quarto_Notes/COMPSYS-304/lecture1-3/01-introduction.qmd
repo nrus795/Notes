@@ -1,30 +1,37 @@
+::::::::::: {#01Introduction}
 # Introduction & Course Overview
 
 This chapter provides an introduction to the course, some background, and an overview of the course itself.
 
-::: {#CourseBackground}
+:::::: {#CourseBackground}
 ## Background
 
+::: {#BackgroundIntro}
 In the last six decades, computer technology has made incredible progress due to innovations in both **semiconductor technology** and computer **architecture**.
 
 <!-- Add graph figure here -->
+:::
 
-#### What do we mean from *Performance*?
+::: {#PerformanceQuestion}
+### What do we mean from *Performance*?
 
 <!-- Add relative performance graph here -->
 
 The relative performance can be measured by standard benchmarks, which depend on the specific target applications.
 
 ***Performance depends on clock frequency and other factors, as discussed more in later chapters.***
+:::
 
+::: {#IntelX86}
 <!-- Clock rate & power consumption graph -->
 
-#### Intel X86 Processor from 1978 to 2018: 
+### Intel X86 Processor from 1978 to 2018: 
 
 -   **Intel 8086** - (1978): 1 core, 1 W, 5 - 10 MHz
 
 -   **Core i7-8086K** - (2018): 6 cores, 95 W, 4 GHz
 :::
+::::::
 
 :::::: {#CourseDetails}
 ## Course Details
@@ -81,3 +88,4 @@ Three assignments and one test in addition to the final exam. The first assignme
 -   **Final exam: 50%**
 :::
 ::::::
+:::::::::::
