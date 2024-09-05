@@ -4,31 +4,26 @@
 
 The term *system* is derived from the Greek word *systema*, which means an organised relationship among functioning units or components. It is often used to describe any orderly arrangement of ideas or constructs.
 ```{=latex}
-According to the Webster's Dictionary, \\
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol, title=\textcolor{black}{According to the Webster's Dictionary}]
+    \label{fig:system-def-webster}
+    \textcolor{blue}{\emph{``A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control\dots''}}
+\end{tcolorbox}
+\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol, title=\textcolor{black}{According to the International Council on Systems Engineering (INCOSE)}]
+    \label{fig:system-def-incose}
+    \textcolor{red}{\emph{A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not.}}\\ 
+    The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
+\end{tcolorbox}
 \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol]
-    \begin{center}
-        \textcolor{blue}{%
-            \emph{``A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control\dots''}}
-    \end{center}
-\end{tcolorbox}\label{fig:system-def-webster}
-According to the International Council on Systems Engineering (INCOSE),\\
-\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol]
-    \begin{center}
-        \textcolor{red}{%
-            \emph{A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not.}}\\ The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
-    \end{center}
-\end{tcolorbox}\label{fig:system-def-incose}
-\begin{center}
-    \begin{itemize}
-        \item It is difficult to give a single and precise definition of the term \emph{system}, which will suit to different perspectives of different people. \\
-        \item In practice, what is meant by ``the system'' depends on the objectives of a particular study.\\
-        \item From the control engineering perspective, \textcolor{red}{the system is any interconnection of components to achieve desired objectives.} It is characterised by its \textcolor{blue}{\textbf{inputs}}, \textcolor{blue}{\textbf{outputs}}, and the rules of operations or laws. For example:
-              \begin{itemize}
-                  \item[\textcolor{blue}{a.}] The laws of operation in electrical systems are Ohm's law, which gives the voltage-current relationships for resistors, capacitors and inductors, and Kirchhoff's laws, which govern the laws of interconnection of various electrical components.
-                  \item[\textcolor{blue}{b.}] Similarly, in mechanical systems, the laws of operation are Newton's laws. These laws can be used to derive mathematical models of the system.
-              \end{itemize}
-    \end{itemize}
-\end{center}
+\begin{itemize}
+	\item It is difficult to give a single and precise definition of the term \emph{system}, which will suit to different perspectives of different people. \\
+	\item In practice, what is meant by ``the system'' depends on the objectives of a particular study.\\
+	\item From the control engineering perspective, \textcolor{red}{the system is any interconnection of components to achieve desired objectives.} It is characterised by its \textcolor{blue}{\textbf{inputs}}, \textcolor{blue}{\textbf{outputs}}, and the rules of operations or laws. For example:
+			\begin{itemize}
+				\item[\textcolor{blue}{a.}] The laws of operation in electrical systems are Ohm's law, which gives the voltage-current relationships for resistors, capacitors and inductors, and Kirchhoff's laws, which govern the laws of interconnection of various electrical components.
+				\item[\textcolor{blue}{b.}] Similarly, in mechanical systems, the laws of operation are Newton's laws. These laws can be used to derive mathematical models of the system.
+			\end{itemize}
+\end{itemize}
+\end{tcolorbox}
 \newpage
 ```
 ### The System as an Operator
@@ -39,21 +34,19 @@ According to the International Council on Systems Engineering (INCOSE),\\
         \label{eq:system-operator-def-equation}
         \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \quad \text{where} \; \mathcal{S} \; \text{is an operator.}
     \end{equation}
-    \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{System Operator Diagram}}]
-        \begin{figure}[H]
-        \label{fig:system-operator-diagram-tikz}
-            \begin{center}
-                \begin{tikzpicture}[auto, thick, node distance=3cm, >=Latex]
-                    \node (input) at (0,0) {};
-                    \node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input] (system) {\large \(\mathcal{S}\)};
-                    \node [right=of system] (output) {};
-                    \draw [->] (input) -- node[above,midway] {\small\(x(t)\)} (system);
-                    \draw [->] (system) -- node[above,midway] {\small\(y(t) = \mathcal{S}[x(t)]\)} (output);
-                \end{tikzpicture}
-            \end{center}
-            \caption{System Operator Diagram}
-        \end{figure}
-    \end{tcolorbox}
+	\begin{figure}[H]
+	\label{fig:system-operator-diagram-tikz}
+		\begin{center}
+			\begin{tikzpicture}[auto, thick, node distance=3cm, >=Latex]
+				\node (input) at (0,0) {};
+				\node [draw=borderblue, rectangle, minimum height=2em, minimum width=3em, right=of input] (system) {\large \(\mathcal{S}\)};
+				\node [right=of system] (output) {};
+				\draw [->] (input) -- node[above,midway] {\small\(x(t)\)} (system);
+				\draw [->] (system) -- node[above,midway] {\small\(y(t) = \mathcal{S}[x(t)]\)} (output);
+			\end{tikzpicture}
+		\end{center}
+		\caption{System Operator Diagram}
+	\end{figure}
     \textcolor{red}{%
             A control system may be defined as an interconnection of components which are configured to provide a desired response.}
 \end{tcolorbox}
@@ -71,34 +64,30 @@ The basis of classifying systems are many. They can be classified according to t
         \item[\textcolor{blue}{b.}] \textbf{System Complexity:} (\emph{physical, conceptual and esoteric});
         \item[\textcolor{blue}{c.}] \textbf{Uncertainties:} (\emph{deterministic and stochastic});
         \item[\textcolor{blue}{d.}] \textbf{Nature and type of components:} (\emph{static or dynamic, linear or nonlinear, time-invariant or time variant, lumped or distributed etc});
-    \end{itemize}
-\end{tcolorbox}
-\begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Types of System Classifications}}]
-\begin{itemize}
-            \item Linear and nonlinear systems;
-            \item Time-invariant and time-variant systems;
-            \item Static (memory less) and dynamic (with memory) systems;
-            \item Causal and Non-causal systems;
-            \item Lumped and distributed parameter systems;
-            \item Deterministic and stochastic systems;
-            \item Continuous and discrete systems;
-        \end{itemize}
+		\item
+		\begin{enumerate}
+			\item[\textcolor{blue}{1.}] Linear and nonlinear systems
+			\item[\textcolor{blue}{2.}] Time-invariant and time-variant systems
+			\item[\textcolor{blue}{3.}] Static (memory less) and dynamic (with memory) systems
+			\item[\textcolor{blue}{4.}] Causal and Non-causal systems
+			\item[\textcolor{blue}{5.}] Lumped and distributed parameter systems
+			\item[\textcolor{blue}{6.}] Deterministic and stochastic systems
+			\item[\textcolor{blue}{7.}] Continuous and discrete systems
+		\end{enumerate}
+	\end{itemize}
 \end{tcolorbox}
 ```
 ### Linear and Nonlinear Systems
 ```{=latex}
 \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Linear and Nonlinear Systems}}]
-    \begin{center}
-        A system is said to be linear provided it satisfies the \textcolor{red}{\emph{principle of superposition}} which is the combination of the \textcolor{blue}{\emph{additive}} and \textcolor{blue}{\emph{homogeneity}} properties. Otherwise, it is \emph{non-linear}
-    \end{center}
-\end{tcolorbox}\label{fig:linear-nonlinear-system-def-md}
+    \label{fig:linear-nonlinear-system-def-md}
+    A system is said to be linear provided it satisfies the \textcolor{red}{\emph{principle of superposition}} which is the combination of the \textcolor{blue}{\emph{additive}} and \textcolor{blue}{\emph{homogeneity}} properties. Otherwise, it is \emph{non-linear}
+\end{tcolorbox}
 ```
 #### Principle of Additivity
-
-Assume the system initially at rest.
-
 ```{=latex}
 \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Principle of Additivity}}]
+    Assume the system initially at rest.
     \begin{enumerate}[label=\(\blacktriangleright\), leftmargin=*, itemsep=0.5em]
         \item Suppose an input \(x_1(t)\) to this system produces an output \(y_1(t)\) and an input \(x_2(t)\) produces an output \(y_2(t)\).
         \item If the system is linear, then the application of the input \(x_1(t) + x_2(t)\) will produce an output \(y_1(t) + y_2(t)\). Thus if
@@ -107,7 +96,6 @@ Assume the system initially at rest.
         \label{eq:linear-system-additive-property-equation}
         \textcolor{blue}{x_1(t) \rightarrow y_1(t) \quad \text{and} \quad x_2(t) \rightarrow y_2(t)}, \quad \text{then} \quad \textcolor{red}{x_1(t) + x_2(t) \rightarrow y_1(t) + y_2(t)}
     \end{equation}
-    \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Additivity Property Diagram}}]
         \begin{figure}[H]
             \label{fig:additive-property-diagram-tikz}
             \begin{center}
@@ -135,7 +123,6 @@ Assume the system initially at rest.
             \end{center}
             \caption{Principle of Additivity}
         \end{figure}
-    \end{tcolorbox}
 \end{tcolorbox}
 ```
 #### Principle of Homogeneity or Scaling
@@ -150,7 +137,6 @@ Assume the system initially at rest.
         \label{eq:linear-system-homogeneity-property-equation}
         \textcolor{red}{x(t) \rightarrow y(t) \quad \Rightarrow ax(t) \rightarrow ay(t)}
     \end{equation}
-    \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Homogeneity Property Diagram}}]
         \begin{figure}[H]   
             \begin{center}
             \label{fig:homogeneity-property-diagram-tikz}
@@ -172,15 +158,12 @@ Assume the system initially at rest.
             \end{center}
             \caption{Principle of Homogeneity}
         \end{figure}
-    \end{tcolorbox}
 \end{tcolorbox}
 ```
 #### Principle of Superposition
-
-This is the combination of both the additive and homogeneity properties for a linear system.
-
 ```{=latex}
 \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Principle of Superposition}}]
+    This is the combination of both the additive and homogeneity properties for a linear system.\\
     If the zero state response of a linear system due to a finite \(N\text{-number}\) of inputs \(x_1(t), x_2(t), \dots, x_N(t)\) equals to \(y_1(t), y_2(t), \dots, y_N(t)\) respectively, then the response of the system to the linear combination of these inputs
     \begin{equation}
         \label{eq:linear-superposition-input-equation}
@@ -202,7 +185,6 @@ This is the combination of both the additive and homogeneity properties for a li
         \label{eq:linear-superposition-equation-constants}
         \textcolor{blue}{a_1x_1(t) + a_2x_2(t) + \ldots  a_Nx_N(t)\rightarrow}\ \textcolor{red}{ a_1y_1(t) + a_2y_2(t) + \ldots  a_Ny_N(t)}
     \end{equation}
-    \begin{tcolorbox}[colback=boxbodycol,colframe=boxheadcol,title=\textcolor{red}{\textbf{Superposition Principle Diagram}}]
         \begin{figure}[H]
             \begin{center}
                 \label{fig:superposition-principle-diagram-tikz}
@@ -234,6 +216,5 @@ This is the combination of both the additive and homogeneity properties for a li
                 \end{tikzpicture}\caption{Superposition Principle Diagram}
             \end{center}
         \end{figure}
-    \end{tcolorbox}
 \end{tcolorbox}
 ```
