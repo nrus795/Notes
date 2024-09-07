@@ -9,6 +9,7 @@ book:
       chapters:
         - lecture1-3/01-introduction.qmd
         - lecture1-3/02-basics-of-computer-architecture.qmd
+        - lecture1-3/03-ISAs.qmd
 
 title: "COMPSYS 304: Computer Architecture"
 subtitle: "Lecture Notes"

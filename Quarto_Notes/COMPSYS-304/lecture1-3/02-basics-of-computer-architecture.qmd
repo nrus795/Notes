@@ -1,9 +1,9 @@
-::::::::::: {#02BasicsComputerArch}
+
 # Basics of Computer Architecture
 
 This chapter begins the journey into the content of this course.
 
-::: {#WhatIsComputerArchitecture}
+
 ## What is Computer Architecture?
 
 <!-- Mermaid diagram showing same figure from notes -->
@@ -13,9 +13,7 @@ This chapter begins the journey into the content of this course.
 -   **Organization:** high-level aspects of computer design (e.g. the internal design of the CPU, the memory system, the interconnection structure, ...)
 
 -   **Hardware:** detailed logic design, circuit-level design, packaging technology, etc.
-:::
 
-::: {#ReviewMemOrg}
 ## Review: Memory Organization
 
 <!-- Memory Diagram to left of list -->
@@ -29,9 +27,7 @@ This chapter begins the journey into the content of this course.
 -   To access a larger word (e.g., a 32-bit word or 4 bytes), four consecutive memory locations are accessed.
 
 *Memory access time* is the amount of time required to read (usually one byte) or write data (usually one byte) from/to memory.
-:::
 
-::: {#MemVsCPUSpeed}
 ## An Overview of Memory Speed vs. CPU Speed
 
 The rate of memory speed increase has been less than processors speed increase
@@ -39,9 +35,8 @@ The rate of memory speed increase has been less than processors speed increase
 <!-- CPU-Z memory access latency graph align left -->
 
 Fast memory is more expensive per bit than slow memory, so a **memory hierarchy** is often used to give a performance close to the fastest memory with a lower average cost per bit.
-:::
 
-::: {#ProcessorAndMemoryHierarchy}
+
 ## Processor and Memory Hierarchy
 ```{=latex}
 \begin{figure}[h]
@@ -66,9 +61,8 @@ Fast memory is more expensive per bit than slow memory, so a **memory hierarchy*
     \end{minipage}
 \end{figure}
 ```
-:::
 
-:::::: {#IntelProcessorExample}
+
 ## Example of Intel Processors
 ```{=latex}
 \begin{figure}[h]
@@ -97,5 +91,3 @@ Fast memory is more expensive per bit than slow memory, so a **memory hierarchy*
 	\end{minipage}
 \end{figure}
 ```
-::::::
-:::::::::::
