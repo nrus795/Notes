@@ -312,3 +312,14 @@ color-filter/README.md
 color-filter/_extensions/color-filter/_extension.yml
 color-filter/_extensions/color-filter/color-filter.lua
 Quarto_Notes/COMPSYS-304/color-filter.zip
+.obsidian/app.json
+.obsidian/appearance.json
+.obsidian/community-plugins.json
+.obsidian/core-plugins-migration.json
+.obsidian/core-plugins.json
+.obsidian/workspace.json
+.obsidian/plugins/obsidian-pandoc/main.js
+.obsidian/plugins/obsidian-pandoc/manifest.json
+.obsidian/plugins/obsidian-pandoc/styles.css
+.obsidian/plugins/qmd-as-md-obsidian/main.js
+.obsidian/plugins/qmd-as-md-obsidian/manifest.json
