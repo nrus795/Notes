@@ -97,9 +97,16 @@
 \usepackage{tcolorbox}
 \usepackage{siunitx}
 \usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{float}
 \sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
 \definecolor{boxheadcol}{HTML}{D6D6F0} % #D6D6F0
 \definecolor{boxbodycol}{HTML}{EBEBF7} % #EBEBF7
+\definecolor{boxtitlecol}{HTML}{4A45B4} % #4A45B4
+\tcbset{title filled}
+\titlespacing*{\chapter}{0pt}{-20pt}{10pt}
+\titlespacing*{\part}{0pt}{20pt}{10pt}
+\titlespacing*{\section}{0pt}{20pt}{10pt}
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
 \makeatother
@@ -260,19 +267,15 @@ my understanding of the more complex topics.
 \chapter{Introduction \& Course
 Overview}\label{introduction-course-overview}
 
-\phantomsection\label{01Introduction}
 This chapter provides an introduction to the course, some background,
 and an overview of the course itself.
 
-\phantomsection\label{CourseBackground}
 \section{Background}\label{background}
 
-\phantomsection\label{BackgroundIntro}
 In the last six decades, computer technology has made incredible
 progress due to innovations in both \textbf{semiconductor technology}
 and computer \textbf{architecture}.
 
-\phantomsection\label{PerformanceQuestion}
 \subsection{\texorpdfstring{What do we mean from
 \emph{Performance}?}{What do we mean from Performance?}}\label{what-do-we-mean-from-performance}
 
@@ -282,7 +285,6 @@ depend on the specific target applications.
 \textbf{\emph{Performance depends on clock frequency and other factors,
 as discussed more in later chapters.}}
 
-\phantomsection\label{IntelX86}
 \subsection{Intel X86 Processor from 1978 to
 2018:}\label{intel-x86-processor-from-1978-to-2018}
 
@@ -293,10 +295,8 @@ as discussed more in later chapters.}}
   \textbf{Core i7-8086K} - (2018): 6 cores, 95 W, 4 GHz
 \end{itemize}
 
-\phantomsection\label{CourseDetails}
 \section{Course Details}\label{course-details}
 
-\phantomsection\label{LearningOutcomes}
 \subsection{Learning outcomes}\label{learning-outcomes}
 
 The main learning outcomes of this course are:
@@ -327,7 +327,6 @@ Recommended Textbook:
   notes).
 \end{itemize}
 
-\phantomsection\label{CourseOverview}
 \subsection{Course Overview (learning
 outcomes)}\label{course-overview-learning-outcomes}
 
@@ -360,7 +359,6 @@ outcomes)}\label{course-overview-learning-outcomes}
   elective courses).
 \end{itemize}
 
-\phantomsection\label{Assessment}
 \subsection{Assessment}\label{assessment}
 
 Three assignments and one test in addition to the final exam. The first
@@ -389,10 +387,8 @@ exam covers the whole course.}
 \chapter{Basics of Computer
 Architecture}\label{basics-of-computer-architecture}
 
-\phantomsection\label{02BasicsComputerArch}
 This chapter begins the journey into the content of this course.
 
-\phantomsection\label{WhatIsComputerArchitecture}
 \section{What is Computer
 Architecture?}\label{what-is-computer-architecture}
 
@@ -409,7 +405,6 @@ Architecture?}\label{what-is-computer-architecture}
   packaging technology, etc.
 \end{itemize}
 
-\phantomsection\label{ReviewMemOrg}
 \section{Review: Memory Organization}\label{review-memory-organization}
 
 \begin{itemize}
@@ -428,7 +423,6 @@ Architecture?}\label{what-is-computer-architecture}
 \emph{Memory access time} is the amount of time required to read
 (usually one byte) or write data (usually one byte) from/to memory.
 
-\phantomsection\label{MemVsCPUSpeed}
 \section{An Overview of Memory Speed vs.~CPU
 Speed}\label{an-overview-of-memory-speed-vs.-cpu-speed}
 
@@ -439,60 +433,82 @@ Fast memory is more expensive per bit than slow memory, so a
 \textbf{memory hierarchy} is often used to give a performance close to
 the fastest memory with a lower average cost per bit.
 
-\phantomsection\label{ProcessorAndMemoryHierarchy}
 \section{Processor and Memory
 Hierarchy}\label{processor-and-memory-hierarchy}
 
-\begin{figure}[h]
-    \centering
-    \begin{minipage}{0.6\textwidth}
-        \centering
-        \includegraphics[height=15cm,width=10cm, keepaspectratio=false]{images/processorhierarchy.png}
-    \end{minipage}%
-    \hspace{0.5cm}
-    \begin{minipage}{0.4\textwidth}
-        \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\emph{Processor Registers: }}\textcolor{blue}{The smallest and fastest memory for CPU.}]
-            Typically, 32 to 64 registers, each of them may be 32 or 64 bits with typical access time of \textcolor{blue}{\emph{nanoseconds or less}}.
-        \end{tcolorbox}
-        \vspace{10pt}
-        \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\emph{Cache Memory: }}\textcolor{blue}{Slower than registers.}]
-            Typically 8 to 256 Kbytes with an access time about \textcolor{blue}{\emph{a few nanoseconds or less}}.
-        \end{tcolorbox}
-        \vspace{10pt}
-        \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\emph{Main Memory: }}\textcolor{blue}{Slower than cache memory.}]
-            Hundreds of Mega bytes with an access time about \textcolor{blue}{\emph{tens of nanoseconds}}.
-        \end{tcolorbox}
-    \end{minipage}
-\end{figure}
+\begin{figure}[H]
 
-\phantomsection\label{IntelProcessorExample}
+\begin{minipage}{0.40\linewidth}
+\includegraphics{lecture1-3/images/processorhierarchy.png}\end{minipage}%
+%
+\begin{minipage}{0.60\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\textcolor{red}{\emph{Processor Registers: }}\textcolor{blue}{The smallest and fastest memory for CPU.}]
+Typically, 32 to 64 registers, each of them may be 32 or 64 bits with
+typical access time of \textcolor{blue}{\emph{nanoseconds or less}}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\textcolor{red}{\emph{Cache Memory: }}\textcolor{blue}{Slower than registers.}]
+Typically 8 to 256 Kbytes with an access time about a
+\textcolor{blue}{\emph{few nanoseconds or less}}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\textcolor{red}{\emph{Main Memory: }}\textcolor{blue}{Slower than cache memory.}]
+Hundreds of Mega bytes with an access time about
+\textcolor{blue}{\emph{tens of nanoseconds}}
+
+\end{tcolorbox}
+
+\end{minipage}%
+
+\end{figure}%
+
 \section{Example of Intel Processors}\label{example-of-intel-processors}
 
-\begin{figure}[h]
-\centering
-    \begin{minipage}{0.48\textwidth}
-        \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\emph{Pentium Processor Architecture (simplified)}}]
-            An example of architectural innovations made by processor designers (to improve computer systems performance).\\
-            \textcolor{red}{(Source: Intel)}
-        \end{tcolorbox}
-    \end{minipage}%
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=8cm, height=4cm, keepaspectratio=false]{images/22pentium.png}
-    \end{minipage}
-    \vspace{0.5cm} % Add some vertical space between the first and second row
+\begin{figure}[H]
 
-    \begin{minipage}{0.48\textwidth}
-        \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\emph{Intel Core i7}}]
-            The Core i7 die and major components. (more than 700 million transistors in a die with an area of \qty{263}{\mm\squared} in 45nm technology).\\
-            \textcolor{red}{(Source: Intel)}
-        \end{tcolorbox}
-    \end{minipage}%
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=8cm, height=4cm, keepaspectratio=false]{images/corei7diagram.png}
-    \end{minipage}
-\end{figure}
+\begin{minipage}{0.50\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\textcolor{red}{\emph{Pentium Processor Architecture (simplified) }}]
+An example of architectural innovations made by processor designers (to
+improve computer systems performance) \textcolor{red}{(Source: Intel)}
+
+\end{tcolorbox}
+
+\end{minipage}%
+%
+\begin{minipage}{0.50\linewidth}
+\includegraphics[width=8cm,height=\textheight]{lecture1-3/images/22pentium.png}\end{minipage}%
+\newline
+\begin{minipage}{0.50\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\textcolor{red}{\emph{Intel Core i7}}]
+The Core i7 die and major components. (more than 700 million transistors
+in a die with area \qty{263}{\mm\squared} in \qty{45}{\nm} technology).
+\textcolor{red}{(Source: Intel)}
+
+\end{tcolorbox}
+
+\end{minipage}%
+%
+\begin{minipage}{0.50\linewidth}
+\includegraphics[width=8cm,height=\textheight]{lecture1-3/images/corei7diagram.png}\end{minipage}%
+
+\end{figure}%
+
+\chapter{Instruction set Architecture
+(ISA)}\label{instruction-set-architecture-isa}
+
+ISA is the interface between hardware and low-level software
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=Some modern instruction set architectures:, coltitle=boxtitlecol, colbacktitle=boxheadcol]
+\textcolor{red}{\textbf{80x86}}, Itanium, PowerPC,
+\textcolor{red}{\textbf{MIPS}}, SPARC, HP,
+\textcolor{red}{\textbf{ARM}}, \textcolor{red}{\textbf{RISC-V}}
+
+\end{tcolorbox}
 
 
 

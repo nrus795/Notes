@@ -2,6 +2,15 @@ project:
   type: book
 include-in-header: 
  - preamble.tex
+filters: 
+  - color-filter
+  - latex-environment
+ 
+environments:
+  - tcolorbox
+
+  
+
 book:
   chapters:
     - index.qmd
@@ -39,3 +48,8 @@ format:
     documentclass: report
     fontsize: 12pt
     papersize: a4
+    css-property-processing: translate
+
+
+
+

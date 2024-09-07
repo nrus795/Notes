@@ -82,3 +82,5 @@ Three assignments and one test in addition to the final exam. The first assignme
 
 -   **Final exam: 50%**
 
+
+

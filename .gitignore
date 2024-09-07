@@ -306,3 +306,9 @@ TSWLatexianTemp*
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
 /.quarto/
+color-filter/.gitignore
+color-filter/example.qmd
+color-filter/README.md
+color-filter/_extensions/color-filter/_extension.yml
+color-filter/_extensions/color-filter/color-filter.lua
+Quarto_Notes/COMPSYS-304/color-filter.zip
