@@ -49,8 +49,3 @@ format:
     documentclass: report
     fontsize: 12pt
     papersize: a4
-    css-property-processing: translate
-
-
-
-
