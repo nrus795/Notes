@@ -325,3 +325,8 @@ Quarto_Notes/COMPSYS-304/color-filter.zip
 .obsidian/plugins/qmd-as-md-obsidian/manifest.json
 
 /.luarc.json
+.obsidian/templates.json
+.obsidian/plugins/obsidian-pandoc/data.json
+.obsidian/plugins/obsidian-shellcommands/main.js
+.obsidian/plugins/obsidian-shellcommands/manifest.json
+.obsidian/plugins/obsidian-shellcommands/styles.css
