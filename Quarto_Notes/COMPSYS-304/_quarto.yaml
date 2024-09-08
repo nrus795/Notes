@@ -43,6 +43,7 @@ format:
     toc-depth: 3
     number-sections: true
     keep-tex: true
+    keep-md: true
     hyperrefoptions: 
       - "pdfpagelabels"
     documentclass: report
