@@ -20,20 +20,6 @@
             }
           }
         ]
-      },
-      {
-        "id": "34e9a61e99b22b1e",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "376faf67d4cf7f00",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          }
-        ]
       }
     ],
     "direction": "vertical"
@@ -171,6 +157,7 @@
   },
   "active": "10bcb92076bec6a3",
   "lastOpenFiles": [
+    "templates",
     "Welcome.md"
   ]
 }
