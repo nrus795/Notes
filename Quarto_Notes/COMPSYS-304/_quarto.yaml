@@ -47,5 +47,9 @@ format:
     hyperrefoptions: 
       - "pdfpagelabels"
     documentclass: report
-    fontsize: 12pt
+    fontsize: 16pt
     papersize: a4
+    mainfont: "Calibri"
+    mathfont: "Cambria Math"
+    monofont: "Consolas"
+    sansfont: "Calibri"

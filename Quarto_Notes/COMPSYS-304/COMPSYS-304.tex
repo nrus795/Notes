@@ -4,7 +4,7 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  12pt,
+  16pt,
   a4paper,
 ]{report}
 
@@ -22,6 +22,10 @@
 \usepackage{lmodern}
 \ifPDFTeX\else  
     % xetex/luatex font selection
+    \setmainfont[]{Calibri}
+    \setsansfont[]{Calibri}
+    \setmonofont[]{Consolas}
+  \setmathfont[]{Cambria Math}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -94,19 +98,27 @@
 \makeatother
 
 \usepackage{graphicx}
-\usepackage{tcolorbox}
+\usepackage[many]{tcolorbox}
 \usepackage{siunitx}
 \usepackage{xcolor}
 \usepackage{titlesec}
 \usepackage{float}
+\usepackage{fontspec}
 \sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
 \definecolor{boxheadcol}{HTML}{D6D6F0} % #D6D6F0
 \definecolor{boxbodycol}{HTML}{EBEBF7} % #EBEBF7
 \definecolor{boxtitlecol}{HTML}{4A45B4} % #4A45B4
+\definecolor{boxheadcol2}{HTML}{BCD5C6} % #BCD5C6
+\definecolor{boxbodycol2}{HTML}{D3E0DF} % #D3E0DF
+\definecolor{boxtitlecol2}{HTML}{0A801D} % #0A801D
+\titleformat{\chapter}
+  {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
 \tcbset{title filled}
-\titlespacing*{\chapter}{0pt}{-20pt}{10pt}
-\titlespacing*{\part}{0pt}{20pt}{10pt}
-\titlespacing*{\section}{0pt}{20pt}{10pt}
+\titlespacing*{\chapter}{0pt}{20pt}{20pt}
+\titlespacing*{\part}{0pt}{20pt}{20pt}
+\titlespacing*{\section}{0pt}{20pt}{20pt}
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
 \makeatother
@@ -392,6 +404,8 @@ This chapter begins the journey into the content of this course.
 \section{What is Computer
 Architecture?}\label{what-is-computer-architecture}
 
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}
+
 \begin{itemize}
 \item
   \textbf{ISA:} The programmer-visible instructions --- ISA serves as
@@ -406,6 +420,8 @@ Architecture?}\label{what-is-computer-architecture}
 \end{itemize}
 
 \section{Review: Memory Organization}\label{review-memory-organization}
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}
 
 \begin{itemize}
 \item
@@ -428,6 +444,8 @@ Speed}\label{an-overview-of-memory-speed-vs.-cpu-speed}
 
 The rate of memory speed increase has been less than processors speed
 increase
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}
 
 Fast memory is more expensive per bit than slow memory, so a
 \textbf{memory hierarchy} is often used to give a performance close to
@@ -498,15 +516,16 @@ in a die with area \qty{263}{\mm\squared} in \qty{45}{\nm} technology).
 
 \end{figure}%
 
-\chapter{Instruction set Architecture
-(ISA)}\label{instruction-set-architecture-isa}
+\chapter{\texorpdfstring{\textcolor{red}{Instruction Set Architecture
+(ISA)}}{Instruction Set Architecture (ISA)}}\label{instruction-set-architecture-isa}
 
-ISA is the interface between hardware and low-level software
+An ISA is the \textbf{interface between hardware and low-level software}
 
 \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=Some modern instruction set architectures:, coltitle=boxtitlecol, colbacktitle=boxheadcol]
 \textcolor{red}{\textbf{80x86}}, Itanium, PowerPC,
 \textcolor{red}{\textbf{MIPS}}, SPARC, HP,
-\textcolor{red}{\textbf{ARM}}, \textcolor{red}{\textbf{RISC-V}}
+\textcolor{red}{\textbf{ARM}},
+\textcolor{red}{\textbf{\underline{RISC-V}}}
 
 \end{tcolorbox}
 
@@ -515,19 +534,23 @@ ISA is the interface between hardware and low-level software
 \begin{itemize}
 \tightlist
 \item
-  \textcolor{red}{\textbf{advantage}}: different implementations of the
-  same architecture :::\{.tcolorbox options=``colback=boxbodycol,
-  colframe=boxheadcol, title=Example, coltitle=boxtitlecol,
-  colbacktitle=boxheadcol''\}
+  \textcolor{red}{\textbf{advantage:}} different implementations of the
+  same architecture
+\end{itemize}
+
+\begin{tcolorbox}[oversize, left=11pt, right=11pt, colback=boxbodycol2, colframe=boxheadcol2, title=Example, coltitle=boxtitlecol2, colbacktitle=boxheadcol2]
+
+\begin{itemize}
+\tightlist
 \item
   AMD and Intel chips use the same ISA, while their implementations are
-  different
+  different.
 \item
   Pentium II and Celeron have different memory systems and different
-  clock rates,
+  clock rates.
 \item
   Core i7, Core i5, Core i3, and Atom are different implementations of
-  the same ISA (ignoring some ISA extensions)
+  the same ISA (ignoring some ISA extensions).
 \end{itemize}
 
 \end{tcolorbox}
@@ -535,9 +558,197 @@ ISA is the interface between hardware and low-level software
 \begin{itemize}
 \tightlist
 \item
-  \textcolor{red}{\textbf{disadvantage}}: sometimes prevents using new
-  innovations ::::
+  \textcolor{red}{\textbf{disadvantage:}} sometimes prevents using new
+  innovations.
 \end{itemize}
+
+\end{tcolorbox}
+
+\textcolor{red}{\textbf{\underline{ISA design:}}}
+\textcolor{blue}{\textbf{What is needed to be included in each \textit{\underline{machine instruction?}}}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What operation is to be performed by the CPU.
+\end{enumerate}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+arithmetic/logic operations, data transfer, control transfer, etc.
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  How data for the operation can be provided.
+\end{enumerate}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+through memory, through CPU registers, encoded in the instruction word
+
+\end{tcolorbox}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  How the result is to be stored.
+\end{enumerate}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+in memory or register
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, title=\textcolor{red}{\textbf{Therefore, the ISA must define:}}, coltitle=boxtitlecol, colbacktitle=boxheadcol]
+
+\begin{itemize}
+\tightlist
+\item
+  The operation to be performed (\textbf{\emph{opcode}})
+\item
+  Data type and size of operands
+\item
+  Location of operands and results
+\item
+  Instruction format or Encoding
+\end{itemize}
+
+\end{tcolorbox}
+
+\newpage{}
+
+\section{Classifying Instruction Set
+Architectures}\label{classifying-instruction-set-architectures}
+
+Each instruction has (an) \textcolor{red}{\textbf{opcode}} which defines
+the type of operation and may have zero to three
+\textcolor{red}{\textbf{operands}} for input data and the result
+destination.
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+
+The type storage used for operands is the most basic differentiation
+among different types of Instruction Set Architectures (ISA).
+
+\begin{itemize}
+\tightlist
+\item
+  operands from/to memory
+\item
+  operands from/to registers
+\item
+  operands from memory/to register or vice versa
+\end{itemize}
+
+\end{tcolorbox}
+
+\subsection{\texorpdfstring{\textcolor{red}{\underline{Stack-based Architecture}}}{}}\label{section}
+
+\begin{figure}[H]
+
+\begin{minipage}{0.40\linewidth}
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.60\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+The pointer to the \textbf{\emph{top of the stack}} will be adjusted
+properly after completing the ALU (\textbf{A}rithmetic / \textbf{L}ogic
+\textbf{U}nit) operation to point to the result.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+\textbf{\underline{Instruction:}}\\
+\textcolor{red}{\textbf{ADD}}\\
+\textcolor{blue}{\textbf{ADD}} has three implicit operands, which are
+from/to the \textbf{stack}.
+
+\end{tcolorbox}
+
+\end{minipage}%
+
+\end{figure}%
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+Two special instructions \textcolor{red}{\textbf{PUSH}} and
+\textcolor{red}{\textbf{POP}} are used to write into the top of the
+stack or read from the top of the stack respectively. The
+\textbf{\emph{stack pointer}} will be adjusted properly after completing
+these operations.
+
+\end{tcolorbox}
+
+\subsection{\texorpdfstring{\textcolor{red}{\underline{Accumulator-based Architecture}}}{}}\label{section-1}
+
+\begin{figure}[H]
+
+\begin{minipage}{0.40\linewidth}
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.60\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+\textbf{\underline{Instruction:}}\\
+\textcolor{red}{\textbf{ADD}} \textbf{\emph{mem\_address}}\\
+\textcolor{blue}{\textbf{ADD}} has two implicit operands (Accumulator
+register) and one explicit operand (memory).
+
+\end{tcolorbox}
+
+\end{minipage}%
+
+\end{figure}%
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+Two special instructions \textcolor{red}{\textbf{LOAD}} and
+\textcolor{red}{\textbf{STORE}} are used to read from the memory
+(i.e.~copy the contents of the given memory location into accumulator
+register), and write into memory (i.e.~copy the contents of the
+accumulator into given memory location) respectively.
+
+\end{tcolorbox}
+
+\subsection{\texorpdfstring{\textcolor{red}{\underline{Register-Memory Architecture}}}{}}\label{section-2}
+
+\begin{figure}[H]
+
+\begin{minipage}{0.40\linewidth}
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.60\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+\textbf{\underline{Instruction:}}\\
+\textcolor{red}{\textbf{ADD}} \textbf{Rs}, \textbf{Rd}
+\textbf{\emph{mem\_address}}\\
+\textcolor{blue}{\textbf{ADD}} has three operands. \textcolor{red}{Rd}
+and \textcolor{red}{Rs} represent the destination and source registers
+respectively. The other source operand is provided through memory.
+
+\end{tcolorbox}
+
+\end{minipage}%
+
+\end{figure}%
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+Two special instructions \textcolor{red}{\textbf{LOAD}} and
+\textcolor{red}{\textbf{STORE}} are used to read from the memory
+(i.e.~copy the contents of the given memory location into a given
+register), and write into memory (i.e.~copy the contents of the
+specified register into given memory location) respectively.
+
+\end{tcolorbox}
 
 
 

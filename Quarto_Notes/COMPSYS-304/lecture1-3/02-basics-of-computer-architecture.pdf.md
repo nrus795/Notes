@@ -4,7 +4,18 @@ This chapter begins the journey into the content of this course.
 
 ## What is Computer Architecture?
 
-<!-- Mermaid diagram showing same figure from notes -->
+<!-- !Mermaid diagram showing same figure from notes! -->
+
+
+
+
+{{< placeholder >}}
+
+
+
+
+
+
 
 -   **ISA:** The programmer-visible instructions — ISA serves as the boundary between the hardware and software.
 
@@ -14,7 +25,19 @@ This chapter begins the journey into the content of this course.
 
 ## Review: Memory Organization
 
-<!-- Memory Diagram to left of list -->
+<!-- !Memory Diagram to left of list! -->
+
+
+
+
+{{< placeholder >}}
+
+
+
+
+
+
+
 
 -   Memory is viewed as a large, one-dimensional array, which has an address range.
 
@@ -30,7 +53,19 @@ This chapter begins the journey into the content of this course.
 
 The rate of memory speed increase has been less than processors speed increase
 
-<!-- CPU-Z memory access latency graph align left -->
+<!-- !CPU-Z memory access latency graph align left! -->
+
+
+
+
+{{< placeholder >}}
+
+
+
+
+
+
+
 
 Fast memory is more expensive per bit than slow memory, so a **memory hierarchy** is often used to give a performance close to the fastest memory with a lower average cost per bit.
 

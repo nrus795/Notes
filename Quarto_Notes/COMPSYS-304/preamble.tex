@@ -1,14 +1,22 @@
 \usepackage{graphicx}
-\usepackage{tcolorbox}
+\usepackage[many]{tcolorbox}
 \usepackage{siunitx}
 \usepackage{xcolor}
 \usepackage{titlesec}
 \usepackage{float}
+\usepackage{fontspec}
 \sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
 \definecolor{boxheadcol}{HTML}{D6D6F0} % #D6D6F0
 \definecolor{boxbodycol}{HTML}{EBEBF7} % #EBEBF7
 \definecolor{boxtitlecol}{HTML}{4A45B4} % #4A45B4
+\definecolor{boxheadcol2}{HTML}{BCD5C6} % #BCD5C6
+\definecolor{boxbodycol2}{HTML}{D3E0DF} % #D3E0DF
+\definecolor{boxtitlecol2}{HTML}{0A801D} % #0A801D
+\titleformat{\chapter}
+  {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
 \tcbset{title filled}
-\titlespacing*{\chapter}{0pt}{-20pt}{10pt}
-\titlespacing*{\part}{0pt}{20pt}{10pt}
-\titlespacing*{\section}{0pt}{20pt}{10pt}
+\titlespacing*{\chapter}{0pt}{20pt}{20pt}
+\titlespacing*{\part}{0pt}{20pt}{20pt}
+\titlespacing*{\section}{0pt}{20pt}{20pt}
