@@ -1,0 +1,156 @@
+# Instruction Set Architecture Design
+
+## [Comparing different Instruction Set Architectures.]{color="red"}
+
+[**Which one is the best? (for our example: C = A + B)**]{color="red"}
+
+```{python}
+#| label: ISA Table
+#| echo: false
+#| fig-align: center
+import matplotlib.pyplot as plt
+from matplotlib.table import Table
+from matplotlib import font_manager
+font_files = font_manager.findSystemFonts(fontpaths=None)
+
+for font_file in font_files:
+    font_manager.fontManager.addfont(font_file)
+
+plt.rcParams.update({
+    'font.family': 'Latin Modern Roman',
+    'mathtext.fontset': 'cm',
+    'font.size': 14
+})
+
+
+# Sample data for your table
+data = [
+    ["Push 1000", "Load 1000", "Load R1, 1000", "Load R1, 1000"],
+    ["Push 2000", "Add 2000", "Add R2, R1, 2000", "Load R2, 2000"],
+    ["Add", "Store 3000", "Store R2, 3000", "Add R3, R1, R2"],
+    ["Pop 3000", "", "", "Store R3, 3000"]
+]
+
+column_labels = ["Stack", "Accumulator", "Register-Memory", "Register-Register"]
+
+# Create a figure and axis
+fig, ax = plt.subplots(figsize=(10, 3.5))
+
+# Hide the axes
+ax.xaxis.set_visible(False) 
+ax.yaxis.set_visible(False) 
+ax.set_frame_on(False)
+
+# Create a table
+table = Table(ax, bbox=[0, 0, 1.1, 1.1])
+
+# Define colors for columns
+stack_col = '#FFFF66'  # Yellow
+reg_mem_col = '#CCCCFF'  # Light purple
+reg_reg_col = '#CCFFFF'  # Light cyan
+
+# Column widths
+col_widths = [0.22, 0.22, 0.28, 0.28]
+
+# Add table headers with same colors as the respective columns
+header_colors = [stack_col, '#FFFFFF', reg_mem_col, reg_reg_col]  # White for "Accumulator" column
+# weight='bold', color="#0A801D"
+
+
+
+for i, col_label in enumerate(column_labels):
+    table.add_cell(0, i, width=col_widths[i], height=0.1, text=col_label,
+                   loc='center', facecolor=header_colors[i], fontproperties=(font_manager.FontProperties(weight='bold')))
+
+for i in range(len(column_labels)):
+    cell = table[0, i]
+    cell.get_text().set_color('#0A801D')
+# Add table data with matching colors
+for row_idx, row in enumerate(data, start=1):
+    for col_idx, cell_value in enumerate(row):
+        cell_color = '#FFFFFF'  # Default white
+        if col_idx == 0:
+            cell_color = stack_col  # Yellow for Stack column
+        elif col_idx == 2:
+            cell_color = reg_mem_col  # Light purple for Register_Memory column
+        elif col_idx == 3:
+            cell_color = reg_reg_col  # Light cyan for Register_Register column
+        table.add_cell(row_idx, col_idx, width=col_widths[col_idx], height=0.1,
+                       text=cell_value, loc='center', facecolor=cell_color)
+
+table.auto_set_font_size(False)  # Disable auto font size
+table.set_fontsize(14)  # Set the font size for the table
+# Add the table to the axis
+ax.add_table(table)
+
+# Show the figure
+plt.show()
+```
+
+:::{.tcolorbox options="colback=boxbodycol, colframe=boxheadcol, coltitle=boxtitlecol, colbacktitle=boxheadcol, title=Basic ISA Classes"}
+Instruction set architectures (ISA) are generally classified based on:
+- the instruction word size (how many bytes for encoding each instruction)
+- the number of different instructions in the ISA
+- the number of clock cycles required to complete each instruction (which can be implementation dependent)
+:::
+
+:::{.tcolorbox options="colback=boxbodycol, colframe=boxbodycol"}
+Based on that, the following have been specified as different ISA classes:
+
+- [**RISC**]{color=red} (Reduced Instruction Set Computers): where the size of the instruction word for all instructions are the same. This may lead to simpler decoding hardware. For example, **MIPS** (or RISC-V) processors use this type of ISA.
+
+- [**CISC**]{color=red} (Complex Instruction Set Computers): where the size of the instruction word may be different for different instructions. This results in more complex decoding hardware but the code footprint (binary code size of the program) can be less. for example, **Intel X86** based processors are based on this type of ISA.
+
+- [**EPIC**]{color=red} (Explicitly Parallel Instruction Computers): In this case, parallel operations are explicitly encoded in the instruction. The compiler plays a more important role in EPIC architectures. For example, **Intel Itanium** is based on this type of ISA.
+:::
+
+## Different levels of abstraction [(Software)]{color="red"}
+
+<!-- ! PLACEHOLDER ! -->
+{{< placeholder >}}
+<!-- TODO: implement the diagram from notes -->
+
+:::{.tcolorbox options="colback=boxbodycol, colframe=boxheadcol"}
+An abstraction removes unnecessary detail, helps us cope with the complexity. More hardware details are considered in programming through moving from [**High-Level Language**]{color=red} to [**Machine Language**]{color=red}.
+:::
+
+## [Basic steps in a CPU]{color=red} for \underline{Instruction Processing}
+
+::: {layout="[30,70]"}
+
+::: {#first-column}
+<!-- ! PLACEHOLDER ! -->
+{{< placeholder >}}
+:::
+
+::: {#second-column}
+balls
+:::
+:::
+
+::: {layout="[30,70]"}
+
+::: {#first-column}
+<!-- ! PLACEHOLDER ! -->
+{{< placeholder >}}
+:::
+
+::: {#second-column}
+balls
+:::
+:::
+
+::: {layout="[30,70]"}
+
+::: {#first-column}
+<!-- ! PLACEHOLDER ! -->
+{{< placeholder >}}
+:::
+
+::: {#second-column}
+
+:::{.tcolorbox options="colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\\textcolor{red}{\\underline{\\textbf{Execution}}}"}
+
+:::
+:::
+:::

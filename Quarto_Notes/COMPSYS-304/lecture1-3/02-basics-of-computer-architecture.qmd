@@ -38,12 +38,12 @@ Fast memory is more expensive per bit than slow memory, so a **memory hierarchy*
 
 ## Processor and Memory Hierarchy
 
-:::::::: {layout="[40,60]" fig-pos="H"}
+::: {layout="[40,60]" fig-pos="H"}
 ::: {#first-column}
 ![][1]
 :::
 
-:::::: {#second-column}
+::: {#second-column}
 ::: {.tcolorbox options="colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\\textcolor{red}{\\emph{Processor Registers: }}\\textcolor{blue}{The smallest and fastest memory for CPU.}"}
 Typically, 32 to 64 registers, each of them may be 32 or 64 bits with typical access time of [*nanoseconds or less*]{color=blue}
 :::
@@ -55,34 +55,34 @@ Typically 8 to 256 Kbytes with an access time about a [*few nanoseconds or less*
 ::: {.tcolorbox options="colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\\textcolor{red}{\\emph{Main Memory: }}\\textcolor{blue}{Slower than cache memory.}"}
 Hundreds of Mega bytes with an access time about [*tens of nanoseconds*]{color=blue}
 :::
-::::::
-::::::::
+:::
+:::
 
   [1]: images/processorhierarchy.png
 
 ## Example of Intel Processors
 
-::::::::: {layout="[[1,1],[1,1]]" fig-pos="H"}
-:::: {#r1c1}
+::: {layout="[[1,1],[1,1]]" fig-pos="H"}
+::: {#r1c1}
 ::: {.tcolorbox options="colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\\textcolor{red}{\\emph{Pentium Processor Architecture (simplified) }}"}
 An example of architectural innovations made by processor designers (to improve computer systems performance) [(Source: Intel)]{color=red}
 :::
-::::
+:::
 
 ::: {#r1c2}
 ![][2]
 :::
 
-:::: {#r2c1}
+::: {#r2c1}
 ::: {.tcolorbox options="colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\\textcolor{red}{\\emph{Intel Core i7}}"}
 The Core i7 die and major components. (more than 700 million transistors in a die with area \qty{263}{\mm\squared} in \qty{45}{\nm} technology). [(Source: Intel)]{color=red}
 :::
-::::
+:::
 
 ::: {#r2c2}
 ![][3]
 :::
-:::::::::
+:::
 
   [2]: images/22pentium.png {width="8cm" height="4cm"}
   [3]: images/corei7diagram.png {width="8cm" height="4cm"}

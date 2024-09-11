@@ -4,9 +4,12 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  16pt,
+  14pt,
   a4paper,
-]{report}
+  DIV=11,
+  numbers=noendperiod,
+  headinclude=true,
+  footinclude=true]{scrreprt}
 
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
@@ -19,13 +22,9 @@
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-\usepackage{lmodern}
+\usepackage[]{lmodern}
 \ifPDFTeX\else  
     % xetex/luatex font selection
-    \setmainfont[]{Calibri}
-    \setsansfont[]{Calibri}
-    \setmonofont[]{Consolas}
-  \setmathfont[]{Cambria Math}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -44,7 +43,7 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\usepackage[top=2cm,bottom=2cm,left=1.5cm,right=1.5cm,marginparsep=2cm]{geometry}
+\usepackage[top=2.5cm,bottom=2.5cm,left=1.5cm,right=1.5cm,marginparsep=2cm]{geometry}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
@@ -70,6 +69,7 @@
   \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 \makeatother
+\pagestyle{plain}
 
 
 \providecommand{\tightlist}{%
@@ -100,10 +100,11 @@
 \usepackage{graphicx}
 \usepackage[many]{tcolorbox}
 \usepackage{siunitx}
-\usepackage{xcolor}
-\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
 \usepackage{float}
-\usepackage{fontspec}
+\usepackage{fancyhdr}
+% \usepackage{fontspec}
 \sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
 \definecolor{boxheadcol}{HTML}{D6D6F0} % #D6D6F0
 \definecolor{boxbodycol}{HTML}{EBEBF7} % #EBEBF7
@@ -111,14 +112,44 @@
 \definecolor{boxheadcol2}{HTML}{BCD5C6} % #BCD5C6
 \definecolor{boxbodycol2}{HTML}{D3E0DF} % #D3E0DF
 \definecolor{boxtitlecol2}{HTML}{0A801D} % #0A801D
-\titleformat{\chapter}
-  {\normalfont\LARGE\bfseries}{\thechapter}{1em}{}
-\titleformat{\section}
-  {\normalfont\Large\bfseries}{\thesection}{1em}{}
+\definecolor{tablecol1}{HTML}{FFFF66} % #FFFF66
+\definecolor{tablecol2}{HTML}{CCCCFF} % #CCCCFF
+\definecolor{tablecol3}{HTML}{CCFFFF} % #CCFFFF
+
+
+\setkomafont{disposition}{\normalcolor\bfseries}
+\setkomafont{section}{\normalfont\Large\bfseries}
+\setkomafont{chapter}{\normalfont\LARGE\bfseries}
 \tcbset{title filled}
-\titlespacing*{\chapter}{0pt}{20pt}{20pt}
-\titlespacing*{\part}{0pt}{20pt}{20pt}
-\titlespacing*{\section}{0pt}{20pt}{20pt}
+\RedeclareSectionCommand[
+  beforeskip=10pt, % Space before the chapter
+  afterskip=10pt   % Space after the chapter
+]{chapter}
+
+% Adjust part spacing
+\RedeclareSectionCommand[
+  beforeskip=10pt,
+  afterskip=10pt
+]{part}
+
+% Adjust section spacing
+\RedeclareSectionCommand[
+  beforeskip=10pt,
+  afterskip=10pt
+]{section}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\textbf{Nicholas Russell}}%
+  \fancyhead[C]{COMPSYS 304 Notes}%
+  \fancyhead[R]{September 3rd, 2024}%
+  \fancyfoot[R]{\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\pagestyle{plain}
+\setlength{\headheight}{16.5pt}
+\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
 \makeatother
@@ -191,7 +222,7 @@
 \makeatother
 \subtitle{Lecture Notes}
 \author{Nicholas Russell}
-\date{2024-03-09}
+\date{Tuesday, September 3, 2024}
 
 \begin{document}
 \maketitle
@@ -749,6 +780,256 @@ register), and write into memory (i.e.~copy the contents of the
 specified register into given memory location) respectively.
 
 \end{tcolorbox}
+
+\subsection{\texorpdfstring{\textcolor{red}{\underline{Register-Register (load/store) Architecture}}}{}}\label{section-3}
+
+\begin{figure}[H]
+
+\begin{minipage}{0.40\linewidth}
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.60\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+\textbf{\underline{Instruction:}}\\
+\textcolor{red}{\textbf{ADD}} \textbf{Rs, Rd, Rt}\\
+\textcolor{blue}{\textbf{ADD}} has three operands. \textcolor{red}{Rd},
+\textcolor{red}{Rs}, and \textcolor{red}{Rt} represent the destination
+and source registers respectively.
+
+\end{tcolorbox}
+
+\end{minipage}%
+
+\end{figure}%
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+Two special instructions \textcolor{red}{\textbf{LOAD}} and
+\textcolor{red}{\textbf{STORE}} are used to read from the memory
+(i.e.~copy the contents of the given memory location into a given
+register), and write into memory (i.e.~copy the contents of the
+specified register into given memory location) respectively.
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=boxbodycol2, colframe=boxheadcol2, title=Example, coltitle=boxtitlecol2, colbacktitle=boxheadcol2]
+Write the instructions for the expression
+\(\textcolor{red}{\textbf{C = A + B}}\) for the four classes of
+instruction sets. It is assumed that A, B and C are located in memory
+addresses 1000, 2000 and 3000 respectively.
+
+\end{tcolorbox}
+
+\begin{figure}
+
+\begin{minipage}{0.65\linewidth}
+\textcolor{red}{\textbf{(a) Stack-based architecture}}\\
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.35\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+\textcolor{blue}{\textbf{PUSH 1000}}\\
+\textcolor{blue}{\textbf{PUSH 2000}}\\
+\textcolor{blue}{\textbf{ADD}}\\
+\textcolor{blue}{\textbf{POP 3000}}
+
+\end{tcolorbox}
+
+\end{minipage}%
+
+\end{figure}%
+
+\begin{figure}
+
+\begin{minipage}{0.65\linewidth}
+\textcolor{red}{\textbf{(b) Accumulator-based architecture}}\\
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.35\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+\textcolor{blue}{\textbf{LOAD 1000}}\\
+\textcolor{blue}{\textbf{ADD 2000}}\\
+\textcolor{blue}{\textbf{STORE 3000}}
+
+\end{tcolorbox}
+
+\end{minipage}%
+
+\end{figure}%
+
+\begin{figure}
+
+\begin{minipage}{0.65\linewidth}
+\textcolor{red}{\textbf{(c) Register-Memory architecture}}\\
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.35\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+\textcolor{blue}{\textbf{LOAD R1, 1000}}\\
+\textcolor{blue}{\textbf{ADD R2, R1, 2000}}\\
+\textcolor{blue}{\textbf{STORE R2, 3000}}
+
+\end{tcolorbox}
+
+\end{minipage}%
+
+\end{figure}%
+
+\begin{figure}
+
+\begin{minipage}{0.65\linewidth}
+\textcolor{red}{\textbf{(d) Register-Register (load/store)
+architecture}}\\
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.35\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+\textcolor{blue}{\textbf{LOAD R1, 1000}}\\
+\textcolor{blue}{\textbf{LOAD R2, 2000}}\\
+\textcolor{blue}{\textbf{ADD R3, R1, R2}}\\
+\textcolor{blue}{\textbf{STORE R3, 3000}}
+
+\end{tcolorbox}
+
+\end{minipage}%
+
+\end{figure}%
+
+\newpage{}
+
+\subsection{\texorpdfstring{\textcolor{red}{\underline{Summary}:}
+Different types of
+ISA}{: Different types of ISA}}\label{different-types-of-isa}
+
+\begin{figure}
+
+\begin{minipage}{0.50\linewidth}
+\textcolor{red}{\textbf{Stack-based architecture}}\\
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.50\linewidth}
+\textcolor{red}{\textbf{Accumulator-based architecture}}\\
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+\newline
+\begin{minipage}{0.50\linewidth}
+\textcolor{red}{\textbf{Register-Memory architecture}}\\
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.50\linewidth}
+\textcolor{red}{\textbf{Register-Register (load/store) architecture}}\\
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+
+\end{figure}%
+
+\chapter{Instruction Set Architecture
+Design}\label{instruction-set-architecture-design}
+
+\section{\texorpdfstring{\textcolor{red}{Comparing different Instruction
+Set
+Architectures.}}{Comparing different Instruction Set Architectures.}}\label{comparing-different-instruction-set-architectures.}
+
+\textcolor{red}{\textbf{Which one is the best? (for our example: C = A +
+B)}}
+
+\begin{center}
+\includegraphics{lecture1-3/04-ISA-design_files/figure-pdf/isa-table-output-1.pdf}
+\end{center}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, coltitle=boxtitlecol, colbacktitle=boxheadcol, title=Basic ISA Classes]
+Instruction set architectures (ISA) are generally classified based on: -
+the instruction word size (how many bytes for encoding each instruction)
+- the number of different instructions in the ISA - the number of clock
+cycles required to complete each instruction (which can be
+implementation dependent)
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+
+Based on that, the following have been specified as different ISA
+classes:
+
+\begin{itemize}
+\item
+  \textcolor{red}{\textbf{RISC}} (Reduced Instruction Set Computers):
+  where the size of the instruction word for all instructions are the
+  same. This may lead to simpler decoding hardware. For example,
+  \textbf{MIPS} (or RISC-V) processors use this type of ISA.
+\item
+  \textcolor{red}{\textbf{CISC}} (Complex Instruction Set Computers):
+  where the size of the instruction word may be different for different
+  instructions. This results in more complex decoding hardware but the
+  code footprint (binary code size of the program) can be less. for
+  example, \textbf{Intel X86} based processors are based on this type of
+  ISA.
+\item
+  \textcolor{red}{\textbf{EPIC}} (Explicitly Parallel Instruction
+  Computers): In this case, parallel operations are explicitly encoded
+  in the instruction. The compiler plays a more important role in EPIC
+  architectures. For example, \textbf{Intel Itanium} is based on this
+  type of ISA.
+\end{itemize}
+
+\end{tcolorbox}
+
+\section{\texorpdfstring{Different levels of abstraction
+\textcolor{red}{(Software)}}{Different levels of abstraction (Software)}}\label{different-levels-of-abstraction-software}
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol]
+An abstraction removes unnecessary detail, helps us cope with the
+complexity. More hardware details are considered in programming through
+moving from \textcolor{red}{\textbf{High-Level Language}} to
+\textcolor{red}{\textbf{Machine Language}}.
+
+\end{tcolorbox}
+
+\section{\texorpdfstring{\textcolor{red}{Basic steps in a CPU} for
+\underline{Instruction Processing}}{Basic steps in a CPU for }}\label{basic-steps-in-a-cpu-for}
+
+\begin{figure}
+
+\begin{minipage}{0.30\linewidth}
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.70\linewidth}
+balls\end{minipage}%
+
+\end{figure}%
+
+\begin{figure}
+
+\begin{minipage}{0.30\linewidth}
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.70\linewidth}
+balls\end{minipage}%
+
+\end{figure}%
+
+\begin{figure}
+
+\begin{minipage}{0.30\linewidth}
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
+%
+\begin{minipage}{0.70\linewidth}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\textcolor{red}{\underline{\textbf{Execution}}}]
+
+\end{tcolorbox}
+
+\end{minipage}%
+
+\end{figure}%
 
 
 

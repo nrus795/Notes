@@ -1,0 +1,45 @@
+version: "0.2"
+ignorePaths: []
+dictionaryDefinitions:
+  - name: custom-dictionary-user
+    path: "C:\\Users\\narus\\.cspell\\custom-dictionary-user.txt"
+    addWords: true
+    scope: user
+dictionaries:
+  - fonts
+  - en-gb
+  - softwareTerms
+  - custom-dictionary-user
+  - fonts
+  - python
+  - cpp
+  - css
+  - c
+  - bibtex
+  - latex
+  - jupyter
+  - lua
+  - markdown
+  - markdown_latex_combined
+  - quarto
+  - text
+  - typst
+  - yaml
+  - rmd
+  - r
+  - markdown-math
+  - properties
+  - json
+  - jsonc
+  - gitignore
+  - git-commit
+  - snippets
+  - scss
+words: []
+ignoreWords: []
+import: []
+enableFiletypes:
+  - bibtex
+  - gitignore
+  - lua
+  - typst

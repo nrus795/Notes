@@ -1,5 +1,165 @@
 {
 	"Lua.diagnostics.globals": [
 		"pandoc"
-	]
+	],
+
+
+	"workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+	"editor.minimap.enabled": true,
+	"breadcrumbs.enabled": true,
+	"editor.glyphMargin": true,
+	"explorer.decorations.badges": false,
+	"explorer.decorations.colors": false,
+	"editor.fontLigatures": true,
+	"window.commandCenter": true,
+	"workbench.editor.untitled.hint": "hidden",
+	"markdown.validate.enabled": true,
+	"markdown.updateLinksOnFileMove.enabled": "prompt",
+	"workbench.startupEditor": "none",
+	"cSpell.enableFiletypes": [
+		"quarto"
+	],
+	// "cSpell.customDictionaries": {
+	// 	"custom-dictionary-user": {
+	// 		"name": "custom-dictionary-user",
+	// 		"path": "~/.cspell/custom-dictionary-user.txt",
+	// 		"addWords": true,
+	// 		"scope": "user"
+	// 	}
+	// },
+
+	"[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+	"gitlens.ai.experimental.model": "vscode",
+    "gitlens.ai.experimental.vscode.model": "copilot:gpt-4o",
+    "editor.wordWrap": "on",
+	"cSpell.languageSettings": [],
+    "cSpell.language": "en,en-AU,en-GB",
+	"diffEditor.codeLens": true,
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "python.condaPath": "conda",
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "Windows Terminal": {
+            "path": "C:\\Users\\narus\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
+        },
+    },
+	"git.autofetch": true,
+	"quarto.visualEditor.spellingDictionary": "en_AU",
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": false,
+		"markdown": false,
+		"scminput": false,
+		"quarto": true
+	},
+	"projectManager.git.baseFolders": [
+		"C:\\Users\\narus\\Documents\\University\\LaTeX_Notes"
+	],
+	"git.confirmSync": false,
+	"quarto.visualEditor.markdownReferenceLinks": true,
+	"notebook.lineNumbers": "on",
+	"quarto.mathjax.extensions": [
+		"mathtools",
+		"physics"
+	],
+	"markdownlint.lintWorkspaceGlobs": [
+		"**/*.{md,mkd,mdwn,mdown,markdown,markdn,mdtxt,mdtext,workbook}",
+		"!**/bower_components",
+		"!**/node_modules",
+		"!**/vendor",
+		"!**/.git"
+	],
+	"markdownlint.run": "onSave",
+	"[quarto]": {
+
+
+		"editor.defaultFormatter": "quarto.quarto",
+		"editor.snippetSuggestions": "top",
+		
+	},
+	"editor.insertSpaces": false,
+	"markdown.math.enabled": false,
+	"quarto.path": "C:\\Users\\narus\\AppData\\Local\\Programs\\Quarto\\bin\\quarto.exe",
+	"quarto.assist.updateMode": "live",
+	"extensions.experimental.affinity": {
+		"asvetliakov.vscode-neovim": 1
+	},
+	"vscode-neovim.neovimClean": true,
+	"quarto.render.renderOnSave": true,
+	"terminal.integrated.gpuAcceleration": "on",
+	"cSpell.enabledLanguageIds": [
+		"asciidoc",
+		"c",
+		"cpp",
+		"csharp",
+		"css",
+		"elixir",
+		"erlang",
+		"git-commit",
+		"go",
+		"graphql",
+		"handlebars",
+		"haskell",
+		"html",
+		"jade",
+		"java",
+		"javascript",
+		"javascriptreact",
+		"json",
+		"jsonc",
+		"jupyter",
+		"latex",
+		"less",
+		"markdown",
+		"php",
+		"plaintext",
+		"python",
+		"pug",
+		"restructuredtext",
+		"rust",
+		"scala",
+		"scss",
+		"scminput",
+		"swift",
+		"text",
+		"typescript",
+		"typescriptreact",
+		"vue",
+		"yaml",
+		"yml",
+		"qmd"
+	],
+	"cSpell.autoFormatConfigFile": true,
+	"cSpell.workspaceRootPath": "${workspaceFolder:LaTeX_Notes}",
+	"cSpell.words": [
+		"addfont",
+		"bbox",
+		"elif",
+		"facecolor",
+		"figsize",
+		"fontpaths",
+		"fontset",
+		"mathtext",
+		"matplotlib",
+		"pyplot",
+		"xaxis",
+		"yaxis"
+	],
 }

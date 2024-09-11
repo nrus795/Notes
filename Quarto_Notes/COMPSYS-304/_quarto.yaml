@@ -1,16 +1,12 @@
-project: 
+project:
   type: book
-include-in-header: 
- - preamble.tex
-filters: 
+include-in-header:
+  - preamble.tex
+filters:
   - color-filter
   - latex-environment
- 
 environments:
   - tcolorbox
-
-  
-
 book:
   chapters:
     - index.qmd
@@ -19,37 +15,40 @@ book:
         - lecture1-3/01-introduction.qmd
         - lecture1-3/02-basics-of-computer-architecture.qmd
         - lecture1-3/03-ISAs.qmd
+        - lecture1-3/04-ISA-design.qmd
 
 title: "COMPSYS 304: Computer Architecture"
 subtitle: "Lecture Notes"
 author: "Nicholas Russell"
-date: "3/09/2024"
+date: 09/03/2024
+date-format: full
 format:
   pdf:
     pdf-engine: latexmk
-    pdf-engine-opts: 
+    pdf-engine-opts:
       - "-synctex=1"
       - "-interaction=nonstopmode"
       - "-file-line-error"
       - "-lualatex"
       - "-shell-escape"
-    geometry: 
-      - "top=2cm"
-      - "bottom=2cm"
-      - "left=1.5cm"
-      - "right=1.5cm"
-      - "marginparsep=2cm"
     toc: true
     toc-depth: 3
     number-sections: true
     keep-tex: true
     keep-md: true
-    hyperrefoptions: 
+    hyperrefoptions:
       - "pdfpagelabels"
-    documentclass: report
-    fontsize: 16pt
+    documentclass: scrreprt
+    fontsize: 14pt
     papersize: a4
-    mainfont: "Calibri"
-    mathfont: "Cambria Math"
-    monofont: "Consolas"
-    sansfont: "Calibri"
+    pagestyle: plain
+    classoption:
+      - headinclude=true
+      - footinclude=true
+    geometry:
+      - "top=2.5cm"
+      - "bottom=2.5cm"
+      - "left=1.5cm"
+      - "right=1.5cm"
+      - "marginparsep=2cm"
+    fontfamily: lmodern
