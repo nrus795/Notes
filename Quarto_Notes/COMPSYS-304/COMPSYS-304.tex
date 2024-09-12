@@ -112,11 +112,7 @@
 \definecolor{boxheadcol2}{HTML}{BCD5C6} % #BCD5C6
 \definecolor{boxbodycol2}{HTML}{D3E0DF} % #D3E0DF
 \definecolor{boxtitlecol2}{HTML}{0A801D} % #0A801D
-\definecolor{tablecol1}{HTML}{FFFF66} % #FFFF66
-\definecolor{tablecol2}{HTML}{CCCCFF} % #CCCCFF
-\definecolor{tablecol3}{HTML}{CCFFFF} % #CCFFFF
-
-
+\definecolor{boxbodycol3}{HTML}{FFE6E6} % #FFE6E6
 \setkomafont{disposition}{\normalcolor\bfseries}
 \setkomafont{section}{\normalfont\Large\bfseries}
 \setkomafont{chapter}{\normalfont\LARGE\bfseries}
@@ -993,29 +989,45 @@ moving from \textcolor{red}{\textbf{High-Level Language}} to
 \section{\texorpdfstring{\textcolor{red}{Basic steps in a CPU} for
 \underline{Instruction Processing}}{Basic steps in a CPU for }}\label{basic-steps-in-a-cpu-for}
 
-\begin{figure}
+\begin{figure}[H]
 
 \begin{minipage}{0.30\linewidth}
 
 \includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
 %
 \begin{minipage}{0.70\linewidth}
-balls\end{minipage}%
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\textcolor{red}{\underline{\textbf{Fetching}}}]
+\underline{\textbf{Access memory to get the next instruction:}} Activate
+memory read signal, place the right memory address on address lines,
+read the content of memory pointed by the address.
+
+\end{tcolorbox}
+
+\end{minipage}%
 
 \end{figure}%
 
-\begin{figure}
+\begin{figure}[H]
 
 \begin{minipage}{0.30\linewidth}
 
 \includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}\end{minipage}%
 %
 \begin{minipage}{0.70\linewidth}
-balls\end{minipage}%
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\textcolor{red}{\underline{\textbf{Decoding}}}]
+\underline{\textbf{Interpret the bits of the instruction word:}} to
+identify the operation and its data (which might be taken from memory or
+registers)
+
+\end{tcolorbox}
+
+\end{minipage}%
 
 \end{figure}%
 
-\begin{figure}
+\begin{figure}[H]
 
 \begin{minipage}{0.30\linewidth}
 
@@ -1024,12 +1036,193 @@ balls\end{minipage}%
 \begin{minipage}{0.70\linewidth}
 
 \begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=\textcolor{red}{\underline{\textbf{Execution}}}]
+\underline{\textbf{Perform that specific operation:}} Use the processor
+resources to perform the operation and write the result to memory or
+register if necessary
 
 \end{tcolorbox}
 
 \end{minipage}%
 
 \end{figure}%
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+
+\begin{itemize}
+\tightlist
+\item
+  What type of operations are needed?
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+
+\begin{itemize}
+\tightlist
+\item
+  How operands (data) are provided in each instruction?
+\end{itemize}
+
+\end{tcolorbox}
+
+\textcolor{red}{\textbf{through registers except for
+\underline{\textit{load}} and \underline{\textit{store}} instructions
+which will access memory too.}}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+
+\begin{itemize}
+\tightlist
+\item
+  Size of Instruction word and Data word?
+\end{itemize}
+
+\end{tcolorbox}
+
+\textcolor{red}{\textbf{32 bits}}
+
+\section{\texorpdfstring{\textcolor{red}{\underline{Summary of Our Design Decisions:}}}{}}\label{section-4}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+
+\begin{itemize}
+\tightlist
+\item
+  \underline{\textbf{RISC ISA:}} All instructions have the same size
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{load/store architecture} (only \textcolor{red}{\emph{load}}
+    and \textcolor{red}{\emph{store}} instructions can access memory).
+  \item
+    Other instructions use registers
+  \end{itemize}
+\item
+  \textcolor{red}{\textbf{Data word:}} 32 bits (4 bytes)
+\item
+  \textcolor{red}{\textbf{Instruction word:}} 32 bits (4 bytes)
+\item
+  \textcolor{red}{\textbf{Registers}} 32 general purpose 32-bit
+  registers
+\item
+  \textcolor{red}{\textbf{Size of Addressable Memory:}} \$ 2\^{}32 \$
+  (each memory address is 32 bits)
+\item
+  \textcolor{red}{\textbf{Operands:}} Signed, unsigned, immediate
+\end{itemize}
+
+\emph{To make the implementation simpler and faster, the number of
+instructions in the ISA should be reduced as much as possible}
+
+ALU operations are performed on: - data from registers, or - immediate
+value (data encoded into the instruction word)
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=boxbodycol2, colframe=boxheadcol2, title=\underline{\textbf{ALU operations}}, coltitle=boxtitlecol2, colbacktitle=boxheadcol2]
+
+\begin{itemize}
+\tightlist
+\item
+  \textcolor{red}{\textbf{addition}}\\
+  \textbf{Both input data from registers (signed)}
+  \textcolor{red}{\textbf{add}} \textcolor{blue}{\textbf{\emph{add, Rd,
+  Rs, Rt}}}\\
+  \textbf{Both input data from registers (unsigned)}
+  \textcolor{red}{\textbf{addu}} \textcolor{blue}{\textbf{\emph{addu,
+  Rd, Rs, Rt}}}\\
+  \textbf{One input data as immediate value}
+  \textcolor{red}{\textbf{addi}} \textcolor{blue}{\textbf{\emph{addi,
+  Rt, Rs, immed.}}}
+\item
+  \textcolor{red}{\textbf{subtraction}}\\
+  \textbf{Both input data from registers (signed)}
+  \textcolor{red}{\textbf{sub}} \textcolor{blue}{\textbf{\emph{sub, Rd,
+  Rs, Rt}}}\\
+  \textbf{Both input data from registers (unsigned)}
+  \textcolor{red}{\textbf{subu}} \textcolor{blue}{\textbf{\emph{subu,
+  Rd, Rs, Rt}}}
+\item
+  \textcolor{red}{\textbf{AND}}\\
+  \textbf{Both input data from registers (signed)}
+  \textcolor{red}{\textbf{and}} \textcolor{blue}{\textbf{\emph{and, Rd,
+  Rs, Rt}}}\\
+  \textbf{One input data as immediate value}
+  \textcolor{red}{\textbf{andi}} \textcolor{blue}{\textbf{\emph{andi,
+  Rt, Rs, immed.}}}
+\item
+  \textcolor{red}{\textbf{OR}} \textcolor{red}{\textbf{or, ori}}
+\end{itemize}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxheadcol, colbacktitle=boxheadcol, title=Shift operations, coltitle=boxtitlecol]
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}
+
+\begin{tcolorbox}[oversize, left=11pt, right=11pt, colback=boxbodycol2, colframe=boxheadcol2, title=Example, coltitle=boxtitlecol2, colbacktitle=boxheadcol2]
+Assume that the contents of register R1 is as follows:\\
+\textcolor{red}{\textbf{1000 0000 1100 1010 0001 0111 0001 1110}}\\
+After shifting two times to the left the following number is in register
+R1:\\
+\textcolor{red}{\textbf{0000 0011 0010 1000 0101 1100 0111 1000}}
+
+\end{tcolorbox}
+
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback=boxbodycol3, colframe=boxbodycol3]
+\textcolor{blue}{\textbf{sll, sllv}} shift left logical
+\textcolor{red}{\textbf{\emph{sllv Rd, Rs, Rt}}}\\
+\textcolor{blue}{\textbf{srl, srlv}} shift right logical
+\textcolor{red}{\textbf{\emph{srl Rd, Rs, immediate}}}\\
+\textcolor{blue}{\textbf{sra, srav}} shift right arithmetic
+\textcolor{red}{\textbf{\emph{srav Rd, Rs, Rt}}}
+
+\end{tcolorbox}
+
+\includegraphics{index_files/mediabag/FiKGhYhhIWJYiBgWIoaF.png}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+Shift instructions can be used in arithmetic operations (multiplying or
+dividing by a number which is a power of 2). The number of bits to be
+shifted can be given as a constant value or the contents of the second
+source register can be used to determine how many bits to be shifted.
+
+\end{tcolorbox}
+
+\newpage{}
+
+\textcolor{red}{\textbf{\emph{\underline{A few points to remember:}}}}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+
+\begin{itemize}
+\tightlist
+\item
+  In the instruction representation (in our case), always the
+  \textcolor{red}{\emph{destination register}} is written first and then
+  the \textcolor{red}{\emph{source registers}} (this convention may be
+  different for other processors).
+\item
+  Registers in the instructions are represented using ~\$reg\_num. (for
+  example, register 1 is \textcolor{red}{\$1} and register 15 is
+  \textcolor{red}{\$15}).
+\item
+  In our ISA (MIPS ISA) the contents of Register 0 (\$0) is 0000 0000
+  0000 0000 0000 0000 0000 0000 and register \$ cannot be written. (It
+  is hardwired to 0)
+\end{itemize}
+
+\end{tcolorbox}
+
+\section{\texorpdfstring{\textcolor{red}{\underline{\textit{Examples of the MIPS ALU Instructions:}}}}{}}\label{section-5}
+
+\begin{tcolorbox}[colback=boxbodycol, colframe=boxbodycol]
+
+\end{tcolorbox}
 
 
 

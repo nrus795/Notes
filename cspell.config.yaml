@@ -2,7 +2,7 @@ version: "0.2"
 ignorePaths: []
 dictionaryDefinitions:
   - name: custom-dictionary-user
-    path: "C:\\Users\\narus\\.cspell\\custom-dictionary-user.txt"
+    path: C:\Users\narus\.cspell\custom-dictionary-user.txt
     addWords: true
     scope: user
 dictionaries:
@@ -35,7 +35,9 @@ dictionaries:
   - git-commit
   - snippets
   - scss
-words: []
+words:
+  - addu
+  - subu
 ignoreWords: []
 import: []
 enableFiletypes:
