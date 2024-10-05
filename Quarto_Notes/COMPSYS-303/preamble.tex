@@ -1,0 +1,45 @@
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage[showdow,en-GB]{datetime2}
+\DTMlangsetup[en-GB]{ord=raise,monthyearsep={,\space}}
+
+% \usepackage{fontspec}
+\sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
+
+
+
+\setkomafont{disposition}{\normalcolor\bfseries}
+\setkomafont{section}{\normalfont\Large\bfseries}
+\setkomafont{chapter}{\normalfont\LARGE\bfseries}
+\RedeclareSectionCommand[
+  beforeskip=10pt, % Space before the chapter
+  afterskip=10pt   % Space after the chapter
+]{chapter}
+
+% Adjust part spacing
+\RedeclareSectionCommand[
+  beforeskip=10pt,
+  afterskip=10pt
+]{part}
+
+% Adjust section spacing
+\RedeclareSectionCommand[
+  beforeskip=10pt,
+  afterskip=10pt
+]{section}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\textbf{Nicholas Russell}}%
+  \fancyhead[C]{COMPSYS 303 Notes}%
+  \fancyhead[R]{\DTMDate{2024-10-05}}%
+  \fancyfoot[R]{\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\pagestyle{plain}
+\setlength{\headheight}{16.5pt}

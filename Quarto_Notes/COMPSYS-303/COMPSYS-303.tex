@@ -1,0 +1,1277 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode,pdfpagelabels}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  14pt,
+  a4paper,
+  DIV=11,
+  numbers=noendperiod,
+  headinclude=true,
+  footinclude=true]{scrreprt}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage[]{lmodern}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[top=2.5cm,bottom=2.5cm,left=1.5cm,right=1.5cm,marginparsep=2cm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+\pagestyle{plain}
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage[showdow,en-GB]{datetime2}
+\DTMlangsetup[en-GB]{ord=raise,monthyearsep={,\space}}
+
+% \usepackage{fontspec}
+\sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
+
+
+
+\setkomafont{disposition}{\normalcolor\bfseries}
+\setkomafont{section}{\normalfont\Large\bfseries}
+\setkomafont{chapter}{\normalfont\LARGE\bfseries}
+\RedeclareSectionCommand[
+  beforeskip=10pt, % Space before the chapter
+  afterskip=10pt   % Space after the chapter
+]{chapter}
+
+% Adjust part spacing
+\RedeclareSectionCommand[
+  beforeskip=10pt,
+  afterskip=10pt
+]{part}
+
+% Adjust section spacing
+\RedeclareSectionCommand[
+  beforeskip=10pt,
+  afterskip=10pt
+]{section}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\textbf{Nicholas Russell}}%
+  \fancyhead[C]{COMPSYS 303 Notes}%
+  \fancyhead[R]{\DTMDate{2024-10-05}}%
+  \fancyfoot[R]{\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\pagestyle{plain}
+\setlength{\headheight}{16.5pt}
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={COMPSYS 303: Microcomputers and Embedded Systems},
+  pdfauthor={Nicholas Russell},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{COMPSYS 303: Microcomputers and Embedded Systems}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Lecture Notes}
+\author{Nicholas Russell}
+\date{Saturday, October 5, 2024}
+
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\bookmarksetup{startatroot}
+
+\chapter*{Introduction}\label{introduction}
+
+\markboth{Introduction}{Introduction}
+
+These notes provide a detailed breakdown of the lectures for COMPSYS
+303. Each lecture is represented in its own document, allowing for
+modular learning and easy reference.
+
+\section*{Lectures Included}\label{lectures-included}
+
+\markright{Lectures Included}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Lecture 1: Concurrency}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Overview of concurrency in embedded systems, challenges like race
+    conditions and priority inversion, and real-world examples.
+  \end{itemize}
+\item
+  \textbf{Lecture 2: SCCharts and Synchronous Concurrency}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Detailed discussion on SCCharts, the synchronous approach, and
+    cyber-physical systems.
+  \end{itemize}
+\item
+  \textbf{Lecture 3: Peripherals and Interfacing}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Types of I/O, data transfer mechanisms, and interrupt handling in
+    embedded systems.
+  \end{itemize}
+\item
+  \textbf{Lecture 4: Embedded Processors}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Overview of processor design in embedded systems, FSMD, types of
+    processors, and synthesis from C code.
+  \end{itemize}
+\item
+  \textbf{Lecture 5: SoC and SOPC Buses}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Discussion of bus design issues, synchronous vs.~asynchronous buses,
+    and bus arbitration.
+  \end{itemize}
+\item
+  \textbf{Lecture 6: Embedded Control Systems 1}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Real-time systems, sampling and quantization, aliasing, and
+    worst-case execution time.
+  \end{itemize}
+\item
+  \textbf{Lecture 7: Embedded Control Systems 2}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Interaction with real-world peripherals, including PWM, stepper
+    motors, and ADC.
+  \end{itemize}
+\item
+  \textbf{Lecture 8: Embedded Control Systems 3}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Control of physical processes, key metrics in control systems, and
+    examples like cruise control.
+  \end{itemize}
+\item
+  \textbf{Lecture 9: Industrial Automation 1}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Introduction to industrial automation, PLCs, HMIs, and generations
+    of automation.
+  \end{itemize}
+\item
+  \textbf{Lecture 10: Industrial Automation 2}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    IEC 61131 standard, ladder logic features, and an example of a
+    pneumatic cylinder control sequence.
+  \end{itemize}
+\end{enumerate}
+
+\part{Partha's Lectures}
+
+\chapter{Lecture 1: Concurrency}\label{lecture-1-concurrency}
+
+\section{Introduction to Embedded Systems and
+Concurrency}\label{introduction-to-embedded-systems-and-concurrency}
+
+Embedded systems are a specialized class of computers designed to
+continuously interact with their environment in a real-time, often
+reactive manner. Unlike general-purpose computers, embedded systems are
+purpose-built to handle specific tasks under stringent conditions,
+including timing constraints. These systems are embedded as integral
+parts of larger devices and must operate dependably, often without human
+intervention. Examples include automotive control systems, medical
+devices like pacemakers, and consumer electronics such as washing
+machines.
+
+When deadlines must be met without exception, the system is termed a
+\textbf{hard real-time system}; otherwise, it is a \textbf{soft
+real-time system}. In hard real-time systems, any missed deadline could
+result in catastrophic failure, such as in medical devices or automotive
+safety features. In contrast, soft real-time systems can tolerate
+occasional missed deadlines, although they may affect performance.
+
+The concept of \textbf{concurrency} is crucial in embedded systems
+because these systems often involve multiple processes interacting
+simultaneously, such as a pacemaker continuously monitoring the heart
+and delivering pulses when needed. Concurrency enables these systems to
+effectively manage different tasks that need to be performed either
+synchronously or asynchronously. For example, while monitoring the
+heart, a pacemaker must also manage pulse delivery in real-time,
+demonstrating the need for concurrent tasks.
+
+\section{Key Concepts in Concurrency}\label{key-concepts-in-concurrency}
+
+\textbf{Concurrency} refers to multiple components or processes
+operating at the same time within a system. In embedded systems like
+pacemakers, various components (controllers, sensors, and timers) work
+concurrently to ensure precise timing between events. Concurrency
+becomes especially challenging when different tasks access shared
+resources simultaneously, potentially leading to issues such as
+\textbf{race conditions}, \textbf{deadlocks}, and \textbf{livelocks}.
+
+\begin{itemize}
+\item
+  \textbf{Race Conditions:} These occur when two or more processes
+  access shared data concurrently, and the final result depends on the
+  timing of their access. A typical example is the producer-consumer
+  problem, where one process generates data while another consumes it.
+  If these processes do not manage shared data properly, inconsistencies
+  may arise. For instance, if two processes increment a shared counter
+  without proper synchronization, the final value of the counter may be
+  incorrect due to overlapping access. This issue is exacerbated in
+  systems with multiple cores or processors, where different threads can
+  execute simultaneously.
+\item
+  \textbf{Critical Sections and Mutual Exclusion:} A \textbf{critical
+  section} is a part of a program that should only be executed by one
+  process at a time to avoid data corruption. Ensuring \textbf{mutual
+  exclusion}, where no two processes are in their critical sections
+  simultaneously, is essential for preventing race conditions. Mutual
+  exclusion can be achieved using synchronization mechanisms like
+  \textbf{locks}, which ensure that only one process can access the
+  critical section at any given time. Common techniques include
+  \textbf{mutexes} and \textbf{binary semaphores}, both of which can
+  lock shared resources to ensure orderly access. It is also important
+  to minimize the time a process spends in a critical section to reduce
+  the chances of blocking other processes.
+\item
+  \textbf{Deadlocks and Livelocks:} \textbf{Deadlocks} occur when
+  processes are waiting on each other indefinitely, leading to a
+  situation where no progress can be made. This typically happens in
+  resource allocation scenarios where two or more processes form a
+  circular chain of dependencies. A classic example is two processes
+  holding a resource that the other needs to proceed, resulting in a
+  stalemate. \textbf{Livelocks} are similar to deadlocks but differ in
+  that processes keep changing state in response to each other without
+  making any actual progress. Both issues are critical in concurrent
+  systems and need to be addressed through careful design, such as
+  avoiding circular waiting conditions, implementing resource
+  hierarchies, or using \textbf{deadlock detection algorithms} that can
+  detect and break deadlocks. Timeout mechanisms can also be used to
+  release resources if a process waits too long.
+\end{itemize}
+
+\section{Approaches to Manage
+Concurrency}\label{approaches-to-manage-concurrency}
+
+Concurrency in embedded systems is managed through a combination of
+hardware and software synchronization mechanisms. Some of the methods
+discussed include:
+
+\begin{itemize}
+\item
+  \textbf{Busy Waiting and Non-Busy Waiting:} \textbf{Busy waiting}
+  occurs when a process remains in the ready state, actively checking
+  for a condition to be satisfied. This approach is inefficient in terms
+  of CPU utilization, as the CPU is occupied with checking instead of
+  performing useful work. \textbf{Non-busy waiting} solutions, such as
+  putting a process in the blocked state while waiting for a resource,
+  are more efficient for embedded systems where CPU resources are
+  limited. Busy waiting is often used in systems where the wait time is
+  expected to be very short, whereas non-busy waiting is preferred for
+  longer wait times to free up CPU resources. In embedded systems,
+  avoiding busy waiting is crucial because the CPU often needs to manage
+  multiple tasks under strict timing constraints.
+\item
+  \textbf{Test and Set Instruction:} The \textbf{Test and Set}
+  instruction is an atomic operation used to achieve mutual exclusion by
+  using a global variable to indicate whether a critical section is
+  occupied. By using Test and Set, embedded systems can ensure that
+  processes access shared resources in a predictable and coordinated
+  manner. The atomicity of this instruction prevents race conditions by
+  ensuring that the check-and-set operation is performed without
+  interruption. However, Test and Set can lead to \textbf{busy waiting},
+  which may not be suitable for all embedded applications. In systems
+  with limited processing power or battery life, busy waiting can
+  degrade performance and reduce efficiency.
+\item
+  \textbf{Semaphores and Mutex Locks:} \textbf{Semaphores} are
+  synchronization mechanisms used to manage concurrent access to shared
+  resources. They allow processes to signal and wait for access,
+  ensuring a controlled flow of execution. Semaphores can be
+  \textbf{binary} (acting like a mutex) or \textbf{counting}, allowing a
+  specified number of processes to access a resource concurrently. For
+  example, counting semaphores are often used in producer-consumer
+  scenarios where multiple producers or consumers need access to a
+  shared buffer. \textbf{Mutex locks} are similar but are typically used
+  to protect access to a particular data structure or variable,
+  providing mutual exclusion in critical sections. Mutexes are often
+  simpler to implement but are limited to binary states (locked or
+  unlocked), whereas semaphores offer more flexibility for resource
+  management.
+\item
+  \textbf{Priority Inversion and Solutions:} \textbf{Priority inversion}
+  occurs when a higher-priority task is waiting for a resource held by a
+  lower-priority task, which can lead to missed deadlines in real-time
+  systems. A well-known example is the \textbf{Mars Pathfinder mission},
+  where a low-priority task holding a shared resource caused a
+  higher-priority task to miss its deadline, resulting in system resets.
+  Solutions to priority inversion include \textbf{priority inheritance},
+  where the lower-priority task temporarily inherits the higher priority
+  to complete its task and release the resource. Another approach is
+  \textbf{priority ceiling}, where a resource is assigned a priority
+  equal to the highest priority of any task that may lock it, thus
+  preventing priority inversion.
+\end{itemize}
+
+\section{Examples and Applications}\label{examples-and-applications}
+
+The lecture provided various examples of where concurrency is critical,
+including the automotive industry (Slide 6) and robotics. For instance,
+the \textbf{2010 Toyota recall} was attributed to software issues in
+their anti-lock braking systems, highlighting the importance of
+deterministic behavior in safety-critical systems. This incident shows
+how improperly managed concurrency can lead to life-threatening
+failures. Similarly, \textbf{Tesla's accidents} were referenced,
+emphasizing the challenges of building reliable autonomous systems.
+These examples underscore the need for proper concurrency management to
+ensure system reliability and safety.
+
+In embedded systems such as a \textbf{pacemaker}, concurrency is an
+intrinsic characteristic. The pacemaker must concurrently monitor the
+heart and trigger electrical pulses without delay, thus operating as a
+real-time reactive system. Concurrency, in this context, is about
+ensuring different components work seamlessly together to meet
+life-critical deadlines. The pacemaker example illustrates how timing
+constraints and concurrent interactions must be carefully managed to
+avoid potentially fatal outcomes. The system must ensure that sensing,
+decision-making, and actuation are carried out with precise timing to
+maintain patient safety.
+
+\section{Problems with Concurrency and
+Solutions}\label{problems-with-concurrency-and-solutions}
+
+Concurrency can lead to serious issues if not properly managed.
+
+\begin{itemize}
+\item
+  \textbf{Deadlocks:} Deadlocks occur when concurrent processes are
+  waiting on each other to release resources, resulting in a state where
+  no process can proceed. To prevent deadlocks, proper scheduling
+  mechanisms must be implemented to ensure that resource allocation does
+  not lead to circular waiting. \textbf{Deadlock prevention techniques}
+  include resource ordering, where resources are always requested in a
+  specific order, and \textbf{deadlock detection algorithms} that
+  periodically check for cycles in the resource allocation graph.
+  Another approach is \textbf{deadlock avoidance}, such as using the
+  \textbf{Banker's algorithm}, which allocates resources in a way that
+  ensures a safe state is always maintained.
+\item
+  \textbf{Fairness and Scheduling:} \textbf{Fairness} in resource
+  allocation means that every process eventually gets a chance to
+  execute. Embedded systems often use a \textbf{scheduler} to manage
+  processes, ensuring tasks are completed in a timely and fair manner.
+  The role of the scheduler is critical to prevent \textbf{starvation},
+  where some tasks never get executed due to others continuously
+  consuming resources. Common scheduling algorithms include
+  \textbf{round-robin}, \textbf{priority-based}, and
+  \textbf{rate-monotonic scheduling}, each with its own advantages and
+  trade-offs depending on the system requirements. \textbf{Round-robin
+  scheduling} is simple and ensures fairness by giving each process a
+  fixed time slice, while \textbf{priority-based scheduling} allows more
+  critical tasks to execute first but can lead to starvation without
+  priority aging.
+\item
+  \textbf{Starvation:} \textbf{Starvation} occurs when a process is
+  perpetually denied the resources it needs to execute, often because
+  other higher-priority processes continuously take precedence. To
+  mitigate starvation, \textbf{priority aging} can be used, where the
+  priority of a waiting process is gradually increased over time to
+  ensure it eventually gets the necessary resources. This technique
+  ensures that lower-priority processes are not starved indefinitely,
+  especially in systems with many competing processes.
+\end{itemize}
+
+\section{Conclusion}\label{conclusion}
+
+Concurrency is an essential aspect of embedded systems, particularly for
+reactive, real-time applications. This lecture emphasized the importance
+of understanding the mechanisms---such as \textbf{mutual exclusion},
+\textbf{semaphores}, and \textbf{scheduling}---that help manage
+concurrent processes effectively. For embedded systems like automotive
+controls, pacemakers, or industrial automation, \textbf{deterministic
+behavior} and avoiding race conditions are paramount. Properly handling
+concurrency ensures that embedded systems can meet their timing
+constraints, maintain data consistency, and operate safely under all
+conditions.
+
+Next steps in the lecture will involve exploring \textbf{reactive
+systems} and how \textbf{synchronous concurrency} can be implemented to
+further ensure the reliability of embedded systems. Understanding these
+concepts is vital for designing embedded systems that are safe,
+reliable, and efficient. Future topics will also cover specific
+synchronization protocols and \textbf{real-time operating system (RTOS)}
+features that support concurrency in embedded environments.
+Additionally, understanding how to leverage hardware features, such as
+\textbf{interrupt controllers} and \textbf{timers}, will be crucial for
+achieving precise control over concurrent tasks in embedded systems.
+
+\chapter{Lecture 2: SCCharts and Synchronous
+Concurrency}\label{lecture-2-sccharts-and-synchronous-concurrency}
+
+\section{Introduction to Synchronous Concurrency and
+SCCharts}\label{introduction-to-synchronous-concurrency-and-sccharts}
+
+Synchronous Concurrency (SC) is a method used to manage the complexity
+of Cyber-Physical Systems (CPS) by providing deterministic behavior and
+efficient handling of concurrent processes. SCCharts are a powerful
+visual formalism used to model concurrent, reactive, and real-time
+behaviors in embedded systems. They offer a way to design systems that
+react to changes in the environment while maintaining reliable and
+predictable execution.
+
+\section{The Synchronous Approach}\label{the-synchronous-approach}
+
+The \textbf{synchronous approach} is a paradigm in which all concurrent
+processes are assumed to execute in lockstep relative to a global
+logical clock. This provides a deterministic and predictable execution
+model, which is highly beneficial for embedded systems that operate in
+safety-critical environments.
+
+Key aspects of the synchronous approach include: - \textbf{Synchrony
+Hypothesis:} This hypothesis assumes that the system's reactions occur
+infinitely faster than the environment, leading to a \textbf{zero-delay
+model}. This means that the reaction to an input is instantaneous from
+the system's perspective, ensuring a deterministic response. -
+\textbf{Synchronous Threading and Broadcast Communication:} All
+concurrent threads execute synchronously, meaning that outputs generated
+by one component are immediately visible to all other components. This
+approach resembles \textbf{synchronous circuits}, where each clock tick
+coordinates all activities, providing atomic and instantaneous
+reactions. - \textbf{Atomicity and Instantaneity of Reactions:} The
+synchronous approach treats reactions as atomic, meaning that no
+intermediate states are visible during execution. This helps prevent
+issues like race conditions, which are prevalent in asynchronous
+systems. - \textbf{Reaction to Absence:} The system can react not only
+to events that occur but also to the absence of expected events,
+allowing for a more comprehensive model of environmental interaction.
+
+\section{SCCharts Overview}\label{sccharts-overview}
+
+\textbf{SCCharts} are an extension of Statecharts, introduced by David
+Harel, that add the benefits of the synchronous paradigm to the powerful
+modeling features of Statecharts. SCCharts are used to describe complex
+systems involving multiple states and concurrent processes.
+
+\subsection{Similarities and Differences Between SCCharts and
+Statecharts}\label{similarities-and-differences-between-sccharts-and-statecharts}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Similarities:} Both SCCharts and Harel's Statecharts share
+  common elements such as states, transitions, signals/events, and
+  modularity. They both support \textbf{hierarchy},
+  \textbf{parallelism}, and \textbf{broadcast communication} between
+  states, which allows for more compact and expressive models.
+\item
+  \textbf{Differences:} SCCharts operate within a \textbf{synchronous
+  framework} and guarantee deterministic behavior, which contrasts with
+  the often non-deterministic nature of Statecharts. SCCharts do not
+  interpret events for simulations, which eliminates hidden behaviors
+  and allows for more precise analysis. SCCharts also do not support
+  \textbf{inter-level transitions} and provide deterministic handling of
+  concurrent events, which simplifies debugging and validation.
+\end{itemize}
+
+\section{Boolean Mealy Machine (BMM)}\label{boolean-mealy-machine-bmm}
+
+An SCChart can be represented using a \textbf{Boolean Mealy Machine
+(BMM)}. A BMM is defined as a tuple
+\(M = \langle Q, q_0, I, O, T \rangle\), where: - \(Q\): Set of states.
+- \(q_0\): Initial state. - \(I\): Set of inputs. - \(O\): Set of
+outputs. - \(T\): Transition relation, involving states and boolean
+conditions on inputs.
+
+BMMs provide a formal basis for understanding how SCCharts operate, with
+transitions being defined based on the current state and inputs. The key
+properties of BMMs are \textbf{determinism} and \textbf{reactivity}: -
+\textbf{Determinism}: At most one transition is enabled for any valid
+combination of inputs from the environment. This ensures that the system
+behaves predictably regardless of concurrent events. -
+\textbf{Reactivity}: At least one transition is enabled for any valid
+combination of inputs, ensuring the system can always respond
+appropriately to environmental changes.
+
+\section{The VABRO Example}\label{the-vabro-example}
+
+The \textbf{Valued ABRO (VABRO)} example, which is an adaptation of
+Berry's \textbf{ABRO}, is used to demonstrate the synchronous
+programming model. In this example, the system generates an output when
+two specific inputs have occurred. The model incorporates \textbf{strong
+pre-emption}, allowing the behavior to be reset when a particular
+condition is met. VABRO demonstrates how SCCharts can handle complex
+state-based logic, including counting events and generating output
+values based on conditions.
+
+\section{Constructiveness in Synchronous
+Systems}\label{constructiveness-in-synchronous-systems}
+
+\textbf{Constructiveness} is an important concept in synchronous
+systems, ensuring that concurrent processes do not interfere with each
+other's operation. \textbf{Berry's Constructiveness} requires that all
+reads happen only after writes to shared entities are completed, and
+that there is at most one write to any shared entity during a reaction.
+This ensures consistency and prevents conflicting updates during a
+single tick of the logical clock.
+
+\textbf{Sequential Constructiveness} extends Berry's constructiveness by
+allowing sequential updates to shared variables under certain
+conditions. The \textbf{Init-Update-Read (IRU) protocol} is used to
+manage variable updates in the following order: 1.
+\textbf{Initialization}: Concurrent threads can make confluent
+initializations to shared variables, provided they assign the same
+value. 2. \textbf{Update}: Threads update shared variables using the
+same update function, ensuring confluent updates. 3. \textbf{Read}:
+Finally, threads are allowed to read the updated value, guaranteeing
+consistency.
+
+\section{Timed SCCharts and Real-Time
+Systems}\label{timed-sccharts-and-real-time-systems}
+
+\textbf{Timed SCCharts} add temporal constraints to SCCharts, enabling
+the modeling of \textbf{real-time systems} where timing is crucial.
+These models can compute the \textbf{Worst Case Reaction Time (WCRT)}
+and adjust the tick length accordingly to ensure the system meets its
+timing requirements. By counting ticks, timed SCCharts allow real-time
+systems to be modeled effectively, ensuring that actions are taken
+within the required time frame.
+
+\textbf{Dynamic Ticks} are also introduced to allow the system to adjust
+tick lengths dynamically, providing more flexibility in real-time
+operation. This flexibility is essential for systems that need to adapt
+to changing conditions, such as varying processing loads or external
+inputs that influence timing requirements.
+
+\section{Designing Real-Time Systems with
+SCCharts}\label{designing-real-time-systems-with-sccharts}
+
+The synchronous approach is particularly suitable for \textbf{real-time
+systems}, where deterministic behavior is essential for safety and
+reliability. By using SCCharts: - \textbf{Concurrency is managed in a
+deterministic manner}, ensuring that all processes execute predictably
+without interference or unintended interactions. - \textbf{Pre-emption
+and Suspension} are modeled explicitly, allowing designers to represent
+high-priority tasks interrupting lower-priority tasks, or suspending
+ongoing activities until a condition is met. - The \textbf{generated
+code from SCCharts} compiles the concurrent specifications into
+sequential code, which is efficient and suitable for \textbf{bare metal
+implementations} without requiring an operating system. This makes
+SCCharts an excellent choice for systems with constrained resources,
+such as microcontrollers in embedded environments.
+
+\section{Conclusion}\label{conclusion-1}
+
+Synchronous concurrency, as implemented using SCCharts, provides a
+robust framework for designing \textbf{deterministic, reactive, and
+real-time embedded systems}. By combining the power of Statecharts with
+the guarantees of the synchronous model, SCCharts offer a visual and
+formal way to specify complex concurrent behavior while ensuring
+predictable execution. The \textbf{synchronous approach} is well-suited
+for \textbf{safety-critical CPS} applications, such as medical devices,
+automotive systems, and robotics, where the cost of failure is high.
+
+Future discussions will delve deeper into \textbf{synchronous
+pre-emption}, \textbf{timed automata}, and how SCCharts can be extended
+to model more complex temporal behaviors. These tools and concepts are
+crucial for ensuring that CPS can meet their real-time requirements in a
+safe and reliable manner.
+
+\part{Avinash's Lectures}
+
+\chapter{Lecture 3: Peripherals and
+Interfacing}\label{lecture-3-peripherals-and-interfacing}
+
+\section{Overview}\label{overview}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Input and Output (IO)}: Embedded systems interface with
+  external peripherals to gather input (e.g., sensors) and send output
+  (e.g., motor control).
+\item
+  \textbf{Types of IO}: Can be categorized as \emph{polling},
+  \emph{interrupt-driven}, or using \emph{Direct Memory Access (DMA)}
+  for efficiency.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Polling}: The processor actively waits until a peripheral is
+    ready. Inefficient as it wastes processing power.
+  \item
+    \textbf{Interrupts}: The peripheral signals the processor when it
+    has data, allowing efficient use of CPU resources.
+  \item
+    \textbf{DMA}: Offloads data transfer to a dedicated controller,
+    enabling parallel processing.
+  \end{itemize}
+\end{itemize}
+
+\section{Memory-Mapped vs Direct IO}\label{memory-mapped-vs-direct-io}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Memory-Mapped IO}: IO devices are treated like memory
+  locations, accessed using memory read/write instructions.
+\item
+  \textbf{Direct IO}: Uses a separate address space for IO operations,
+  typically with specialized instructions (e.g., IN and OUT instructions
+  in the x86 architecture).
+\end{itemize}
+
+\section{Data Transfer Mechanisms}\label{data-transfer-mechanisms}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Programmed IO}: The processor executes specific instructions
+  for data transfer. This is inherently slower and is suitable for
+  simple, low-bandwidth peripherals.
+\item
+  \textbf{DMA Mode}: Allows for efficient data transfer, especially when
+  large data volumes are involved, by using an additional master
+  controller to handle the transfers.
+\end{itemize}
+
+\section{Interrupts}\label{interrupts}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Fixed Interrupt}: The ISR (Interrupt Service Routine) address
+  is fixed and cannot be changed.
+\item
+  \textbf{Vectored Interrupt}: The peripheral provides the ISR address,
+  allowing for more flexible interrupt handling.
+\item
+  \textbf{Interrupt Address Table}: A hybrid approach where an index is
+  provided into a memory table to determine the ISR address.
+\end{itemize}
+
+\section{Examples of Peripheral
+Handling}\label{examples-of-peripheral-handling}
+
+\begin{itemize}
+\item
+  \textbf{Interrupt-Driven IO}: Discussed various types of interrupts,
+  including \emph{maskable} (which can be ignored during critical
+  operations) and \emph{non-maskable} (used for urgent events like power
+  failure).
+\item
+  \textbf{NIOS II Development Board}: The board supports non-vectored
+  interrupts, relying on the HAL system library to determine the
+  interrupt source.
+\end{itemize}
+
+\chapter{Lecture 4: Embedded
+Processors}\label{lecture-4-embedded-processors}
+
+\section{Overview}\label{overview-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Custom Processor Design}: Embedded systems often require
+  specialized processors designed specifically for the application to
+  ensure optimal performance and efficiency.
+\item
+  \textbf{FSMD (Finite State Machine with Datapath)}: A model that
+  integrates a finite state machine (FSM) with a datapath to execute
+  instructions in an embedded system.
+\item
+  \textbf{Datapath Design}: Consists of elements like registers, ALUs,
+  and multiplexers that perform arithmetic operations and manage data
+  flow.
+\item
+  \textbf{Controller Design}: Controls the sequence of operations
+  performed by the datapath, ensuring synchronization between different
+  components.
+\end{itemize}
+
+\section{Types of Processors}\label{types-of-processors}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{General-Purpose Processors}: Flexible and programmable, used
+  for a wide variety of applications. Example: Pentium processors.
+\item
+  \textbf{Single-Purpose Processors}: Designed to execute one specific
+  program efficiently. Example: Accelerators or coprocessors for
+  specialized tasks.
+\item
+  \textbf{Application-Specific Processors}: A compromise between
+  general-purpose and single-purpose processors, optimized for a
+  particular class of applications to balance flexibility, performance,
+  and power consumption.
+\end{itemize}
+
+\section{C to Hardware Synthesis}\label{c-to-hardware-synthesis}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Hardware Synthesis from C Code}: Converting high-level C code
+  to hardware involves inferring control and data paths from program
+  logic. This approach allows designers to achieve maximum performance
+  for specific applications without manually coding in HDL.
+\end{itemize}
+
+\section{FSMD Design}\label{fsmd-design}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{State Diagram Templates}: Used to model control flow in the
+  FSMD, involving components like loops, branches, and assignments.
+\item
+  \textbf{Datapath Creation}: Involves creating registers for variables,
+  functional units for operations, and interconnecting them with control
+  signals to create a functional system.
+\item
+  \textbf{Controller FSM}: Works with the datapath to manage control
+  flow and determine which operations are executed at each step.
+\end{itemize}
+
+\section{Example: Greatest Common Divisor
+(GCD)}\label{example-greatest-common-divisor-gcd}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{GCD Implementation}: Demonstrates how an algorithm (finding
+  the GCD of two numbers) can be converted into an FSMD with a state
+  diagram representing the control flow and a datapath for arithmetic
+  operations.
+\end{itemize}
+
+\chapter{Lecture 5: SoC and SOPC
+Buses}\label{lecture-5-soc-and-sopc-buses}
+
+\section{Overview}\label{overview-2}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{System on Chip (SoC) and System on Programmable Chip (SOPC)}:
+  SoCs integrate all components of a computer or other systems onto a
+  single chip, while SOPCs use programmable logic to create flexible
+  embedded solutions.
+\item
+  \textbf{Bus Design}: The bus is the communication system that
+  transfers data between components inside a system, and its design
+  impacts the overall system performance.
+\end{itemize}
+
+\section{Bus Design Issues}\label{bus-design-issues}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Bus Width}: Determines the amount of data that can be
+  transferred in a single cycle. Wider buses improve performance but
+  increase cost.
+\item
+  \textbf{Bus Type}: Can be \emph{dedicated} (separate buses for
+  different types of data) or \emph{multiplexed} (shared bus for
+  multiple purposes), impacting cost and efficiency.
+\item
+  \textbf{Bus Operations}: Include basic operations like read, write,
+  block transfer, and interrupt. Block transfers are particularly useful
+  for filling cache lines.
+\end{itemize}
+
+\section{Synchronous vs Asynchronous
+Buses}\label{synchronous-vs-asynchronous-buses}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Synchronous Bus}: Operates with a clock signal, making
+  implementation simpler but requiring careful timing of actions to
+  avoid delays.
+\item
+  \textbf{Asynchronous Bus}: Uses handshaking between master and slave
+  components, allowing for flexibility in timing but adding complexity.
+\end{itemize}
+
+\section{Bus Arbitration}\label{bus-arbitration}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Bus Arbitration Mechanisms}: Required when multiple bus
+  masters need to access the bus. Can be \emph{static} (predetermined
+  priority) or \emph{dynamic} (priority assigned based on demand).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Fixed Priority}: Assigns a fixed priority to each master,
+    which can lead to bus hogging by high-priority devices.
+  \item
+    \textbf{Rotating Priority}: Adjusts priorities based on waiting
+    time, ensuring fair access.
+  \item
+    \textbf{Hybrid Policies}: Combine aspects of both fixed and rotating
+    priorities to achieve a balance between fairness and efficiency.
+  \end{itemize}
+\end{itemize}
+
+\section{Examples of Bus Usage}\label{examples-of-bus-usage}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Synchronous Bus Operations}: Memory read and write operations
+  are synchronized with the bus clock, with or without wait states to
+  manage slower memory.
+\item
+  \textbf{Dynamic Bus Arbitration}: Allows multiple masters to request
+  access to the bus and ensures that access is granted based on current
+  system needs.
+\end{itemize}
+
+\part{Nathan's Lectures}
+
+\chapter{Lecture 6: Embedded Control Systems
+1}\label{lecture-6-embedded-control-systems-1}
+
+\section{Embedded Control Systems}\label{embedded-control-systems}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Real-Time Systems}: Industrial embedded systems are real-time
+  in nature and often safety-critical, requiring both functional
+  correctness and timing correctness.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Functional Correctness}: Ensures that the system performs
+    the desired function (e.g., a robotic arm stopping on intrusion).
+  \item
+    \textbf{Timing Correctness}: Ensures that the system operates within
+    specified deadlines (e.g., stopping within 10 ms of intrusion).
+  \end{itemize}
+\end{itemize}
+
+\section{Sampling and Quantization}\label{sampling-and-quantization}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Sampling}: The process of taking snapshots of a signal over
+  time (e.g., video, sound, voltage).
+\item
+  \textbf{Quantization}: Replacing real values with an approximation
+  from a finite set of discrete values. For an n-bit ADC, there are
+  \(2^n\) quantization levels (e.g., an 8-bit ADC has 256 levels).
+\end{itemize}
+
+\section{Aliasing}\label{aliasing}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Aliasing}: Occurs due to insufficient sampling rates,
+  resulting in different signals appearing indistinguishable. To prevent
+  aliasing, signals must be sampled above the Nyquist frequency (at
+  least twice the highest frequency component).
+\end{itemize}
+
+\section{Computation Delays}\label{computation-delays}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Sources of Delays}: Include unbounded software (e.g.,
+  unpredictable runtime branches, unbounded loops), floating-point
+  operations, search algorithms, and cache misses.
+\item
+  \textbf{Worst-Case Execution Time (WCET)}: The longest time it takes
+  to complete execution. Can be determined through measurement or static
+  analysis, but speculative hardware makes static analysis difficult.
+\end{itemize}
+
+\section{Static Timing Analysis}\label{static-timing-analysis}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Control Flow Graph (CFG)}: Used to determine the longest path
+  of execution, crucial for determining WCET. Compilation transforms
+  code into machine-level instructions, enabling timing analysis of each
+  operation.
+\end{itemize}
+
+\chapter{Lecture 7: Embedded Control Systems
+2}\label{lecture-7-embedded-control-systems-2}
+
+\section{Peripherals: PWM, Stepper Motors, A2D
+Conversion}\label{peripherals-pwm-stepper-motors-a2d-conversion}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Interaction with Real World}: Embedded systems use sensors
+  (e.g., ADC for temperature, sound, light) and actuators (e.g., motors)
+  to interact with the environment.
+\item
+  \textbf{Pulse Width Modulation (PWM)}: A simple type of Digital to
+  Analog Converter (DAC) used to control devices like DC motors by
+  adjusting the duty cycle.
+\item
+  \textbf{Stepper Motors}: Rotates a fixed number of degrees when given
+  a step signal, making them more precise compared to DC motors. Stepper
+  motor controllers simplify the control by providing specific voltage
+  sequences to coils.
+\end{itemize}
+
+\section{Analog to Digital Conversion
+(ADC)}\label{analog-to-digital-conversion-adc}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Resolution}: Defined by the number of bits in the ADC. Higher
+  resolution provides greater accuracy but requires more bits.
+\item
+  \textbf{Quantization Levels}: The range of an ADC is determined by the
+  reference voltage, divided by the number of levels (e.g., an 8-level
+  ADC with a range of 3.5V has a resolution of 0.4375V).
+\end{itemize}
+
+\chapter{Lecture 8: Embedded Control Systems
+3}\label{lecture-8-embedded-control-systems-3}
+
+\section{Control of Physical
+Processes}\label{control-of-physical-processes}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Control Systems}: Aim to make the physical system's output
+  track a desired reference input by setting the system's inputs.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Open Loop}: No feedback from the output; relies on an
+    accurate model of the plant.
+  \item
+    \textbf{Closed Loop}: Utilizes feedback to adjust the output to the
+    desired reference, improving accuracy.
+  \end{itemize}
+\end{itemize}
+
+\section{Key Metrics in Control
+Systems}\label{key-metrics-in-control-systems}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Performance Metrics}: Rise time, peak time, overshoot, and
+  settling time are critical in evaluating control systems.
+\item
+  \textbf{Disturbance Rejection}: A control system must minimize the
+  impact of external disturbances to maintain stability and performance.
+\item
+  \textbf{Stability}: Ensuring that all control variables remain bounded
+  is a primary objective. A stable system should have minimal
+  oscillations and rapid convergence to the desired state.
+\end{itemize}
+
+\section{Example: Cruise Control}\label{example-cruise-control}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Open Loop Control}: A cruise control system adjusts throttle
+  to maintain speed. The model describes how speed changes based on
+  throttle position and current speed, with no feedback mechanism.
+\item
+  \textbf{Closed Loop Control}: Adding sensors to detect actual speed
+  and adjust throttle accordingly helps maintain speed despite
+  disturbances like wind or road conditions.
+\end{itemize}
+
+\chapter{Lecture 9: Industrial Automation
+1}\label{lecture-9-industrial-automation-1}
+
+\section{Introduction to Industrial
+Automation}\label{introduction-to-industrial-automation}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: Industrial Automation refers to using computers
+  to control machinery and processes in industries, aiming to reduce
+  human intervention and increase efficiency.
+\item
+  \textbf{Advantages}: Improved productivity, consistent quality,
+  reduced waste, increased flexibility, accurate information, and
+  enhanced safety.
+\item
+  \textbf{Drawbacks}: High initial cost and maintenance requirements.
+\end{itemize}
+
+\section{Programmable Logic Controllers
+(PLCs)}\label{programmable-logic-controllers-plcs}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{PLCs}: Specialized, hardened computers that are used to
+  control industrial processes. They provide fast response, durability,
+  maintainability, and reliability in tough environments.
+\item
+  \textbf{Human-Machine Interfaces (HMIs)}: Interfaces that allow human
+  operators to interact with PLCs, such as entering parameters or
+  monitoring system status.
+\end{itemize}
+
+\section{Generations of Industrial
+Automation}\label{generations-of-industrial-automation}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Generation 1}: Hard-wired relay logic, replaced by more
+  flexible PLCs.
+\item
+  \textbf{Generation 2}: Introduction of PLCs, significantly improving
+  flexibility and automation capabilities.
+\item
+  \textbf{Generation 3}: Multifunctional PLCs supporting multiple
+  programming languages.
+\item
+  \textbf{Generation 4}: Distributed automation solutions using
+  networking for improved flexibility and modularity.
+\end{itemize}
+
+\chapter{Lecture 10: Industrial Automation
+2}\label{lecture-10-industrial-automation-2}
+
+\section{IEC 61131 Standard}\label{iec-61131-standard}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{PLC Programming Languages}: The IEC 61131 standard defines
+  programming languages for PLCs, including Ladder Logic, Instruction
+  List, Structured Text, Function Block Diagrams, and Function Charts.
+\item
+  \textbf{Ladder Logic}: An old but still widely used language, using
+  graphical symbols to represent control actions, making it easy to
+  understand and maintain.
+\end{itemize}
+
+\section{Ladder Logic Features}\label{ladder-logic-features}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Basic Elements}: Includes contacts, coils, and connectors,
+  with vertical power rails representing power flow through the rungs of
+  the diagram.
+\item
+  \textbf{Timers and Counters}: Used for controlling time-based
+  operations, with variations like On-Delay, Off-Delay, and Pulse
+  timers. Counters are used to count occurrences and trigger actions
+  after a specific count.
+\end{itemize}
+
+\section{Example: Pneumatic Cylinder}\label{example-pneumatic-cylinder}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Control Sequence}: A pneumatic cylinder controlled by ladder
+  logic, moving forward when a START button is pressed, and returning
+  when fully extended. This sequence can be represented as a Moore
+  Machine for precise state transitions.
+\item
+  \textbf{Concurrency in Ladder Logic}: Used to control multiple devices
+  simultaneously, ensuring that state transitions occur correctly based
+  on sensor input and predefined logic.
+\end{itemize}
+
+
+
+
+\end{document}

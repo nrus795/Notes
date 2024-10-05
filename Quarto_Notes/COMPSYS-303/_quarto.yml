@@ -1,0 +1,64 @@
+project:
+  type: book
+  title: "COMPSYS 303 Test Notes"
+
+include-in-header:
+  - preamble.tex
+# filters:
+#   - color-filter
+book:
+  chapters:
+    - index.qmd
+    - part: "Partha's Lectures"
+      chapters:
+        - lectures/lecture1_concurrency.qmd
+        - lectures/lecture2_sccharts.qmd
+    - part: "Avinash's Lectures"
+      chapters: 
+        - lectures/lecture3_peripherals.qmd
+        - lectures/lecture4_embedded_processors.qmd
+        - lectures/lecture5_sopc_buses.qmd
+    - part: "Nathan's Lectures"
+      chapters: 
+        - lectures/lecture6_embedded_control1.qmd
+        - lectures/lecture7_embedded_control2.qmd
+        - lectures/lecture8_embedded_control3.qmd
+        - lectures/lecture9_industrial_automation1.qmd
+        - lectures/lecture10_industrial_automation2.qmd
+      
+title: "COMPSYS 303: Microcomputers and Embedded Systems"
+subtitle: "Lecture Notes"
+author: "Nicholas Russell"
+date: 10/05/2024
+date-format: full
+format:
+  pdf:
+    pdf-engine: latexmk
+    pdf-engine-opts:
+      - "-synctex=1"
+      - "-interaction=nonstopmode"
+      - "-file-line-error"
+      - "-lualatex"
+      - "-shell-escape"
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    keep-tex: true
+    keep-md: true
+    hyperrefoptions:
+      - "pdfpagelabels"
+    documentclass: scrreprt
+    fontsize: 14pt
+    papersize: a4
+    pagestyle: plain
+    classoption:
+      - headinclude=true
+      - footinclude=true
+    geometry:
+      - "top=2.5cm"
+      - "bottom=2.5cm"
+      - "left=1.5cm"
+      - "right=1.5cm"
+      - "marginparsep=2cm"
+    fontfamily: lmodern
+
