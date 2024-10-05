@@ -41,6 +41,7 @@ format:
       - "-lualatex"
       - "-shell-escape"
     toc: true
+    latex-clean: false
     toc-depth: 3
     number-sections: true
     keep-tex: true
@@ -54,11 +55,11 @@ format:
     classoption:
       - headinclude=true
       - footinclude=true
+      - DIV=calc
     geometry:
-      - "top=2.5cm"
-      - "bottom=2.5cm"
+      - "top=3cm"
+      - "bottom=3cm"
       - "left=1.5cm"
       - "right=1.5cm"
-      - "marginparsep=2cm"
     fontfamily: lmodern
 

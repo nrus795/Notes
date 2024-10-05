@@ -6,10 +6,10 @@
 \documentclass[
   14pt,
   a4paper,
-  DIV=11,
   numbers=noendperiod,
   headinclude=true,
-  footinclude=true]{scrreprt}
+  footinclude=true,
+  DIV=calc]{scrreprt}
 
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
@@ -43,7 +43,7 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\usepackage[top=2.5cm,bottom=2.5cm,left=1.5cm,right=1.5cm,marginparsep=2cm]{geometry}
+\usepackage[top=3cm,bottom=3cm,left=1.5cm,right=1.5cm]{geometry}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
@@ -109,27 +109,16 @@
 % \usepackage{fontspec}
 \sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
 
-
+\renewcommand*{\chapterformat}{\textbf{Lecture \thechapter: \;}}
 
 \setkomafont{disposition}{\normalcolor\bfseries}
 \setkomafont{section}{\normalfont\Large\bfseries}
 \setkomafont{chapter}{\normalfont\LARGE\bfseries}
+
 \RedeclareSectionCommand[
   beforeskip=10pt, % Space before the chapter
-  afterskip=10pt   % Space after the chapter
+  afterskip=20pt   % Space after the chapter
 ]{chapter}
-
-% Adjust part spacing
-\RedeclareSectionCommand[
-  beforeskip=10pt,
-  afterskip=10pt
-]{part}
-
-% Adjust section spacing
-\RedeclareSectionCommand[
-  beforeskip=10pt,
-  afterskip=10pt
-]{section}
 
 \fancypagestyle{plain}{%
   \fancyhf{}%
@@ -143,6 +132,22 @@
 \pagestyle{plain}
 \setlength{\headheight}{16.5pt}
 \KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
+\definecolor{quarto-callout-color}{HTML}{909090}
+\definecolor{quarto-callout-note-color}{HTML}{0758E5}
+\definecolor{quarto-callout-important-color}{HTML}{CC1914}
+\definecolor{quarto-callout-warning-color}{HTML}{EB9113}
+\definecolor{quarto-callout-tip-color}{HTML}{00A047}
+\definecolor{quarto-callout-caution-color}{HTML}{FC5300}
+\definecolor{quarto-callout-color-frame}{HTML}{acacac}
+\definecolor{quarto-callout-note-color-frame}{HTML}{4582ec}
+\definecolor{quarto-callout-important-color-frame}{HTML}{d9534f}
+\definecolor{quarto-callout-warning-color-frame}{HTML}{f0ad4e}
+\definecolor{quarto-callout-tip-color-frame}{HTML}{02b875}
+\definecolor{quarto-callout-caution-color-frame}{HTML}{fd7e14}
+\makeatother
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
 \makeatother
@@ -241,104 +246,42 @@ modular learning and easy reference.
 
 \markright{Lectures Included}
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{Lecture 1: Concurrency}
+\textbf{Lecture 1: Concurrency} Overview of concurrency in embedded
+systems, challenges like race conditions and priority inversion, and
+real-world examples.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Overview of concurrency in embedded systems, challenges like race
-    conditions and priority inversion, and real-world examples.
-  \end{itemize}
-\item
-  \textbf{Lecture 2: SCCharts and Synchronous Concurrency}
+\textbf{Lecture 2: SCCharts and Synchronous Concurrency} Detailed
+discussion on SCCharts, the synchronous approach, and cyber-physical
+systems.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Detailed discussion on SCCharts, the synchronous approach, and
-    cyber-physical systems.
-  \end{itemize}
-\item
-  \textbf{Lecture 3: Peripherals and Interfacing}
+\textbf{Lecture 3: Peripherals and Interfacing} Types of I/O, data
+transfer mechanisms, and interrupt handling in embedded systems.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Types of I/O, data transfer mechanisms, and interrupt handling in
-    embedded systems.
-  \end{itemize}
-\item
-  \textbf{Lecture 4: Embedded Processors}
+\textbf{Lecture 4: Embedded Processors} Overview of processor design in
+embedded systems, FSMD, types of processors, and synthesis from C code.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Overview of processor design in embedded systems, FSMD, types of
-    processors, and synthesis from C code.
-  \end{itemize}
-\item
-  \textbf{Lecture 5: SoC and SOPC Buses}
+\textbf{Lecture 5: SoC and SOPC Buses} Discussion of bus design issues,
+synchronous vs.~asynchronous buses, and bus arbitration.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Discussion of bus design issues, synchronous vs.~asynchronous buses,
-    and bus arbitration.
-  \end{itemize}
-\item
-  \textbf{Lecture 6: Embedded Control Systems 1}
+\textbf{Lecture 6: Embedded Control Systems 1} Real-time systems,
+sampling and quantization, aliasing, and worst-case execution time.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Real-time systems, sampling and quantization, aliasing, and
-    worst-case execution time.
-  \end{itemize}
-\item
-  \textbf{Lecture 7: Embedded Control Systems 2}
+\textbf{Lecture 7: Embedded Control Systems 2} Interaction with
+real-world peripherals, including PWM, stepper motors, and ADC.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Interaction with real-world peripherals, including PWM, stepper
-    motors, and ADC.
-  \end{itemize}
-\item
-  \textbf{Lecture 8: Embedded Control Systems 3}
+\textbf{Lecture 8: Embedded Control Systems 3} Control of physical
+processes, key metrics in control systems, and examples like cruise
+control.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Control of physical processes, key metrics in control systems, and
-    examples like cruise control.
-  \end{itemize}
-\item
-  \textbf{Lecture 9: Industrial Automation 1}
+\textbf{Lecture 9: Industrial Automation 1} Introduction to industrial
+automation, PLCs, HMIs, and generations of automation.
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Introduction to industrial automation, PLCs, HMIs, and generations
-    of automation.
-  \end{itemize}
-\item
-  \textbf{Lecture 10: Industrial Automation 2}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    IEC 61131 standard, ladder logic features, and an example of a
-    pneumatic cylinder control sequence.
-  \end{itemize}
-\end{enumerate}
+\textbf{Lecture 10: Industrial Automation 2} IEC 61131 standard, ladder
+logic features, and an example of a pneumatic cylinder control sequence.
 
 \part{Partha's Lectures}
 
-\chapter{Lecture 1: Concurrency}\label{lecture-1-concurrency}
+\chapter{Concurrency}\label{concurrency}
 
 \section{Introduction to Embedded Systems and
 Concurrency}\label{introduction-to-embedded-systems-and-concurrency}
@@ -404,21 +347,27 @@ resources simultaneously, potentially leading to issues such as
   lock shared resources to ensure orderly access. It is also important
   to minimize the time a process spends in a critical section to reduce
   the chances of blocking other processes.
+\end{itemize}
+
+\textbf{Deadlocks and Livelocks:}
+
+\begin{itemize}
 \item
-  \textbf{Deadlocks and Livelocks:} \textbf{Deadlocks} occur when
-  processes are waiting on each other indefinitely, leading to a
-  situation where no progress can be made. This typically happens in
-  resource allocation scenarios where two or more processes form a
-  circular chain of dependencies. A classic example is two processes
-  holding a resource that the other needs to proceed, resulting in a
-  stalemate. \textbf{Livelocks} are similar to deadlocks but differ in
-  that processes keep changing state in response to each other without
-  making any actual progress. Both issues are critical in concurrent
-  systems and need to be addressed through careful design, such as
-  avoiding circular waiting conditions, implementing resource
-  hierarchies, or using \textbf{deadlock detection algorithms} that can
-  detect and break deadlocks. Timeout mechanisms can also be used to
-  release resources if a process waits too long.
+  \textbf{Deadlocks} occur when processes are waiting on each other
+  indefinitely, leading to a situation where no progress can be made.
+  This typically happens in resource allocation scenarios where two or
+  more processes form a circular chain of dependencies. A classic
+  example is two processes holding a resource that the other needs to
+  proceed, resulting in a stalemate.
+\item
+  \textbf{Livelocks} are similar to deadlocks but differ in that
+  processes keep changing state in response to each other without making
+  any actual progress. Both issues are critical in concurrent systems
+  and need to be addressed through careful design, such as avoiding
+  circular waiting conditions, implementing resource hierarchies, or
+  using \textbf{deadlock detection algorithms} that can detect and break
+  deadlocks. Timeout mechanisms can also be used to release resources if
+  a process waits too long.
 \end{itemize}
 
 \section{Approaches to Manage
@@ -428,20 +377,23 @@ Concurrency in embedded systems is managed through a combination of
 hardware and software synchronization mechanisms. Some of the methods
 discussed include:
 
+\textbf{Busy Waiting and Non-Busy Waiting:}
+
 \begin{itemize}
 \item
-  \textbf{Busy Waiting and Non-Busy Waiting:} \textbf{Busy waiting}
-  occurs when a process remains in the ready state, actively checking
-  for a condition to be satisfied. This approach is inefficient in terms
-  of CPU utilization, as the CPU is occupied with checking instead of
-  performing useful work. \textbf{Non-busy waiting} solutions, such as
-  putting a process in the blocked state while waiting for a resource,
-  are more efficient for embedded systems where CPU resources are
-  limited. Busy waiting is often used in systems where the wait time is
-  expected to be very short, whereas non-busy waiting is preferred for
-  longer wait times to free up CPU resources. In embedded systems,
-  avoiding busy waiting is crucial because the CPU often needs to manage
-  multiple tasks under strict timing constraints.
+  \textbf{Busy waiting} occurs when a process remains in the ready
+  state, actively checking for a condition to be satisfied. This
+  approach is inefficient in terms of CPU utilization, as the CPU is
+  occupied with checking instead of performing useful work.
+\item
+  \textbf{Non-busy waiting} solutions, such as putting a process in the
+  blocked state while waiting for a resource, are more efficient for
+  embedded systems where CPU resources are limited. Busy waiting is
+  often used in systems where the wait time is expected to be very
+  short, whereas non-busy waiting is preferred for longer wait times to
+  free up CPU resources. In embedded systems, avoiding busy waiting is
+  crucial because the CPU often needs to manage multiple tasks under
+  strict timing constraints.
 \item
   \textbf{Test and Set Instruction:} The \textbf{Test and Set}
   instruction is an atomic operation used to achieve mutual exclusion by
@@ -454,48 +406,59 @@ discussed include:
   which may not be suitable for all embedded applications. In systems
   with limited processing power or battery life, busy waiting can
   degrade performance and reduce efficiency.
+\end{itemize}
+
+\textbf{Semaphores and Mutex Locks:}
+
+\begin{itemize}
 \item
-  \textbf{Semaphores and Mutex Locks:} \textbf{Semaphores} are
-  synchronization mechanisms used to manage concurrent access to shared
-  resources. They allow processes to signal and wait for access,
-  ensuring a controlled flow of execution. Semaphores can be
-  \textbf{binary} (acting like a mutex) or \textbf{counting}, allowing a
-  specified number of processes to access a resource concurrently. For
-  example, counting semaphores are often used in producer-consumer
-  scenarios where multiple producers or consumers need access to a
-  shared buffer. \textbf{Mutex locks} are similar but are typically used
-  to protect access to a particular data structure or variable,
-  providing mutual exclusion in critical sections. Mutexes are often
-  simpler to implement but are limited to binary states (locked or
-  unlocked), whereas semaphores offer more flexibility for resource
-  management.
+  \textbf{Semaphores} are synchronization mechanisms used to manage
+  concurrent access to shared resources. They allow processes to signal
+  and wait for access, ensuring a controlled flow of execution.
+  Semaphores can be \textbf{binary} (acting like a mutex) or
+  \textbf{counting}, allowing a specified number of processes to access
+  a resource concurrently. For example, counting semaphores are often
+  used in producer-consumer scenarios where multiple producers or
+  consumers need access to a shared buffer.
 \item
-  \textbf{Priority Inversion and Solutions:} \textbf{Priority inversion}
-  occurs when a higher-priority task is waiting for a resource held by a
-  lower-priority task, which can lead to missed deadlines in real-time
-  systems. A well-known example is the \textbf{Mars Pathfinder mission},
-  where a low-priority task holding a shared resource caused a
-  higher-priority task to miss its deadline, resulting in system resets.
-  Solutions to priority inversion include \textbf{priority inheritance},
-  where the lower-priority task temporarily inherits the higher priority
-  to complete its task and release the resource. Another approach is
-  \textbf{priority ceiling}, where a resource is assigned a priority
-  equal to the highest priority of any task that may lock it, thus
-  preventing priority inversion.
+  \textbf{Mutex locks} are similar but are typically used to protect
+  access to a particular data structure or variable, providing mutual
+  exclusion in critical sections. Mutexes are often simpler to implement
+  but are limited to binary states (locked or unlocked), whereas
+  semaphores offer more flexibility for resource management.
+\end{itemize}
+
+\textbf{Priority Inversion and Solutions:}
+
+\begin{itemize}
+\item
+  \textbf{Priority inversion} occurs when a higher-priority task is
+  waiting for a resource held by a lower-priority task, which can lead
+  to missed deadlines in real-time systems. A well-known example is the
+  \textbf{Mars Pathfinder mission}, where a low-priority task holding a
+  shared resource caused a higher-priority task to miss its deadline,
+  resulting in system resets.
+\item
+  \textbf{Solutions} to priority inversion include \textbf{priority
+  inheritance}, where the lower-priority task temporarily inherits the
+  higher priority to complete its task and release the resource. Another
+  approach is \textbf{priority ceiling}, where a resource is assigned a
+  priority equal to the highest priority of any task that may lock it,
+  thus preventing priority inversion.
 \end{itemize}
 
 \section{Examples and Applications}\label{examples-and-applications}
 
 The lecture provided various examples of where concurrency is critical,
-including the automotive industry (Slide 6) and robotics. For instance,
-the \textbf{2010 Toyota recall} was attributed to software issues in
-their anti-lock braking systems, highlighting the importance of
-deterministic behavior in safety-critical systems. This incident shows
-how improperly managed concurrency can lead to life-threatening
-failures. Similarly, \textbf{Tesla's accidents} were referenced,
-emphasizing the challenges of building reliable autonomous systems.
-These examples underscore the need for proper concurrency management to
-ensure system reliability and safety.
+including the automotive industry and robotics. For instance, the
+\textbf{2010 Toyota recall} was attributed to software issues in their
+anti-lock braking systems, highlighting the importance of deterministic
+behavior in safety-critical systems. This incident shows how improperly
+managed concurrency can lead to life-threatening failures. Similarly,
+\textbf{Tesla's accidents} were referenced, emphasizing the challenges
+of building reliable autonomous systems. These examples underscore the
+need for proper concurrency management to ensure system reliability and
+safety.
 
 In embedded systems such as a \textbf{pacemaker}, concurrency is an
 intrinsic characteristic. The pacemaker must concurrently monitor the
@@ -513,43 +476,57 @@ Solutions}\label{problems-with-concurrency-and-solutions}
 
 Concurrency can lead to serious issues if not properly managed.
 
+\textbf{Deadlocks}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Deadlocks} occur when concurrent processes are waiting on each
+  other to release resources, resulting in a state where no process can
+  proceed. To prevent deadlocks, proper scheduling mechanisms must be
+  implemented to ensure that resource allocation does not lead to
+  circular waiting. \textbf{Deadlock prevention techniques} include
+  resource ordering, where resources are always requested in a specific
+  order, and \textbf{deadlock detection algorithms} that periodically
+  check for cycles in the resource allocation graph. Another approach is
+  \textbf{deadlock avoidance}, such as using the \textbf{Banker's
+  algorithm}, which allocates resources in a way that ensures a safe
+  state is always maintained.
+\end{itemize}
+
+\textbf{Fairness and Scheduling}
+
 \begin{itemize}
 \item
-  \textbf{Deadlocks:} Deadlocks occur when concurrent processes are
-  waiting on each other to release resources, resulting in a state where
-  no process can proceed. To prevent deadlocks, proper scheduling
-  mechanisms must be implemented to ensure that resource allocation does
-  not lead to circular waiting. \textbf{Deadlock prevention techniques}
-  include resource ordering, where resources are always requested in a
-  specific order, and \textbf{deadlock detection algorithms} that
-  periodically check for cycles in the resource allocation graph.
-  Another approach is \textbf{deadlock avoidance}, such as using the
-  \textbf{Banker's algorithm}, which allocates resources in a way that
-  ensures a safe state is always maintained.
+  \textbf{Fairness} in resource allocation means that every process
+  eventually gets a chance to execute. Embedded systems often use a
+  \textbf{scheduler} to manage processes, ensuring tasks are completed
+  in a timely and fair manner. The role of the scheduler is critical to
+  prevent \textbf{starvation}, where some tasks never get executed due
+  to others continuously consuming resources.
 \item
-  \textbf{Fairness and Scheduling:} \textbf{Fairness} in resource
-  allocation means that every process eventually gets a chance to
-  execute. Embedded systems often use a \textbf{scheduler} to manage
-  processes, ensuring tasks are completed in a timely and fair manner.
-  The role of the scheduler is critical to prevent \textbf{starvation},
-  where some tasks never get executed due to others continuously
-  consuming resources. Common scheduling algorithms include
-  \textbf{round-robin}, \textbf{priority-based}, and
-  \textbf{rate-monotonic scheduling}, each with its own advantages and
-  trade-offs depending on the system requirements. \textbf{Round-robin
-  scheduling} is simple and ensures fairness by giving each process a
-  fixed time slice, while \textbf{priority-based scheduling} allows more
-  critical tasks to execute first but can lead to starvation without
-  priority aging.
+  Common \textbf{scheduling} algorithms include \textbf{round-robin},
+  \textbf{priority-based}, and \textbf{rate-monotonic scheduling}, each
+  with its own advantages and trade-offs depending on the system
+  requirements. \textbf{Round-robin scheduling} is simple and ensures
+  fairness by giving each process a fixed time slice, while
+  \textbf{priority-based scheduling} allows more critical tasks to
+  execute first but can lead to starvation without priority aging.
+\end{itemize}
+
+\textbf{Starvation}
+
+\begin{itemize}
+\tightlist
 \item
-  \textbf{Starvation:} \textbf{Starvation} occurs when a process is
-  perpetually denied the resources it needs to execute, often because
-  other higher-priority processes continuously take precedence. To
-  mitigate starvation, \textbf{priority aging} can be used, where the
-  priority of a waiting process is gradually increased over time to
-  ensure it eventually gets the necessary resources. This technique
-  ensures that lower-priority processes are not starved indefinitely,
-  especially in systems with many competing processes.
+  \textbf{Starvation} occurs when a process is perpetually denied the
+  resources it needs to execute, often because other higher-priority
+  processes continuously take precedence. To mitigate starvation,
+  \textbf{priority aging} can be used, where the priority of a waiting
+  process is gradually increased over time to ensure it eventually gets
+  the necessary resources. This technique ensures that lower-priority
+  processes are not starved indefinitely, especially in systems with
+  many competing processes.
 \end{itemize}
 
 \section{Conclusion}\label{conclusion}
@@ -576,8 +553,8 @@ Additionally, understanding how to leverage hardware features, such as
 \textbf{interrupt controllers} and \textbf{timers}, will be crucial for
 achieving precise control over concurrent tasks in embedded systems.
 
-\chapter{Lecture 2: SCCharts and Synchronous
-Concurrency}\label{lecture-2-sccharts-and-synchronous-concurrency}
+\chapter{SCCharts and Synchronous
+Concurrency}\label{sccharts-and-synchronous-concurrency}
 
 \section{Introduction to Synchronous Concurrency and
 SCCharts}\label{introduction-to-synchronous-concurrency-and-sccharts}
@@ -598,23 +575,32 @@ logical clock. This provides a deterministic and predictable execution
 model, which is highly beneficial for embedded systems that operate in
 safety-critical environments.
 
-Key aspects of the synchronous approach include: - \textbf{Synchrony
-Hypothesis:} This hypothesis assumes that the system's reactions occur
-infinitely faster than the environment, leading to a \textbf{zero-delay
-model}. This means that the reaction to an input is instantaneous from
-the system's perspective, ensuring a deterministic response. -
-\textbf{Synchronous Threading and Broadcast Communication:} All
-concurrent threads execute synchronously, meaning that outputs generated
-by one component are immediately visible to all other components. This
-approach resembles \textbf{synchronous circuits}, where each clock tick
-coordinates all activities, providing atomic and instantaneous
-reactions. - \textbf{Atomicity and Instantaneity of Reactions:} The
-synchronous approach treats reactions as atomic, meaning that no
-intermediate states are visible during execution. This helps prevent
-issues like race conditions, which are prevalent in asynchronous
-systems. - \textbf{Reaction to Absence:} The system can react not only
-to events that occur but also to the absence of expected events,
-allowing for a more comprehensive model of environmental interaction.
+Key aspects of the synchronous approach include:
+
+\begin{itemize}
+\item
+  \textbf{Synchrony Hypothesis:} This hypothesis assumes that the
+  system's reactions occur infinitely faster than the environment,
+  leading to a \textbf{zero-delay model}. This means that the reaction
+  to an input is instantaneous from the system's perspective, ensuring a
+  deterministic response.
+\item
+  \textbf{Synchronous Threading and Broadcast Communication:} All
+  concurrent threads execute synchronously, meaning that outputs
+  generated by one component are immediately visible to all other
+  components. This approach resembles \textbf{synchronous circuits},
+  where each clock tick coordinates all activities, providing atomic and
+  instantaneous reactions.
+\item
+  \textbf{Atomicity and Instantaneity of Reactions:} The synchronous
+  approach treats reactions as atomic, meaning that no intermediate
+  states are visible during execution. This helps prevent issues like
+  race conditions, which are prevalent in asynchronous systems.
+\item
+  \textbf{Reaction to Absence:} The system can react not only to events
+  that occur but also to the absence of expected events, allowing for a
+  more comprehensive model of environmental interaction.
+\end{itemize}
 
 \section{SCCharts Overview}\label{sccharts-overview}
 
@@ -627,7 +613,6 @@ systems involving multiple states and concurrent processes.
 Statecharts}\label{similarities-and-differences-between-sccharts-and-statecharts}
 
 \begin{itemize}
-\tightlist
 \item
   \textbf{Similarities:} Both SCCharts and Harel's Statecharts share
   common elements such as states, transitions, signals/events, and
@@ -648,20 +633,36 @@ Statecharts}\label{similarities-and-differences-between-sccharts-and-statecharts
 
 An SCChart can be represented using a \textbf{Boolean Mealy Machine
 (BMM)}. A BMM is defined as a tuple
-\(M = \langle Q, q_0, I, O, T \rangle\), where: - \(Q\): Set of states.
-- \(q_0\): Initial state. - \(I\): Set of inputs. - \(O\): Set of
-outputs. - \(T\): Transition relation, involving states and boolean
-conditions on inputs.
+\(M = \langle Q, q_0, I, O, T \rangle\), where:
+
+\begin{itemize}
+\item
+  \(Q\) is the set of states.
+\item
+  \(q_0\) is the initial state.
+\item
+  \(I\) is the set of inputs.
+\item
+  \(O\) is the set of outputs.
+\item
+  \(T\) is the transition relation, involving states and boolean
+  conditions on inputs.
+\end{itemize}
 
 BMMs provide a formal basis for understanding how SCCharts operate, with
 transitions being defined based on the current state and inputs. The key
-properties of BMMs are \textbf{determinism} and \textbf{reactivity}: -
-\textbf{Determinism}: At most one transition is enabled for any valid
-combination of inputs from the environment. This ensures that the system
-behaves predictably regardless of concurrent events. -
-\textbf{Reactivity}: At least one transition is enabled for any valid
-combination of inputs, ensuring the system can always respond
-appropriately to environmental changes.
+properties of BMMs are \textbf{determinism} and \textbf{reactivity}:
+
+\begin{itemize}
+\item
+  \textbf{Determinism}: At most one transition is enabled for any valid
+  combination of inputs from the environment. This ensures that the
+  system behaves predictably regardless of concurrent events.
+\item
+  \textbf{Reactivity}: At least one transition is enabled for any valid
+  combination of inputs, ensuring the system can always respond
+  appropriately to environmental changes.
+\end{itemize}
 
 \section{The VABRO Example}\label{the-vabro-example}
 
@@ -688,13 +689,21 @@ single tick of the logical clock.
 \textbf{Sequential Constructiveness} extends Berry's constructiveness by
 allowing sequential updates to shared variables under certain
 conditions. The \textbf{Init-Update-Read (IRU) protocol} is used to
-manage variable updates in the following order: 1.
-\textbf{Initialization}: Concurrent threads can make confluent
-initializations to shared variables, provided they assign the same
-value. 2. \textbf{Update}: Threads update shared variables using the
-same update function, ensuring confluent updates. 3. \textbf{Read}:
-Finally, threads are allowed to read the updated value, guaranteeing
-consistency.
+manage variable updates in the following order:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Initialization}: Concurrent threads can make confluent
+  initializations to shared variables, provided they assign the same
+  value.
+\item
+  \textbf{Update}: Threads update shared variables using the same update
+  function, ensuring confluent updates.
+\item
+  \textbf{Read}: Finally, threads are allowed to read the updated value,
+  guaranteeing consistency.
+\end{enumerate}
 
 \section{Timed SCCharts and Real-Time
 Systems}\label{timed-sccharts-and-real-time-systems}
@@ -718,17 +727,25 @@ SCCharts}\label{designing-real-time-systems-with-sccharts}
 
 The synchronous approach is particularly suitable for \textbf{real-time
 systems}, where deterministic behavior is essential for safety and
-reliability. By using SCCharts: - \textbf{Concurrency is managed in a
-deterministic manner}, ensuring that all processes execute predictably
-without interference or unintended interactions. - \textbf{Pre-emption
-and Suspension} are modeled explicitly, allowing designers to represent
-high-priority tasks interrupting lower-priority tasks, or suspending
-ongoing activities until a condition is met. - The \textbf{generated
-code from SCCharts} compiles the concurrent specifications into
-sequential code, which is efficient and suitable for \textbf{bare metal
-implementations} without requiring an operating system. This makes
-SCCharts an excellent choice for systems with constrained resources,
-such as microcontrollers in embedded environments.
+reliability. By using SCCharts:
+
+\begin{itemize}
+\item
+  \textbf{Concurrency is managed in a deterministic manner}, ensuring
+  that all processes execute predictably without interference or
+  unintended interactions.
+\item
+  \textbf{Pre-emption and Suspension} are modeled explicitly, allowing
+  designers to represent high-priority tasks interrupting lower-priority
+  tasks, or suspending ongoing activities until a condition is met.
+\item
+  The \textbf{generated code from SCCharts} compiles the concurrent
+  specifications into sequential code, which is efficient and suitable
+  for \textbf{bare metal implementations} without requiring an operating
+  system. This makes SCCharts an excellent choice for systems with
+  constrained resources, such as microcontrollers in embedded
+  environments.
+\end{itemize}
 
 \section{Conclusion}\label{conclusion-1}
 
@@ -749,527 +766,1870 @@ safe and reliable manner.
 
 \part{Avinash's Lectures}
 
-\chapter{Lecture 3: Peripherals and
-Interfacing}\label{lecture-3-peripherals-and-interfacing}
+\chapter{Peripherals and Interfacing}\label{peripherals-and-interfacing}
 
-\section{Overview}\label{overview}
+\section{Introduction to Peripherals and Interfacing in Embedded
+Systems}\label{introduction-to-peripherals-and-interfacing-in-embedded-systems}
+
+Embedded systems require effective mechanisms for communicating with
+various external devices, known as \textbf{peripherals}. These
+peripherals, which include sensors, actuators, timers, and communication
+modules, interact with the processor through specialized interfaces
+(Slide 4). \textbf{Interfacing} is critical in embedded systems as it
+determines how well the processor can manage peripherals to meet
+performance and reliability requirements. The lecture discussed various
+types of I/O, including memory-mapped and direct I/O, as well as data
+transfer methods like polling, interrupts, and Direct Memory Access
+(DMA).
+
+\section{Types of I/O Interfaces}\label{types-of-io-interfaces}
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Input and Output (IO)}: Embedded systems interface with
-  external peripherals to gather input (e.g., sensors) and send output
-  (e.g., motor control).
-\item
-  \textbf{Types of IO}: Can be categorized as \emph{polling},
-  \emph{interrupt-driven}, or using \emph{Direct Memory Access (DMA)}
-  for efficiency.
+  \textbf{Memory-Mapped I/O}: In this type of I/O, the processor treats
+  peripheral registers as memory locations within the same address space
+  (Slide 7). The advantage of this approach is that the same
+  instructions can be used for both memory and I/O operations,
+  simplifying program design. However, memory-mapped I/O also shares
+  address lines with memory, which means it can impact addressable
+  memory space.
 
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Polling}: The processor actively waits until a peripheral is
-    ready. Inefficient as it wastes processing power.
+    Example: The \textbf{Nios II processor} from Altera uses
+    memory-mapped I/O to communicate with peripherals via Avalon buses,
+    where specific addresses map to different peripheral registers, such
+    as control, status, or data registers (Slide 7). Functions like
+    \texttt{IORD()} and \texttt{IOWR()} are used to read from and write
+    to these registers.
+  \end{itemize}
+\item
+  \textbf{Direct I/O}: Here, peripherals are addressed using separate
+  I/O ports, distinct from the memory address space (Slide 8). This
+  method requires specialized I/O instructions, such as \texttt{IN} and
+  \texttt{OUT} on x86 processors, making it more suitable for systems
+  where efficient separation of I/O and memory space is required. In
+  \textbf{direct I/O}, the processor has separate control signals
+  specifically for enabling devices, which prevents interference with
+  memory operations.
+\end{itemize}
+
+\section{Data Transfer Methods}\label{data-transfer-methods}
+
+\begin{itemize}
+\item
+  \textbf{Programmed I/O}: In this mode, the processor executes a
+  program to directly manage data transfer between itself and the I/O
+  device (Slide 11). While simple to implement, it is inefficient since
+  the processor is blocked during the entire transfer process, often
+  resulting in idle CPU cycles while waiting for the peripheral to be
+  ready.
+\item
+  \textbf{Interrupt-Driven I/O}: This method leverages
+  \textbf{interrupts} to initiate data transfer, which improves
+  efficiency by allowing the processor to perform other tasks until the
+  I/O device signals readiness (Slide 14). When data is ready, the
+  peripheral asserts an interrupt signal, causing the processor to
+  execute an \textbf{Interrupt Service Routine (ISR)}. The ISR then
+  handles the data transfer, enabling better utilization of CPU
+  resources compared to polling.
+
+  \begin{itemize}
+  \tightlist
   \item
-    \textbf{Interrupts}: The peripheral signals the processor when it
-    has data, allowing efficient use of CPU resources.
+    \textbf{Fixed and Vectored Interrupts}: With \textbf{fixed
+    interrupts}, the address of the ISR is built into the
+    microprocessor, while \textbf{vectored interrupts} allow the
+    peripheral to specify the address of its ISR, providing more
+    flexibility (Slide 16-24). Interrupts improve system efficiency but
+    add complexity due to the need for context saving and careful ISR
+    design.
+  \end{itemize}
+\item
+  \textbf{DMA (Direct Memory Access)}: DMA involves an external
+  controller taking over the system bus to manage data transfer between
+  a peripheral and memory without processor involvement, freeing up the
+  CPU for other operations (Slide 37). \textbf{Block DMA} transfers data
+  in large blocks, while \textbf{cycle-stealing DMA} transfers a few
+  bytes at a time, relinquishing the bus to the CPU when needed (Slide
+  52).
+
+  \begin{itemize}
+  \tightlist
   \item
-    \textbf{DMA}: Offloads data transfer to a dedicated controller,
-    enabling parallel processing.
+    \textbf{Example}: In a \textbf{peripheral-to-memory transfer using
+    DMA}, the DMA controller initiates a request to gain control of the
+    bus, then proceeds to transfer data while the CPU resumes its normal
+    execution. The CPU only stalls when it requires access to the bus,
+    significantly improving system performance by overlapping
+    computation and data transfer (Slide 46-50).
   \end{itemize}
 \end{itemize}
 
-\section{Memory-Mapped vs Direct IO}\label{memory-mapped-vs-direct-io}
+\section{Timer and Counter
+Peripherals}\label{timer-and-counter-peripherals}
+
+Timers and counters are integral parts of embedded systems for handling
+periodic events and measuring intervals (Slide 53).
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Memory-Mapped IO}: IO devices are treated like memory
-  locations, accessed using memory read/write instructions.
+  \textbf{Timers}: Timers are used to measure time intervals or generate
+  timed output events. For example, a \textbf{16-bit timer} counting
+  clock pulses with a 10 ns period can generate an event after a set
+  duration. Timers can be used in applications like controlling traffic
+  lights or measuring a car's speed.
 \item
-  \textbf{Direct IO}: Uses a separate address space for IO operations,
-  typically with specialized instructions (e.g., IN and OUT instructions
-  in the x86 architecture).
+  \textbf{Counters}: Similar to timers but used for counting external
+  pulses, such as counting cars passing over a sensor.
+  \textbf{Programmable timers} allow setting a terminal count value to
+  specify when an event should occur, which is critical for tasks like
+  interval timing or watchdog functionalities (Slide 54).
+\item
+  \textbf{Example of Reaction Timer}: A \textbf{reaction timer} measures
+  the user's response time to a visual stimulus (Slide 56). A timer is
+  started when an indicator light turns on, and the user's reaction time
+  is recorded by counting the number of timer overflows until a button
+  is pressed. This showcases the use of timers to measure user
+  interaction intervals.
 \end{itemize}
 
-\section{Data Transfer Mechanisms}\label{data-transfer-mechanisms}
+\section{UART Communication}\label{uart-communication}
+
+\textbf{Universal Asynchronous Receiver/Transmitter (UART)} is a widely
+used peripheral for serial communication in embedded systems. It
+converts parallel data from the processor to serial data for
+transmission and vice versa (Slide 58).
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Programmed IO}: The processor executes specific instructions
-  for data transfer. This is inherently slower and is suitable for
-  simple, low-bandwidth peripherals.
+  \textbf{Data Transmission and Reception}: UART communication uses
+  start, data, and stop bits to frame each byte of information, with an
+  optional parity bit for error detection. UARTs require synchronization
+  mechanisms like \textbf{baud rate} settings to ensure the transmitter
+  and receiver operate at the same speed (Slide 58).
 \item
-  \textbf{DMA Mode}: Allows for efficient data transfer, especially when
-  large data volumes are involved, by using an additional master
-  controller to handle the transfers.
+  \textbf{Registers and Flow Control}: UARTs often use multiple
+  registers, such as \textbf{control}, \textbf{status}, \textbf{rxdata},
+  and \textbf{txdata} (Slide 60). For example, a transmitter may set the
+  \textbf{Request to Send (RTS)} bit in the control register and then
+  poll the \textbf{Clear to Send (CTS)} bit to determine if the receiver
+  is ready. Double buffering in the transmitter and receiver allows for
+  more efficient communication by enabling one data transfer while
+  another is in progress.
+\item
+  \textbf{Interrupt Handling in UARTs}: The UART peripheral can generate
+  interrupts when new data is received or the transmission buffer is
+  ready for new data, thus enabling efficient communication without
+  busy-waiting (Slide 64). The ISR reads the \textbf{rxdata} register
+  and processes the incoming data, which is crucial in scenarios where
+  timely responses are needed, such as in real-time data logging.
 \end{itemize}
 
-\section{Interrupts}\label{interrupts}
+\section{Peripheral Interfacing
+Techniques}\label{peripheral-interfacing-techniques}
+
+\textbf{Interrupt Handling in Nios II Processors}: The \textbf{Nios II
+processor} uses an exception handler provided by the Hardware
+Abstraction Layer (HAL) to differentiate between software exceptions and
+hardware interrupts (Slide 31). This approach ensures efficient response
+handling based on the nature of the interrupt. A typical function for
+registering an interrupt in Nios II is \texttt{alt\_irq\_register()},
+where the handler function and device ID are specified (Slide 32).
+
+\textbf{Direct Memory Access for High-Speed Transfers}: DMA is employed
+when dealing with high-speed peripherals that need to transfer large
+data blocks. For example, transferring data from a tape drive or video
+feed requires a DMA controller to handle the high volume of data without
+overloading the CPU (Slide 37). The use of \textbf{DMA controllers}
+helps avoid bottlenecks in data transfer and allows parallel processing,
+which is essential in high-performance embedded systems.
+
+\section{Practical Considerations and
+Limitations}\label{practical-considerations-and-limitations}
+
+\textbf{Limitations of Programmed I/O}: Programmed I/O is unsuitable for
+high-speed peripherals because it involves significant overhead, where
+the CPU needs to execute multiple instructions for each word of data
+transferred (Slide 36). This leads to inefficiencies, particularly when
+handling peripherals that require large amounts of data to be processed
+rapidly, such as audio or video streams.
+
+\textbf{DMA vs Programmed I/O}: The main advantage of \textbf{DMA} over
+programmed I/O is its ability to handle large data transfers without
+constant CPU intervention, reducing the overhead on the main processor
+(Slide 38). This is particularly useful for applications like
+transferring video frames to memory or storing data from high-speed
+sensors.
+
+\section{Conclusion}\label{conclusion-2}
+
+\textbf{Peripherals and interfacing} are fundamental components of
+embedded systems, enabling interaction with the external world. The
+lecture covered various data transfer methods, highlighting their
+advantages and trade-offs. Effective use of \textbf{interrupts},
+\textbf{DMA}, and \textbf{timers} allows embedded systems to operate
+efficiently, especially in real-time applications where timely responses
+are critical. Understanding the different modes of I/O---such as
+memory-mapped versus direct I/O---and the specific requirements for
+handling data transfers through \textbf{polling}, \textbf{interrupts},
+or \textbf{DMA} helps in designing robust and responsive embedded
+systems.
+
+Future discussions will focus on specific interfacing techniques for
+more complex peripherals, such as \textbf{SPI} and \textbf{I2C}
+communication protocols, as well as how to optimize
+\textbf{interrupt-driven I/O} to minimize latency and maximize
+throughput in resource-constrained environments.
+
+\chapter{Embedded Processors}\label{embedded-processors}
+
+\section{Introduction to Embedded
+Processors}\label{introduction-to-embedded-processors}
+
+Embedded processors are specialized computation engines designed to
+implement a system's desired functionality. Unlike general-purpose
+processors, embedded processors can be optimized for specific
+applications, balancing performance, power consumption, and area
+constraints (Slide 5). There are three main types of embedded
+processors: \textbf{general-purpose processors}, \textbf{single-purpose
+processors}, and \textbf{application-specific processors}. Each has its
+advantages and trade-offs, depending on the intended application.
+
+\section{Types of Embedded
+Processors}\label{types-of-embedded-processors}
+
+\subsection{General-Purpose
+Processors}\label{general-purpose-processors}
+
+\textbf{General-purpose processors} (also known as microprocessors) are
+programmable devices used in a wide variety of applications. They
+contain a \textbf{program memory}, a \textbf{datapath} with a large
+register file, and a \textbf{general ALU} (Slide 7). Some notable
+features include:
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Fixed Interrupt}: The ISR (Interrupt Service Routine) address
-  is fixed and cannot be changed.
+  \textbf{High Flexibility}: General-purpose processors can run
+  different software programs, making them highly adaptable.
 \item
-  \textbf{Vectored Interrupt}: The peripheral provides the ISR address,
-  allowing for more flexible interrupt handling.
+  \textbf{Low Non-Recurring Engineering (NRE) Costs}: These processors
+  can be developed for a broad market, leading to lower initial costs.
 \item
-  \textbf{Interrupt Address Table}: A hybrid approach where an index is
-  provided into a memory table to determine the ISR address.
+  \textbf{Examples}: The \textbf{Pentium} processor is a well-known
+  example, but there are many other general-purpose processors used in
+  embedded systems.
 \end{itemize}
 
-\section{Examples of Peripheral
-Handling}\label{examples-of-peripheral-handling}
+General-purpose processors are ideal for systems that need versatility
+but do not have extreme performance or power constraints.
+
+\subsection{Single-Purpose Processors}\label{single-purpose-processors}
+
+\textbf{Single-purpose processors} are digital circuits designed to
+execute only one specific program, such as a \textbf{coprocessor},
+\textbf{accelerator}, or \textbf{peripheral} (Slide 8). Key
+characteristics include:
 
 \begin{itemize}
 \item
-  \textbf{Interrupt-Driven IO}: Discussed various types of interrupts,
-  including \emph{maskable} (which can be ignored during critical
-  operations) and \emph{non-maskable} (used for urgent events like power
-  failure).
+  \textbf{Minimal Components}: They contain only the elements necessary
+  for their task, often without program memory, which reduces size and
+  power consumption.
 \item
-  \textbf{NIOS II Development Board}: The board supports non-vectored
-  interrupts, relying on the HAL system library to determine the
-  interrupt source.
+  \textbf{Benefits}: Single-purpose processors are \textbf{fast},
+  \textbf{small}, and \textbf{low power} due to their dedicated nature.
+  Since there are no extra components, they achieve high efficiency in
+  both speed and energy.
+\item
+  \textbf{Examples}: Hardware implementations of functions like
+  \textbf{Greatest Common Divisor (GCD)} are often realized with
+  single-purpose processors.
 \end{itemize}
 
-\chapter{Lecture 4: Embedded
-Processors}\label{lecture-4-embedded-processors}
+These processors are well-suited for real-time, deterministic tasks that
+require minimal latency and maximum energy efficiency.
 
-\section{Overview}\label{overview-1}
+\subsection{Application-Specific
+Processors}\label{application-specific-processors}
+
+\textbf{Application-specific processors} are programmable processors
+optimized for a particular class of applications that share common
+characteristics (Slide 9). They combine aspects of both general-purpose
+and single-purpose processors:
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Custom Processor Design}: Embedded systems often require
-  specialized processors designed specifically for the application to
-  ensure optimal performance and efficiency.
+  \textbf{Program Memory and Optimized Datapath}: Application-specific
+  processors include a program memory and a \textbf{customized datapath}
+  tailored to the target applications, such as \textbf{DSPs} (Digital
+  Signal Processors).
 \item
-  \textbf{FSMD (Finite State Machine with Datapath)}: A model that
-  integrates a finite state machine (FSM) with a datapath to execute
-  instructions in an embedded system.
+  \textbf{Trade-Off}: They offer some flexibility compared to
+  single-purpose processors, while providing better performance and
+  efficiency than general-purpose processors.
 \item
-  \textbf{Datapath Design}: Consists of elements like registers, ALUs,
-  and multiplexers that perform arithmetic operations and manage data
-  flow.
-\item
-  \textbf{Controller Design}: Controls the sequence of operations
-  performed by the datapath, ensuring synchronization between different
-  components.
+  \textbf{Benefits}: These processors provide a balance of flexibility,
+  performance, size, and power consumption, making them ideal for use in
+  systems that need customization without sacrificing too much
+  generalizability.
 \end{itemize}
 
-\section{Types of Processors}\label{types-of-processors}
+\section{Finite-State Machine with Datapath
+(FSMD)}\label{finite-state-machine-with-datapath-fsmd}
+
+One of the most common approaches in custom embedded processor design is
+the use of a \textbf{Finite-State Machine with Datapath (FSMD)}. FSMD is
+a model that integrates control and data paths, allowing complex
+behaviors to be implemented systematically (Slide 17).
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{General-Purpose Processors}: Flexible and programmable, used
-  for a wide variety of applications. Example: Pentium processors.
+  \textbf{FSMD Structure}: An FSMD consists of:
+
+  \begin{itemize}
+  \item
+    \textbf{Controller}: A finite-state machine that determines the
+    sequence of operations.
+  \item
+    \textbf{Datapath}: Composed of \textbf{registers}, \textbf{ALUs},
+    and \textbf{other functional units} used to manipulate data (Slide
+    19).
+  \end{itemize}
 \item
-  \textbf{Single-Purpose Processors}: Designed to execute one specific
-  program efficiently. Example: Accelerators or coprocessors for
-  specialized tasks.
+  \textbf{Design Flow}: Typically, a design starts by creating an
+  algorithm, converting it to a state machine, and then mapping it to an
+  FSMD (Slide 18). This involves defining states, transitions, and
+  operations that control how data is processed.
 \item
-  \textbf{Application-Specific Processors}: A compromise between
-  general-purpose and single-purpose processors, optimized for a
-  particular class of applications to balance flexibility, performance,
-  and power consumption.
+  \textbf{Example: GCD Calculation}: The \textbf{Greatest Common Divisor
+  (GCD)} example demonstrated in the lecture involves defining a simple
+  algorithm and converting it to an FSMD. The states of the GCD FSM
+  correspond to different stages of the computation, and the datapath
+  manages the subtraction operations required to compute the GCD (Slide
+  17).
 \end{itemize}
 
-\section{C to Hardware Synthesis}\label{c-to-hardware-synthesis}
+\section{Custom Processor Design
+Techniques}\label{custom-processor-design-techniques}
+
+The design of custom embedded processors involves several key techniques
+for optimizing performance, size, and power:
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Hardware Synthesis from C Code}: Converting high-level C code
-  to hardware involves inferring control and data paths from program
-  logic. This approach allows designers to achieve maximum performance
-  for specific applications without manually coding in HDL.
+  \textbf{Datapath Design}: Involves creating registers for each
+  declared variable and functional units for each arithmetic operation
+  (Slide 19). The registers, ALU, and functional units are connected
+  based on the data flow in the original algorithm.
+\item
+  \textbf{Controller Design}: The controller is responsible for
+  sequencing the operations in the datapath. Complex actions in the FSMD
+  are broken down into manageable control steps to ensure deterministic
+  behavior (Slide 20).
+\item
+  \textbf{Splitting into Controller and Datapath}: Splitting the
+  controller and datapath allows for better modularity and optimization
+  of the design. The controller handles decision-making, while the
+  datapath focuses on arithmetic and logical operations (Slide 21).
 \end{itemize}
 
-\section{FSMD Design}\label{fsmd-design}
+\section{Optimization Strategies for Embedded
+Processors}\label{optimization-strategies-for-embedded-processors}
+
+\textbf{Optimization} is the process of refining the design to achieve
+the best possible trade-off among different design metrics, such as
+speed, area, and power consumption (Slide 24).
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{State Diagram Templates}: Used to model control flow in the
-  FSMD, involving components like loops, branches, and assignments.
+  \textbf{Program Optimization}: Involves analyzing the original program
+  for inefficiencies. The use of more efficient arithmetic operations or
+  changing the sequence of operations can significantly improve the
+  overall performance. For example, replacing subtraction operations
+  with modulo in the GCD algorithm sped up the calculation and reduced
+  loop iterations (Slide 26).
 \item
-  \textbf{Datapath Creation}: Involves creating registers for variables,
-  functional units for operations, and interconnecting them with control
-  signals to create a functional system.
+  \textbf{FSMD Optimization}: The FSMD can be optimized by merging or
+  separating states to improve efficiency (Slide 27). \textbf{State
+  merging} can be done for states with constant transitions, whereas
+  \textbf{state separation} can help reduce hardware complexity for
+  states requiring complex operations.
 \item
-  \textbf{Controller FSM}: Works with the datapath to manage control
-  flow and determine which operations are executed at each step.
+  \textbf{Datapath Optimization}: \textbf{Sharing functional units}
+  between states can reduce the area by avoiding redundant hardware.
+  \textbf{Multi-functional units} like ALUs can be used for different
+  operations in different states, optimizing resource usage (Slide 29).
+\item
+  \textbf{FSM Optimization}: Optimizing the finite-state machine
+  involves techniques like \textbf{state encoding} (assigning efficient
+  binary codes to states) and \textbf{state minimization} (merging
+  equivalent states to reduce complexity) (Slide 30).
 \end{itemize}
 
-\section{Example: Greatest Common Divisor
-(GCD)}\label{example-greatest-common-divisor-gcd}
+\section{Custom Single-Purpose Processor Design: An
+Example}\label{custom-single-purpose-processor-design-an-example}
+
+The lecture provided an example of designing a custom single-purpose
+processor for a simple \textbf{bridge} that converts two 4-bit inputs
+into an 8-bit output (Slide 31).
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{GCD Implementation}: Demonstrates how an algorithm (finding
-  the GCD of two numbers) can be converted into an FSMD with a state
-  diagram representing the control flow and a datapath for arithmetic
-  operations.
+  \textbf{RT-Level Design}: The Register-Transfer (RT) level model is
+  used to specify how data is transferred and manipulated in each clock
+  cycle. The design includes both a \textbf{controller FSM} and a
+  \textbf{datapath} with registers and functional units (Slide 32).
+\item
+  \textbf{State Diagram and Data Flow}: The RT-level processor's
+  behavior is defined through state diagrams and data flow diagrams,
+  demonstrating how each input is processed and combined into an output.
+  The controller is responsible for sequencing these operations, while
+  the datapath handles the actual data manipulation.
 \end{itemize}
 
-\chapter{Lecture 5: SoC and SOPC
-Buses}\label{lecture-5-soc-and-sopc-buses}
+\section{C to Hardware: Synthesis and
+Implementation}\label{c-to-hardware-synthesis-and-implementation}
 
-\section{Overview}\label{overview-2}
+Another important aspect covered in the lecture was the conversion from
+\textbf{C code to hardware}. This is known as \textbf{High-Level
+Synthesis (HLS)} and is used to automatically convert behavioral C code
+into corresponding hardware designs (Slide 14).
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{System on Chip (SoC) and System on Programmable Chip (SOPC)}:
-  SoCs integrate all components of a computer or other systems onto a
-  single chip, while SOPCs use programmable logic to create flexible
-  embedded solutions.
+  \textbf{Motivation}: The main advantage is achieving maximum
+  performance for specific applications without having to manually write
+  hardware descriptions in HDL (Hardware Description Language). This
+  approach allows software developers to leverage existing C code and
+  translate it into efficient hardware implementations.
 \item
-  \textbf{Bus Design}: The bus is the communication system that
-  transfers data between components inside a system, and its design
-  impacts the overall system performance.
+  \textbf{Components}: The translation involves identifying data and
+  control instructions and converting them into datapath elements like
+  \textbf{ALUs}, \textbf{registers}, and \textbf{control logic}. This is
+  then used to create a hardware implementation of the algorithm
+  specified in C (Slide 15).
+\end{itemize}
+
+\section{Evolution of Embedded
+Processors}\label{evolution-of-embedded-processors}
+
+Embedded processors have evolved significantly to meet the demands of
+modern applications (Slide 10).
+
+\begin{itemize}
+\item
+  \textbf{Single-Purpose to Application-Specific Processors}: Initially,
+  systems relied on \textbf{single-purpose processors} for dedicated
+  tasks. These processors provided efficient solutions but lacked
+  flexibility.
+\item
+  \textbf{Application-Specific Processors}: As the complexity of
+  embedded applications increased, the need for processors that strike a
+  balance between performance and flexibility led to the development of
+  \textbf{application-specific processors}. These processors retain the
+  programmability of general-purpose processors while including
+  optimizations for particular tasks.
+\item
+  \textbf{Customizable Processors}: Modern approaches include the use of
+  \textbf{customizable processors} that allow designers to optimize
+  hardware for a specific application domain without losing the general
+  flexibility of programmable processors.
+\end{itemize}
+
+\section{Conclusion}\label{conclusion-3}
+
+The lecture provided a comprehensive overview of \textbf{embedded
+processors} and their role in implementing complex systems. Custom
+embedded processors, including general-purpose, single-purpose, and
+application-specific types, each have their unique trade-offs.
+Techniques such as \textbf{FSMD modeling}, \textbf{controller and
+datapath splitting}, and \textbf{high-level synthesis} were introduced
+to demonstrate the design and optimization of these processors.
+
+Future discussions will delve deeper into \textbf{real-time
+constraints}, \textbf{hardware-software co-design}, and techniques for
+optimizing \textbf{multi-core embedded systems} to meet stringent
+performance and power requirements. Understanding these concepts is
+essential for designing embedded processors that can efficiently address
+the challenges posed by modern applications.
+
+\chapter{SoC and SOPC Buses}\label{soc-and-sopc-buses}
+
+\section{Introduction to SoC and
+SOPC}\label{introduction-to-soc-and-sopc}
+
+\textbf{System-on-Chip (SoC)} and \textbf{System-on-Programmable-Chip
+(SOPC)} are key technologies in modern embedded systems. These
+technologies combine multiple functional blocks, such as processors,
+memory, and peripherals, onto a single chip. They use \textbf{buses} to
+facilitate communication between these components (Slide 1). Buses are
+fundamental to the functionality of SoC and SOPC designs, as they
+determine how different modules interact, ensuring reliable data
+transfer and system performance.
+
+\section{Internal vs External Buses}\label{internal-vs-external-buses}
+
+Buses can be broadly classified into \textbf{internal} and
+\textbf{external} types based on their scope within a system (Slide 9):
+
+\begin{itemize}
+\item
+  \textbf{Internal Buses}: These are used within a single chip or a
+  tightly integrated board to connect different functional blocks.
+  Examples include:
+
+  \begin{itemize}
+  \item
+    \textbf{PCI} (Peripheral Component Interconnect)
+  \item
+    \textbf{AGP} (Accelerated Graphics Port)
+  \item
+    \textbf{PCMCIA}
+  \item
+    \textbf{AMBA} (Advanced Microcontroller Bus Architecture) for
+    ARM-based systems
+  \item
+    \textbf{Avalon} buses used in Altera's SOPC designs
+  \end{itemize}
+\item
+  \textbf{External Buses}: These are used to connect different chips or
+  boards. Examples include:
+
+  \begin{itemize}
+  \item
+    \textbf{USB} (Universal Serial Bus)
+  \item
+    \textbf{FireWire}
+  \end{itemize}
 \end{itemize}
 
 \section{Bus Design Issues}\label{bus-design-issues}
 
+The design of a bus impacts system performance, scalability, and cost.
+Several factors must be considered when designing a bus (Slide 14):
+
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Bus Width}: Determines the amount of data that can be
-  transferred in a single cycle. Wider buses improve performance but
-  increase cost.
+  \textbf{Bus Width}: The width of the data and address buses is a
+  critical determinant of the system's performance. A wider bus can
+  transfer more data per cycle but is more expensive to implement. For
+  example, a Pentium processor has a 32-bit instruction set architecture
+  (ISA) but a 64-bit data bus, while an Itanium processor has a 128-bit
+  data bus, offering significantly more bandwidth for data transfers
+  (Slides 15-16).
 \item
-  \textbf{Bus Type}: Can be \emph{dedicated} (separate buses for
-  different types of data) or \emph{multiplexed} (shared bus for
-  multiple purposes), impacting cost and efficiency.
+  \textbf{Bus Type}: Buses can be \textbf{dedicated} or
+  \textbf{multiplexed}:
+
+  \begin{itemize}
+  \item
+    \textbf{Dedicated Buses} have separate lines for data and address
+    information, providing better performance but increasing costs.
+  \item
+    \textbf{Multiplexed Buses} share the same lines for data and
+    address, which reduces cost and resource usage but may introduce
+    delays in data transmission (Slide 17).
+  \end{itemize}
+\end{itemize}
+
+\section{Bus Operations}\label{bus-operations}
+
+\textbf{Bus operations} define how data is transferred between
+components (Slide 18). Common bus operations include:
+
+\begin{itemize}
 \item
-  \textbf{Bus Operations}: Include basic operations like read, write,
-  block transfer, and interrupt. Block transfers are particularly useful
-  for filling cache lines.
+  \textbf{Read and Write}: Basic data transfer operations.
+\item
+  \textbf{Block Transfer}: A series of contiguous memory locations are
+  read or written in sequence, useful for operations like filling a
+  cache line.
+\item
+  \textbf{Read-Modify-Write}: Often used for critical sections where
+  multiple operations must be performed atomically.
+\item
+  \textbf{Interrupt Operation}: A mechanism for peripherals to request
+  the processor's attention, triggering an interrupt service routine.
 \end{itemize}
 
 \section{Synchronous vs Asynchronous
 Buses}\label{synchronous-vs-asynchronous-buses}
 
+\subsection{Synchronous Bus}\label{synchronous-bus}
+
+A \textbf{synchronous bus} uses a \textbf{bus clock signal} to
+synchronize all actions on the bus (Slide 19). Characteristics of
+synchronous buses include:
+
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Synchronous Bus}: Operates with a clock signal, making
-  implementation simpler but requiring careful timing of actions to
-  avoid delays.
+  \textbf{Clock Edge Coordination}: All data transfers occur relative to
+  a clock signal, simplifying timing design.
 \item
-  \textbf{Asynchronous Bus}: Uses handshaking between master and slave
-  components, allowing for flexibility in timing but adding complexity.
+  \textbf{Wait States}: A synchronous bus may operate with \textbf{wait
+  states} if the target device is not ready for a data transfer. Without
+  wait states, data transfers occur at the maximum clock speed, but
+  adding wait states ensures reliable operation if the target is slower
+  (Slides 20-24).
+\item
+  \textbf{Block Transfers}: Synchronous buses also support \textbf{block
+  transfers}, which allow multiple data units to be transferred in a
+  single bus transaction, improving throughput (Slide 24).
+\end{itemize}
+
+\subsection{Asynchronous Bus}\label{asynchronous-bus}
+
+An \textbf{asynchronous bus} does not use a clock signal to synchronize
+actions. Instead, it relies on \textbf{handshaking signals} to control
+data transfer between the master and slave (Slide 25). Features include:
+
+\begin{itemize}
+\item
+  \textbf{Handshaking Protocol}: Two synchronization signals,
+  \textbf{Master Synchronization (MSYN)} and \textbf{Slave
+  Synchronization (SSYN)}, ensure that the sender and receiver are ready
+  for each data transfer.
+\item
+  \textbf{No Clock Dependency}: This allows asynchronous buses to be
+  more flexible, as they do not require a fixed clock frequency.
+  However, implementing the handshaking mechanism can be more complex
+  compared to synchronous buses.
 \end{itemize}
 
 \section{Bus Arbitration}\label{bus-arbitration}
 
+In systems with multiple masters (e.g., CPUs, DMA controllers),
+\textbf{bus arbitration} is required to manage access to the bus (Slide
+27). Arbitration mechanisms include:
+
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Bus Arbitration Mechanisms}: Required when multiple bus
-  masters need to access the bus. Can be \emph{static} (predetermined
-  priority) or \emph{dynamic} (priority assigned based on demand).
+  \textbf{Static Arbitration}: Allocates the bus in a fixed,
+  predetermined manner. While easy to implement, this approach can lead
+  to poor utilization and potential bus monopolization by one master
+  (Slide 28).
+\item
+  \textbf{Dynamic Bus Arbitration}: Allocates the bus only when a master
+  requests it, allowing more efficient use of resources. Masters use
+  \textbf{bus request} and \textbf{bus grant} lines to signal their need
+  for the bus and receive permission to use it. Dynamic arbitration
+  supports various allocation policies (Slides 28-40):
 
   \begin{itemize}
-  \tightlist
   \item
     \textbf{Fixed Priority}: Assigns a fixed priority to each master,
-    which can lead to bus hogging by high-priority devices.
+    but may lead to \textbf{bus hogging} by high-priority devices.
   \item
-    \textbf{Rotating Priority}: Adjusts priorities based on waiting
-    time, ensuring fair access.
+    \textbf{Rotating Priority}: Changes the priority of masters
+    dynamically to prevent starvation. The \textbf{lowest priority} is
+    assigned to the master that just used the bus, ensuring fair access.
   \item
-    \textbf{Hybrid Policies}: Combine aspects of both fixed and rotating
-    priorities to achieve a balance between fairness and efficiency.
+    \textbf{Fair Policies}: Ensure that no master is starved of the bus.
+    These policies can be based on \textbf{time windows} to guarantee a
+    maximum delay before a bus request is granted.
+  \end{itemize}
+\item
+  \textbf{Bus Release Policies}: Determine when the current master
+  releases the bus. Two types of policies are:
+
+  \begin{itemize}
+  \item
+    \textbf{Non-Preemptive Release}: The master voluntarily releases the
+    bus after completing the current transaction. This is easy to
+    implement but can lead to inefficient bus usage if the master holds
+    the bus unnecessarily (Slide 40).
+  \item
+    \textbf{Preemptive Release}: Forces the current master to release
+    the bus, which can be useful for handling urgent requests from other
+    masters.
   \end{itemize}
 \end{itemize}
 
-\section{Examples of Bus Usage}\label{examples-of-bus-usage}
+\subsection{Bus Arbitration
+Implementation}\label{bus-arbitration-implementation}
+
+\textbf{Centralized Bus Arbitration}: Uses a \textbf{daisy-chaining}
+method where the bus grant signal is passed down a chain of masters. It
+is easy to implement but has several drawbacks, such as fixed priority
+and increased arbitration time proportional to the number of masters
+(Slide 37).
+
+\textbf{Independent Requests}: Each master has a dedicated bus request
+line to the central arbiter. This approach is more fault-tolerant and
+allows for \textbf{constant arbitration time}, but requires a higher
+number of control signals (Slide 39).
+
+\textbf{Hybrid Arbitration Schemes}: Combine features of daisy-chaining
+and independent requests. For example, bus masters can be grouped into
+\textbf{classes}, with independent arbitration at the class level and
+daisy-chaining within each class. This provides a balance between cost
+and performance (Slide 40).
+
+\section{System Bus Components}\label{system-bus-components}
+
+The system bus consists of the following components:
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Synchronous Bus Operations}: Memory read and write operations
-  are synchronized with the bus clock, with or without wait states to
-  manage slower memory.
+  \textbf{Address Bus}: Carries the addresses from the master to the
+  slave, specifying the location for read or write operations.
 \item
-  \textbf{Dynamic Bus Arbitration}: Allows multiple masters to request
-  access to the bus and ensures that access is granted based on current
-  system needs.
+  \textbf{Data Bus}: Transfers actual data between components.
+\item
+  \textbf{Control Bus}: Carries control signals, such as read/write
+  enable, to coordinate the operations on the address and data buses
+  (Slide 12).
 \end{itemize}
+
+Buses can be either \textbf{dedicated} or \textbf{multiplexed},
+\textbf{synchronous} or \textbf{asynchronous}, depending on the system's
+requirements for speed, cost, and complexity (Slide 12).
+
+\section{Learning Outcomes}\label{learning-outcomes}
+
+By understanding the different types of buses, operations, arbitration
+schemes, and bus components, one can design effective \textbf{SoC and
+SOPC} systems that balance performance, cost, and complexity. Key
+takeaways include:
+
+\begin{itemize}
+\item
+  The importance of selecting appropriate \textbf{bus width} to match
+  system requirements while considering cost implications.
+\item
+  Differences between \textbf{synchronous} and \textbf{asynchronous}
+  buses and the trade-offs involved in choosing one over the other.
+\item
+  The necessity of \textbf{bus arbitration} in multi-master systems to
+  ensure fair access and system efficiency.
+\item
+  How different arbitration policies impact bus access, latency, and
+  fairness.
+\end{itemize}
+
+The \textbf{building blocks of an SoC or SOPC}---including
+\textbf{masters (e.g., processors, DMA controllers)}, \textbf{slaves
+(e.g., peripherals)}, \textbf{buses}, \textbf{decoders}, and
+\textbf{arbiters}---all work together to create a cohesive, functional
+system capable of handling complex tasks (Slide 53).
+
+\section{Conclusion}\label{conclusion-4}
+
+The lecture provided a comprehensive overview of \textbf{bus design and
+operations} in SoC and SOPC systems. Understanding bus types,
+operations, arbitration, and implementation is crucial for designing
+efficient and scalable embedded systems. These principles are applied to
+ensure that various components within a SoC or SOPC can communicate
+effectively while meeting performance requirements.
+
+Future discussions will explore \textbf{on-chip interconnects},
+\textbf{crossbars}, and \textbf{network-on-chip (NoC)} architectures,
+which are becoming increasingly relevant for \textbf{multi-core SoC
+designs} that demand higher data throughput and efficient parallel
+processing.
 
 \part{Nathan's Lectures}
 
-\chapter{Lecture 6: Embedded Control Systems
-1}\label{lecture-6-embedded-control-systems-1}
+\chapter{Embedded Control Systems 1}\label{embedded-control-systems-1}
 
-\section{Embedded Control Systems}\label{embedded-control-systems}
+\section{Introduction to Embedded Control
+Systems}\label{introduction-to-embedded-control-systems}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Real-Time Systems}: Industrial embedded systems are real-time
-  in nature and often safety-critical, requiring both functional
-  correctness and timing correctness.
+\textbf{Embedded control systems} are crucial for industrial automation
+and other real-time applications that require precise, timely responses.
+These systems often control physical processes, ensuring safety and
+reliability through careful computational analysis of execution times.
+This lecture focused on various elements of embedded control, such as
+real-time system properties, sampling and quantization, computational
+delays, and worst-case execution time (WCET) analysis (Slides 2-3).
 
-  \begin{itemize}
-  \tightlist
-  \item
-    \textbf{Functional Correctness}: Ensures that the system performs
-    the desired function (e.g., a robotic arm stopping on intrusion).
-  \item
-    \textbf{Timing Correctness}: Ensures that the system operates within
-    specified deadlines (e.g., stopping within 10 ms of intrusion).
-  \end{itemize}
-\end{itemize}
+\section{Real-Time Systems}\label{real-time-systems}
+
+\textbf{Definition}: Real-time systems are used in scenarios where
+timing is critical, such as industrial automation and safety-critical
+applications. These systems must perform their functions not only
+correctly (functional correctness) but also within specific timing
+constraints (Slide 3).
+
+\textbf{Examples}: A robotic arm must stop within 10 ms of detecting
+human intrusion to prevent accidents. This combination of functional and
+timing correctness is what defines a real-time system.
 
 \section{Sampling and Quantization}\label{sampling-and-quantization}
 
+\textbf{Sampling}: Sampling refers to taking discrete snapshots of an
+analog signal over time. This process is fundamental in digitizing
+signals like video, audio, or physical voltages. The higher the sampling
+rate, the more accurately the original signal is represented (Slides 4,
+8).
+
+\textbf{Quantization}: Due to the discrete nature of computer data, real
+values must be approximated to the nearest value in a finite set.
+Quantization replaces real-world continuous values with discrete levels,
+introducing \textbf{quantization error} (Slide 5).
+
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Sampling}: The process of taking snapshots of a signal over
-  time (e.g., video, sound, voltage).
+  \textbf{Quantization Levels}: For an n-bit Analog-to-Digital Converter
+  (ADC), there are \(2^n\) levels, which determine how finely the signal
+  is represented. For example, an 8-bit ADC has 256 quantization levels.
 \item
-  \textbf{Quantization}: Replacing real values with an approximation
-  from a finite set of discrete values. For an n-bit ADC, there are
-  \(2^n\) quantization levels (e.g., an 8-bit ADC has 256 levels).
+  \textbf{Resolution}: The resolution of an ADC determines the voltage
+  represented by each digital increment. For instance, a 10-bit ADC with
+  a High Reference Voltage (HRV) of 5V and Low Reference Voltage (LRV)
+  of 0V has a resolution of approximately 0.00488V per step (Slide 6).
 \end{itemize}
 
 \section{Aliasing}\label{aliasing}
 
+\textbf{Aliasing} occurs due to insufficient sampling rates. If the
+sampling rate is less than twice the frequency of the signal (the
+\textbf{Nyquist frequency}), higher-frequency signals appear
+indistinguishable from lower frequencies, leading to errors (Slides
+9-11).
+
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Aliasing}: Occurs due to insufficient sampling rates,
-  resulting in different signals appearing indistinguishable. To prevent
-  aliasing, signals must be sampled above the Nyquist frequency (at
-  least twice the highest frequency component).
+  For example, if a signal is sampled at 2.5 Hz, signals at 0.5 Hz, 3
+  Hz, and 5.5 Hz appear the same, leading to ambiguity.
 \end{itemize}
 
-\section{Computation Delays}\label{computation-delays}
+\section{Computation Delays and Timing
+Variances}\label{computation-delays-and-timing-variances}
+
+\textbf{Computation Delays}: In real-time systems, delays can occur due
+to inherent processing overhead, causing sampling or actuation to happen
+later than expected. Accurate delay characterization is needed to ensure
+that systems meet timing requirements (Slide 12).
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Sources of Delays}: Include unbounded software (e.g.,
-  unpredictable runtime branches, unbounded loops), floating-point
-  operations, search algorithms, and cache misses.
+  \textbf{Sources of Timing Variance}:
+
+  \begin{itemize}
+  \item
+    \textbf{Unbounded Software Constructs}: Unpredictable branches,
+    loops, recursion, and dynamic memory allocations can introduce
+    delays (Slide 13).
+  \item
+    \textbf{Speculative Hardware}: Features like pipelines, memory
+    hierarchies (caches), and branch predictors in modern processors can
+    lead to non-deterministic execution times.
+  \end{itemize}
+\end{itemize}
+
+\section{Worst-Case Execution Time
+(WCET)}\label{worst-case-execution-time-wcet}
+
+\textbf{WCET} is the maximum time required for a system to complete a
+given task (Slide 14). Understanding WCET is critical for ensuring that
+an embedded control system meets its real-time constraints.
+
+\begin{itemize}
 \item
-  \textbf{Worst-Case Execution Time (WCET)}: The longest time it takes
-  to complete execution. Can be determined through measurement or static
-  analysis, but speculative hardware makes static analysis difficult.
+  \textbf{Methods to Determine WCET}:
+
+  \begin{itemize}
+  \item
+    \textbf{Measured}: Simple to implement but may not explore all
+    possible execution paths, thus providing non-guaranteed values.
+  \item
+    \textbf{Static Analysis}: Uses an abstraction of the system to
+    analyze all possible paths, ensuring coverage but requiring
+    significant computational resources.
+  \end{itemize}
 \end{itemize}
 
 \section{Static Timing Analysis}\label{static-timing-analysis}
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Control Flow Graph (CFG)}: Used to determine the longest path
-  of execution, crucial for determining WCET. Compilation transforms
-  code into machine-level instructions, enabling timing analysis of each
-  operation.
-\end{itemize}
+  \textbf{Control Flow Graph (CFG)}: Timing analysis starts with
+  creating a \textbf{control flow graph} (CFG) to map program flow,
+  representing different segments of code (Slides 18-19).
 
-\chapter{Lecture 7: Embedded Control Systems
-2}\label{lecture-7-embedded-control-systems-2}
-
-\section{Peripherals: PWM, Stepper Motors, A2D
-Conversion}\label{peripherals-pwm-stepper-motors-a2d-conversion}
-
-\begin{itemize}
-\tightlist
+  \begin{itemize}
+  \item
+    \textbf{Basic Blocks and Transitions}: CFG nodes are called
+    \textbf{basic blocks}, which represent straight-line code without
+    branches, and transitions show how the program moves between these
+    blocks.
+  \item
+    \textbf{Path Analysis}: Finding the \textbf{longest execution path}
+    within the CFG is key to determining the worst-case scenario for
+    execution time (Slide 20).
+  \end{itemize}
 \item
-  \textbf{Interaction with Real World}: Embedded systems use sensors
-  (e.g., ADC for temperature, sound, light) and actuators (e.g., motors)
-  to interact with the environment.
-\item
-  \textbf{Pulse Width Modulation (PWM)}: A simple type of Digital to
-  Analog Converter (DAC) used to control devices like DC motors by
-  adjusting the duty cycle.
-\item
-  \textbf{Stepper Motors}: Rotates a fixed number of degrees when given
-  a step signal, making them more precise compared to DC motors. Stepper
-  motor controllers simplify the control by providing specific voltage
-  sequences to coils.
-\end{itemize}
-
-\section{Analog to Digital Conversion
-(ADC)}\label{analog-to-digital-conversion-adc}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Resolution}: Defined by the number of bits in the ADC. Higher
-  resolution provides greater accuracy but requires more bits.
-\item
-  \textbf{Quantization Levels}: The range of an ADC is determined by the
-  reference voltage, divided by the number of levels (e.g., an 8-level
-  ADC with a range of 3.5V has a resolution of 0.4375V).
-\end{itemize}
-
-\chapter{Lecture 8: Embedded Control Systems
-3}\label{lecture-8-embedded-control-systems-3}
-
-\section{Control of Physical
-Processes}\label{control-of-physical-processes}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Control Systems}: Aim to make the physical system's output
-  track a desired reference input by setting the system's inputs.
+  \textbf{Timed CFG}: A timed CFG uses clock cycle estimates for
+  different operations---computation, load, store, branch, and
+  return---to determine execution duration (Slide 23).
 
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Open Loop}: No feedback from the output; relies on an
-    accurate model of the plant.
-  \item
-    \textbf{Closed Loop}: Utilizes feedback to adjust the output to the
-    desired reference, improving accuracy.
+    Example values: \textbf{Load} and \textbf{Store} take 5 cycles,
+    \textbf{Computation} takes 1 cycle, \textbf{Branch} (if taken) takes
+    3 cycles.
   \end{itemize}
 \end{itemize}
 
-\section{Key Metrics in Control
-Systems}\label{key-metrics-in-control-systems}
+\section{WCET Analysis Using Max-Plus
+Algebra}\label{wcet-analysis-using-max-plus-algebra}
+
+\begin{itemize}
+\item
+  The \textbf{Max-Plus} approach simplifies WCET analysis by using only
+  max and plus operations to calculate the worst-case path cost (Slide
+  24).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For example, the WCET for two possible paths might be calculated as:
+    \(\text{wcet} = \max(19 + 14 + 10, 21 + 13 + 10) = 44\) clock
+    cycles.
+  \end{itemize}
+\end{itemize}
+
+\section{Integer Linear Programming
+(ILP)}\label{integer-linear-programming-ilp}
+
+\begin{itemize}
+\item
+  \textbf{ILP} is used for WCET analysis by defining an
+  \textbf{objective function} to maximize execution time under given
+  constraints (Slide 28-30).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The constraints are typically linear inequalities describing valid
+    program transitions and flow consistency, allowing ILP to provide an
+    upper bound for WCET.
+  \end{itemize}
+\end{itemize}
+
+\section{Coding Guidelines for Time
+Predictability}\label{coding-guidelines-for-time-predictability}
+
+\begin{itemize}
+\item
+  \textbf{Bounded Loops}: Always use bounded loops to guarantee an upper
+  bound on execution time (Slide 36). For example, in the \textbf{GCD}
+  function, the loop is bounded to ensure a predictable runtime.
+\item
+  \textbf{Static Memory Allocation}: Prefer static allocation over
+  \textbf{dynamic memory allocation} (e.g., \texttt{malloc}) to prevent
+  runtime unpredictability caused by memory fragmentation or variable
+  allocation times (Slide 38).
+\item
+  \textbf{Avoiding Interrupts}: Where possible, avoid
+  \textbf{interrupts} due to their impact on execution time variability.
+  Instead, use polling or reactive processors that can queue interrupts
+  predictably (Slide 39).
+\item
+  \textbf{Fixed Point Arithmetic}: Use \textbf{fixed-point arithmetic}
+  over floating-point for better predictability, as floating-point
+  operations are not always supported natively and can have variable
+  runtime characteristics.
+\end{itemize}
+
+\section{PRET Philosophy}\label{pret-philosophy}
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Performance Metrics}: Rise time, peak time, overshoot, and
-  settling time are critical in evaluating control systems.
-\item
-  \textbf{Disturbance Rejection}: A control system must minimize the
-  impact of external disturbances to maintain stability and performance.
-\item
-  \textbf{Stability}: Ensuring that all control variables remain bounded
-  is a primary objective. A stable system should have minimal
-  oscillations and rapid convergence to the desired state.
+  The \textbf{PRET (Precision Timed)} philosophy emphasizes treating
+  time as a first-class citizen, aiming for a \textbf{time-predictable
+  system} (Slide 35). The objective is to achieve predictability in
+  hardware, software-hardware interfaces, and the software itself,
+  ensuring reliable operation within a time-constrained environment.
 \end{itemize}
 
-\section{Example: Cruise Control}\label{example-cruise-control}
+\section{Conclusion}\label{conclusion-5}
+
+This lecture provided insights into the design and analysis of
+\textbf{embedded control systems}. Key topics included \textbf{real-time
+system requirements}, \textbf{sampling and quantization},
+\textbf{computation delays}, \textbf{WCET analysis}, and \textbf{coding
+practices for time predictability}. Accurate timing analysis and
+predictable software execution are crucial for the development of safe
+and reliable embedded control systems. The concepts discussed lay the
+foundation for designing robust control systems that meet strict
+real-time requirements.
+
+\chapter{Embedded Control Systems 2}\label{embedded-control-systems-2}
+
+\section{Introduction to Embedded Control
+Systems}\label{introduction-to-embedded-control-systems-1}
+
+In this lecture, we focused on advanced topics in \textbf{embedded
+control systems}, including \textbf{PWM control}, \textbf{stepper
+motors}, \textbf{PID control}, and \textbf{ADC technologies}. These
+components play a critical role in achieving accurate and efficient
+control in real-time embedded applications (Slide 2).
+
+\section{Pulse-Width Modulation (PWM)}\label{pulse-width-modulation-pwm}
+
+\begin{itemize}
+\item
+  \textbf{Pulse-Width Modulation (PWM)} is a technique used to simulate
+  an analog signal using digital means by varying the duty cycle of a
+  digital pulse (Slide 5).
+
+  \begin{itemize}
+  \item
+    \textbf{Duty Cycle}: The percentage of time the signal remains high
+    during a cycle determines the average voltage output. A higher duty
+    cycle implies higher average power delivered, which is crucial in
+    controlling actuators like DC motors and LEDs (Slide 7).
+  \item
+    \textbf{Fast PWM vs Phase-Correct PWM}: There are different types of
+    PWM modes. \textbf{Fast PWM} operates at a higher frequency to
+    minimize flickering, while \textbf{Phase-Correct PWM} maintains
+    symmetry in the signal waveform, which is often better for
+    controlling motors with less noise (Slide 8).
+  \end{itemize}
+\end{itemize}
+
+\section{DC and Stepper Motors}\label{dc-and-stepper-motors}
+
+\subsection{DC Motors}\label{dc-motors}
+
+\begin{itemize}
+\item
+  \textbf{DC Motors} are widely used for their simplicity and ease of
+  control. Speed control is achieved by modulating the voltage applied
+  to the motor, which is often implemented through PWM. The relationship
+  between PWM duty cycle and motor speed is usually non-linear,
+  requiring careful tuning to achieve precise control (Slide 10).
+\item
+  \textbf{Motor Driver Circuitry}: To drive DC motors,
+  \textbf{H-bridges} are commonly used. An H-bridge allows for
+  directional control by reversing the current flow through the motor,
+  enabling forward and reverse motion (Slide 11).
+\end{itemize}
+
+\subsection{Stepper Motors}\label{stepper-motors}
+
+\begin{itemize}
+\item
+  \textbf{Stepper Motors} are used when precise control of angular
+  position is required. Each pulse sent to the motor corresponds to a
+  fixed angular movement, allowing fine control over its rotation (Slide
+  12).
+
+  \begin{itemize}
+  \item
+    \textbf{Types of Stepper Motors}: Two main types include
+    \textbf{unipolar} and \textbf{bipolar} stepper motors, each with
+    distinct wiring configurations and driving requirements (Slide 13).
+  \item
+    \textbf{Stepper Motor Control}: To control the stepper motor,
+    sequences of pulses must be sent in the correct order to energize
+    the windings and produce the desired stepping motion. This is
+    typically achieved using a \textbf{stepper motor driver}, which
+    abstracts the complexity of pulse timing (Slide 14).
+  \end{itemize}
+\end{itemize}
+
+\section{PID Control}\label{pid-control}
+
+\textbf{Proportional-Integral-Derivative (PID) Control} is a control
+loop mechanism widely used in industrial control systems to achieve
+desired system behavior.
+
+\begin{itemize}
+\item
+  \textbf{Proportional Control (P)}: The \textbf{proportional} term
+  produces an output value proportional to the current error value. If
+  the error is large, the control response is also large. This helps in
+  reducing the response time but may lead to instability if used alone
+  (Slide 17).
+\item
+  \textbf{Integral Control (I)}: The \textbf{integral} term sums the
+  error over time, addressing the \textbf{steady-state error} by
+  accumulating corrections until the desired setpoint is achieved. This
+  component helps eliminate any residual error that remains after the
+  proportional action has been applied (Slide 18).
+\item
+  \textbf{Derivative Control (D)}: The \textbf{derivative} term
+  considers the rate of change of the error, providing a damping effect
+  that reduces overshoot. It predicts future error and helps the system
+  respond more smoothly, avoiding large fluctuations (Slide 19).
+\item
+  \textbf{Tuning PID Parameters}: Tuning the PID parameters (\(K_p\),
+  \(K_i\), and \(K_d\)) is crucial for optimal system performance.
+  Methods like \textbf{Ziegler-Nichols} can be used to empirically
+  determine the ideal values, balancing response speed, stability, and
+  accuracy (Slide 20).
+\end{itemize}
+
+\section{Analog-to-Digital Conversion
+(ADC)}\label{analog-to-digital-conversion-adc}
+
+\begin{itemize}
+\item
+  \textbf{Analog-to-Digital Converters (ADC)} are used to digitize
+  analog signals so that they can be processed by digital controllers.
+  ADCs are critical in embedded control systems where signals like
+  temperature, pressure, or speed need to be sampled and processed
+  (Slide 22).
+
+  \begin{itemize}
+  \item
+    \textbf{Quantization and Resolution}: The resolution of an ADC
+    refers to the number of discrete levels used to represent the analog
+    input. A higher resolution means better accuracy but increased cost
+    and complexity. For instance, a 12-bit ADC provides \(2^{12}\)
+    quantization levels, which significantly improves signal
+    representation over an 8-bit ADC (Slide 23).
+  \item
+    \textbf{Sampling Rate}: The sampling rate must be at least twice the
+    highest frequency of the input signal to prevent \textbf{aliasing}
+    (Nyquist criterion). If the sampling rate is insufficient, aliasing
+    can lead to distorted signals that compromise control accuracy
+    (Slide 24).
+  \end{itemize}
+\item
+  \textbf{Types of ADC Technologies}:
+
+  \begin{itemize}
+  \item
+    \textbf{Successive Approximation Register (SAR)}: A commonly used
+    ADC type that offers a good balance between speed and accuracy. The
+    SAR ADC works by iteratively approximating the input signal, which
+    makes it suitable for medium-speed applications (Slide 25).
+  \item
+    \textbf{Sigma-Delta ADC}: Provides very high resolution but at the
+    cost of slower conversion speed, often used in applications where
+    precision is more critical than speed, such as audio signal
+    processing (Slide 26).
+  \item
+    \textbf{Flash ADC}: The fastest type of ADC, using a parallel set of
+    comparators to convert the analog signal in a single step. However,
+    it requires a large number of comparators, making it expensive and
+    power-hungry, suitable for high-speed applications (Slide 27).
+  \end{itemize}
+\end{itemize}
+
+\section{Practical Considerations in Embedded Control
+Systems}\label{practical-considerations-in-embedded-control-systems}
+
+\begin{itemize}
+\item
+  \textbf{Noise Handling}: Analog signals are often susceptible to
+  noise. Techniques such as \textbf{filtering} and \textbf{shielded
+  cabling} are used to mitigate noise effects, ensuring that the ADC
+  accurately captures the intended signal without distortion (Slide 29).
+\item
+  \textbf{Anti-Aliasing Filters}: To prevent aliasing, \textbf{low-pass
+  filters} are often used before the ADC to remove high-frequency
+  components that could interfere with accurate sampling (Slide 30).
+\end{itemize}
+
+\section{Case Study: Motor Speed
+Control}\label{case-study-motor-speed-control}
+
+\begin{itemize}
+\item
+  \textbf{Objective}: The case study presented a practical example of
+  motor speed control using a combination of PWM and PID control (Slide
+  32).
+\item
+  \textbf{Implementation}: The motor speed is monitored using an
+  \textbf{optical encoder}, which provides feedback to the PID
+  controller. The PID controller adjusts the PWM duty cycle to minimize
+  the speed error and maintain the desired speed despite varying load
+  conditions (Slide 33).
+\item
+  \textbf{Challenges}: Tuning the PID parameters was a challenge due to
+  the non-linearities in motor response and the presence of external
+  disturbances. Real-world control systems often require iterative
+  tuning to balance response time, overshoot, and stability (Slide 34).
+\end{itemize}
+
+\section{Conclusion}\label{conclusion-6}
+
+This lecture expanded on the foundational knowledge of embedded control
+systems by introducing practical components like \textbf{PWM},
+\textbf{stepper motors}, \textbf{PID controllers}, and \textbf{ADCs}.
+Understanding these components and their interactions is essential for
+designing robust and efficient control systems. Future lectures will
+focus on more advanced topics such as \textbf{real-time operating
+systems (RTOS)}, \textbf{sensor fusion}, and \textbf{model predictive
+control (MPC)}, which are critical for modern, complex embedded control
+applications.
+
+\chapter{Embedded Control Systems 3}\label{embedded-control-systems-3}
+
+\section{Introduction to Control
+Systems}\label{introduction-to-control-systems}
+
+In this lecture, we delve deeper into \textbf{control systems}, focusing
+on both \textbf{open-loop} and \textbf{closed-loop} configurations, as
+well as the terminology, benefits, and challenges associated with each
+approach (Slide 3). Control systems are used to ensure that the output
+of a physical system tracks a desired reference value by manipulating
+the inputs to the system. This lecture also highlighted the importance
+of stability, performance, and disturbance rejection in control systems.
+
+\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important Note}, breakable, opacityback=0, opacitybacktitle=0.6, leftrule=.75mm, left=2mm, coltitle=black, colback=white, toptitle=1mm, titlerule=0mm, arc=.35mm, rightrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, toprule=.15mm, bottomtitle=1mm, colframe=quarto-callout-important-color-frame, bottomrule=.15mm]
+
+\section*{\texorpdfstring{\textbf{THIS IS NOT THE SAME AS ELECTENG 332.
+THIS IS A DIFFERENT
+COURSE.}}{THIS IS NOT THE SAME AS ELECTENG 332. THIS IS A DIFFERENT COURSE.}}\label{this-is-not-the-same-as-electeng-332.-this-is-a-different-course.}
+
+\markright{\textbf{THIS IS NOT THE SAME AS ELECTENG 332. THIS IS A
+DIFFERENT COURSE.}}
+
+\end{tcolorbox}
+
+\section{Open-Loop vs Closed-Loop Control
+Systems}\label{open-loop-vs-closed-loop-control-systems}
+
+\subsection{Open-Loop Control Systems}\label{open-loop-control-systems}
+
+\begin{itemize}
+\item
+  \textbf{Definition}: In an \textbf{open-loop control system}, the
+  controller adjusts the inputs to the plant without considering the
+  actual output (Slide 14). It does not measure how well the output
+  matches the desired reference.
+\item
+  \textbf{Components}:
+
+  \begin{itemize}
+  \item
+    \textbf{Plant}: The physical system to be controlled (e.g., a car, a
+    disk drive, or a heater) (Slide 12).
+  \item
+    \textbf{Actuator}: A device that changes the parameters of the
+    system, such as a throttle or motor.
+  \item
+    \textbf{Reference}: The desired value of the output, such as speed
+    or temperature.
+  \end{itemize}
+\item
+  \textbf{Characteristics}:
+
+  \begin{itemize}
+  \item
+    \textbf{No Feedback}: Open-loop systems do not use feedback to
+    correct their actions.
+  \item
+    \textbf{Feed-Forward Control}: There may be delays in actual output
+    changes.
+  \item
+    \textbf{Predictable Output}: Open-loop systems are suitable when the
+    plant output responds predictably to inputs and disturbances are
+    minimal (Slide 14).
+  \end{itemize}
+\end{itemize}
+
+\subsection{Closed-Loop Control
+Systems}\label{closed-loop-control-systems}
+
+\begin{itemize}
+\item
+  \textbf{Definition}: In a \textbf{closed-loop control system}, the
+  controller continuously adjusts the inputs based on the difference
+  between the measured output and the desired reference (Slides 15, 27).
+\item
+  \textbf{Components}:
+
+  \begin{itemize}
+  \item
+    \textbf{Sensor}: Measures the plant output and provides feedback.
+  \item
+    \textbf{Error Detector}: Calculates the error by comparing the
+    output with the reference value.
+  \item
+    \textbf{Feedback Loop}: This helps to adjust inputs to minimize the
+    error.
+  \end{itemize}
+\item
+  \textbf{Benefits}:
+
+  \begin{itemize}
+  \item
+    \textbf{Error Minimization}: By using feedback, the closed-loop
+    system reduces tracking errors.
+  \item
+    \textbf{Adaptation to Disturbances}: The system can react to
+    changes, such as disturbances, to maintain desired performance.
+  \item
+    \textbf{Stability}: Ensures that all control variables remain
+    bounded, ideally making the error converge to zero over time (Slide
+    9).
+  \end{itemize}
+\end{itemize}
+
+\subsection{Performance Metrics of Control
+Systems}\label{performance-metrics-of-control-systems}
+
+\begin{itemize}
+\item
+  \textbf{Rise Time}: The time taken for the output to go from 10\% to
+  90\% of the desired value (Slide 10).
+\item
+  \textbf{Peak Time}: The time taken to reach the first peak of the
+  response.
+\item
+  \textbf{Overshoot}: The percentage by which the output exceeds the
+  final value.
+\item
+  \textbf{Settling Time}: The time it takes for the output to reach and
+  stay within 1\% of the final value.
+\item
+  These metrics help assess how well the output tracks changes in the
+  reference input and how the system responds to disturbances.
+\end{itemize}
+
+\section{Designing Control Systems}\label{designing-control-systems}
+
+\subsection{Open-Loop Control Design}\label{open-loop-control-design}
+
+\begin{itemize}
+\item
+  \textbf{Plant Modeling}: The plant model represents how the output
+  changes based on inputs and the current state. Having a model helps in
+  designing a better controller, although experimentation can be useful
+  (Slide 18).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Example: In a car model, the speed is a function of the current
+    speed and throttle position. The model can help predict how changes
+    in the throttle angle affect the speed.
+  \end{itemize}
+\item
+  \textbf{Controller Design}: A simple proportional controller can be
+  used to manipulate the plant input. However, achieving the desired
+  output requires tuning and careful consideration of system dynamics.
+\end{itemize}
+
+\subsection{Closed-Loop Control
+Design}\label{closed-loop-control-design}
+
+\begin{itemize}
+\item
+  \textbf{Proportional (P) Controller}: A proportional controller
+  applies control by multiplying the tracking error by a gain value
+  (Slide 28).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Effects}: Adjusting the gain value (Κ) affects transient
+    response, steady-state tracking, and disturbance rejection. However,
+    increasing the gain can lead to oscillations (Slides 29-31).
+  \end{itemize}
+\item
+  \textbf{Derivative (D) Controller}: Adds a control action based on the
+  rate of change of the error, helping reduce overshoot and speed up
+  convergence to the desired output (Slides 44-45).
+\item
+  \textbf{Integral (I) Controller}: Addresses steady-state error by
+  accumulating the error over time, ensuring that the output reaches the
+  desired value eventually. However, it may introduce oscillations if
+  not carefully tuned (Slides 49-50).
+\item
+  \textbf{PID Controller}: A combination of Proportional, Integral, and
+  Derivative components, the PID controller offers good steady-state
+  performance, minimizes oscillations, and improves disturbance
+  rejection (Slide 52).
+\end{itemize}
+
+\section{Example Analysis of
+Controllers}\label{example-analysis-of-controllers}
+
+\begin{itemize}
+\item
+  \textbf{Open-Loop vs Closed-Loop Performance}: Open-loop controllers
+  struggle to handle disturbances, whereas closed-loop controllers can
+  mitigate the effects of changes in the environment (Slide 42).
+\item
+  \textbf{PD Controller}: By incorporating derivative action, the PD
+  controller improves transient response, but does not change
+  steady-state error (Slide 46).
+\item
+  \textbf{PI Controller}: Useful for eliminating steady-state error by
+  continually adjusting based on accumulated error (Slide 49).
+\item
+  \textbf{PID Controller}: The combined PID control offers comprehensive
+  benefits by balancing response time, minimizing steady-state error,
+  and controlling oscillations.
+\end{itemize}
+
+\section{Stability and Oscillation}\label{stability-and-oscillation}
+
+\begin{itemize}
+\item
+  \textbf{Stability}: The stability of the control system is a critical
+  objective, ensuring all control variables remain bounded (Slide 32).
+
+  \begin{itemize}
+  \item
+    The rate of decay of the effect of initial speed is controlled by
+    the gain value (\(\alpha\)). Setting a suitable gain is essential to
+    avoid unbounded growth or excessive oscillations (Slides 33-34).
+  \item
+    \textbf{Oscillation}: Negative values of the rate of decay parameter
+    (\(\alpha\)) can lead to oscillatory behavior, which must be avoided
+    in most practical control applications (Slide 38).
+  \end{itemize}
+\end{itemize}
+
+\section{Trade-Offs in Controller
+Design}\label{trade-offs-in-controller-design}
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Open Loop Control}: A cruise control system adjusts throttle
-  to maintain speed. The model describes how speed changes based on
-  throttle position and current speed, with no feedback mechanism.
+  \textbf{Proportional Gain (Κ)}: Higher values can improve response
+  time but lead to increased oscillations.
 \item
-  \textbf{Closed Loop Control}: Adding sensors to detect actual speed
-  and adjust throttle accordingly helps maintain speed despite
-  disturbances like wind or road conditions.
+  \textbf{Disturbance Rejection}: To effectively reject disturbances,
+  the proportional gain must be balanced to avoid compromising system
+  stability (Slide 34).
+\item
+  \textbf{Performance Objectives}: Reducing oscillation, achieving
+  faster convergence, and minimizing steady-state error are often
+  conflicting objectives, requiring careful tuning and consideration of
+  the application requirements (Slide 40).
 \end{itemize}
 
-\chapter{Lecture 9: Industrial Automation
-1}\label{lecture-9-industrial-automation-1}
+\section{Conclusion}\label{conclusion-7}
+
+This lecture provided an overview of \textbf{open-loop} and
+\textbf{closed-loop control systems}, the key components involved, and
+the trade-offs between stability, response time, and error minimization.
+Understanding these concepts is crucial for designing robust and
+efficient control systems, whether using simple proportional control or
+more advanced \textbf{PID controllers}. Future discussions will explore
+more advanced control techniques, such as \textbf{state-space models}
+and \textbf{model predictive control (MPC)}, which are particularly
+useful for managing complex, multi-variable systems.
+
+\chapter{Industrial Automation 1}\label{industrial-automation-1}
 
 \section{Introduction to Industrial
 Automation}\label{introduction-to-industrial-automation}
 
+\textbf{Industrial Automation} (IA) refers to the use of computers,
+programmable logic controllers (PLCs), and other control systems to
+operate industrial machinery and processes without requiring human
+intervention (Slide 5). This step beyond mechanization aims to improve
+productivity, quality, flexibility, and safety while reducing
+operational costs and human errors.
+
+\section{Advantages and Drawbacks of Industrial
+Automation}\label{advantages-and-drawbacks-of-industrial-automation}
+
+\subsection{Advantages}\label{advantages}
+
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Definition}: Industrial Automation refers to using computers
-  to control machinery and processes in industries, aiming to reduce
-  human intervention and increase efficiency.
+  \textbf{Productivity}: Automated systems can operate continuously,
+  24/7, significantly improving output compared to human-operated
+  systems.
 \item
-  \textbf{Advantages}: Improved productivity, consistent quality,
-  reduced waste, increased flexibility, accurate information, and
-  enhanced safety.
+  \textbf{Quality and Waste Reduction}: Automation reduces the
+  likelihood of human error, leading to better product quality and less
+  waste. Sensors provide accurate, quantitative data, which contributes
+  to enhanced consistency.
 \item
-  \textbf{Drawbacks}: High initial cost and maintenance requirements.
+  \textbf{Flexibility}: Machines can be easily reprogrammed to handle
+  new tasks, making automation well-suited for dynamic production
+  environments where frequent changes are required.
+\item
+  \textbf{Information Accuracy}: Automation employs sensors to gather
+  quantitative data, reducing errors that arise from subjective human
+  measurements.
+\item
+  \textbf{Safety}: By automating dangerous tasks, robots and other
+  automated equipment can work in environments that are unsafe for human
+  workers, such as those involving hazardous chemicals or extreme
+  temperatures.
 \end{itemize}
 
-\section{Programmable Logic Controllers
-(PLCs)}\label{programmable-logic-controllers-plcs}
+\subsection{Drawbacks}\label{drawbacks}
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{PLCs}: Specialized, hardened computers that are used to
-  control industrial processes. They provide fast response, durability,
-  maintainability, and reliability in tough environments.
+  \textbf{Initial Cost}: Setting up industrial automation systems
+  involves high initial investment costs, including purchasing robots
+  and making changes to existing production lines.
 \item
-  \textbf{Human-Machine Interfaces (HMIs)}: Interfaces that allow human
-  operators to interact with PLCs, such as entering parameters or
-  monitoring system status.
+  \textbf{Maintenance}: Ongoing maintenance is required to ensure that
+  automated systems operate effectively. The need for specialized
+  maintenance plans can increase overall costs.
+\end{itemize}
+
+\section{Basic Components of Industrial
+Automation}\label{basic-components-of-industrial-automation}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Programmable Logic Controllers (PLCs)}: Hardened computers
+  specifically designed for industrial use to control processes,
+  machinery, and systems (Slide 8).
+\item
+  \textbf{Numerical Controllers and Motion Controllers}: These devices
+  are used to control specific tasks, such as the movement of mechanical
+  parts.
+\item
+  \textbf{Remote I/O and Communication Devices}: These components are
+  essential for enabling communication between different parts of the
+  automation system.
+\item
+  \textbf{Industrial PCs}: Used for tasks that require more
+  computational power or data processing capabilities than PLCs can
+  provide.
+\item
+  \textbf{Mechatronic Components}: Include drives, sensors, actuators,
+  valves, etc., which interact with physical systems to achieve
+  automation objectives.
+\end{itemize}
+
+\section{PLCs and HMIs}\label{plcs-and-hmis}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{PLCs}: PLCs are at the core of industrial automation,
+  providing fast and reliable control. They are capable of synchronizing
+  input from sensors and output to actuators, allowing for precise
+  control of machinery (Slide 9).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Characteristics of PLCs}: They are \textbf{fast} (providing
+    response times in milliseconds), \textbf{durable} (built to
+    withstand tough industrial conditions), \textbf{maintainable} (can
+    be programmed using ladder logic), and \textbf{reliable} due to
+    their simplicity and robustness (Slide 11).
+  \end{itemize}
+\item
+  \textbf{Human-Machine Interface (HMI)}: HMIs are used to interact with
+  PLCs, allowing operators to input and monitor system parameters, such
+  as temperature or pressure settings (Slide 9).
 \end{itemize}
 
 \section{Generations of Industrial
 Automation}\label{generations-of-industrial-automation}
 
+\subsection{Generation 1: Relay Ladder Circuits (Slide
+15)}\label{generation-1-relay-ladder-circuits-slide-15}
+
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Generation 1}: Hard-wired relay logic, replaced by more
-  flexible PLCs.
-\item
-  \textbf{Generation 2}: Introduction of PLCs, significantly improving
-  flexibility and automation capabilities.
-\item
-  \textbf{Generation 3}: Multifunctional PLCs supporting multiple
-  programming languages.
-\item
-  \textbf{Generation 4}: Distributed automation solutions using
-  networking for improved flexibility and modularity.
+  \textbf{Hard-Wired Logic}: Early automation used hard-wired ladder
+  logic circuits to control industrial equipment. These circuits were
+  inflexible and required extensive rewiring to make changes.
 \end{itemize}
 
-\chapter{Lecture 10: Industrial Automation
-2}\label{lecture-10-industrial-automation-2}
+\subsection{Generation 2: Programmable Logic Controllers (PLCs) (Slide
+16)}\label{generation-2-programmable-logic-controllers-plcs-slide-16}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Introduction of PLCs}: PLCs revolutionized automation by
+  providing programmable, hardened computers that replaced hard-wired
+  circuits. They significantly improved the flexibility of automation
+  systems, allowing for easier modification and expansion.
+\end{itemize}
+
+\subsection{Generation 3: Multifunctional PLCs (Slide
+17)}\label{generation-3-multifunctional-plcs-slide-17}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Modern PLCs}: Today's PLCs support multiple programming
+  languages and feature a versatile architecture. They can be expanded
+  and integrated into larger systems, providing more functionality
+  beyond simple logic control.
+\end{itemize}
+
+\subsection{Generation 4: Distributed Automation Solutions (Slide
+20)}\label{generation-4-distributed-automation-solutions-slide-20}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Distributed Systems}: Modern automation relies on distributed
+  systems where a central processor interacts with sensors and actuators
+  via networked field-area buses. This architecture offers enhanced
+  scalability and modularity, enabling more complex automation
+  solutions.
+\end{itemize}
+
+\section{Challenges in Industrial
+Automation}\label{challenges-in-industrial-automation}
+
+\subsection{Challenge 1: Flexible Modular Manufacturing (Slide
+23)}\label{challenge-1-flexible-modular-manufacturing-slide-23}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Flexibility in Manufacturing}: The key challenge is to replace
+  components of the manufacturing system without affecting the rest of
+  the system. A modular approach enables seamless replacement and
+  modification of conveyor sections or robotic workstations without the
+  need for significant system reconfiguration.
+\end{itemize}
+
+\subsection{Challenge 2: Dynamic Self-Configurability (Slide
+27)}\label{challenge-2-dynamic-self-configurability-slide-27}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Self-Configurable Systems}: The dream of automation engineers
+  is a system that can dynamically adapt and self-configure to handle
+  different tasks without manual intervention. Achieving this level of
+  automation requires sophisticated communication, middleware, and
+  intelligent control systems.
+\end{itemize}
+
+\section{Object-Oriented Design of Automation
+Software}\label{object-oriented-design-of-automation-software}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Object-Oriented Design}: Designing software to match the
+  physical structure of automation systems enhances modularity and
+  flexibility. For example, structuring software components to represent
+  individual physical units enables easy modification and adaptation
+  (Slide 21).
+\end{itemize}
+
+\section{Intelligent Agent-Based
+Automation}\label{intelligent-agent-based-automation}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Agents in Automation}: The future of automation lies in using
+  intelligent agents that can negotiate, recognize situations, make
+  decisions, and coordinate operations autonomously (Slides 28-29).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Agent Architecture}: The architecture involves controllers,
+    processes, and agents that can autonomously interact and make
+    decisions. This helps achieve more resilient and adaptive industrial
+    processes.
+  \end{itemize}
+\end{itemize}
+
+\section{Conclusion}\label{conclusion-8}
+
+\textbf{Industrial Automation} has undergone significant evolution, from
+hard-wired relay circuits to modern distributed and agent-based
+solutions. Each generation has brought greater flexibility, efficiency,
+and reliability to automation systems (Slide 30). Despite the
+challenges, such as the high initial cost and maintenance demands,
+industrial automation continues to advance, driven by the need for
+enhanced productivity, quality, and safety. The next stages will focus
+on improving self-configurability, modularity, and integrating
+intelligent, autonomous systems to enable seamless, adaptive
+manufacturing environments.
+
+\chapter{Industrial Automation 2}\label{industrial-automation-2}
+
+\section{Introduction to Industrial Automation
+Systems}\label{introduction-to-industrial-automation-systems}
+
+This lecture focused on advanced elements of industrial automation,
+covering concepts such as the \textbf{IEC 61131 standard},
+\textbf{Ladder Logic}, and control using \textbf{counters} and
+\textbf{timers}. These components are foundational in designing robust
+and flexible automated systems for industry (Slide 2).
 
 \section{IEC 61131 Standard}\label{iec-61131-standard}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{PLC Programming Languages}: The IEC 61131 standard defines
-  programming languages for PLCs, including Ladder Logic, Instruction
-  List, Structured Text, Function Block Diagrams, and Function Charts.
-\item
-  \textbf{Ladder Logic}: An old but still widely used language, using
-  graphical symbols to represent control actions, making it easy to
-  understand and maintain.
-\end{itemize}
+\textbf{IEC 61131} is an international standard for programmable logic
+controllers (PLCs) that defines programming languages and structures
+used for industrial control (Slide 2). It supports a variety of
+programming approaches, including: - \textbf{Ladder Logic (LD)}: A
+graphical programming language that uses symbols to represent electrical
+relay logic, making it easy for engineers to visualize and debug control
+processes. - \textbf{Instruction List (IL)}: A low-level textual
+language similar to assembly, useful for describing control operations
+in a concise manner (Slide 3). - \textbf{Structured Text (ST)}: A
+high-level, block-structured language similar to traditional programming
+languages, which makes it ideal for complex logical operations (Slide
+3). - \textbf{Function Block Diagrams (FBD)} and \textbf{Sequential
+Function Charts (SFC)}: Graphical representations that show the flow of
+control and parallel operations (Slide 3).
 
-\section{Ladder Logic Features}\label{ladder-logic-features}
+\section{Ladder Logic and Its
+Elements}\label{ladder-logic-and-its-elements}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Basic Elements}: Includes contacts, coils, and connectors,
-  with vertical power rails representing power flow through the rungs of
-  the diagram.
-\item
-  \textbf{Timers and Counters}: Used for controlling time-based
-  operations, with variations like On-Delay, Off-Delay, and Pulse
-  timers. Counters are used to count occurrences and trigger actions
-  after a specific count.
-\end{itemize}
-
-\section{Example: Pneumatic Cylinder}\label{example-pneumatic-cylinder}
+\textbf{Ladder Logic} represents control processes in a form that
+resembles a ladder. It has been used since the 1940s and is still
+popular today because of its visual representation, ease of debugging,
+and intuitive structure (Slides 4-7).
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Control Sequence}: A pneumatic cylinder controlled by ladder
-  logic, moving forward when a START button is pressed, and returning
-  when fully extended. This sequence can be represented as a Moore
-  Machine for precise state transitions.
+  \textbf{Basic Elements}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Contacts}: Represented as normally open or normally closed
+    switches, contacts control the flow of ``power'' through each rung
+    of the ladder diagram (Slide 5).
+  \item
+    \textbf{Coils}: Act as outputs, controlling devices like motors or
+    valves based on the conditions specified by the contacts (Slide 5).
+  \item
+    \textbf{Connectors}: Elements arranged either in \textbf{series}
+    (AND logic) or \textbf{parallel} (OR logic) to determine the
+    conditions under which outputs are activated (Slide 5).
+  \end{itemize}
 \item
-  \textbf{Concurrency in Ladder Logic}: Used to control multiple devices
-  simultaneously, ensuring that state transitions occur correctly based
-  on sensor input and predefined logic.
+  \textbf{Ladder Logic Conventions}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Power Rails}: Vertical lines representing power flow from
+    left to right across each ``rung'' of the ladder (Slide 6).
+  \item
+    \textbf{Rungs}: Each rung represents an operation in the control
+    process. Outputs are updated only after evaluating all inputs in the
+    program cycle, ensuring deterministic behavior (Slide 6).
+  \item
+    Devices are shown in their \textbf{normal condition} (inactive or
+    off state) and can appear in multiple rungs as part of different
+    control sequences (Slide 6).
+  \end{itemize}
 \end{itemize}
+
+\section{Example: Pneumatic Cylinder
+Control}\label{example-pneumatic-cylinder-control}
+
+A simple example of using ladder logic to control a \textbf{pneumatic
+cylinder} was provided, showcasing its applicability in real-world
+automation tasks: - \textbf{Desired Behavior}: An LED indicates
+readiness. When a ``START'' button is pressed, the cylinder moves
+forward until fully extended, then returns to its default position.
+Sensors provide signals for ``HOME'' (default position) and ``END''
+(fully extended) states (Slide 10). - \textbf{State Machine
+Representation}: The control process can be described using a
+\textbf{Moore state machine}, where inputs trigger state transitions and
+determine outputs. Boolean logic defines the state transitions, ensuring
+that the system follows a predictable sequence of actions (Slide 13).
+
+\section{Ladder Logic Timers and
+Counters}\label{ladder-logic-timers-and-counters}
+
+\textbf{Timers} and \textbf{counters} are used in ladder logic for
+managing time-dependent operations and counting events, such as sensor
+activations or production cycles.
+
+\subsection{Timers}\label{timers}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{On-Delay Timer (TON)}: The output turns on after a specified
+  delay time once the input signal is activated. This is used for
+  operations that need a fixed delay before activation, such as starting
+  a motor after a set period (Slide 28).
+\item
+  \textbf{Off-Delay Timer (TOF)}: The output turns off after a delay
+  once the input signal is deactivated. This is useful for keeping an
+  actuator active for a fixed period after the input stops (Slide 30).
+\item
+  \textbf{Pulse Timer (TP)}: Produces a fixed-length output pulse when
+  the input is activated. This is often used in signaling applications
+  where a precise pulse duration is required (Slide 33).
+\end{itemize}
+
+\subsection{Counters}\label{counters}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Up-Counters (CTU)}: Count up from zero each time a rising edge
+  of an input is detected until a preset value is reached (Slide 23).
+\item
+  \textbf{Down-Counters (CTD)}: Count down from a preset value to zero,
+  commonly used for decrementing remaining quantities, such as material
+  in a hopper.
+\item
+  \textbf{Resetting Counters}: A reset input brings the counter value
+  back to zero, ensuring it starts counting again from the beginning
+  (Slide 24).
+\end{itemize}
+
+\section{Sequential Function Chart
+(SFC)}\label{sequential-function-chart-sfc}
+
+\textbf{Sequential Function Charts (SFC)} are another important tool for
+industrial automation, providing a high-level graphical representation
+of a system's operational sequence. SFCs show the flow from one step to
+another, detailing the conditions for each transition and enabling a
+clear view of parallel and sequential operations (Slide 39). -
+\textbf{Parallel Branches}: Allow multiple operations to occur
+simultaneously, synchronized by transition conditions. These branches
+are visually represented using double horizontal lines, making it easy
+to identify concurrent activities in the system (Slide 41).
+
+\section{Practical Considerations for Ladder
+Logic}\label{practical-considerations-for-ladder-logic}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Why Ladder Logic Is Still Popular}: Ladder logic is favored
+  due to its \textbf{ease of use}, \textbf{visual clarity}, and the
+  ability to \textbf{trace command flow} intuitively. It is particularly
+  useful for maintenance personnel without deep programming knowledge,
+  as its representation is similar to traditional relay-based control
+  systems (Slide 22).
+\item
+  \textbf{Counters and Timers}: Practical examples include
+  \textbf{traffic light controllers} using timers to manage the sequence
+  of lights, and counters to keep track of vehicles or system
+  operations, ensuring safe and efficient process flows (Slide 36).
+\end{itemize}
+
+\section{Conclusions}\label{conclusions}
+
+This lecture provided an in-depth overview of the tools and techniques
+used in \textbf{industrial automation}, such as \textbf{Ladder Logic},
+\textbf{SFC}, \textbf{IEC 61131} programming languages, and the use of
+\textbf{counters} and \textbf{timers}. Understanding these concepts is
+crucial for implementing reliable, flexible, and maintainable automation
+systems. These methods allow for both the visual representation and
+precise control of industrial processes, making them fundamental for
+modern manufacturing environments (Slide 44).
+
+In future discussions, we'll explore more advanced features of
+automation systems, such as integrating \textbf{networked embedded
+systems} and \textbf{agent-based control}, to further enhance
+flexibility and scalability in industrial applications.
 
 
 

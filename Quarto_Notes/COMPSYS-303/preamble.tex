@@ -10,27 +10,16 @@
 % \usepackage{fontspec}
 \sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
 
-
+\renewcommand*{\chapterformat}{\textbf{Lecture \thechapter: \;}}
 
 \setkomafont{disposition}{\normalcolor\bfseries}
 \setkomafont{section}{\normalfont\Large\bfseries}
 \setkomafont{chapter}{\normalfont\LARGE\bfseries}
+
 \RedeclareSectionCommand[
   beforeskip=10pt, % Space before the chapter
-  afterskip=10pt   % Space after the chapter
+  afterskip=20pt   % Space after the chapter
 ]{chapter}
-
-% Adjust part spacing
-\RedeclareSectionCommand[
-  beforeskip=10pt,
-  afterskip=10pt
-]{part}
-
-% Adjust section spacing
-\RedeclareSectionCommand[
-  beforeskip=10pt,
-  afterskip=10pt
-]{section}
 
 \fancypagestyle{plain}{%
   \fancyhf{}%
