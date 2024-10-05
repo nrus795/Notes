@@ -474,7 +474,8 @@ maintain patient safety.
 \section{Problems with Concurrency and
 Solutions}\label{problems-with-concurrency-and-solutions}
 
-Concurrency can lead to serious issues if not properly managed.
+Concurrency can lead to serious issues if not properly managed. (Haha,
+kieler go brrrrr)
 
 \textbf{Deadlocks}
 
@@ -607,7 +608,8 @@ Key aspects of the synchronous approach include:
 \textbf{SCCharts} are an extension of Statecharts, introduced by David
 Harel, that add the benefits of the synchronous paradigm to the powerful
 modeling features of Statecharts. SCCharts are used to describe complex
-systems involving multiple states and concurrent processes.
+systems involving multiple states and concurrent processes. It's also a
+sh*t piece of under engineered German software from Kiel.
 
 \subsection{Similarities and Differences Between SCCharts and
 Statecharts}\label{similarities-and-differences-between-sccharts-and-statecharts}
@@ -797,7 +799,7 @@ transfer methods like polling, interrupts, and Direct Memory Access
   \begin{itemize}
   \tightlist
   \item
-    Example: The \textbf{Nios II processor} from Altera uses
+    \textbf{Example:} The \textbf{Nios II processor} from Altera uses
     memory-mapped I/O to communicate with peripherals via Avalon buses,
     where specific addresses map to different peripheral registers, such
     as control, status, or data registers (Slide 7). Functions like
@@ -887,12 +889,12 @@ periodic events and measuring intervals (Slide 53).
   specify when an event should occur, which is critical for tasks like
   interval timing or watchdog functionalities (Slide 54).
 \item
-  \textbf{Example of Reaction Timer}: A \textbf{reaction timer} measures
-  the user's response time to a visual stimulus (Slide 56). A timer is
-  started when an indicator light turns on, and the user's reaction time
-  is recorded by counting the number of timer overflows until a button
-  is pressed. This showcases the use of timers to measure user
-  interaction intervals.
+  \textbf{Example:} A \textbf{reaction timer} measures the user's
+  response time to a visual stimulus (Slide 56). A timer is started when
+  an indicator light turns on, and the user's reaction time is recorded
+  by counting the number of timer overflows until a button is pressed.
+  This showcases the use of timers to measure user interaction
+  intervals.
 \end{itemize}
 
 \section{UART Communication}\label{uart-communication}
@@ -1097,11 +1099,15 @@ behaviors to be implemented systematically (Slide 17).
     and \textbf{other functional units} used to manipulate data (Slide
     19).
   \end{itemize}
-\item
-  \textbf{Design Flow}: Typically, a design starts by creating an
-  algorithm, converting it to a state machine, and then mapping it to an
-  FSMD (Slide 18). This involves defining states, transitions, and
-  operations that control how data is processed.
+\end{itemize}
+
+\textbf{Design Flow}: Typically, a design starts by creating an
+algorithm, converting it to a state machine, and then mapping it to an
+FSMD (Slide 18). This involves defining states, transitions, and
+operations that control how data is processed.
+
+\begin{itemize}
+\tightlist
 \item
   \textbf{Example: GCD Calculation}: The \textbf{Greatest Common Divisor
   (GCD)} example demonstrated in the lecture involves defining a simple
@@ -1274,35 +1280,32 @@ transfer and system performance.
 Buses can be broadly classified into \textbf{internal} and
 \textbf{external} types based on their scope within a system (Slide 9):
 
+\textbf{Internal Buses}: These are used within a single chip or a
+tightly integrated board to connect different functional blocks.
+Examples include:
+
 \begin{itemize}
 \item
-  \textbf{Internal Buses}: These are used within a single chip or a
-  tightly integrated board to connect different functional blocks.
-  Examples include:
-
-  \begin{itemize}
-  \item
-    \textbf{PCI} (Peripheral Component Interconnect)
-  \item
-    \textbf{AGP} (Accelerated Graphics Port)
-  \item
-    \textbf{PCMCIA}
-  \item
-    \textbf{AMBA} (Advanced Microcontroller Bus Architecture) for
-    ARM-based systems
-  \item
-    \textbf{Avalon} buses used in Altera's SOPC designs
-  \end{itemize}
+  \textbf{PCI} (Peripheral Component Interconnect)
 \item
-  \textbf{External Buses}: These are used to connect different chips or
-  boards. Examples include:
+  \textbf{AGP} (Accelerated Graphics Port)
+\item
+  \textbf{PCMCIA}
+\item
+  \textbf{AMBA} (Advanced Microcontroller Bus Architecture) for
+  ARM-based systems
+\item
+  \textbf{Avalon} buses used in Altera's SOPC designs
+\end{itemize}
 
-  \begin{itemize}
-  \item
-    \textbf{USB} (Universal Serial Bus)
-  \item
-    \textbf{FireWire}
-  \end{itemize}
+\textbf{External Buses}: These are used to connect different chips or
+boards. Examples include:
+
+\begin{itemize}
+\item
+  \textbf{USB} (Universal Serial Bus)
+\item
+  \textbf{FireWire} (Some dumb apple proprietary thing)
 \end{itemize}
 
 \section{Bus Design Issues}\label{bus-design-issues}
@@ -1310,28 +1313,25 @@ Buses can be broadly classified into \textbf{internal} and
 The design of a bus impacts system performance, scalability, and cost.
 Several factors must be considered when designing a bus (Slide 14):
 
+\textbf{Bus Width}: The width of the data and address buses is a
+critical determinant of the system's performance. A wider bus can
+transfer more data per cycle but is more expensive to implement. For
+example, a Pentium processor has a 32-bit instruction set architecture
+(ISA) but a 64-bit data bus, while an Itanium processor has a 128-bit
+data bus, offering significantly more bandwidth for data transfers
+(Slides 15-16).
+
+\textbf{Bus Type}: Buses can be \textbf{dedicated} or
+\textbf{multiplexed}:
+
 \begin{itemize}
 \item
-  \textbf{Bus Width}: The width of the data and address buses is a
-  critical determinant of the system's performance. A wider bus can
-  transfer more data per cycle but is more expensive to implement. For
-  example, a Pentium processor has a 32-bit instruction set architecture
-  (ISA) but a 64-bit data bus, while an Itanium processor has a 128-bit
-  data bus, offering significantly more bandwidth for data transfers
-  (Slides 15-16).
+  \textbf{Dedicated Buses} have separate lines for data and address
+  information, providing better performance but increasing costs.
 \item
-  \textbf{Bus Type}: Buses can be \textbf{dedicated} or
-  \textbf{multiplexed}:
-
-  \begin{itemize}
-  \item
-    \textbf{Dedicated Buses} have separate lines for data and address
-    information, providing better performance but increasing costs.
-  \item
-    \textbf{Multiplexed Buses} share the same lines for data and
-    address, which reduces cost and resource usage but may introduce
-    delays in data transmission (Slide 17).
-  \end{itemize}
+  \textbf{Multiplexed Buses} share the same lines for data and address,
+  which reduces cost and resource usage but may introduce delays in data
+  transmission (Slide 17).
 \end{itemize}
 
 \section{Bus Operations}\label{bus-operations}
@@ -1450,22 +1450,25 @@ In systems with multiple masters (e.g., CPUs, DMA controllers),
 \subsection{Bus Arbitration
 Implementation}\label{bus-arbitration-implementation}
 
-\textbf{Centralized Bus Arbitration}: Uses a \textbf{daisy-chaining}
-method where the bus grant signal is passed down a chain of masters. It
-is easy to implement but has several drawbacks, such as fixed priority
-and increased arbitration time proportional to the number of masters
-(Slide 37).
-
-\textbf{Independent Requests}: Each master has a dedicated bus request
-line to the central arbiter. This approach is more fault-tolerant and
-allows for \textbf{constant arbitration time}, but requires a higher
-number of control signals (Slide 39).
-
-\textbf{Hybrid Arbitration Schemes}: Combine features of daisy-chaining
-and independent requests. For example, bus masters can be grouped into
-\textbf{classes}, with independent arbitration at the class level and
-daisy-chaining within each class. This provides a balance between cost
-and performance (Slide 40).
+\begin{itemize}
+\item
+  \textbf{Centralized Bus Arbitration}: Uses a \textbf{daisy-chaining}
+  method where the bus grant signal is passed down a chain of masters.
+  It is easy to implement but has several drawbacks, such as fixed
+  priority and increased arbitration time proportional to the number of
+  masters (Slide 37).
+\item
+  \textbf{Independent Requests}: Each master has a dedicated bus request
+  line to the central arbiter. This approach is more fault-tolerant and
+  allows for \textbf{constant arbitration time}, but requires a higher
+  number of control signals (Slide 39).
+\item
+  \textbf{Hybrid Arbitration Schemes}: Combine features of
+  daisy-chaining and independent requests. For example, bus masters can
+  be grouped into \textbf{classes}, with independent arbitration at the
+  class level and daisy-chaining within each class. This provides a
+  balance between cost and performance (Slide 40).
+\end{itemize}
 
 \section{System Bus Components}\label{system-bus-components}
 
@@ -1572,9 +1575,10 @@ introducing \textbf{quantization error} (Slide 5).
 
 \begin{itemize}
 \item
-  \textbf{Quantization Levels}: For an n-bit Analog-to-Digital Converter
-  (ADC), there are \(2^n\) levels, which determine how finely the signal
-  is represented. For example, an 8-bit ADC has 256 quantization levels.
+  \textbf{Quantization Levels}: For an \texttt{n}-bit Analog-to-Digital
+  Converter (ADC), there are \(2^n\) levels, which determine how finely
+  the signal is represented. For example, an 8-bit ADC has 256
+  quantization levels.
 \item
   \textbf{Resolution}: The resolution of an ADC determines the voltage
   represented by each digital increment. For instance, a 10-bit ADC with
@@ -1588,14 +1592,8 @@ introducing \textbf{quantization error} (Slide 5).
 sampling rate is less than twice the frequency of the signal (the
 \textbf{Nyquist frequency}), higher-frequency signals appear
 indistinguishable from lower frequencies, leading to errors (Slides
-9-11).
-
-\begin{itemize}
-\tightlist
-\item
-  For example, if a signal is sampled at 2.5 Hz, signals at 0.5 Hz, 3
-  Hz, and 5.5 Hz appear the same, leading to ambiguity.
-\end{itemize}
+9-11). For example, if a signal is sampled at 2.5 Hz, signals at 0.5 Hz,
+3 Hz, and 5.5 Hz appear the same, leading to ambiguity.
 
 \section{Computation Delays and Timing
 Variances}\label{computation-delays-and-timing-variances}
@@ -1605,20 +1603,17 @@ to inherent processing overhead, causing sampling or actuation to happen
 later than expected. Accurate delay characterization is needed to ensure
 that systems meet timing requirements (Slide 12).
 
+\textbf{Sources of Timing Variance}:
+
 \begin{itemize}
 \item
-  \textbf{Sources of Timing Variance}:
-
-  \begin{itemize}
-  \item
-    \textbf{Unbounded Software Constructs}: Unpredictable branches,
-    loops, recursion, and dynamic memory allocations can introduce
-    delays (Slide 13).
-  \item
-    \textbf{Speculative Hardware}: Features like pipelines, memory
-    hierarchies (caches), and branch predictors in modern processors can
-    lead to non-deterministic execution times.
-  \end{itemize}
+  \textbf{Unbounded Software Constructs}: Unpredictable branches, loops,
+  recursion, and dynamic memory allocations can introduce delays (Slide
+  13).
+\item
+  \textbf{Speculative Hardware}: Features like pipelines, memory
+  hierarchies (caches), and branch predictors in modern processors can
+  lead to non-deterministic execution times.
 \end{itemize}
 
 \section{Worst-Case Execution Time
@@ -1628,89 +1623,70 @@ that systems meet timing requirements (Slide 12).
 given task (Slide 14). Understanding WCET is critical for ensuring that
 an embedded control system meets its real-time constraints.
 
+\textbf{Methods to Determine WCET}:
+
 \begin{itemize}
 \item
-  \textbf{Methods to Determine WCET}:
-
-  \begin{itemize}
-  \item
-    \textbf{Measured}: Simple to implement but may not explore all
-    possible execution paths, thus providing non-guaranteed values.
-  \item
-    \textbf{Static Analysis}: Uses an abstraction of the system to
-    analyze all possible paths, ensuring coverage but requiring
-    significant computational resources.
-  \end{itemize}
+  \textbf{Measured}: Simple to implement but may not explore all
+  possible execution paths, thus providing non-guaranteed values.
+\item
+  \textbf{Static Analysis}: Uses an abstraction of the system to analyze
+  all possible paths, ensuring coverage but requiring significant
+  computational resources.
 \end{itemize}
 
 \section{Static Timing Analysis}\label{static-timing-analysis}
 
+\textbf{Control Flow Graph (CFG)}: Timing analysis starts with creating
+a \textbf{control flow graph} (CFG) to map program flow, representing
+different segments of code (Slides 18-19).
+
 \begin{itemize}
 \item
-  \textbf{Control Flow Graph (CFG)}: Timing analysis starts with
-  creating a \textbf{control flow graph} (CFG) to map program flow,
-  representing different segments of code (Slides 18-19).
-
-  \begin{itemize}
-  \item
-    \textbf{Basic Blocks and Transitions}: CFG nodes are called
-    \textbf{basic blocks}, which represent straight-line code without
-    branches, and transitions show how the program moves between these
-    blocks.
-  \item
-    \textbf{Path Analysis}: Finding the \textbf{longest execution path}
-    within the CFG is key to determining the worst-case scenario for
-    execution time (Slide 20).
-  \end{itemize}
+  \textbf{Basic Blocks and Transitions}: CFG nodes are called
+  \textbf{basic blocks}, which represent straight-line code without
+  branches, and transitions show how the program moves between these
+  blocks.
 \item
-  \textbf{Timed CFG}: A timed CFG uses clock cycle estimates for
-  different operations---computation, load, store, branch, and
-  return---to determine execution duration (Slide 23).
+  \textbf{Path Analysis}: Finding the \textbf{longest execution path}
+  within the CFG is key to determining the worst-case scenario for
+  execution time (Slide 20).
+\end{itemize}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Example values: \textbf{Load} and \textbf{Store} take 5 cycles,
-    \textbf{Computation} takes 1 cycle, \textbf{Branch} (if taken) takes
-    3 cycles.
-  \end{itemize}
+\textbf{Timed CFG}: A timed CFG uses clock cycle estimates for different
+operations---computation, load, store, branch, and return---to determine
+execution duration (Slide 23).
+
+\begin{itemize}
+\tightlist
+\item
+  Example: \textbf{Load} and \textbf{Store} take 5 cycles,
+  \textbf{Computation} takes 1 cycle, \textbf{Branch} (if taken) takes 3
+  cycles.
 \end{itemize}
 
 \section{WCET Analysis Using Max-Plus
 Algebra}\label{wcet-analysis-using-max-plus-algebra}
 
-\begin{itemize}
-\item
-  The \textbf{Max-Plus} approach simplifies WCET analysis by using only
-  max and plus operations to calculate the worst-case path cost (Slide
-  24).
+The \textbf{Max-Plus} approach simplifies WCET analysis by using only
+max and plus operations to calculate the worst-case path cost (Slide
+24).
 
-  \begin{itemize}
-  \tightlist
-  \item
-    For example, the WCET for two possible paths might be calculated as:
-    \(\text{wcet} = \max(19 + 14 + 10, 21 + 13 + 10) = 44\) clock
-    cycles.
-  \end{itemize}
+\begin{itemize}
+\tightlist
+\item
+  For example, the WCET for two possible paths might be calculated as:
+  \(\text{wcet} = \max(19 + 14 + 10, 21 + 13 + 10) = 44\) clock cycles.
 \end{itemize}
 
 \section{Integer Linear Programming
 (ILP)}\label{integer-linear-programming-ilp}
 
-\begin{itemize}
-\item
-  \textbf{ILP} is used for WCET analysis by defining an
-  \textbf{objective function} to maximize execution time under given
-  constraints (Slide 28-30).
-
-  \begin{itemize}
-  \tightlist
-  \item
-    The constraints are typically linear inequalities describing valid
-    program transitions and flow consistency, allowing ILP to provide an
-    upper bound for WCET.
-  \end{itemize}
-\end{itemize}
+\textbf{ILP} is used for WCET analysis by defining an \textbf{objective
+function} to maximize execution time under given constraints (Slide
+28-30). The constraints are typically linear inequalities describing
+valid program transitions and flow consistency, allowing ILP to provide
+an upper bound for WCET.
 
 \section{Coding Guidelines for Time
 Predictability}\label{coding-guidelines-for-time-predictability}
@@ -1739,15 +1715,11 @@ Predictability}\label{coding-guidelines-for-time-predictability}
 
 \section{PRET Philosophy}\label{pret-philosophy}
 
-\begin{itemize}
-\tightlist
-\item
-  The \textbf{PRET (Precision Timed)} philosophy emphasizes treating
-  time as a first-class citizen, aiming for a \textbf{time-predictable
-  system} (Slide 35). The objective is to achieve predictability in
-  hardware, software-hardware interfaces, and the software itself,
-  ensuring reliable operation within a time-constrained environment.
-\end{itemize}
+The \textbf{PRET (Precision Timed)} philosophy emphasizes treating time
+as a first-class citizen, aiming for a \textbf{time-predictable system}
+(Slide 35). The objective is to achieve predictability in hardware,
+software-hardware interfaces, and the software itself, ensuring reliable
+operation within a time-constrained environment.
 
 \section{Conclusion}\label{conclusion-5}
 
@@ -1774,66 +1746,57 @@ control in real-time embedded applications (Slide 2).
 
 \section{Pulse-Width Modulation (PWM)}\label{pulse-width-modulation-pwm}
 
+\textbf{Pulse-Width Modulation (PWM)} is a technique used to simulate an
+analog signal using digital means by varying the duty cycle of a digital
+pulse (Slide 5).
+
 \begin{itemize}
 \item
-  \textbf{Pulse-Width Modulation (PWM)} is a technique used to simulate
-  an analog signal using digital means by varying the duty cycle of a
-  digital pulse (Slide 5).
-
-  \begin{itemize}
-  \item
-    \textbf{Duty Cycle}: The percentage of time the signal remains high
-    during a cycle determines the average voltage output. A higher duty
-    cycle implies higher average power delivered, which is crucial in
-    controlling actuators like DC motors and LEDs (Slide 7).
-  \item
-    \textbf{Fast PWM vs Phase-Correct PWM}: There are different types of
-    PWM modes. \textbf{Fast PWM} operates at a higher frequency to
-    minimize flickering, while \textbf{Phase-Correct PWM} maintains
-    symmetry in the signal waveform, which is often better for
-    controlling motors with less noise (Slide 8).
-  \end{itemize}
+  \textbf{Duty Cycle}: The percentage of time the signal remains high
+  during a cycle determines the average voltage output. A higher duty
+  cycle implies higher average power delivered, which is crucial in
+  controlling actuators like DC motors and LEDs (Slide 7).
+\item
+  \textbf{Fast PWM vs Phase-Correct PWM}: There are different types of
+  PWM modes. \textbf{Fast PWM} operates at a higher frequency to
+  minimize flickering, while \textbf{Phase-Correct PWM} maintains
+  symmetry in the signal waveform, which is often better for controlling
+  motors with less noise (Slide 8).
 \end{itemize}
 
 \section{DC and Stepper Motors}\label{dc-and-stepper-motors}
 
 \subsection{DC Motors}\label{dc-motors}
 
-\begin{itemize}
-\item
-  \textbf{DC Motors} are widely used for their simplicity and ease of
-  control. Speed control is achieved by modulating the voltage applied
-  to the motor, which is often implemented through PWM. The relationship
-  between PWM duty cycle and motor speed is usually non-linear,
-  requiring careful tuning to achieve precise control (Slide 10).
-\item
-  \textbf{Motor Driver Circuitry}: To drive DC motors,
-  \textbf{H-bridges} are commonly used. An H-bridge allows for
-  directional control by reversing the current flow through the motor,
-  enabling forward and reverse motion (Slide 11).
-\end{itemize}
+\textbf{DC Motors} are widely used for their simplicity and ease of
+control. Speed control is achieved by modulating the voltage applied to
+the motor, which is often implemented through PWM. The relationship
+between PWM duty cycle and motor speed is usually non-linear, requiring
+careful tuning to achieve precise control (Slide 10).
+
+\textbf{Motor Driver Circuitry}: To drive DC motors, \textbf{H-bridges}
+are commonly used. An H-bridge allows for directional control by
+reversing the current flow through the motor, enabling forward and
+reverse motion (Slide 11).
 
 \subsection{Stepper Motors}\label{stepper-motors}
 
+\textbf{Stepper Motors} are used when precise control of angular
+position is required. Each pulse sent to the motor corresponds to a
+fixed angular movement, allowing fine control over its rotation (Slide
+12).
+
 \begin{itemize}
 \item
-  \textbf{Stepper Motors} are used when precise control of angular
-  position is required. Each pulse sent to the motor corresponds to a
-  fixed angular movement, allowing fine control over its rotation (Slide
-  12).
-
-  \begin{itemize}
-  \item
-    \textbf{Types of Stepper Motors}: Two main types include
-    \textbf{unipolar} and \textbf{bipolar} stepper motors, each with
-    distinct wiring configurations and driving requirements (Slide 13).
-  \item
-    \textbf{Stepper Motor Control}: To control the stepper motor,
-    sequences of pulses must be sent in the correct order to energize
-    the windings and produce the desired stepping motion. This is
-    typically achieved using a \textbf{stepper motor driver}, which
-    abstracts the complexity of pulse timing (Slide 14).
-  \end{itemize}
+  \textbf{Types of Stepper Motors}: Two main types include
+  \textbf{unipolar} and \textbf{bipolar} stepper motors, each with
+  distinct wiring configurations and driving requirements (Slide 13).
+\item
+  \textbf{Stepper Motor Control}: To control the stepper motor,
+  sequences of pulses must be sent in the correct order to energize the
+  windings and produce the desired stepping motion. This is typically
+  achieved using a \textbf{stepper motor driver}, which abstracts the
+  complexity of pulse timing (Slide 14).
 \end{itemize}
 
 \section{PID Control}\label{pid-control}
@@ -1860,40 +1823,35 @@ desired system behavior.
   considers the rate of change of the error, providing a damping effect
   that reduces overshoot. It predicts future error and helps the system
   respond more smoothly, avoiding large fluctuations (Slide 19).
-\item
-  \textbf{Tuning PID Parameters}: Tuning the PID parameters (\(K_p\),
-  \(K_i\), and \(K_d\)) is crucial for optimal system performance.
-  Methods like \textbf{Ziegler-Nichols} can be used to empirically
-  determine the ideal values, balancing response speed, stability, and
-  accuracy (Slide 20).
 \end{itemize}
+
+\textbf{Tuning PID Parameters}: Tuning the PID parameters (\(K_p\),
+\(K_i\), and \(K_d\)) is crucial for optimal system performance. Methods
+like \textbf{Ziegler-Nichols} can be used to empirically determine the
+ideal values, balancing response speed, stability, and accuracy (Slide
+20).
 
 \section{Analog-to-Digital Conversion
 (ADC)}\label{analog-to-digital-conversion-adc}
 
-\begin{itemize}
-\item
-  \textbf{Analog-to-Digital Converters (ADC)} are used to digitize
-  analog signals so that they can be processed by digital controllers.
-  ADCs are critical in embedded control systems where signals like
-  temperature, pressure, or speed need to be sampled and processed
-  (Slide 22).
+\textbf{Analog-to-Digital Converters (ADC)} are used to digitize analog
+signals so that they can be processed by digital controllers. ADCs are
+critical in embedded control systems where signals like temperature,
+pressure, or speed need to be sampled and processed (Slide 22).
 
-  \begin{itemize}
-  \item
-    \textbf{Quantization and Resolution}: The resolution of an ADC
-    refers to the number of discrete levels used to represent the analog
-    input. A higher resolution means better accuracy but increased cost
-    and complexity. For instance, a 12-bit ADC provides \(2^{12}\)
-    quantization levels, which significantly improves signal
-    representation over an 8-bit ADC (Slide 23).
-  \item
-    \textbf{Sampling Rate}: The sampling rate must be at least twice the
-    highest frequency of the input signal to prevent \textbf{aliasing}
-    (Nyquist criterion). If the sampling rate is insufficient, aliasing
-    can lead to distorted signals that compromise control accuracy
-    (Slide 24).
-  \end{itemize}
+\textbf{Quantization and Resolution}: The resolution of an ADC refers to
+the number of discrete levels used to represent the analog input. A
+higher resolution means better accuracy but increased cost and
+complexity. For instance, a 12-bit ADC provides \(2^{12}\) quantization
+levels, which significantly improves signal representation over an 8-bit
+ADC (Slide 23).
+
+\textbf{Sampling Rate}: The sampling rate must be at least twice the
+highest frequency of the input signal to prevent \textbf{aliasing}
+(Nyquist criterion). If the sampling rate is insufficient, aliasing can
+lead to distorted signals that compromise control accuracy (Slide 24).
+
+\begin{itemize}
 \item
   \textbf{Types of ADC Technologies}:
 
@@ -1919,38 +1877,32 @@ desired system behavior.
 \section{Practical Considerations in Embedded Control
 Systems}\label{practical-considerations-in-embedded-control-systems}
 
-\begin{itemize}
-\item
-  \textbf{Noise Handling}: Analog signals are often susceptible to
-  noise. Techniques such as \textbf{filtering} and \textbf{shielded
-  cabling} are used to mitigate noise effects, ensuring that the ADC
-  accurately captures the intended signal without distortion (Slide 29).
-\item
-  \textbf{Anti-Aliasing Filters}: To prevent aliasing, \textbf{low-pass
-  filters} are often used before the ADC to remove high-frequency
-  components that could interfere with accurate sampling (Slide 30).
-\end{itemize}
+\textbf{Noise Handling}: Analog signals are often susceptible to noise.
+Techniques such as \textbf{filtering} and \textbf{shielded cabling} are
+used to mitigate noise effects, ensuring that the ADC accurately
+captures the intended signal without distortion (Slide 29).
+
+\textbf{Anti-Aliasing Filters}: To prevent aliasing, \textbf{low-pass
+filters} are often used before the ADC to remove high-frequency
+components that could interfere with accurate sampling (Slide 30).
 
 \section{Case Study: Motor Speed
 Control}\label{case-study-motor-speed-control}
 
-\begin{itemize}
-\item
-  \textbf{Objective}: The case study presented a practical example of
-  motor speed control using a combination of PWM and PID control (Slide
-  32).
-\item
-  \textbf{Implementation}: The motor speed is monitored using an
-  \textbf{optical encoder}, which provides feedback to the PID
-  controller. The PID controller adjusts the PWM duty cycle to minimize
-  the speed error and maintain the desired speed despite varying load
-  conditions (Slide 33).
-\item
-  \textbf{Challenges}: Tuning the PID parameters was a challenge due to
-  the non-linearities in motor response and the presence of external
-  disturbances. Real-world control systems often require iterative
-  tuning to balance response time, overshoot, and stability (Slide 34).
-\end{itemize}
+\textbf{Objective}: The case study presented a practical example of
+motor speed control using a combination of PWM and PID control (Slide
+32).
+
+\textbf{Implementation}: The motor speed is monitored using an
+\textbf{optical encoder}, which provides feedback to the PID controller.
+The PID controller adjusts the PWM duty cycle to minimize the speed
+error and maintain the desired speed despite varying load conditions
+(Slide 33).
+
+\textbf{Challenges}: Tuning the PID parameters was a challenge due to
+the non-linearities in motor response and the presence of external
+disturbances. Real-world control systems often require iterative tuning
+to balance response time, overshoot, and stability (Slide 34).
 
 \section{Conclusion}\label{conclusion-6}
 
@@ -1977,7 +1929,7 @@ of a physical system tracks a desired reference value by manipulating
 the inputs to the system. This lecture also highlighted the importance
 of stability, performance, and disturbance rejection in control systems.
 
-\begin{tcolorbox}[enhanced jigsaw, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important Note}, breakable, opacityback=0, opacitybacktitle=0.6, leftrule=.75mm, left=2mm, coltitle=black, colback=white, toptitle=1mm, titlerule=0mm, arc=.35mm, rightrule=.15mm, colbacktitle=quarto-callout-important-color!10!white, toprule=.15mm, bottomtitle=1mm, colframe=quarto-callout-important-color-frame, bottomrule=.15mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, titlerule=0mm, colbacktitle=quarto-callout-important-color!10!white, left=2mm, opacityback=0, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Important Note}, bottomrule=.15mm, breakable, rightrule=.15mm, toprule=.15mm, bottomtitle=1mm, coltitle=black, opacitybacktitle=0.6, leftrule=.75mm, colframe=quarto-callout-important-color-frame, colback=white, toptitle=1mm]
 
 \section*{\texorpdfstring{\textbf{THIS IS NOT THE SAME AS ELECTENG 332.
 THIS IS A DIFFERENT
@@ -1993,12 +1945,12 @@ Systems}\label{open-loop-vs-closed-loop-control-systems}
 
 \subsection{Open-Loop Control Systems}\label{open-loop-control-systems}
 
+\textbf{Definition}: In an \textbf{open-loop control system}, the
+controller adjusts the inputs to the plant without considering the
+actual output (Slide 14). It does not measure how well the output
+matches the desired reference.
+
 \begin{itemize}
-\item
-  \textbf{Definition}: In an \textbf{open-loop control system}, the
-  controller adjusts the inputs to the plant without considering the
-  actual output (Slide 14). It does not measure how well the output
-  matches the desired reference.
 \item
   \textbf{Components}:
 
@@ -2033,11 +1985,11 @@ Systems}\label{open-loop-vs-closed-loop-control-systems}
 \subsection{Closed-Loop Control
 Systems}\label{closed-loop-control-systems}
 
+\textbf{Definition}: In a \textbf{closed-loop control system}, the
+controller continuously adjusts the inputs based on the difference
+between the measured output and the desired reference (Slides 15, 27).
+
 \begin{itemize}
-\item
-  \textbf{Definition}: In a \textbf{closed-loop control system}, the
-  controller continuously adjusts the inputs based on the difference
-  between the measured output and the desired reference (Slides 15, 27).
 \item
   \textbf{Components}:
 
@@ -2084,75 +2036,68 @@ Systems}\label{performance-metrics-of-control-systems}
 \item
   \textbf{Settling Time}: The time it takes for the output to reach and
   stay within 1\% of the final value.
-\item
-  These metrics help assess how well the output tracks changes in the
-  reference input and how the system responds to disturbances.
 \end{itemize}
+
+These metrics help assess how well the output tracks changes in the
+reference input and how the system responds to disturbances.
 
 \section{Designing Control Systems}\label{designing-control-systems}
 
 \subsection{Open-Loop Control Design}\label{open-loop-control-design}
 
-\begin{itemize}
-\item
-  \textbf{Plant Modeling}: The plant model represents how the output
-  changes based on inputs and the current state. Having a model helps in
-  designing a better controller, although experimentation can be useful
-  (Slide 18).
+\textbf{Plant Modeling}: The plant model represents how the output
+changes based on inputs and the current state. Having a model helps in
+designing a better controller, although experimentation can be useful
+(Slide 18).
 
-  \begin{itemize}
-  \tightlist
-  \item
-    Example: In a car model, the speed is a function of the current
-    speed and throttle position. The model can help predict how changes
-    in the throttle angle affect the speed.
-  \end{itemize}
+\begin{itemize}
+\tightlist
 \item
-  \textbf{Controller Design}: A simple proportional controller can be
-  used to manipulate the plant input. However, achieving the desired
-  output requires tuning and careful consideration of system dynamics.
+  \textbf{Example:} In a car model, the speed is a function of the
+  current speed and throttle position. The model can help predict how
+  changes in the throttle angle affect the speed.
 \end{itemize}
+
+\textbf{Controller Design}: A simple proportional controller can be used
+to manipulate the plant input. However, achieving the desired output
+requires tuning and careful consideration of system dynamics.
 
 \subsection{Closed-Loop Control
 Design}\label{closed-loop-control-design}
 
-\begin{itemize}
-\item
-  \textbf{Proportional (P) Controller}: A proportional controller
-  applies control by multiplying the tracking error by a gain value
-  (Slide 28).
+\textbf{Proportional (P) Controller}: A proportional controller applies
+control by multiplying the tracking error by a gain value (Slide 28).
 
-  \begin{itemize}
-  \tightlist
-  \item
-    \textbf{Effects}: Adjusting the gain value (Κ) affects transient
-    response, steady-state tracking, and disturbance rejection. However,
-    increasing the gain can lead to oscillations (Slides 29-31).
-  \end{itemize}
+\begin{itemize}
+\tightlist
 \item
-  \textbf{Derivative (D) Controller}: Adds a control action based on the
-  rate of change of the error, helping reduce overshoot and speed up
-  convergence to the desired output (Slides 44-45).
-\item
-  \textbf{Integral (I) Controller}: Addresses steady-state error by
-  accumulating the error over time, ensuring that the output reaches the
-  desired value eventually. However, it may introduce oscillations if
-  not carefully tuned (Slides 49-50).
-\item
-  \textbf{PID Controller}: A combination of Proportional, Integral, and
-  Derivative components, the PID controller offers good steady-state
-  performance, minimizes oscillations, and improves disturbance
-  rejection (Slide 52).
+  \textbf{Effects}: Adjusting the gain value (Κ) affects transient
+  response, steady-state tracking, and disturbance rejection. However,
+  increasing the gain can lead to oscillations (Slides 29-31).
 \end{itemize}
+
+\textbf{Derivative (D) Controller}: Adds a control action based on the
+rate of change of the error, helping reduce overshoot and speed up
+convergence to the desired output (Slides 44-45).
+
+\textbf{Integral (I) Controller}: Addresses steady-state error by
+accumulating the error over time, ensuring that the output reaches the
+desired value eventually. However, it may introduce oscillations if not
+carefully tuned (Slides 49-50).
+
+\textbf{PID Controller}: A combination of Proportional, Integral, and
+Derivative components, the PID controller offers good steady-state
+performance, minimizes oscillations, and improves disturbance rejection
+(Slide 52).
 
 \section{Example Analysis of
 Controllers}\label{example-analysis-of-controllers}
 
+\textbf{Open-Loop vs Closed-Loop Performance}: Open-loop controllers
+struggle to handle disturbances, whereas closed-loop controllers can
+mitigate the effects of changes in the environment (Slide 42).
+
 \begin{itemize}
-\item
-  \textbf{Open-Loop vs Closed-Loop Performance}: Open-loop controllers
-  struggle to handle disturbances, whereas closed-loop controllers can
-  mitigate the effects of changes in the environment (Slide 42).
 \item
   \textbf{PD Controller}: By incorporating derivative action, the PD
   controller improves transient response, but does not change
@@ -2168,22 +2113,16 @@ Controllers}\label{example-analysis-of-controllers}
 
 \section{Stability and Oscillation}\label{stability-and-oscillation}
 
-\begin{itemize}
-\item
-  \textbf{Stability}: The stability of the control system is a critical
-  objective, ensuring all control variables remain bounded (Slide 32).
+\textbf{Stability}: The stability of the control system is a critical
+objective, ensuring all control variables remain bounded (Slide 32).
 
-  \begin{itemize}
-  \item
-    The rate of decay of the effect of initial speed is controlled by
-    the gain value (\(\alpha\)). Setting a suitable gain is essential to
-    avoid unbounded growth or excessive oscillations (Slides 33-34).
-  \item
-    \textbf{Oscillation}: Negative values of the rate of decay parameter
-    (\(\alpha\)) can lead to oscillatory behavior, which must be avoided
-    in most practical control applications (Slide 38).
-  \end{itemize}
-\end{itemize}
+The rate of decay of the effect of initial speed is controlled by the
+gain value (\(\alpha\)). Setting a suitable gain is essential to avoid
+unbounded growth or excessive oscillations (Slides 33-34).
+
+\textbf{Oscillation}: Negative values of the rate of decay parameter
+(\(\alpha\)) can lead to oscillatory behavior, which must be avoided in
+most practical control applications (Slide 38).
 
 \section{Trade-Offs in Controller
 Design}\label{trade-offs-in-controller-design}
@@ -2302,28 +2241,24 @@ Automation}\label{basic-components-of-industrial-automation}
 
 \section{PLCs and HMIs}\label{plcs-and-hmis}
 
+\textbf{PLCs}: PLCs are at the core of industrial automation, providing
+fast and reliable control. They are capable of synchronizing input from
+sensors and output to actuators, allowing for precise control of
+machinery (Slide 9).
+
 \begin{itemize}
 \tightlist
 \item
-  \textbf{PLCs}: PLCs are at the core of industrial automation,
-  providing fast and reliable control. They are capable of synchronizing
-  input from sensors and output to actuators, allowing for precise
-  control of machinery (Slide 9).
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \textbf{Characteristics of PLCs}: They are \textbf{fast} (providing
-    response times in milliseconds), \textbf{durable} (built to
-    withstand tough industrial conditions), \textbf{maintainable} (can
-    be programmed using ladder logic), and \textbf{reliable} due to
-    their simplicity and robustness (Slide 11).
-  \end{itemize}
-\item
-  \textbf{Human-Machine Interface (HMI)}: HMIs are used to interact with
-  PLCs, allowing operators to input and monitor system parameters, such
-  as temperature or pressure settings (Slide 9).
+  \textbf{Characteristics of PLCs}: They are \textbf{fast} (providing
+  response times in milliseconds), \textbf{durable} (built to withstand
+  tough industrial conditions), \textbf{maintainable} (can be programmed
+  using ladder logic), and \textbf{reliable} due to their simplicity and
+  robustness (Slide 11).
 \end{itemize}
+
+\textbf{Human-Machine Interface (HMI)}: HMIs are used to interact with
+PLCs, allowing operators to input and monitor system parameters, such as
+temperature or pressure settings (Slide 9).
 
 \section{Generations of Industrial
 Automation}\label{generations-of-industrial-automation}
@@ -2331,50 +2266,33 @@ Automation}\label{generations-of-industrial-automation}
 \subsection{Generation 1: Relay Ladder Circuits (Slide
 15)}\label{generation-1-relay-ladder-circuits-slide-15}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Hard-Wired Logic}: Early automation used hard-wired ladder
-  logic circuits to control industrial equipment. These circuits were
-  inflexible and required extensive rewiring to make changes.
-\end{itemize}
+\textbf{Hard-Wired Logic}: Early automation used hard-wired ladder logic
+circuits to control industrial equipment. These circuits were inflexible
+and required extensive rewiring to make changes.
 
 \subsection{Generation 2: Programmable Logic Controllers (PLCs) (Slide
 16)}\label{generation-2-programmable-logic-controllers-plcs-slide-16}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Introduction of PLCs}: PLCs revolutionized automation by
-  providing programmable, hardened computers that replaced hard-wired
-  circuits. They significantly improved the flexibility of automation
-  systems, allowing for easier modification and expansion.
-\end{itemize}
+\textbf{Introduction of PLCs}: PLCs revolutionized automation by
+providing programmable, hardened computers that replaced hard-wired
+circuits. They significantly improved the flexibility of automation
+systems, allowing for easier modification and expansion.
 
 \subsection{Generation 3: Multifunctional PLCs (Slide
 17)}\label{generation-3-multifunctional-plcs-slide-17}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Modern PLCs}: Today's PLCs support multiple programming
-  languages and feature a versatile architecture. They can be expanded
-  and integrated into larger systems, providing more functionality
-  beyond simple logic control.
-\end{itemize}
+\textbf{Modern PLCs}: Today's PLCs support multiple programming
+languages and feature a versatile architecture. They can be expanded and
+integrated into larger systems, providing more functionality beyond
+simple logic control.
 
 \subsection{Generation 4: Distributed Automation Solutions (Slide
 20)}\label{generation-4-distributed-automation-solutions-slide-20}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Distributed Systems}: Modern automation relies on distributed
-  systems where a central processor interacts with sensors and actuators
-  via networked field-area buses. This architecture offers enhanced
-  scalability and modularity, enabling more complex automation
-  solutions.
-\end{itemize}
+\textbf{Distributed Systems}: Modern automation relies on distributed
+systems where a central processor interacts with sensors and actuators
+via networked field-area buses. This architecture offers enhanced
+scalability and modularity, enabling more complex automation solutions.
 
 \section{Challenges in Industrial
 Automation}\label{challenges-in-industrial-automation}
@@ -2382,60 +2300,44 @@ Automation}\label{challenges-in-industrial-automation}
 \subsection{Challenge 1: Flexible Modular Manufacturing (Slide
 23)}\label{challenge-1-flexible-modular-manufacturing-slide-23}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Flexibility in Manufacturing}: The key challenge is to replace
-  components of the manufacturing system without affecting the rest of
-  the system. A modular approach enables seamless replacement and
-  modification of conveyor sections or robotic workstations without the
-  need for significant system reconfiguration.
-\end{itemize}
+\textbf{Flexibility in Manufacturing}: The key challenge is to replace
+components of the manufacturing system without affecting the rest of the
+system. A modular approach enables seamless replacement and modification
+of conveyor sections or robotic workstations without the need for
+significant system reconfiguration.
 
 \subsection{Challenge 2: Dynamic Self-Configurability (Slide
 27)}\label{challenge-2-dynamic-self-configurability-slide-27}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Self-Configurable Systems}: The dream of automation engineers
-  is a system that can dynamically adapt and self-configure to handle
-  different tasks without manual intervention. Achieving this level of
-  automation requires sophisticated communication, middleware, and
-  intelligent control systems.
-\end{itemize}
+\textbf{Self-Configurable Systems}: The dream of automation engineers is
+a system that can dynamically adapt and self-configure to handle
+different tasks without manual intervention. Achieving this level of
+automation requires sophisticated communication, middleware, and
+intelligent control systems.
 
 \section{Object-Oriented Design of Automation
 Software}\label{object-oriented-design-of-automation-software}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Object-Oriented Design}: Designing software to match the
-  physical structure of automation systems enhances modularity and
-  flexibility. For example, structuring software components to represent
-  individual physical units enables easy modification and adaptation
-  (Slide 21).
-\end{itemize}
+\textbf{Object-Oriented Design}: Designing software to match the
+physical structure of automation systems enhances modularity and
+flexibility. For example, structuring software components to represent
+individual physical units enables easy modification and adaptation
+(Slide 21).
 
 \section{Intelligent Agent-Based
 Automation}\label{intelligent-agent-based-automation}
 
+\textbf{Agents in Automation}: The future of automation lies in using
+intelligent agents that can negotiate, recognize situations, make
+decisions, and coordinate operations autonomously (Slides 28-29).
+
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Agents in Automation}: The future of automation lies in using
-  intelligent agents that can negotiate, recognize situations, make
-  decisions, and coordinate operations autonomously (Slides 28-29).
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \textbf{Agent Architecture}: The architecture involves controllers,
-    processes, and agents that can autonomously interact and make
-    decisions. This helps achieve more resilient and adaptive industrial
-    processes.
-  \end{itemize}
+  \textbf{Agent Architecture}: The architecture involves controllers,
+  processes, and agents that can autonomously interact and make
+  decisions. This helps achieve more resilient and adaptive industrial
+  processes.
 \end{itemize}
 
 \section{Conclusion}\label{conclusion-8}
@@ -2479,8 +2381,7 @@ languages, which makes it ideal for complex logical operations (Slide
 Function Charts (SFC)}: Graphical representations that show the flow of
 control and parallel operations (Slide 3).
 
-\section{Ladder Logic and Its
-Elements}\label{ladder-logic-and-its-elements}
+\section{Ladder Logic}\label{ladder-logic}
 
 \textbf{Ladder Logic} represents control processes in a form that
 resembles a ladder. It has been used since the 1940s and is still
@@ -2530,18 +2431,24 @@ Control}\label{example-pneumatic-cylinder-control}
 
 A simple example of using ladder logic to control a \textbf{pneumatic
 cylinder} was provided, showcasing its applicability in real-world
-automation tasks: - \textbf{Desired Behavior}: An LED indicates
-readiness. When a ``START'' button is pressed, the cylinder moves
-forward until fully extended, then returns to its default position.
-Sensors provide signals for ``HOME'' (default position) and ``END''
-(fully extended) states (Slide 10). - \textbf{State Machine
-Representation}: The control process can be described using a
-\textbf{Moore state machine}, where inputs trigger state transitions and
-determine outputs. Boolean logic defines the state transitions, ensuring
-that the system follows a predictable sequence of actions (Slide 13).
+automation tasks:
 
-\section{Ladder Logic Timers and
-Counters}\label{ladder-logic-timers-and-counters}
+\begin{itemize}
+\item
+  \textbf{Desired Behavior}: An LED indicates readiness. When a
+  ``START'' button is pressed, the cylinder moves forward until fully
+  extended, then returns to its default position. Sensors provide
+  signals for ``HOME'' (default position) and ``END'' (fully extended)
+  states (Slide 10).
+\item
+  \textbf{State Machine Representation}: The control process can be
+  described using a \textbf{Moore state machine}, where inputs trigger
+  state transitions and determine outputs. Boolean logic defines the
+  state transitions, ensuring that the system follows a predictable
+  sequence of actions (Slide 13).
+\end{itemize}
+
+\section{Timers and Counters}\label{timers-and-counters}
 
 \textbf{Timers} and \textbf{counters} are used in ladder logic for
 managing time-dependent operations and counting events, such as sensor
@@ -2583,8 +2490,8 @@ activations or production cycles.
   (Slide 24).
 \end{itemize}
 
-\section{Sequential Function Chart
-(SFC)}\label{sequential-function-chart-sfc}
+\section{Sequential Function Charts
+(SFC)}\label{sequential-function-charts-sfc}
 
 \textbf{Sequential Function Charts (SFC)} are another important tool for
 industrial automation, providing a high-level graphical representation
@@ -2599,21 +2506,17 @@ to identify concurrent activities in the system (Slide 41).
 \section{Practical Considerations for Ladder
 Logic}\label{practical-considerations-for-ladder-logic}
 
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Why Ladder Logic Is Still Popular}: Ladder logic is favored
-  due to its \textbf{ease of use}, \textbf{visual clarity}, and the
-  ability to \textbf{trace command flow} intuitively. It is particularly
-  useful for maintenance personnel without deep programming knowledge,
-  as its representation is similar to traditional relay-based control
-  systems (Slide 22).
-\item
-  \textbf{Counters and Timers}: Practical examples include
-  \textbf{traffic light controllers} using timers to manage the sequence
-  of lights, and counters to keep track of vehicles or system
-  operations, ensuring safe and efficient process flows (Slide 36).
-\end{itemize}
+\textbf{Why Ladder Logic Is Still Popular}: Ladder logic is favored due
+to its \textbf{ease of use}, \textbf{visual clarity}, and the ability to
+\textbf{trace command flow} intuitively. It is particularly useful for
+maintenance personnel without deep programming knowledge, as its
+representation is similar to traditional relay-based control systems
+(Slide 22).
+
+\textbf{Counters and Timers}: Practical examples include \textbf{traffic
+light controllers} using timers to manage the sequence of lights, and
+counters to keep track of vehicles or system operations, ensuring safe
+and efficient process flows (Slide 36).
 
 \section{Conclusions}\label{conclusions}
 
