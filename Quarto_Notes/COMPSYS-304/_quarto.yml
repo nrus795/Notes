@@ -16,6 +16,12 @@ book:
     - part: "Morteza's Content"
       chapters: 
         - "lectures/lec1-3.qmd"
+  appendices: 
+    - appendix.qmd
+
+bibliography: 
+  - "refs.bibtex"
+csl: "ieee.csl"
 
 format:
   titlepage-pdf:

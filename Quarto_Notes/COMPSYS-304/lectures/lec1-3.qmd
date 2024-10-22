@@ -8,19 +8,15 @@ This chapter provides an introduction to the course, some background, and an ove
 
 In the last six decades, computer technology has made incredible progress due to innovations in both **semiconductor technology** and computer **architecture**.
 
-<!-- Add graph figure here -->
-
+![Figure 1.17 of @Patterson_Hennessy_2014](./img/performance-graph.png)
 
 ### What do we mean from *Performance*?
-
-<!-- Add relative performance graph here -->
 
 The relative performance can be measured by standard benchmarks, which depend on the specific target applications.
 
 ***Performance depends on clock frequency and other factors, as discussed more in later chapters.***
 
-
-<!-- Clock rate & power consumption graph -->
+![Figure 1.16 of @Patterson_Hennessy_2014](./img/clock-rate-graph.png)
 
 ### Intel X86 Processor from 1978 to 2018: 
 
@@ -43,7 +39,7 @@ The main learning outcomes of this course are:
 
 Recommended Textbook:
 
--   David A. Patterson and John L. Hennessey, Computer Organization and Design: The Hardware/Software Interface, Fifth edition, 2013 by Elsevier/Morgan Kaufmann Publishers (or 3rd or 4th editions).
+-   David A. Patterson and John L. Hennessey, Computer Organization and Design: The Hardware/Software Interface, Fifth edition, 2013 by Elsevier/Morgan Kaufmann Publishers (or 3rd or 4th editions). @Patterson_Hennessy_2014
 
 -   Lecture notes provided on canvas (these will be summarised in these notes).
 
