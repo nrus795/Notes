@@ -1,5 +1,9 @@
 project:
-  title: "COMPSYS-304"
+  type: "book"
 
-
+book: 
+  title: "COMPSYS 304: Computer Architecture"
+  subtitle: "Lecture Notes"
+  chapters: 
+    - index.qmd
 
