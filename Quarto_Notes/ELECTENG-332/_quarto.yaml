@@ -1,9 +1,9 @@
 project: 
-  title: "ELECTENG 332"
+  title: "ELECTENG 332: Control Systems"
   type: book
 
 book: 
-  title: "ELECTENG 332 - Control Systems"
+  title: "ELECTENG 332: Control Systems"
   subtitle: "Lecture Notes"
   author: 
     name: Nicholas Russell
@@ -15,9 +15,17 @@ book:
     - part: "Akshya's Content"
       chapters:
       - "chapters/module1.qmd"
+      - "chapters/module2.qmd"
+      - "chapters/module3.qmd"
+      - "chapters/module4.qmd"
+      - "chapters/module5.qmd"
+      - "chapters/module6.qmd"
+      - "chapters/module7.qmd"
+    - part: "Nitish's Content"
 
 filters: 
   - color-filter
+  - latex-environment
 
 
 include-in-header: 

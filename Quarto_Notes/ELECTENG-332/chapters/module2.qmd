@@ -1,0 +1,3 @@
+# Mathematical Modeling of Dynamic Systems
+
+## Learning Outcomes {.unnumbered}

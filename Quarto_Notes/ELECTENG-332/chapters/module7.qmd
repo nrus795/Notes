@@ -1,0 +1,29 @@
+# Stability Analysis of Linear Systems: Root Locus Analysis
+
+## Learning Outcomes {.unnumbered}
+
+At the end of this module, you should be able to:
+
+1. Sketch the root locus
+
+2. Conduct relative stability analysis
+
+## Introduction
+
+
+
+## Basic Conditions of the Root Loci
+
+
+
+## Angle and Magnitude Conditions
+
+
+
+## Sketching the Root Locus
+
+
+
+## Effects of Adding Poles and Zeros
+
+

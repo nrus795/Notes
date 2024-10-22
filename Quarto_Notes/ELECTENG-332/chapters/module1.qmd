@@ -2,17 +2,19 @@
 
 ## Learning Outcomes {.unnumbered}
 
-```{=latex}
-\begin{enumerate}[label=\(\blacktriangleright\), leftmargin=*, itemsep=0.5em]
-    \item Uniqueness of the Exponential Signal
-    \item Concept of Engineering Infinity
-    \item Concept of Complex Frequency
-    \item Classification of Signals: Energy \& Power
-    \item Classification of Systems
-    \item What is a Control System
-    \item Classification of a Control System: Open-loop \& Closed-loop
-\end{enumerate}
-```
+By the end of this module, you should be able to:
+
+1. Understand the uniqueness of the exponential function
+
+2. Understand the concept of engineering infinity
+
+3. Understand the concept of complex frequency
+
+4. Understand the concept of signals, and be able to classify them
+
+5. Understand the concept of systems, and be able to classify them
+
+6. Understand the concept of control systems
 
 ## The Importance of the Exponential Function
 
@@ -131,7 +133,8 @@ e.  Periodic signals for which the area under $|x(t)|^2$ over one period is fini
 
 #### Unit Step Function
 
-Consider a unit step function defined as: $$
+Consider a unit step function defined as: 
+$$
     u(t) =         
     \begin{cases}             
         1 & t \geq 0         \\             
