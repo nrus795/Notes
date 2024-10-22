@@ -1,12 +1,39 @@
-title-meta: "ELECTENG 332 Notes"
-author-meta: "Nicholas Russell"
-date-meta: "10th August 2024"
+project: 
+  title: "ELECTENG 332"
+  type: book
+
+book: 
+  title: "ELECTENG 332 - Control Systems"
+  subtitle: "Lecture Notes"
+  author: 
+    name: Nicholas Russell
+    affiliations:
+      - name: University of Auckland
+        department: Department of Electrical, Computer, and Software Engineering
+  chapters: 
+    - index.qmd
+    - part: "chapters/module1/module1_signals_systems.qmd"
+      chapters: 
+        - "chapters/module1/topic1_expfn.qmd"
+        - "chapters/module1/topic2_eng_ifty.qmd"
+        - "chapters/module1/topic3_comp_freq.qmd"
+        - "chapters/module1/topic4_signals.qmd"
+        - "chapters/module1/topic5_systems.qmd"
+        - "chapters/module1/topic6_control_systems.qmd"
+    - part: "chapters/module2/module2_modeling_dynamic_systems.qmd"
+      chapters: 
+        - "chapters/module2/topic1_intro_modeling.qmd"
+        - "chapters/module2/topic2_electrical_systems.qmd"
+        - "chapters/module2/topic3_mechanical_systems.qmd"
+        - "chapters/module2/topic4_transfer_functions_odes.qmd"
+        - "chapters/module2/topic5_poles_zeros_modes.qmd"
+
+
+
 include-in-header: 
     - "preamble.tex"
-include-before-body: 
-    - "titlepage.tex"
 format:
-  pdf:
+  titlepage-pdf:
     pdf-engine: latexmk
     pdf-engine-opts: 
       - "-synctex=1"
@@ -14,20 +41,32 @@ format:
       - "-file-line-error"
       - "-lualatex"
       - "-shell-escape"
-    geometry: 
-      - "top=2cm"
-      - "bottom=2cm"
-      - "left=1.5cm"
-      - "right=1.5cm"
-      - "marginparsep=2cm"
     toc: true
     toc-depth: 4
     number-sections: true
-    keep-tex: true
+    # keep-tex: true
     hyperrefoptions: 
       - "pdfpagelabels"
     documentclass: report
-    fontsize: 12pt
+    classoption: ["oneside", "open=any", "a4paper", "14pt"]
     papersize: a4
+    pagestyle: plain
+    fontsize: 14pt
+    geometry:
+      - "top=2.5cm"
+      - "bottom=2.5cm"
+      - "left=1cm"
+      - "right=1cm"
+      - "marginparsep=2cm"
+    fontfamily: lmodern
+    latex-clean: true
+    titlepage: academic
+    titlepage-logo: "images/DECSE-HC-4C-01.png"
+    titlepage-theme:
+      logo-size: "0.8\\textwidth"
+      author-fontstyle: "large"
+      author-style: author-address
+      author-space-after: "1cm"
+      affiliation-sep: "newline"
 
 
