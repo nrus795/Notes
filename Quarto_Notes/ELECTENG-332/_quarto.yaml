@@ -12,7 +12,9 @@ book:
         department: Department of Electrical, Computer, and Software Engineering
   chapters: 
     - index.qmd
-    - "chapters/module1.qmd"
+    - part: "Akshya's Content"
+      chapters:
+      - "chapters/module1.qmd"
 
 filters: 
   - color-filter
@@ -30,7 +32,7 @@ format:
       - "-lualatex"
       - "-shell-escape"
     toc: true
-    toc-depth: 3
+    toc-depth: 4
     number-sections: true
     # keep-tex: true
     hyperrefoptions: 

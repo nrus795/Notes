@@ -1,6 +1,7 @@
 # Basics of Signals and Systems
 
 ## Learning Outcomes {.unnumbered}
+
 ```{=latex}
 \begin{enumerate}[label=\(\blacktriangleright\), leftmargin=*, itemsep=0.5em]
     \item Uniqueness of the Exponential Signal
@@ -13,194 +14,194 @@
 \end{enumerate}
 ```
 
+## The Importance of the Exponential Function
 
-## Topic 1: The Importance of the Exponential Function
 The Exponential function, written as either $e^{ax}$ or $e^{at}$ depending on whether it is $f(t)$ or $f(x)$, has properties that make it mathematically unique.
 
 1.  The derivative (rate of change) of the exponential function is the exponential function itself. More generally, this is a function whose rate of change is proportional to the function itself.
 
     $$
         \dv{e^{ax}}{x} = a e^{ax}
-    $${#eq-exp-derivative}
+    $$ {#eq-exp-derivative}
 
 2.  The integral of the exponential function is also the exponential function itself.
-    
+
     $$
         \int e^{ax} \dd{x} = \frac{1}{a} e^{ax} 
-    $${#eq-exp-integral}    
+    $$ {#eq-exp-integral}
 
-## Topic 2: The Concept of Engineering Infinity
+## The Concept of Engineering Infinity
 
 Consider a signal $e^{-at}$. The time constant for this signal is $T = \frac{1}{a}$. Theoretically, the signal is meant to decay to zero as time approaches infinity, i.e.
 
 $$
-	\lim_{t \to \infty} e^{-at} = 0  
-$${#eq-engineering-infinity}
+    \lim_{t \to \infty} e^{-at} = 0  
+$$ {#eq-engineering-infinity}
 
-But in practice, this is not the case, as its value will be very, very small after five time constants $5T$ (or $5\tau$). This is the [***Concept of Engineering Infinity***]{color=red}. The signal will never reach zero, but it will be so small that it can be considered zero for all practical purposes. This is a very important concept in control systems, as it allows us to simplify our calculations and analysis.
+But in practice, this is not the case, as its value will be very, very small after five time constants $5T$ (or $5\tau$). This is the [***Concept of Engineering Infinity***]{color="red"}. The signal will never reach zero, but it will be so small that it can be considered zero for all practical purposes. This is a very important concept in control systems, as it allows us to simplify our calculations and analysis.
 
-## Topic 3: The Concept of Complex Frequency
+## The Concept of Complex Frequency
 
 Complex frequency is found commonly in electrical engineering. It is often notated as $j\omega$ or $s = \sigma \pm j\omega$. These frequencies always come in pairs, so the use of $\pm$ is implicit to this, as complex numbers have complex conjugates (normally notated by $z^*$ or $\bar{z}$). i.e. $s = \sigma + j\omega$ has the conjugate $s=\sigma - j\omega$. This is backed up by De Moivre's formula which is defined mathematically as:
-$$
+
 \begin{gather}
-    \forall x \in \mathbb{R}, \quad \forall n \in \mathbb{Z}, \\
+    \forall x \in \mathbb{R}, \quad \forall n \in \mathbb{Z} \\
     e^{jnx} = \cos(n x) + j \sin(n x)  
 \end{gather}
-$${#eq-de-moivre-formula}
 
 Or more generally for our applications (this is also known as Euler's formula):
 
-$$
 \begin{gather}
     e^{jx} = \cos(x) + j \sin(x) \\
-    \text{Where} \, x \in \mathbb{R}\, \text{(\(x\) is real)} \\
+    \text{Where} \, x \in \mathbb{R}\, \text{($x$ is real)} \\
     \text{and} \, j \equiv i = \sqrt{-1}
 \end{gather}
-$${#eq-euler-formula}
 
-This means that:\\
-> [A complex frequency $j\omega$ represents a pure sinusoidal signal of frequency $\omega \unit{\rads}$]{color=red}
+This means that:
+
+> [A complex frequency $j\omega$ represents a pure sinusoidal signal of frequency $\omega$ $\unit{\rads}$]{color="red"}
 
 For example, if a signal has a complex frequency $\complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\rads}$, then this responds to a pure sinusoid of frequency $\qty{314}{\rads}$ (i.e. $\qty{50}{\hertz}$).
 
-Furthermore:\\
-> [A complex frequency $s = \sigma + j\omega$ represents an exponentially damped signal of frequency $j\omega \unit{\rads}$, and decays/amplifies at a rate decided by $\sigma$]{color=red}
+Furthermore:
 
-## Topic 4: What are Signals?
+> [A complex frequency $s = \sigma + j\omega$ represents an exponentially damped signal of frequency $j\omega$ $\unit{\rads}$, and decays/amplifies at a rate decided by $\sigma$]{color="red"}
+
+## What are Signals?
 
 ### Introduction
 
-It is difficult to find a unique definition of a signal. However in the context of this course, we give a workable definition which suits most of out purposes as:\\
+It is difficult to find a unique definition of a signal. However in the context of this course, we give a workable definition which suits most of out purposes as:
 
-> [A Signal conveys information about a physical phenomenon which evolves in time or space.]{color=red}
+> [A Signal conveys information about a physical phenomenon which evolves in time or space.]{color="red"}
 
 Examples of such signals include: Voltage, Current, Speech, Television, Images from remote space probes, Voltages generated by the heart and brain, Radar and Sonar echoes, Seismic vibrations, Signals from GPS satellites, Signals from human genes, and countless other applications.
 
 ### Energy and Power Signals
 
-Energy Signals
-:  [A signal is said to be an energy signal if and only if it has finite energy.]{color=red}
+**Energy Signals**
 
-Power Signals
-:  [A signal is said to be a power signal if and only if the average power of the signal is finite and non-zero.]{color=blue}
+> [A signal is said to be an energy signal if and only if it has finite energy.]{color="red"}
 
-Instantaneous Power
-: The instantaneous power $p(t)$ of a signal $x(t)$ is expressed as:
-$$
-	p(t) = x^2(t)
-$${#eq-instantaneous-power-def}
+**Power Signals**
 
-Continuous-Time Signal Energy
-: The total energy of a continuous-time signal $x(t)$ is given by:
-$$
+> [A signal is said to be a power signal if and only if the average power of the signal is finite and non-zero.]{color="blue"}
 
-$$
+**Instantaneous Power**
 
-Complex Valued Signal Energy
-: For a complex valued signal:
-$$
+> The instantaneous power $p(t)$ of a signal $x(t)$ is expressed as: $$
+> p(t) = x^2(t)
+> $$ {#eq-instantaneous-power-def}
 
-$$
+**Continuous-Time Signal Energy**
 
-Average Power
-: Since power equals to the time average of the energy, the average power is given by:
-$$
+> The total energy of a continuous-time signal $x(t)$ is given by: $$
+> E = \lim_{T \to \infty}\int_{-T/2}^{T/2} x^2(t) \dd{t} = \int_{-\infty}^{\infty} x^2(t) \dd{t}
+> $$
 
-$$
+**Complex Valued Signal Energy**
 
-Note that during calculation of energy, we average the power over an indefinitely large interval.\\
-> [A signal with finite energy has zero power and a signal with finite power has infinite energy.]{color=red}
+> For a complex valued signal: $$
+> E = \int_{-\infty}^{\infty} \abs{x(t)}^2 \dd{t}
+> $$
+
+**Average Power**
+
+> Since power equals to the time average of the energy, the average power is given by: $$
+> P = \lim_{T \to \infty} \dfrac{1}{T} \int_{-T/2}^{T/2} x^2(t) \dd{t} = \dfrac{E}{T}
+> $$
+
+Note that during calculation of energy, we average the power over an indefinitely large interval.
+
+> [A signal with finite energy has zero power and a signal with finite power has infinite energy.]{color="red"}
 
 Furthermore, some additional concepts of note:
 
-a. A signal can not both be an energy and a power signal. This classification of signals based on power and energy are mutually exclusive.
+a.  A signal can not both be an energy and a power signal. This classification of signals based on power and energy are mutually exclusive.
 
-b. However, a signal can belong to neither of the above two categories.
+b.  However, a signal can belong to neither of the above two categories.
 
-c. The signals which are both deterministic and non-periodic have finite energy and therefore are energy signals. Most of this signals, in practice, belong to this category.
+c.  The signals which are both deterministic and non-periodic have finite energy and therefore are energy signals. Most of this signals, in practice, belong to this category.
 
-d. Periodic signals and random signals are essentially power signals.
+d.  Periodic signals and random signals are essentially power signals.
 
-e. Periodic signals for which the aread under $|x(t)|^2$ over one period is finite are energy signals.
+e.  Periodic signals for which the area under $|x(t)|^2$ over one period is finite are energy signals.
 
 ### Examples
 
-#### Example 1: Unit Step Function
+#### Unit Step Function
 
-Consider a unit step function defined as:
-$$
-	u(t) =         
-	\begin{cases}             
-		1 & t \geq 0         \\             
-		0 & \text{otherwise}         
-	\end{cases}
-$${#eq-unit-step-function-example}
+Consider a unit step function defined as: $$
+    u(t) =         
+    \begin{cases}             
+        1 & t \geq 0         \\             
+        0 & \text{otherwise}         
+    \end{cases}
+$$ {#eq-unit-step-function-example}
 
 Determine whether this is an energy signal or a power signal or neither.
 
 **Solution:** Let us compute the energy of this signal as:
 
 $$
-	E = \int_{-\infty}^{\infty} {[u(t)]}^2 \dd{t} = \int_{0}^{\infty} {[0]}^2 \dd{t} = \int_{0}^{\infty} {[1]}^2 \dd{t} = \infty 
-$${#eq-unit-step-energy}
+    E = \int_{-\infty}^{\infty} {[u(t)]}^2 \dd{t} = \int_{0}^{\infty} {[0]}^2 \dd{t} = \int_{0}^{\infty} {[1]}^2 \dd{t} = \infty 
+$$ {#eq-unit-step-energy}
 
 Since the energy of this signal is infinite, it cannot be an energy signal. Let us compute the power of this signal as:
 
 $$
-	P = \lim_{T \to \infty} \dfrac{1}{T} \int_{-T/2}^{T/2} {[u(t)]}^2 \dd{t} = \lim_{T \to \infty} \dfrac{1}{T} \int_{0}^{T/2} {[u(t)]}^2 \dd{t} = \dfrac{1}{2}
-$${#eq-unit-step-power}
+    P = \lim_{T \to \infty} \dfrac{1}{T} \int_{-T/2}^{T/2} {[u(t)]}^2 \dd{t} = \lim_{T \to \infty} \dfrac{1}{T} \int_{0}^{T/2} {[u(t)]}^2 \dd{t} = \dfrac{1}{2}
+$$ {#eq-unit-step-power}
 
+The power of this signal is finite. Hence, [this is a power signal]{color="red"}.
 
-The power of this signal is finite. Hence, [this is a power signal]{color=red}.
-
-#### Example 2: Exponential Function 
+#### Exponential Function
 
 Consider an exponential function defined as:
 
 $$
-	x(t) = e^{-at}u(t), \, \text{where} \; u(t) \;\text{is the unit step signal},\, a > 0 
-$${#eq-exp-function-example}
+    x(t) = e^{-at}u(t), \, \text{where} \; u(t) \;\text{is the unit step signal},\, a > 0 
+$$ {#eq-exp-function-example}
 
 Classify this signal as an energy, power, or neither.
 
 **Solution:** Let us compute the energy of this signal as:
 
 $$
-	E = \int_{-\infty}^{\infty} {[x(t)]}^2  \dd{t} = \int_{0}^{\infty} {[e^{-at}]}^2 \dd{t} = \int_{0}^{\infty} e^{-2at} \dd{t} = \frac{1}{2a} < \infty 
-$${#eq-exp-function-energy}
+    E = \int_{-\infty}^{\infty} {[x(t)]}^2  \dd{t} = \int_{0}^{\infty} {[e^{-at}]}^2 \dd{t} = \int_{0}^{\infty} e^{-2at} \dd{t} = \frac{1}{2a} < \infty 
+$$ {#eq-exp-function-energy}
 
-Thus, $x(t) = e^{-at} u(t)$ is an [energy signal]{color=red}.
+Thus, $x(t) = e^{-at} u(t)$ is an [energy signal]{color="red"}.
 
-#### Example 3: Ramp Function: 
+#### Ramp Function
 
 Consider a ramp function defined as:
 
 $$
-	r(t) = 
+    r(t) = 
     \begin{cases}         
         At & t \geq 0         \\         
         0  & \text{otherwise}     
     \end{cases} 
-$${#eq-ramp-function-example}
+$$ {#eq-ramp-function-example}
 
 Classify this signal as an energy, power, or neither.
 
 **Solution:** Let us compute the energy of this signal as:
 
 $$
-	E = \int_{-\infty}^{\infty} {r(t)}^2 \dd{t} = \int_{-\infty}^{0} {[0]}^2 \dd{t} = \int_{0}^{\infty} A^2 t^2 \dd{t} = A^2 \dfrac{T^3}{3} \Bigg|_{0}^{\infty} = \infty 
-$${#eq-ramp-function-energy}
+    E = \int_{-\infty}^{\infty} {r(t)}^2 \dd{t} = \int_{-\infty}^{0} {[0]}^2 \dd{t} = \int_{0}^{\infty} A^2 t^2 \dd{t} = A^2 \dfrac{T^3}{3} \Bigg|_{0}^{\infty} = \infty 
+$$ {#eq-ramp-function-energy}
 
 Since the energy of this signal is infinite, it cannot be an energy signal. Let us compute the power of this signal as:
 
 $$
-	P = \lim_{T \to \infty} \dfrac{1}{T} \int_{-T/2}^{T/2} {[r(t)]}^2 \dd{t} = \lim_{T \to \infty} \dfrac{1}{T} \int_{0}^{T/2} A^2 t^2 \dd{t} = A^2 \lim_{T \to \infty} \dfrac{1}{T} \dfrac{T^3}{3} \Bigg|_{0}^{\infty} = \infty 
-$${#eq-ramp-function-power}
+    P = \lim_{T \to \infty} \dfrac{1}{T} \int_{-T/2}^{T/2} {[r(t)]}^2 \dd{t} = \lim_{T \to \infty} \dfrac{1}{T} \int_{0}^{T/2} A^2 t^2 \dd{t} = A^2 \lim_{T \to \infty} \dfrac{1}{T} \dfrac{T^3}{3} \Bigg|_{0}^{\infty} = \infty 
+$$ {#eq-ramp-function-power}
 
-The power of this signal is infinite. Hence, this is [neither a power nor an energy signal]{color=red}.
+The power of this signal is infinite. Hence, this is [neither a power nor an energy signal]{color="red"}.
 
-## Topic 5: What are Systems?
+## What are Systems?
 
 ### Introduction
 
@@ -208,43 +209,51 @@ The term *system* is derived from the Greek word *systema*, which means an organ
 
 According to the Webster's dictionary:
 
-> ["A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control…"]{color=blue}
+> ["A system is an aggregation or assemblage of objects united by some form of regular interaction or interdependence; a group of diverse units so combined by nature or art as to form an integral; whole and to function, operate, or move in unison and often in obedience to some form of control…"]{color="blue"}
 
 According to the International Council on Systems Engineering (INCOSE):
 
-> ["A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not."]{color=red} The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
+> ["A system is an arrangement of parts or elements that together exhibit behaviour or meaning that the individual constituents do not."]{color="red"} The elements or parts, can include people, hardware, software, facilities, policies, and documents; that is, all things required to produce system-level results.
 
 It is difficult to give a single and precise definition of the term system, which will suit to different perspectives of different people. In practice, what is meant by "the system" depends on the objectives of a particular study.
 
-From the control engineering perspective, [the system is any interconnection of components to achieve desired objectives.]{color=red} It is characterised by its [Inputs, Outputs,]{color=blue} and the rules of operations or laws. For example:
+From the control engineering perspective, [the system is any interconnection of components to achieve desired objectives.]{color="red"} It is characterised by its [Inputs, Outputs,]{color="blue"} and the rules of operations or laws. For example:
 
-a. The laws of operation in electrical systems are Ohm’s law, which gives the voltage-current relationships for resistors, capacitors and inductors, and Kirchhoff’s laws, which govern the laws of interconnection of various electrical components.
+a.  The laws of operation in electrical systems are Ohm’s law, which gives the voltage-current relationships for resistors, capacitors and inductors, and Kirchhoff’s laws, which govern the laws of interconnection of various electrical components.
 
-b. Similarly, in mechanical systems, the laws of operation are Newton’s laws. These laws can be used to derive mathematical models of the system.
+b.  Similarly, in mechanical systems, the laws of operation are Newton’s laws. These laws can be used to derive mathematical models of the system.
 
 ### The System as an Operator
 
 A system is defined mathematically as a transformation which maps an input signal $x(t)$ to an output signal $y(t)$. For a continuous time system, the input-output mapping is expressed as:
 
 $$
-	y(t) = \mathcal{S}[x(t)]
-$${#eq-system-operator}
+    \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \; \text{where} \; \mathcal{S} \; \text{is the system operator}
+$$ {#eq-system-operator}
 
-Where $\mathcal{S}$ is the system operator.
-[A Control system may be defined as an interconnection of components which are configured to provide a desired response.]{color=red}
+[A Control system may be defined as an interconnection of components which are configured to provide a desired response.]{color="red"}
 
 ### Classification of Systems
 
 The basis of classifying systems are many. They can be classified according to the following:
 
-a. The Time Frame: *(discrete, continuous or hybrid)*;
+a.  The Time Frame: *(discrete, continuous or hybrid)*;
 
-b. System Complexity: *(physical, conceptual and esoteric)*;
+b.  System Complexity: *(physical, conceptual and esoteric)*;
 
-c. Uncertainties: *(deterministic and stochastic)*;
+c.  Uncertainties: *(deterministic and stochastic)*;
 
-d. Nature and type of components: *(static or dynamic, linear or nonlinear, time-invariant or time variant, lumped or distributed etc)*;
+d.  Nature and type of components: *(static or dynamic, linear or nonlinear, time-invariant or time variant, lumped or distributed etc)*;
 
+<!-- -->
+
+1.  Linear and nonlinear systems
+2.  Time-invariant and time-variant systems
+3.  Static (memory-less) and dynamic (with memory) systems
+4.  Causal and Non-causal systems
+5.  Lumped and distributed parameter systems
+6.  Determinisitc and stochastic systems
+7.  Continuous and discrete systems
 
 ### Linear and Nonlinear Systems
 
@@ -261,3 +270,17 @@ A system is said to be linear provided it satisfies the principle of superpositi
 #### Principle of Superposition
 
 <!-- TBA -->
+
+### Time-Invariant and Time-Variant Systems
+
+### Static and Dynamic Systems
+
+### Causal and Non-Causal Systems
+
+## What is a Control System?
+
+### Introduction
+
+### Common Terms of Control Systems
+
+### Classification of Control Systems
