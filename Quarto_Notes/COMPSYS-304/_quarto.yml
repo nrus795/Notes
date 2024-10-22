@@ -1,9 +1,53 @@
 project:
   type: "book"
 
-book: 
+include-in-header: 
+  - "preamble.tex"
+book:
   title: "COMPSYS 304: Computer Architecture"
   subtitle: "Lecture Notes"
+  author: 
+    name: Nicholas Russell
+    affiliations:
+      - name: University of Auckland
+        department: Department of Electrical, Computer, and Software Engineering
   chapters: 
     - index.qmd
+    - part: "Morteza's Content"
+      chapters: 
+        - "lectures/lec1-3.qmd"
 
+format:
+  titlepage-pdf:
+    pdf-engine: latexmk
+    pdf-engine-opts:
+      - "-synctex=1"
+      - "-interaction=nonstopmode"
+      - "-file-line-error"
+      - "-lualatex"
+      - "-shell-escape"
+    number-sections: true
+    toc: true
+    classoption: ["oneside", "open=any", "a4paper", "14pt"]
+    hyperrefoptions:
+      - "pdfpagelabels"
+    documentclass: report
+    papersize: a4
+    pagestyle: plain
+    fontsize: 14pt
+    geometry:
+      - "top=2.5cm"
+      - "bottom=2.5cm"
+      - "left=1cm"
+      - "right=1cm"
+      - "marginparsep=2cm"
+    fontfamily: lmodern
+    latex-clean: true
+    titlepage: academic
+    titlepage-logo: "img/DECSE-HC-4C-01.png"
+    titlepage-theme:
+      logo-size: "0.8\\textwidth"
+      author-fontstyle: "large"
+      author-style: author-address
+      author-space-after: "1cm"
+      affiliation-sep: "newline"

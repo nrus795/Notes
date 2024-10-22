@@ -1,0 +1,18 @@
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{physics}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\sisetup{per-mode=symbol}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\textbf{ELECTENG 332}}%
+  \fancyhead[C]{ASSIGNMENT \#2}%
+  \fancyhead[R]{\small\textbf{\textcolor{red}{Date of Submission: 2024/10/19}}}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+\pagestyle{plain}
+

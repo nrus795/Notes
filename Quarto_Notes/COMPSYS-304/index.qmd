@@ -1,0 +1,5 @@
+# Introduction {.unnumbered .unlisted}
+
+These notes are compiled from the lectures of COMPSYS 304. They are intended as a personal reference to help with assignments, exam preparation, and understanding key concepts in Computer Architecture.
+
+This was Required by quarto to render the document you are reading. Please skip this bit.
