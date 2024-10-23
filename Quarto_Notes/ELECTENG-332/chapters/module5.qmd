@@ -1,3 +1,29 @@
 # Stability Analysis of Linear Systems: Routh-Hurwitz Stability Criteria
 
 ## Learning Outcomes {.unnumbered}
+
+After completing this module, you should be able to:
+
+1. Determine the absolute stability of a linear system.
+
+2. Find the stability region of a linear system. 
+
+## Concept of Stability
+
+### Definitions of Stability, Instability and Marginal Stability
+
+## Stability of LTI system from Transfer Function
+
+## Necessary Conditions of Stability
+
+## Routh's Stability Criterion
+
+### Formation of Routh's Tables
+
+## Routh-Hurwitz Stability Criterion for Linear Feedback Control Systems
+
+### Examples
+
+## Limitations of Routh-Hurwitz Criterion
+
+## Relative Stability Analysis
