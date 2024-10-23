@@ -1,3 +1,93 @@
 # Time Domain Analysis of Linear Systems: Static Error Constants \& Steady State Error
 
 ## Learning Outcomes {.unnumbered}
+
+After completing this module, you should be able to:
+
+1. Compute the static error constants of linear unity feedback systems.
+
+2. Determine the steady state error due to standard test inputs such as step, ramp and parabolic signals.
+
+3. Could compute the steady state error due to disturbances.
+
+4. Could compute the steady state error for non-unity feedback systems.
+
+## Steady State Error (SSE)
+
+**What is Steady State Error and what is its significance?**
+
+Steady state error refers to the discrepancy between the desired reference input and the actual output of a given control system once the system has settled into a steady condition. It serves as a metric for assessing the system's ability to accurately track the desired reference signal over time. This is especially important when it comes to PID controllers, where the goal is to minimize the steady state error to ensure the system's output closely follows the desired reference input. 
+
+### Factors Contributing to SSE
+
+The steady state error of a control system can be influenced by several factors, including:
+
+1. **Imperfect Modeling**
+Errors in the mathematical models used to design the control system can lead to inaccuracies in predicting the system's response, resulting in steady-state errors.
+
+2. **Disturbances and Noise**
+External disturbances or noise in the system can perturb the system's response, causing deviations from the desired reference signal in the steady state.
+
+3. **Limitations in Control Algorithm**
+Imperfections or simplifications in the control algorithm, such as linearization or approximation, can introduce errors, especially in the steady state.
+
+4. **Nonlinear Characteristics**
+Nonlinearities inherent in control system elements, such as friction, dead zones, or saturation in actuators, can result in deviations from the desired response, particularly in the steady state.
+
+5. **Actuator Saturation**
+Limitations on the maximum output of actuators, such as motors or valves, can lead to saturation effects that prevent the system from fully tracking the reference signal.
+
+6. **Sensor Noise**
+Measurement noise or inaccuracies in sensors can introduce errors into the feedback loop, affecting the control system's ability to accurately track the reference signal.
+
+7. **Bandwidth Constraints**
+Limited bandwidth in the system components, such as filters or communication channels, can affect the system's ability to respond quickly to changes in the reference signal, leading to steady-state errors.
+
+### Steady State Error in Unity Feedback Systems
+
+Consider a unity feedback system shown below
+
+<!-- ! add later, too much info not enough time -->
+
+The closed loop transfer function is given by
+
+$$
+	\dfrac{C(s)}{R(s)} = \dfrac{G(s)}{1+G(s)}
+$$
+
+The error $E(s)$ between the input $R(s)$ (reference signal), and the output, $C(s)$, is given by
+
+$$
+	E(s) = R(s) - C(s) = R(s) - G(s)E(s); \qquad \because C(s) = G(s)E(s)
+$$
+
+Solving for $E(s)$ gives
+
+$$
+	E(s) = \dfrac{R(s)}{1+G(s)}
+$$
+
+The steady state error $e_{ss}$ of a feedback control system is defined as the error when time reaches infinity. Thus
+$$
+	e_{ss} = e(\infty) = \lim_{t \to \infty} e(t)
+$$
+By applying the final value theorem, the steady state error is computed from
+\begin{align}
+e_{ss} = e(\infty) &= \lim_{t \to \infty} e(t) \\
+&= \lim_{s \to 0} sE(s) = \lim_{s \to 0} \dfrac{sR(s)}{1+G(s)}
+\end{align}
+
+
+## Classification of Control Systems: System TYPE
+
+## Static Error Constants
+
+### Static Position Error Constant $K_p$
+
+### Static Velocity Error Constant $K_v$
+
+### Static Acceleration Error Constant $K_a$
+
+## Summary: Steady State Error and Static Error Constants
+
+### Examples
