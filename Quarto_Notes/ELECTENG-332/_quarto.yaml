@@ -5,6 +5,8 @@ project:
 book: 
   title: "ELECTENG 332: Control Systems"
   subtitle: "Lecture Notes"
+  date: 10/23/2024
+  date-format: full
   author: 
     name: Nicholas Russell
     affiliations:

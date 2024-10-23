@@ -1,5 +1,9 @@
 # Introduction {.unnumbered .unlisted}
 
+> *Dear god not another one of these.*
+
 This is my "coursebook", or rather, a collection of notes for the course ELECTENG 332: Control Systems.  The notes are written in Quarto, a markdown-based document processor that supports LaTeX and code blocks, and requires this introduction file.
 
 Please skip this bit, there's nothing to see here.
+
+

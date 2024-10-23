@@ -10,20 +10,271 @@ At the end of this module, you should be able to:
 
 ## Introduction
 
+While designing any control system, it is often necessary to investigate the performance of the system when one or more parameters of the system vary over a given range. Further, it is known that the dynamic behaviour (e.g. transient response) of a closed loop system is closely related to the location of the closed-loop poles. (i.e. location of the roots of the closed loop characteristic equation). Therefore, it is important for the designer to know how the closed-loop poles (i.e. the roots of the characteristic equation) move in the $s$ plane as one or more parameters of the system are varied over a given range.
 
+A simple method for finding the roots of the characteristic equation has been developed by W.R. Evans. This method, called the root-locus method, is one in which the roots of the characteristic equation are plotted for all values of a system parameter. 
+
+Note that the root locus technique is not confined to inclusive study of control systems. The equation under investigation does not necessarily have to be the characteristic equation. The technique can also be used to assist in the determination of roots of higher-order algebraic equations.
+
+
+The root locus problem for [one variable parameter]{color=red} can be defined by referring to equations of the form:
+
+$$
+	F(s) = s^n +a_1s^{n-1} + \ldots + a_{n-1}s + a_n + K(s^m + b_1s^{m-1} + \ldots + b_{m-1}s + b_m) = 0
+$${#eq-root-locus-one-var}
+
+where $\textcolor{red}{K}$ is the parameter considered to vary between $\textcolor{red}{-\infty}$ [and]{color=red} $\textcolor{red}{\infty}$.
+
+The coefficients, $a_1, \ldots, a_n$ and $b_1, \ldots, b_m$ etc. are assumed to be fixed constants.
+
+The various categories of root loci are defined as follows
+
+1. [**Root Loci:**]{color=blue} The portion of the root loci when $\textcolor{blue}{K}$ [assumes positive values]{color=blue}; that is $\textcolor{red}{0\leq K < \infty}$.
+
+2. [**Complementary Root Loci:**]{color=blue} The portion of the root loci when $\textcolor{blue}{K}$ [assumes negative values]{color=blue}; that is $\textcolor{red}{-\infty \leq K \leq 0}$.
+
+3. [**Root Contours:**]{color=blue} The loci of roots when more than one parameter varies.
+
+The complete root loci refers to the combination of the root loci and the complementary root loci.
+
+### What is the Root Locus and Why is it useful?
+
+The root locus is the locus of roots (duh) of the characteristic equation of the closed-loop system as [a specific parameter (usually, gain $K$) is varied from zero to infinity]{color=red}. Such a plot clearly shows the contributions of each open-loop pole or zero to the locations of the closed-loop poles.
+
+**Is it useful in Linear Control Systems Design?**
+
+It indicates the manner in which the open-loop poles and zeros should be modified so that the response meets system performance specifications. For example, by using the root locus method, it is possible to determine the value of the loop gain $K$ that will make the damping ratio of the dominant closed-loop poles as prescribed. 
+
+If the location of an open-loop pole or zero is a system variable, then the root-locus method suggests the way to choose the location of an open-loop pole or zero.
 
 ## Basic Conditions of the Root Loci
 
+Consider the system shown in Figure.
+
+<!-- figure to be copied across here -->
+
+The closed-loop transfer function is given by:
+
+$$
+	T(s) = \dfrac{C(s)}{R(s)} = \dfrac{K\cdot G(s)}{1+K\cdot G(s) \cdot H(s)}
+$$
+
+The closed loop characteristic equation of the system is:
+
+$$
+	1+K\cdot G(s) \cdot H(s) = 0
+$$
+
+Observe that the closed loop transfer function, $T(s)$, as well as the open loop transfer function $K\cdot G(s)\cdot H(s)$, both involve a gain parameter $K$.
 
 
-## Angle and Magnitude Conditions
+### Concept of Root Locus
 
+[**Definition**]{color=red} The root locus is the path of the roots of the characteristic equation traced out in the complex plane as a system parameter is changed.
 
+#### Example 1
+
+**Example:** Consider the video camera control system shown. 
+
+The closed-loop transfer function of this system is as follows
+$$
+	\dfrac{C(s)}{R(s)} = \dfrac{K_1K_2}{s^2+10s+K_1K_2} = \dfrac{K}{s^2+10s+K}
+$$
+Where $K = K_1K_2$.
+
+<!-- figure TBA -->
+
+The closed loop characteristic equation is given by
+
+$$
+	s^2+10s+K = 0
+$$
+
+The location of poles as the open loop gain [$K$ is varied]{color=red} is shown in the Table.
+
+| $K$  |   Pole 1   |   Pole 2   |
+|:----:|:----------:|:----------:|
+| $0$  | $-10$      | $0$        |
+| $5$  | $-9.47$    | $-0.53$    |
+| $10$ | $-8.87$    | $-1.13$    |
+| $15$ | $-8.16$    | $-1.84$    |
+| $20$ | $-7.24$    | $-2.76$    |
+| $25$ | $-5$       | $-5$       |
+| $30$ | $-5+j2.24$ | $-5-j2.24$ |
+| $35$ | $-5+j3.16$ | $-5-j3.16$ |
+| $40$ | $-5+j3.87$ | $-5-j3.87$ |
+| $45$ | $-5+j4.47$ | $-5-j4.47$ |
+| $50$ | $-5+j5$    | $-5-j5$    |
+
+<!-- plot TBA -->
+
+From the plot, it is seen that for $\textcolor{red}{K=0}$, the poles are at $\textcolor{blue}{p_1=-10, \; p_2 = 0}$.
+As K increases, $p_1$ moves towards the right, while $p_2$ moves towards the left. For $\textcolor{red}{K=25}$, the poles $p_1$ and $p_2$ meet at $-5$, break away from the real axis, and move into the complex plane.
+
+Further, if $0<K<25$, the poles are real and distinct, and the system is overdamped. If $K=25$, the poles are real and multiple (i.e. repeated), and the system is critically damped. If $K>25$, the poles are complex conjugate (i.e. $\sigma \pm j\omega$), and the system is underdamped.
+
+<!-- ! etc. come back to this later. -->
+
+#### Example 2
+
+<!-- ! again, come back to this later -->
+
+#### Example 3
+
+<!-- ! ditto -->
+
+### Angle and Magnitude Conditions
+
+<!-- ! since this follows on, ditto -->
 
 ## Sketching the Root Locus
 
+### Rules for Sketching the Root Locus
+
+#### [Rule 1:]{color=red} [Total Number of Branches of the Root Locus]{color=blue} {.unnumbered}
+
+The number of branches of the root locus is [equal to the number of closed-loop poles.]{color=blue} Thus, the number of branches is equal to the number of open-loop poles or open-loop zeros, whichever is greater.
+
+- Let $\textcolor{red}{n}$ be the number of finite open loop poles.
+- Let $\textcolor{red}{m}$ be the number of finite open loop zeros.
+- Let $\textcolor{red}{N}$ be the number of root locus branches, then
+\begin{gather}
+	N = n, \quad \text{if} \; n \geq m \\
+	N = m, \quad \text{if} \; m < n
+\end{gather}
+
+#### [Rule 2:]{color=red} [Where the Root Locus Starts and Terminates]{color=blue} {.unnumbered}
+
+Root locus branches start from open-loop poles (when $K=0$) and terminate at open-loop zeros (finite zeros or zeros at infinity) (when $K=\infty$).
+
+- If the number of open-loop poles is greater than the number of open-loop zeros, some branches starting from finite open-loop poles will terminate at zeros at infinity (i.e., go to infinity).
+
+#### [Rule 3:]{color=red} [Symmetry of the Root Locus]{color=blue} {.unnumbered}
+
+The root locus is symmetric about the real axis (i.e. x-axis), which reflects the fact that the closed loop poles appear in complex conjugate pairs.
+
+#### [Rule 4:]{color=red} [Determination of Root Loci Segments on the Real Axis]{color=blue} {.unnumbered}
+
+Segments of the real axis are part of the root locus if and only if the total number of real poles and zeros to their right is odd.
+
+#### [Rule 5:]{color=red} [Asymptotic Behaviour of Root Locus]{color=blue} {.unnumbered}
+
+If the number of poles $n$ exceeds the number of zeros $m$, then as the gain $K \rightarrow \infty$ (i.e. K goes to infinity), then $(n-m)$ branches will become asymptotic to the straight lines which intersect the real axis at the point $\sigma$, called the centroid, and inclined to the real axis at angles $\theta_k$, called the angle of asymptotes.
+
+Thus, the equation of the asymptotes is given by the real axis intercept $\sigma$, called the centroid, and the angle of the asymptotes $\theta_k$, as follows:
+
+$$
+	\sigma = \dfrac{\sum\limits^{n}_{i=1} p_i - \sum\limits^{m}_{j=1}z_j}{n-m} = \dfrac{\text{Sum of Open Loop Poles}\, - \,\text{Sum of Open Loop Zeros}}{\text{Number of Open Loop Poles}\, - \,\text{Number of Open Loop Zeros}}
+$$
+
+$$
+	\theta_k = \dfrac{(2k+1)\pi}{n-m} [\text{rad}] = \dfrac{(2k+1)\cdot180}{n-m} [\text{degrees}], \quad k = 0, 1, 2, \ldots, n-m-1
+$$
+
+Note that the angle of asymptotes gives the direction along which these $(n-m)$ branches approach infinity.
+
+#### [Rule 6:]{color=red} [Real Axis Breakaway and Break-in Points]{color=blue} {.unnumbered}
+
+i. If there exists a real axis root locus branch between two open loop poles, then there will be a break-away point in between these two open loop poles.
+
+ii. If there exists a real axis root locus branch between two open loop zeros, then there will be a break-in (re-entry) point in between these two open loop zeros.
+
+- The root locus breaks away from the real axis at a point where the gain is maximum and breaks into the real axis at a point where the gain is minimum.
+
+[**Computation of Breakaway and Break-in Points**]{color=blue}
+
+The break away and re-entry points on the root locus are determined from the roots of
+$$
+	\dv{K}{s} = 0
+$$
+
+if r-number of branches meet at a point, they breakaway at an angle of $\qty{180}{\degree}/r$.
+
+#### [Rule 7:]{color=red} [Angle of Departure and Angle of Arrival]{color=blue} {.unnumbered}
+
+The root locus departs from complex, open-loop poles and arrives at complex, open loop zeros.
+
+i. The angle of departure from an open-loop complex pole $\theta_d$ is computed as:
+
+$$
+	\theta_d = \qty{180}{\degree} - \bigg(\sum \vec{\theta}_{\text{pole to pole}}\bigg) + \bigg(\sum \vec{\theta}_{\text{zero to pole}}\bigg)
+$$
+
+Where $\vec{\theta}_{\text{pole to pole}}$ is the angle of the vector from the complex pole to other poles and $\vec{\theta}_{\text{zero to pole}}$ is the angle of the vector from a complex zero to the pole.
+
+ii. The angle of arrival at an open-loop complex zero $\theta_a$ is computed as:
+
+$$
+	\theta_a = \qty{180}{\degree} - \bigg(\sum \vec{\theta}_{\text{zero to zero}}\bigg) + \bigg(\sum \vec{\theta}_{\text{pole to zero}} \bigg)
+$$
+
+Where $\vec{\theta}_{\text{zero to zero}}$ is the angle of the vector from the complex zero to other zeros and $\vec{\theta}_{\text{pole to zero}}$ is the angle of the vector from a complex pole to the zero.
+
+#### [Rule 8:]{color=red} [Imaginary Axis Crossover]{color=blue} {.unnumbered}
+
+The points where the root loci intersect the $j\omega$-axis can be found easily by
+
+a. Use of Routh's stability criterion or
+
+b. Letting $s=j\omega$ in the characteristic equation, equating both the real and imaginary parts to zero, and solving for $\omega$ and $K$.
+
+The values of $\omega$, thus found, give the frequencies at which root loci cross the imaginary axis. The $K$ value corresponding to each crossing frequency gives the gain at the crossing point.
+
+### Step by Step Procedure for Sketching the Root Locus
+
+1. Determine the open loop poles, zeros and a number of branches from given $G(s)H(s)$.
+
+2. Draw the pole-zero plot (???) and determine the region of the real axis for which the root locus exists. Also, determine the number of breakaway points.
+
+3. Calculate the angle of asymptotes.
+
+4. Determine the centroid.
+
+5. Calculate the breakaway points (if any).
+
+6. Calculate the intersection point of the root locus with the imaginary axis.
+
+7. Calculate the angle of departure and angle of arrivals if any.
+
+8. From above steps, draw the overall sketch of the root locus.
+
+9. Predict the stability and performance of the given system by the root locus.
 
 
-## Effects of Adding Poles and Zeros
+#### Example 1
 
+<!-- ! can't be fucked -->
 
+## Qualitative Analysis Through Root Locus
+
+### Effect of Adding a Zero
+
+Consider adding a zero to a simple second order system i.e.
+
+$$
+	\textcolor{blue}{G(s)=\dfrac{K}{s(s+a)}} \implies \textcolor{red}{G(s)=\dfrac{K(s+b)}{s(s+a)}}
+$$
+
+The root locus for both the cases are shown in the Figure.
+
+<!-- ! add later cus fuck off -->
+
+The branches of the root locus have been ["pulled to the left"]{color=red}, or farther from the imaginary axis.
+For values of static loop sensitivity greater than $K_a$, the roots are farther to the left than for the original system.
+Therefore, [the transients will decay faster]{color=red}, yielding a more stable system.
+
+### Effect of Adding a Pole
+
+Consider adding a pole to the same simple second order system i.e.
+
+$$
+	\textcolor{blue}{G(s)=\dfrac{K}{s(s+a)}} \implies \textcolor{red}{G(s)=\dfrac{K}{s(s+a)(s+c)}}
+$$
+
+The root locus for both the cases are shown in the Figure.
+
+<!-- ! add later cus fuck off -->
+
+The branches of the root locus have been ["pulled to the right"]{color=red}, or closer to the imaginary axis.
+For values of static loop sensitivity greater then $K_a$, the roots are closer to the imaginary axis compared to the original system.
+Therefore, [the transients will decay slowly, and will yield a less stable system.]{color=red}
