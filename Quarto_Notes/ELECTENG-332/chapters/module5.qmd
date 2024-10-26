@@ -294,6 +294,8 @@ $$
 
 Routh-Hurwitz criterion provides a straightforward and computationally efficient approach to stability analysis, particularly for higher-order systems. This method offers a numerical procedure for determining the stability of a system without explicitly solving for the roots of the characteristic polynomial. It provides a systematic approach to asses the location of the roots, particularly the whether any roots lie in the right-half plane (RHP) or on the imaginary axis based on the properties of a tabular representation called the Routh's array.
 
+
+
 ### Formation of Routh's Tables
 
 ## Routh-Hurwitz Stability Criterion for Linear Feedback Control Systems
