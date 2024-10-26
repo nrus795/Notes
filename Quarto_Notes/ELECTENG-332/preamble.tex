@@ -4,8 +4,13 @@
 \usepackage{amsmath}        % Math environments
 \usepackage{amssymb}        % Math symbols
 \usepackage{amsfonts}       % Math fonts
+\usepackage{amsthm}         % Math theorems
+\usepackage{mathrsfs}       % Script math fonts
+\usepackage{unicode-math}
 \usepackage{mathtools}      % Extra math tools
 \usepackage{physics}        % For partial derivatives
+\usepackage{array}          % For custom column widths in tables
+\renewcommand{\arraystretch}{1.5}
 \usepackage{siunitx}        % SI units
 \sisetup{per-mode = symbol} % Set SI unit fractions to use a solidus
 \usepackage{commath}        % For derivatives
@@ -25,8 +30,8 @@
 \usepackage{cancel}         % Cancel terms in equations
 \usepackage{tcolorbox}
 \usepackage{mdframed}       % Framed text blocks
-\usepackage{subfiles}       % Subfiles package
 % Document navigation
+\usepackage{tabularray}
 \usepackage[pdfpagelabels]{hyperref}       % For clickable links and cross-references
 \usepackage{bookmark}       % Improved bookmarks for navigation
 \AtBeginDocument{\RenewCommandCopy\qty\SI}
@@ -52,3 +57,4 @@
 \newcommand{\bluetext}[1]{\textcolor{blue}{#1}}
 \newcommand{\redtext}[1]{\textcolor{red}{#1}}
 
+\newcolumntype{Y}{>{\centering\arraybackslash}X}

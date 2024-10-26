@@ -4,9 +4,9 @@
 
 After completing this module, you should be able to:
 
-1. Determine the absolute stability of a linear system.
+1.  Determine the absolute stability of a linear system.
 
-2. Find the stability region of a linear system. 
+2.  Find the stability region of a linear system.
 
 ## Concept of Stability
 
@@ -14,8 +14,7 @@ A system is stable if small changes in system inputs, initial conditions, or sys
 
 [**Absolute Stability**]{color=blue}
 
-Suppose the ball is initially inside the bowl in position 1. 
-If it is perturbed from its inital position by a small force, it will cause the ball to move. When the force is removed, the ball will oscillate and eventually return to its initial position. This is an example of [**absolutely stable dynamics**]{color=red}.
+Suppose the ball is initially inside the bowl in position 1. If it is perturbed from its inital position by a small force, it will cause the ball to move. When the force is removed, the ball will oscillate and eventually return to its initial position. This is an example of [**absolutely stable dynamics**]{color=red}.
 
 <!-- ! add figure here cus stupid -->
 
@@ -33,13 +32,11 @@ If the ball is placed on a flat surface, then after the application of a small f
 
 Suppose a system has an equilibrium point at $x = x_e$. In stability studies we generally address the following questions:
 
-1. If the system with zero input is perturbed from its equilibrium point $x_e$ at $t = t_0$, will the state $x(t)$
-	a. Return to $x_e$?
-	b. Remain close to $x_e$? or
-	c. Diverge from $x_e$?
-
-2. If the system is relaxed, will a **bounded input** produce **a bounded output**?
-
+1.  If the system with zero input is perturbed from its equilibrium point $x_e$ at $t = t_0$, will the state $x(t)$
+    a.  Return to $x_e$?
+    b.  Remain close to $x_e$? or
+    c.  Diverge from $x_e$?
+2.  If the system is relaxed, will a **bounded input** produce **a bounded output**?
 
 Consider the ball which is free to roll on the surface.
 
@@ -56,32 +53,36 @@ The following figure shows different types of possible stability surfaces for gl
 The total response of a system $c(t)$ of a dynamic system is expressed as:
 
 $$
-	c(t) = c_{\text{forced}}(t) + c_{\text{natural}}(t)
-$${#eq-total-response}
+    c(t) = c_{\text{forced}}(t) + c_{\text{natural}}(t)
+$$ {#eq-total-response}
 
 Based on the **natural response**, we define stability, instability and marginal stability as follows:
 
 Stable
-: A linear time invariant system is stable provided its natural response converges to zero as time approaches infinity.
+
+:   A linear time invariant system is stable provided its natural response converges to zero as time approaches infinity.
 
 Unstable
-: A linear time invariant system is unstable if its natural response grows without bound as time approaches infinity. 
+
+:   A linear time invariant system is unstable if its natural response grows without bound as time approaches infinity.
 
 Marginally Stable
-: A linear time invariant system is marginally stable if its natural response neither decays nor grows unbounded but remains constant or oscillatory as time approaches infinity.
+
+:   A linear time invariant system is marginally stable if its natural response neither decays nor grows unbounded but remains constant or oscillatory as time approaches infinity.
 
 Based on total response or zero-input response we define BIBO stability.
 
 BIBO Stability
-: A system is said to be BIBO (bounded-input, bounded-output) stable if for every bounded input, the output is bounded.
+
+:   A system is said to be BIBO (bounded-input, bounded-output) stable if for every bounded input, the output is bounded.
 
 **Summary:**
 
 A linear time invariant system is stable if the following two notions of system stability are satisfied.
 
-a. When the system is excited by a bounded input, the output is bounded.  **(BIBO Stability)**
+a.  When the system is excited by a bounded input, the output is bounded. **(BIBO Stability)**
 
-b. With zero input and arbitrary initial conditions, the output tends towards zero - the equilibrium state of the system **(Asymptotic Stability)**.
+b.  With zero input and arbitrary initial conditions, the output tends towards zero - the equilibrium state of the system **(Asymptotic Stability)**.
 
 **These two notions of stability are equivalent for linear time invariant systems.**
 
@@ -90,19 +91,19 @@ b. With zero input and arbitrary initial conditions, the output tends towards ze
 Consider a system with closed loop transfer function
 
 $$
-	T(s) = \dfrac{C(s)}{R(s)} = \dfrac{15}{(s+3)(s+5)}
+    T(s) = \dfrac{C(s)}{R(s)} = \dfrac{15}{(s+3)(s+5)}
 $$
 
 The output of this system for unit step input $R(s) = 1/s$ is
 
 $$
-	C(s) = \dfrac{15}{s(s+3)(s+5)} = \dfrac{1}{s} - \dfrac{2.5}{s+3} + \dfrac{1.5}{s+5}
+    C(s) = \dfrac{15}{s(s+3)(s+5)} = \dfrac{1}{s} - \dfrac{2.5}{s+3} + \dfrac{1.5}{s+5}
 $$
 
 This gives
 
 $$
-	c(t) = 1 - 2.5e^{-3t} + 1.5e^{-5t}
+    c(t) = 1 - 2.5e^{-3t} + 1.5e^{-5t}
 $$
 
 Since the closed-loop poles are real and located in the left-half of the s-plane, the output response contains exponential terms with negative indicies, i.e. $e^{-3t}$ and $e^{-5t}$. As time $t \to \infty$, both exponential terms will approach zero and the output will reach its steady state value of 1, i.e. $c(\infty) = 1$. Such type of systems where the poles are in the left half of the s-plane are [**absolutely stable systems**]{color=red}.
@@ -110,19 +111,19 @@ Since the closed-loop poles are real and located in the left-half of the s-plane
 Consider a system with closed loop transfer function
 
 $$
-	T(s) = \dfrac{C(s)}{R(s)} = \dfrac{10}{(s-2)(s+3)}
+    T(s) = \dfrac{C(s)}{R(s)} = \dfrac{10}{(s-2)(s+3)}
 $$
 
 The output of this system for unit step input $R(s) = 1/s$ is
 
 $$
-	C(s) = \dfrac{10}{s(s-2)(s+3)} = \dfrac{-1.666}{s} + \dfrac{1}{s-2} + \dfrac{0.666}{s+3}
+    C(s) = \dfrac{10}{s(s-2)(s+3)} = \dfrac{-1.666}{s} + \dfrac{1}{s-2} + \dfrac{0.666}{s+3}
 $$
 
 This gives
 
 $$
-	c(t) = -1.666 + e^{2t} + 0.666e^{-3t}
+    c(t) = -1.666 + e^{2t} + 0.666e^{-3t}
 $$
 
 Due to a pole located in the right half of the s-plane, there is one exponential term with positive index ($e^{2t}$) which go on, increasing in amplitude as time $t \to \infty$. Systems where any of the poles are in the right half of s-plane are [**unstable systems**]{color=red}.
@@ -130,18 +131,19 @@ Due to a pole located in the right half of the s-plane, there is one exponential
 Consider a system with closed loop transfer function
 
 $$
-	T(s) = \dfrac{C(s)}{R(s)} = \dfrac{25}{s^2 + 25}
+    T(s) = \dfrac{C(s)}{R(s)} = \dfrac{25}{s^2 + 25}
 $$
 
 The closed loop poles are purely imaginary and are located on the $j\omega$-axis. The output of this system for unit step input $R(s) = 1/s$ is
 
 $$
-	C(s) = \dfrac{25}{s(s^2 + 25)} = \dfrac{1}{s} - \dfrac{1}{2(s-j5)}-\dfrac{1}{2(s+j5)}
+    C(s) = \dfrac{25}{s(s^2 + 25)} = \dfrac{1}{s} - \dfrac{1}{2(s-j5)}-\dfrac{1}{2(s+j5)}
 $$
 
 This gives
+
 $$
-	c(t) = 1 - \cos(5t)
+    c(t) = 1 - \cos(5t)
 $$
 
 Due to the presence of purely imaginary poles, the response is oscillatory. Systems where any of the poles are on the $j\omega$ axis are [**marginally stable systems**]{color=red}.
@@ -149,35 +151,37 @@ Due to the presence of purely imaginary poles, the response is oscillatory. Syst
 The closed loop transfer function of an n-th order single input, single output linear time invariant system is expressed as:
 
 $$
-	T(s) = \dfrac{C(s)}{R(s)} = \dfrac{b_0 s^m + b_1 s^{m-1} + \ldots + b_{m-1}s + b_m}{s^n + a_1 s^{n-1} + a_2 s^{n-2} + \ldots + a_{n-1}s + a_n} = \dfrac{P(s)}{Q(s)}; \quad (m \leq n) 
-$${#eq-closed-loop-transfer-function}
+    T(s) = \dfrac{C(s)}{R(s)} = \dfrac{b_0 s^m + b_1 s^{m-1} + \ldots + b_{m-1}s + b_m}{s^n + a_1 s^{n-1} + a_2 s^{n-2} + \ldots + a_{n-1}s + a_n} = \dfrac{P(s)}{Q(s)}; \quad (m \leq n) 
+$$ {#eq-closed-loop-transfer-function}
 
 The closed loop *characteristic equation* of the system is given by
 
 $$
-	Q(s) = s^n + a_1 s^{n-1} + a_2 s^{n-2} + \ldots + a_{n-1}s + a_n = 0
+    Q(s) = s^n + a_1 s^{n-1} + a_2 s^{n-2} + \ldots + a_{n-1}s + a_n = 0
 $${#eq-closed-loop-characteristic-equation}
 
-The roots of $Q(s) = 0$ gives us the corresponding closed loop poles. Let us find the solution to the differential equation corresponding to the characteristic equation @eq-closed-loop-characteristic-equation considering the following cases.   
+The roots of $Q(s) = 0$ gives us the corresponding closed loop poles. Let us find the solution to the differential equation corresponding to the characteristic equation @eq-closed-loop-characteristic-equation considering the following cases.
 
 ### Case 1
 
-**Case 1: All the roots of the characteristic equation (closed loop poles), $\lambda_1, \lambda_2, \ldots, \lambda_n$ are distinct.** They can either be real or complex. Then the output is
+**Case 1: All the roots of the characteristic equation (closed loop poles),** $\lambda_1, \lambda_2, \ldots, \lambda_n$ are distinct. They can either be real or complex. Then the output is
 
 $$
-	c(t) = \sum\limits_{i=1}^{n} A_i e^{\lambda_i t}
-$${#eq-characteristic-equation-case1}
+    c(t) = \sum\limits_{i=1}^{n} A_i e^{\lambda_i t}
+$$ {#eq-characteristic-equation-case1}
 
-where the constant $A_i$ depends on the inital conditions and locations of zeros. 
+where the constant $A_i$ depends on the inital conditions and locations of zeros.
 
-If all the roots $\lambda_1, \lambda_2, \ldots, \lambda_n$ are real, their contribution to the output is of the form
+If all the roots $\lambda_1, \lambda_2, \ldots, \lambda_n$ are real, their contribution to the output is of the form 
+
 $$
-	c(t) = A_1 e^{\lambda_1 t} + A_2 e^{\lambda_2 t} + \ldots + A_n e^{\lambda_n t}
+    c(t) = A_1 e^{\lambda_1 t} + A_2 e^{\lambda_2 t} + \ldots + A_n e^{\lambda_n t}
 $$
 
-The contribution of a complex root pair $\lambda = \sigma_i \pm j\omega_i$ to the output is of the form
+The contribution of a complex root pair $\lambda = \sigma_i \pm j\omega_i$ to the output is of the form 
+
 $$
-	Ae^{\sigma_i t} \sin(\omega_i t + \phi_i)
+    Ae^{\sigma_i t} \sin(\omega_i t + \phi_i)
 $$
 
 ### Case 2
@@ -187,19 +191,19 @@ $$
 Without loss of generality, assume that $\lambda_1 = \lambda_2$ and they are real. Then the contribution of this to the output is of the form
 
 $$
-	c(t) = A_1 e^{\lambda_1 t} + A_2 t e^{\lambda_1 t}
+    c(t) = A_1 e^{\lambda_1 t} + A_2 t e^{\lambda_1 t}
 $$
 
 Similarly, if there is a repeated root of multiplicity $k$ at $\lambda_1$, i.e. $\lambda_1 = \lambda_2 = \ldots = \lambda_k$, then their contribution to the output is of the form
 
 $$
-	[A_1 + A_2 t + A_3 t^2 + \ldots + A_k t^{k-1}]e^{\lambda_1 t}
+    [A_1 + A_2 t + A_3 t^2 + \ldots + A_k t^{k-1}]e^{\lambda_1 t}
 $$
 
 If there are complex conjugate root pairs $\lambda = \sigma \pm j\omega$ **of multiplicity k**, then their contribution to the output is of the form
 
 $$
-	[A_1 \sin(\omega t + \phi_1) + A_2 t \sin(\omega t + \phi_2) + \ldots + A_k t^{k-1} \sin(\omega t + \phi_k)]e^{\sigma t}
+    [A_1 \sin(\omega t + \phi_1) + A_2 t \sin(\omega t + \phi_2) + \ldots + A_k t^{k-1} \sin(\omega t + \phi_k)]e^{\sigma t}
 $$
 
 **Key Point:**
@@ -213,7 +217,7 @@ When a system has repeated poles of k-th order in its transfer function, the out
 If the roots are a purely complex conjugate pair located at $\pm j\omega$, their contribution to the output is of the form
 
 $$
-	A \sin (\omega t + \phi)
+    A \sin (\omega t + \phi)
 $$
 
 Such purely imaginary pole pairs produce an oscillatory (sinusoidal) natural response.
@@ -221,32 +225,32 @@ Such purely imaginary pole pairs produce an oscillatory (sinusoidal) natural res
 If there are purely **Complex conjugate root pairs** $\pm j\omega$ **of multiplicity** k, then their contribution to the output is
 
 $$
-	A_1 \sin(\omega t + \phi_1) + A_2 t \sin(\omega t + \phi_2) + \ldots + A_k t^{k-1} \sin(\omega t + \phi_k)
+    A_1 \sin(\omega t + \phi_1) + A_2 t \sin(\omega t + \phi_2) + \ldots + A_k t^{k-1} \sin(\omega t + \phi_k)
 $$
 
 This gives rise to an unbounded response, and the system is unstable.
 
 ### Summary
 
-1. If all the roots of the characteristic equation lie in the left half s-plane, the system is stable. In this case, the impulse response is bounded and eventually converges to zero and therefore $\int\limits_{0}^{\infty} \abs{g(\tau)} \dd{\tau}$ is finite and the system is BIBO stable.
+1.  If all the roots of the characteristic equation lie in the left half s-plane, the system is stable. In this case, the impulse response is bounded and eventually converges to zero and therefore $\int\limits_{0}^{\infty} \abs{g(\tau)} \dd{\tau}$ is finite and the system is BIBO stable.
 
-2. If any root of the characteristic equation lies in the right half of the s-plane or if there is a repeated root on the $j\omega$ axis, the system is *unstable*. In this case the impulse response is unbounded and $\int\limits_{0}^{\infty} \abs{g(\tau)} \dd{\tau}$ is infinite leading to instability.
+2.  If any root of the characteristic equation lies in the right half of the s-plane or if there is a repeated root on the $j\omega$ axis, the system is *unstable*. In this case the impulse response is unbounded and $\int\limits_{0}^{\infty} \abs{g(\tau)} \dd{\tau}$ is infinite leading to instability.
 
-3. If the characteristic equation has one or more non-repeated roots on the $j\omega$ axis, but no right half plane roots, the system is *marginally stable* or limitedly stable. In this case, the impulse response is finite, but $\int\limits_{0}^{\infty} \abs{g(\tau)} \dd{\tau}$ is infinite.
+3.  If the characteristic equation has one or more non-repeated roots on the $j\omega$ axis, but no right half plane roots, the system is *marginally stable* or limitedly stable. In this case, the impulse response is finite, but $\int\limits_{0}^{\infty} \abs{g(\tau)} \dd{\tau}$ is infinite.
 
 ## Necessary Conditions of Stability
 
 Consider the closed loop characteristic equation of a linear time invariant system which is of the form
 
 $$
-	Q(s) = a_0 s^n + a_1 s^{n-1} + \ldots + a_{n-1}s + a_n = 0
+    Q(s) = a_0 s^n + a_1 s^{n-1} + \ldots + a_{n-1}s + a_n = 0
 $$
 
-In order to ensure that there are no roots of the characteristic equation with positive real parts it is **necessary but not sufficient** that 
+In order to ensure that there are no roots of the characteristic equation with positive real parts it is **necessary but not sufficient** that
 
-1. All the coefficients of the polynomial have the same sign.
+1.  All the coefficients of the polynomial have the same sign.
 
-2. None of the coefficients vanish.
+2.  None of the coefficients vanish.
 
 **Examples:**
 
@@ -256,47 +260,137 @@ $Q_2(s) = s^4 + 3s^3 + 9s^2 + 50 = 0;$ (Vanishing Coefficients)(Unstable)
 
 $Q_3(s) = s^3 + 2s^2 + 2s + 40 = 0;$ (Inconclusive)(Actually Unstable; but satisfies necessary condition)
 
-
 **Proposition:** If all the coefficients of the characteristic equation of a system have the same sign, this ensures that real roots of the system are negative. However, this does not ensure negativeness of real parts of the complex roots for third and higher order systems. Thus, it can not be sufficient conditions of stability for third and higher order systems.
 
-**Example:**
-Consider a third order system with characteristic equation
+**Example:** Consider a third order system with characteristic equation
 
 $$
-	s^3 + 2s^2 + 2s + 40 = 0
+    s^3 + 2s^2 + 2s + 40 = 0
 $${#eq-necessary-condition-example}
 
 Eqn(@eq-necessary-condition-example) can be expressed as
 
 $$
-	(s+4)(s-1+j3)(s-1-j3) = 0
+    (s+4)(s-1+j3)(s-1-j3) = 0
 $$
 
 Notice that the real part of the complex roots is positive, indicating system instability; although all the coefficients of the characteristic equation have the same sign (positive). Thus, when the order of the characteristic equation is higher than two, it becomes insufficient to infer the stability of the system solely by examining the signs of all the coefficients.
 
 The stability analysis of higher order ($>2$) systems should therefore be carried out by examining its characteristic as follows:
 
-1. If the signs of all the coefficients of the characteristic equation are not the same and/or if some of the coefficients are zero, then it is indicative of potential instability in the system.
+1.  If the signs of all the coefficients of the characteristic equation are not the same and/or if some of the coefficients are zero, then it is indicative of potential instability in the system.
 
-2. If all the coefficients of the characteristic equation have the same sign, the possibility of instability can not be excluded; because this is a necessary condition of stability. We, therefore, do further analysis to determine sufficient conditions for stability.
+2.  If all the coefficients of the characteristic equation have the same sign, the possibility of instability can not be excluded; because this is a necessary condition of stability. We, therefore, do further analysis to determine sufficient conditions for stability.
 
 ## Routh's Stability Criterion
 
 The closed loop transfer function of most linear feedback systems are of the form
 
 $$
-	\textcolor{blue}{\dfrac{C(s)}{R(s)} = \dfrac{b_0s^m + b_1s^{m-1}+\ldots+b_{m-1}s +b_m}{a_0s^n + a_1s^{n-1}+\ldots+a_{n-1}s +a_n}; \quad (m \leq n) = \dfrac{P(s)}{Q(s)}}
+    \textcolor{blue}{\dfrac{C(s)}{R(s)} = \dfrac{b_0s^m + b_1s^{m-1}+\ldots+b_{m-1}s +b_m}{a_0s^n + a_1s^{n-1}+\ldots+a_{n-1}s +a_n}; \quad (m \leq n) = \dfrac{P(s)}{Q(s)}}
 $$
 
 [Note that we are only interested to know whether there are some closed loop poles (that is the roots of $Q(s) = 0$), lie in the right-half of the s-plane.]{color=red}
 
-**Features of Routh-Hurwitz Criterion:**
+### Features of Routh-Hurwitz Criterion:
 
 Routh-Hurwitz criterion provides a straightforward and computationally efficient approach to stability analysis, particularly for higher-order systems. This method offers a numerical procedure for determining the stability of a system without explicitly solving for the roots of the characteristic polynomial. It provides a systematic approach to asses the location of the roots, particularly the whether any roots lie in the right-half plane (RHP) or on the imaginary axis based on the properties of a tabular representation called the Routh's array.
 
+This method essentially requires two steps:
+
+1.  Construct a data table or array called a *Routh Table* or *Routh Array* using the coefficients of the characteristic polynomial.
+
+2.  Analyze the first column of the Routh Array, to determine how many roots of the characteristic equation (closed loop poles) are in the left-half plane, right-half plane, or directly on the $j\omega$ axis.
+
+Consider that the closed loop characteristic equation of a linear time invariant system is of the form
+
+$$
+    \textcolor{blue}{a_0 s^n + a_1 s^{n-1} + \ldots + a_{n-1}s + a_n = 0}
+$${#eq-routh-characteristic-equation}
+
+where all the coefficients are real numbers.
+
+It is assumed that $\textcolor{red}{a_0 \neq 0}$, meaning that any potential zero root has been removed from the characteristic equation.
+
+A more mathematical representation of Eqn.(@eq-routh-characteristic-equation) is
+
+$$
+    \sum\limits_{i=0}^{n} a_i s^{n-i} = 0, \qqtext{where} a_i \in \mathbb{R} \qand \forall i \in \mathbb{N}_0
+$$
+
+In order for there to be no roots of the characteristic equation that have positive real parts, [it is **necessary but by no means sufficient**]{color=red} that
+
+1.  [All of the coefficients of the polynomial have the same sign.]{color=blue}
+
+2.  [None of the coefficients vanish.]{color=red}
+
+### Formation of Routh Tables/Arrays
+
+To apply the Routh-Hurwitz criterion, we need to form the Routh Table or Routh Array. It is hence constructed as follows:
+
+1.  If all the coefficients of the characteristic polynomial are positive, we begin by arranging the coefficients into the first two rows of the Routh Array.
+
+2.  The [first row of the Routh Array consists of the **first, third, fifth, ...** coefficients (even values of $n$ in $a_n$)]{color=red}, where the [second row consists of the **second, fourth, sixth, ...** coefficients (odd values of $n$ in $a_n$)]{color=blue}, as shown below.
 
 
-### Formation of Routh's Tables
+```{=latex}
+\begin{table}[H]
+	\centering
+	\caption{Completed Routh Array}
+	\label{tab:routh_array}
+	\begin{tblr}{
+		width = \linewidth,       % Full width of the page
+		rows={ht={0.75\baselineskip}},
+		colspec = {*6{X[c]}},  % Dynamic column widths
+		cells = {m,c,mode=dmath},              % Centered cells
+		vline{2} = {-}{},         % Vertical line after first column for all rows
+		hline{1} = {-}{}     % Horizontal lines at specific rows
+    }
+        s^n     & a_0    & a_2    & a_4    & a_6    & \cdots \\
+        s^{n-1} & a_1    & a_3    & a_5    & a_7    & \cdots \\
+        s^{n-2} & b_1    & b_2    & b_3    & b_4    & \cdots \\
+        s^{n-3} & c_1    & c_2    & c_3    & c_4    & \cdots \\
+        \vdots  & \vdots & \vdots & \vdots & \vdots & \ddots \\
+        s^2     & e_1    & e_2    &        &        &        \\
+        s^1     & f_1    &        &        &        &        \\
+        s^0     & g_1    &        &        &        &         
+    \end{tblr}
+\end{table}
+```
+
+The evaluation of the $b_i$ coefficients are computed as follows:
+
+$$
+    \textcolor{blue}{b_1 = \dfrac{a_1 a_2 - a_0 a_3}{a_1}, \; b_2 = \dfrac{a_1 a_4 - a_0 a_5}{a_1}, \; b_3 = \dfrac{a_1 a_6 - a_0 a_7}{a_1}, \ldots}
+$$
+
+Following a similar procedure, the evaluation of the $c_i$ coefficients are computed as follows:
+
+$$
+    \textcolor{blue}{c_1 = \dfrac{b_1 a_3 - a_1 b_2}{b_1}, \; c_2 = \dfrac{b_1 a_5 - a_1 b_3}{b_1}, \; c_3 = \dfrac{b_1 a_7 - a_1 b_4}{b_1}, \ldots}
+$$
+
+These can be more formally expressed via set notation as:
+
+```{=latex}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\begin{definition}[Set of $b_i$ coefficients]
+Let $B$ denote the set of the coefficients in the third row of the Routh Array, $b_i$.
+We can define $B$ as:
+$$
+    B = \left\{ b_i \in \mathbb{R} \; \middle| \; b_i = \dfrac{a_1 a_{2i} - a_0 a_{2i+1}}{a_1}\qcomma i\in \mathbb{N}\qcomma 1 \leq i \leq m \right\}
+$$
+\end{definition}
+
+\begin{definition}[Set of $c_i$ coefficients]
+Let $C$ denote the set of the coefficients in the fourth row of the Routh Array, $c_i$.
+We can define $C$ as:
+$$
+    C = \left\{ c_i \in \mathbb{R} \; \middle| \; c_i = \dfrac{b_1 a_{2i+1} - a_1 b_{i+1}}{b_1}\qcomma i\in \mathbb{N}\qcomma 1 \leq i \leq n \right\}
+$$
+\end{definition}
+``` 
 
 ## Routh-Hurwitz Stability Criterion for Linear Feedback Control Systems
 
