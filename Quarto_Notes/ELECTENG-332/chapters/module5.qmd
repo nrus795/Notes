@@ -337,14 +337,14 @@ To apply the Routh-Hurwitz criterion, we need to form the Routh Table or Routh A
 \begin{table}[H]
 	\centering
 	\caption{Completed Routh Array}
-	\label{tab:routh_array}
+	\label{tbl-routh-array-definition}
 	\begin{tblr}{
-		width = \linewidth,       % Full width of the page
+		width = \linewidth,
 		rows={ht={0.75\baselineskip}},
-		colspec = {*6{X[c]}},  % Dynamic column widths
-		cells = {m,c,mode=dmath},              % Centered cells
-		vline{2} = {-}{},         % Vertical line after first column for all rows
-		hline{1} = {-}{}     % Horizontal lines at specific rows
+		colspec = {*6{X[c]}},
+		cells = {m,c,mode=dmath},
+		vline{2} = {-}{},         
+		hline{1} = {-}{}     
     }
         s^n     & a_0    & a_2    & a_4    & a_6    & \cdots \\
         s^{n-1} & a_1    & a_3    & a_5    & a_7    & \cdots \\
@@ -394,8 +394,131 @@ $$
 
 ## Routh-Hurwitz Stability Criterion for Linear Feedback Control Systems
 
-### Examples
+It is assumed that the [polynomial used to construct the Routh's table is the closed loop characteristic equation of a control system]{color=red}. Therefore, the [roots of this polynomial correspond to the poles of the closed loop system]{color=blue}.
 
-## Limitations of Routh-Hurwitz Criterion
+[**Stability Criterion**]{color=red}
+
+The necessary and sufficient condition for a linear time invariant system to be stable is that all the terms in the first column of a Routh Table/Array must have the same sign.
+
+i. Thus, if there are no sign changes in the first column of the Routh Table, all roots of the characteristic equation lie in the left hand side of the s-plane (left half plane or LHP), indicating system stability.
+
+ii. If there are sign changes in the first column of the Routh Array, then some of the roots of the characteristic polynomial lie in the right half of the s-plane (right half plane or RHP), indicating system instability.
+
+iii. The number of sign changes in the first column of the Routh Table equals to the number of roots of the characteristic polynomial that lie in the right half of the s-plane (RHP).
+
+### Different Configurations of Routh Tables
+
+Case 1
+:    No element in the first column is zero. This is the normal case and we have to follow the procedure detailed above.
+
+Case 2
+:   The first element in a row of the Routh's Table is zero; but all other elements in the row are nonzero or there are no remaining terms.
+
+Case 3
+:   All the elements of a row are zero.
+
+Case 4
+:   All the elements of a row are zero, but with repeated roots on the $j\omega$-axis.
+
+### Examples: Case 1
+
+#### Example 1
+
+Consider a system with closed loop characteristic equation:
+
+$$
+    \textcolor{blue}{s^3 + 4s^2 + 6s + 4 = 0}
+$$
+
+Construct the Routh array and determine the stability of the system. 
+
+```{=latex}
+\begin{table}[H]
+    \centering
+    \caption{Completed Routh Table}
+    \label{tbl-routh-array-case1-example}
+    \begin{tblr}{
+        width = \linewidth,
+		rows={ht={0.75\baselineskip}},
+		colspec = {*3{X[c]}},
+		cells = {m,c,mode=dmath},
+		vline{2} = {-}{},         
+		hline{1,5} = {-}{}
+    }
+        \textcolor{blue}{s^3} & \textcolor{blue}{1} & \textcolor{blue}{6} \\
+        \textcolor{blue}{s^2} & \textcolor{blue}{4} & \textcolor{blue}{4} \\
+        \textcolor{blue}{s^1} & \textcolor{red}{\dfrac{(4 \times 6) - (1 \times 4)}{4} = 5} & \textcolor{red}{0}  \\
+        \textcolor{blue}{s^0} & \textcolor{red}{\dfrac{(5 \times 4) - (4 \times 0)}{5} = 4} 
+    \end{tblr}
+\end{table}
+```
+Since there are [no sign changes in the first column of the Routh Array]{color=blue}, [all the closed loop poles of the system lie in the left half of the s-plane]{color=red} and [the system is stable]{color=blue}.
+
+Actual Roots: $-2, -1$ and $\complexnum[output-complex-root = j, complex-root-position = before-number, print-complex-unity]{-1\pm j}$
+
+#### Example 2
+
+#### Example 3
+
+#### Example 4
+
+### Examples: Case 2
+
+If any term in the [first column is zero]{color=blue}; [but the remaining terms are non-zero]{color=red}, we cannot proceed with Routh Table formation. Instead, we [replace the zero term]{color=red} with a [very small, positive, non-zero number]{color=red} $\textcolor{red}{\varepsilon}$ and evaluate the rest of the array elements.
+
+#### Example 1
+<!-- ! skip -->
+
+#### Example 2
+
+#### Example 3
+
+### Examples: Case 3
+
+If all the coefficients in any derived row are zero, it indicates that one or more of the following conditions may exist:
+
+There are roots of equal magnitude lying radially opposite each other in the s-plane. This implies:
+
+1. [Pairs of real roots with opposite signs.]{color=blue}
+
+2. [Pairs of imaginary roots.]{color=red}
+
+3. [Pairs of complex-conjugate roots forming symmetry about the origin of the s-plane.]{color=blue}
+
+**Solution: Procedure to evaluate the rest of the array**
+
+1. Form an Auxiliary Polynomial $A(s)$ using the coefficients of the row just above the row of zeros.
+
+2. Take the derivative of the Auxiliary Polynomial with respect to $s$.
+
+3. Replace the row of zeros with the coefficients of the resultant equation $\dv{A(s)}{s}$.
+
+4. Carry on the Routh test in the usual manner with the newly formed tabulation.
+
+#### Example 1
+
+#### Example 2
+
+<!-- ! some other bs idk -->
+
+### Limitations of Routh-Hurwitz Criterion
+
+1. It is applicable if the characteristic equation is algebraic and all the coefficients are real.
+    - If any one of the coefficients of the characteristic equation is a complex number (i.e. $a_i \in \mathbb{C}$), or
+    - If the equation contains exponential functions of $s$, such as systems with time delays, this criterion cannot be applied.
+
+2. It offers information only on the absolute stability of the system and does not provide any information about the relative stability of the system. i.e. it does not say how closely the roots of the characteristic equation are located to the imaginary axis of the s-plane.
 
 ## Relative Stability Analysis
+
+Although, normally we do not analyse the relative stability of a system using the Routh-Hurwitz criterion, it is possible to do, but with an extra computational burden.
+
+The procedure is described as follows:
+
+1. Substitute $s$ with $s = \hat{s} - \sigma$, where $\sigma$ is a constant, into the characteristic equation of the system.
+
+2. Write the polynomial in terms of $\hat{s}$ and apply the Routh-Hurwitz criterion to the new polynomial in $\hat{s}$.
+
+3. The number of sign changes in the first column of the array developed for the new polynomial in $\hat{s}$ is equal to the number of roots that are located to the right of the vertical line $s=-\sigma$.
+
+4. Thus, this test reveals the number of roots that lie to the right of the vertical line $s=-\sigma$.

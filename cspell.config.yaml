@@ -45,3 +45,4 @@ enableFiletypes:
   - gitignore
   - lua
   - typst
+  - quarto
