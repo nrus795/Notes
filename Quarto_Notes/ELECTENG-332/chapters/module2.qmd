@@ -1,3 +1,5 @@
 # Mathematical Modeling of Dynamic Systems
 
 ## Learning Outcomes {.unnumbered}
+
+After completing this module, you should be able to:

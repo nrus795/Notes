@@ -1,3 +1,466 @@
 # Time Domain Analysis of Linear Systems: Time Domain Specifications
 
 ## Learning Outcomes {.unnumbered}
+
+After completing this module, you should be able to:
+
+1. Understand the concepts of Transient and Steady-State Responses.
+
+2. Know the Typical input signals used for time domain analysis.
+
+3. Compute various time domain specifications such as rise time, peak time, peak overshoot etc. for an underdamped second order control system.
+
+## Transient and Steady-State Response
+
+It is to be of note that: Systems with energy storage elements (i.e. dynamic systems) can not respond instantaneously and will exhibit transient responses whenever they are subjected to inputs or disturbances. 
+
+The time response $c(t)$ of a control system is usually divided into two parts: [the transient response]{color=red} and [the steady-state response]{color=red}. 
+
+Thus, the total response is given by:
+
+$$
+	\textcolor{blue}{c(t) = c_{tr}(t) + c_{ss}(t)}
+$$
+
+where $c_{tr}(t)$ is the transient response and $c_{ss}(t)$ is the steady-state response.
+
+Transient response is defined as the part of the response that goes to zero as time "becomes large" or rather goes to infinity. Therefore, $c_{tr}(t)$ has the property of
+
+$$
+	\textcolor{red}{\lim\limits_{t \to \infty} c_{tr}(t) = 0}
+$$
+
+The definition of the steady state, however, has not been entirely standardized. In circuit analysis/theory, it is sometimes useful to define a steady-state variable as being a constant with respect to time. 
+
+In control systems, however, the steady-state response is simply the fixed response when time reaches infinity. When a response reaches steady state, it can still vary with time.
+
+For example, a sine wave is considered as a steady-state response because its behavior is fixed for any time interval, as when time approaches infinity. Similarly, if a response is described by $c(t) = t$, it may be defined as a steady-state response.
+
+## Test Signals for Time Domain Analysis
+
+### [Why is there a need for Test Signals?]{color=red}
+
+The input excitation to many practical control systems are not known ahead of time; unlike many electrical circuits and communication systems. 
+
+In many cases, the actual inputs of a control system may vary in random fashions with respect to time.
+
+- For instance, in a radar tracking system, the position and speed of the target to be tracked may vary in an unpredictable manner, so that they cannot be expressed deterministically by a mathematical expression.
+
+This is a major problem for designers, since it is difficult to design the control system so that it will perform satisfactorily to any possible input signal. 
+
+[For the purposes of analysis and design, it is necessary to assume some basic types of input functions so that the performance of a system can be evaluated with respect to these test signals.]{color=red}
+
+By selecting these basic test signals properly, not only the mathematical treatment of the problem is systemized, but the responses due to these inputs allow the prediction of the system's performance to other more complex inputs.
+
+In a design problem, performance criteria may be specified with respect to these test signals so that a system may be designed to meet these criteria.
+
+The general form of the signals used for time domain analysis can be expressed as:
+
+$$
+	\textcolor{blue}{r(t) = At^n; \quad R(s) = \dfrac{n!A}{s^{n+1}}}
+$$
+
+When $n=0$, this corresponds to a step signal, when $n=1$, this represents a ramp signal, and when $n=2$, this corresponds a parabolic signal.
+
+It is to be of note, however, that from the step function to the parabolic function, the signals become progressively faster with respect to time.
+
+1. The step function is very useful as a test signal, since its initial instantaneous jump in amplitude reveals a great deal about a system's quickness to respond.
+
+2. The ramp function has the ability to test how the system would respond to a signal that changes linearly with time.
+
+3. The parabolic function is one degree faster than the ramp function. In practice, we seldom find it necessary to use a test signal faster than a parabolic function.
+
+### [Step Input]{color=red}
+
+Frequently the performance characteristics of a control system are specified in terms of transient response to a unit-step input. This is because:
+
+1. They are easy to generate.
+
+2. Its initial instantaneous jump in amplitude reveals a great deal about a system's quickness to respond
+
+3. Also, since the step function has, in principle, a wide band of frequencies in its spectrum, as a result of the jump discontinuity, as a test signal it is equivalent to the application of numerous sinusoidal signals with a wide range of frequencies.
+
+<!-- ! add definition of the input signal here, cus it was forgotten... -->
+
+### [Ramp Input]{color=red}
+
+The ramp function is a signal that changes constantly with respect to time. 
+
+Mathematically, a ramp function is represented by
+
+$$
+	\textcolor{blue}{r(t) = At}
+$$
+
+where $A$ is a real constant.
+
+The ramp function has the ability to test how the system would respond to a signal that changes linearly with time.
+
+### [Parabolic Input]{color=red}
+
+The parabolic function represents a signal that is one order faster than the ramp function. 
+
+Mathematically, a parabolic function is represented by
+
+$$
+	\textcolor{blue}{r(t) = \dfrac{At^2}{2}}
+$$
+
+where $A$ is a real constant. Note that the factor of $\dfrac{1}{2}$ is added for mathematical convenience; because the Laplace transform of $r(t)$ becomes $\dfrac{A}{s^3}$.
+
+Note: From the step function to the parabolic function, the signals become progressively faster with respect to time.
+
+## Time Domain Analysis of First Order System
+
+Consider a first order system without a zero shown in Figure 1
+
+<!-- ! skipped due to time -->
+
+This is a generic first order system, and may represent an R-L circuit, R-C circuit, a simple thermal system and so on. The relationship between the input and output is given by
+
+$$
+	\dfrac{C(s)}{R(s)} = \dfrac{1}{Ts+1}
+$${#eq-generic-first-order-system}
+
+Eqn(@eq-generic-first-order-system) can alternately be expressed as:
+
+$$
+	\dfrac{C(s)}{R(s)} = \dfrac{1/T}{s+1/T} = \dfrac{a}{s+a} \qcomma \qqtext{where} a = \dfrac{1}{T}
+$${#eq-reexpressed-first-order-system}
+
+The block diagram, corresponding to the system in Eqn(@eq-reexpressed-first-order-system), is shown in Figure 2a and the pole location is shown in the s-plane in Figure 2b.
+
+<!-- ! skipped due to time -->
+
+The step response of this system, i.e. when $R(s) = \dfrac{1}{s}$, is given by
+
+$$
+	C(s) = G(s)R(s) = \dfrac{a}{s(s+a)} = \dfrac{1}{s} - \dfrac{1}{s+a}
+$$
+
+Which in the time domain gives us:
+
+$$
+	c(t) = c_f(t) + c_n(t) = 1 - e^{-at}
+$$
+
+The step response of the first order system is shown in the Figure.
+
+<!-- ! skipped due to time -->
+
+### [Time Constant $T$ (or $\tau$)]{color=red}
+
+The time constant is defined as the time required for the step response to reach $63\%$ of its final value. It is denoted by $T$ or $\tau$.
+
+### Computation of Time Constant for a First Order System
+
+We Know that the step response of a first order system is given by
+
+$$
+	\textcolor{blue}{c(t) = 1 - e^{-at}}
+$$
+
+Let $T$ be the time when the response equals to 0.63. i.e. $c(T) = 0.63$. This implies
+
+$$
+	1 - e^{-aT} = 0.63 \implies aT = \ln\left({\dfrac{1}{0.37}}\right) = \ln(2.7027) \approx 1 \implies T \approx \dfrac{1}{a}
+$$
+
+Thus the time constant $T$ equals to
+
+$$
+	\textcolor{red}{T = \dfrac{1}{a}}
+$$
+
+### [Rise Time $T_r$]{color=red}
+
+The rise time is defined as the time required for the response to go from $10\%$ (0.1) to $90\%$ (0.9) of its final value. It is denoted by $T_r$.
+
+### Computation of Rise Time for a First Order System
+
+We Know that the step response of a first order system is given by
+
+$$
+	\textcolor{blue}{c(t) = 1 - e^{-at}}
+$$
+
+Let $t_0$ be the time when the response equals to 0.1. i.e. $c(t_0) = 0.1$. This implies
+
+$$
+	1 - e^{-at_0} = 0.1 \implies at_0 = \ln\left({\dfrac{10}{9}}\right) \approx 0.11 \implies t_0 \approx \dfrac{0.11}{a}
+$$
+
+Let $t_1$ be the time when the response equals to 0.9. i.e. $c(t_1) = 0.9$. This implies
+
+$$
+	1 - e^{-at_1} = 0.9 \implies at_1 = \ln(10) \approx 2.31 \implies t_1 \approx \dfrac{2.31}{a}
+$$
+
+Thus the [**rise time** $T_r$]{color=blue} equals to
+
+$$
+	\textcolor{red}{T_r = t_1 - t_0 \approx \dfrac{2.31}{a}-\dfrac{0.11}{a} = \dfrac{2.2}{a}}
+$$
+
+### [Settling Time $T_s$]{color=red}
+
+The settling time is defined as the time required for the response to reach and stay within, in our case, $2\%$ of its final value. It is denoted by $T_s$.
+
+### Computation of Settling Time for a First Order System
+
+We Know that the step response of a first order system is given by
+
+$$
+	\textcolor{blue}{c(t) = 1 - e^{-at}}
+$$
+
+Let $T_s$ be the time when the response equals to 0.98. i.e. $c(T_s) = 0.98$. This implies
+
+$$
+	1 - e^{-aT_s} = 0.98 \implies aT_s = \ln(50) \approx 3.91 \implies T_s \approx \dfrac{3.91}{a}
+$$
+
+Thus the [**settling time** $T_s$]{color=blue} equals to
+
+$$
+	\textcolor{red}{T_s = \dfrac{3.91}{a} \approx \dfrac{4}{a}}
+$$
+
+## DC Gain of a System
+
+This is the gain of the system when the input frequency is zero. Therefore it is also know as zero frequency gain of the system. It is the ratio of the magnitude of the steady state output to that of the constant input, provided the output is finite. This can be computed as follows:
+
+Consider the system with the transfer function
+
+$$
+	G(s) = \dfrac{C(s)}{R(s)} 
+$$
+
+If we apply a unity step input $R(s) = \dfrac{1}{s}$, the steady state value of the output becomes
+
+$$
+	\lim\limits_{t \to \infty} c(t) = \lim\limits_{s \to 0} sG(s)R(s) = \lim\limits_{s \to 0} sG(s)\dfrac{1}{s} = \lim\limits_{s \to 0} G(s)
+$${#eq-dc-gain}
+
+Since the input is a constant of magnitude unity (1), the steady state output is also the gain in the steady state; that is $G(0)$. Thus
+
+$$
+	\textcolor{red}{\mathrm{DC\ Gain} = \lim\limits_{s \to 0} G(s) = G(0)}
+$${#eq-dc-gain-from-ss}
+
+## Time Domain Analysis of Second Order System
+
+Consider a second order system shown in the Figure
+
+<!-- ! skipped due to time -->
+
+The closed loop transfer function of this system is given by
+
+$$
+	\textcolor{blue}{\dfrac{C(s)}{R(s)}=\dfrac{\omega_n^2}{s^2 + 2\zeta\omega_ns + \omega_n^2}}
+$$
+
+(The notes used $\xi$, incorrectly, but was always read as $\zeta$, which is the correct symbol used according to wikipedia)
+<!-- TODO reference that article -->
+
+The parameter $\textcolor{red}{\omega_n}$ is the [natural frequency]{color=red} of the second order system, and the parameter $\textcolor{red}{\zeta}$ is called the [damping ratio]{color=red}.
+
+The closed loop poles $\lambda_{1,2}$ are given by
+
+$$
+	\textcolor{red}{\lambda_{1,2} = -\zeta \omega_n \pm \omega_n \sqrt{\zeta^2 - 1}}
+$$
+
+The nature of the response of the system depends on the value of the damping ratio $\zeta$. The following discusses the step responses of this system for different cases.
+
+### [Case 1: $\zeta = 0$]{color=blue}
+
+- The closed loop poles are located at $\pm j\omega_n$.
+
+- The step response under this case will be sinusoidal with frequency $\omega_n$ and is expressed as:
+
+$$
+	c(t)=1-\cos(\omega_n t)
+$$
+
+- This type of response is called an [**undamped**]{color=red} response.
+
+<!-- ! figures skipped -->
+
+### [Case 2: $0 < \zeta < 1$]{color=blue}
+
+- The closed loop poles are located at $-\zeta \omega_n \pm j\omega_n\sqrt{1-\zeta^2}$.
+
+- The step response is a damped sinusoid with an exponential envelope whose time constant is equal to the reciprocal of the real part of the poles. It is expressed as:
+
+$$
+\begin{aligned}
+	c(t) &= 1 - \dfrac{1}{\sqrt{1-\zeta^2}}e^{-\zeta\omega_n t} \cos(\omega_d t + \phi); \qqtext{where} \\
+	\omega_d &= \omega_n \sqrt{1-\zeta^2}; \quad \phi = \tan^{-1}\left(\dfrac{\zeta}{\sqrt{1-\zeta^2}}\right)
+\end{aligned}
+$$
+
+- This type of response is called an [**under damped**]{color=red} response.
+
+<!-- ! figures skipped -->
+
+### [Case 3: $\zeta = 1$]{color=blue}
+
+- We have two closed loop poles which are real (i.e. $\lambda \in \mathbb{R}$) and are located at $-\zeta \omega_n$.
+
+- The step response under this case will be expressed as:
+
+$$
+\begin{aligned}
+	c(t) &= 1 - \zeta \omega_n t e^{-\zeta \omega_n t} - e^{-\zeta \omega_n t} \\
+	&= 1 - e^{-\zeta \omega_n t}(1+\zeta\omega_n t)
+\end{aligned}
+$$
+
+- This type of response is called a [**critically damped**]{color=red} response.
+
+<!-- ! figures skipped -->
+
+### [Case 4: $\zeta > 1$]{color=blue}
+
+- The two closed loop poles are real (i.e. $\lambda \in \mathbb{R}$) and are located at $-\zeta\omega_n \pm \omega_n \sqrt{\zeta^2 - 1}$ 
+
+- The step response under this case will be expressed as:
+
+$$
+	c(t)= 1- \mathrm{e}^{-(\zeta-\sqrt{\zeta^2-1})\omega_n t}
+$$
+
+- This type of response is called an [**over damped**]{color=red} response.
+
+## Transient (Time) Response Specifications: Some Notes
+
+Control systems are generally designed with damping less than one, i.e. oscillatory step response. 
+
+Higher-order control systems usually have a pair of complex conjugate poles with damping less than one which dominate over the other poles [**(dominant pole pairs)**]{color=red}.
+
+Thus the time response of second and higher-order control systems to a step input, is in general, of a [**damped oscillatory nature**]{color=red}.
+
+It is observed that the step response has a number of [**overshoots**]{color=red} and [**undershoots**]{color=red} with respect to the final steady state value.
+
+This type of response is expressed mathematically as:
+
+$$
+	\textcolor{blue}{c(t) = 1 - \dfrac{e^{-\zeta \omega_n t}}{\sqrt{1-\zeta^2}} \cos{(\omega_d t + \phi)}\qcomma} \qqtext{where} \textcolor{red}{\omega_d = \omega_n \sqrt{1-\zeta^2} \qcomma \phi = \tan^{-1}\left(\dfrac{\zeta}{\sqrt{1-\zeta^2}}\right)}
+$$
+
+The pole plot of the [**underdamped**]{color=red} second order system is shown in the figure
+
+<!-- ! skipped due to time -->
+
+This type of response is characterised by the following performance indicies:
+
+1. [Rise Time $T_r$]{color=red}
+
+2. [Peak Time $T_p$]{color=blue}
+
+3. [Peak Overshoot $M_p$]{color=red}
+
+4. [Settling Time $T_s$]{color=blue}
+
+5. [Steady State Error $e_{ss}$]{color=red}
+
+These indicies are qualitatively related to
+
+a. [How fast is the system? i.e. how fast it moves to follow the input?]{color=red}
+
+b. [How oscillatory the system is? (indicative of damping)]{color=blue}
+
+c. [How long does it take to practically reach the final value?]{color=red}
+
+[**Note:**]{color=red} [The various indicies are not independent of each other.]{color=blue}
+
+## Commonly Used Transient Response Specification
+
+### [Rise Time $T_r$]{color=red}
+
+- It is the time required for the response to rise from $10\%$ to $90\%$, $5\%$ to $95\%$, or $0\%$ to $100\%$ of its final value.
+
+- For underdamped, second-order systems, the $0\%$ to $100\%$ rise time is normally used. For overdamped systems, the $10\%$ to $90\%$ rise time is commonly used.
+
+- Analytically, it is expressed as
+
+$$
+	\textcolor{red}{T_r = \dfrac{1}{\omega_d} \tan^{-1}\left(\dfrac{\omega_d}{-\sigma_d} \right) = \dfrac{\pi - \theta}{\omega_d}}
+$$
+
+### [Peak Time $T_p$]{color=red}
+
+- It is the time required for the response to reach the first peak of the overshoot.
+
+- Analytically, it is expressed as
+
+$$
+	\textcolor{red}{T_p = \dfrac{\pi}{\omega_n \sqrt{1-\zeta^2}} = \dfrac{\pi}{\omega_d}}
+$$
+
+### [Maximum (percent) Overshoot $\%OS$, or $M_p$]{color=red}
+
+- It is the maximum peak value of the response. It is defined by
+
+$$
+	\textcolor{blue}{M_p = \dfrac{c(t_p)-c(\infty)}{c(\infty)} \times 100\%}
+$$
+
+- Analytically, it is expressed as
+
+$$
+	\textcolor{red}{\%OS = e^{-\left(\dfrac{\pi\zeta}{\sqrt{1-\zeta^2}}\right)}}
+$$
+
+### [Settling Time $T_s$]{color=red}
+
+- It is teh time required for the response to reach and stay within either $2\%$ or $5\%$ of its final (steady-state) value. Commonly it is expressed as:
+
+$$
+	\textcolor{red}{T_s = 4T = \dfrac{4}{\sigma_d} = \dfrac{4}{\zeta \omega_n} \quad \text{(2\% criterion)}} 
+$$
+
+$$
+	\textcolor{red}{T_s = 3T = \dfrac{3}{\sigma_d} = \dfrac{3}{\zeta \omega_n} \quad \text{(5\% criterion)}}
+$$
+
+## Correlation Between Pole Locations with Time Domain Specifications
+
+1. The radial distance from the origin to the pole is the natural frequency $\omega_n$.
+
+2. The damping ratio $\zeta$ is equal to $\cos(\theta)$, i.e. $\cos(\theta) = \zeta$.
+
+3. We know that the peak time and settling time are
+
+$$
+	\textcolor{red}{T_p = \dfrac{\pi}{\omega_n \sqrt{1-\zeta^2}} = \dfrac{\pi}{\omega_d} \qquad T_s = \dfrac{4}{\zeta\omega_n} = \dfrac{4}{\sigma_d}}
+$$
+
+where $\omega_d$ is the imaginary part of the pole and is called the damped frequency of oscillation, and $\sigma_d$ is the magnitude of the real part of the pole and is the exponential damping frequency.
+
+4. Thus [$T_p$ is inversely proportional to the imaginary part of the pole]{color=red}.
+
+5. [$T_s$ is inversely proportional to the real part of the pole]{color=blue}.
+
+## Examples: Time Domain Specifications
+
+<!-- ! skipped -->
+
+## Effects of Changing Exponential Damping Frequency $\omega_d$ \& Damped Frequency $\sigma_d$ on Time Response
+
+- The poles are located at $\textcolor{blue}{-\sigma_d \pm j\omega_d}$. The peak time $T_p$ and settling time $T_s$ are
+
+$$
+	\textcolor{red}{T_p = \dfrac{\pi}{\omega_d}, \qand T_s = \dfrac{4}{\sigma_d}}
+$$
+
+1. Vary $\omega_d$ and fix $\sigma_d$. The frequency of oscillation and the peak time change; but the settling time remains unchanged.
+
+2. Vary $\sigma_d$ and fix $\omega_d$. The frequency of oscillation and the peak time remain unchanged; but the settling time changes.
+
+3. Vary the natural frequency $\omega_n$ and fix $\zeta$. The percentage overshoot remains unchanged; but the settling time changes.
+
+4. Thus $T_p$ is inversely proportional to the imaginary part of the pole.
+
+5. $T_s$ is inversely proportional to the real part of the pole.

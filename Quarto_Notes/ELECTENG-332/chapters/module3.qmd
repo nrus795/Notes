@@ -1,3 +1,5 @@
 # The Block Diagram Representation \& Characteristics of Feedback Systems
 
 ## Learning Outcomes {.unnumbered}
+
+After completing this module, you should be able to:

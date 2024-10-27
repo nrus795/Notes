@@ -2,7 +2,7 @@
 
 ## Learning Outcomes {.unnumbered}
 
-By the end of this module, you should be able to:
+After completing this module, you should be able to:
 
 1. Understand the uniqueness of the exponential function
 
