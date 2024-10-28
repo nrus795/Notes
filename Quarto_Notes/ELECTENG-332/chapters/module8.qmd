@@ -1,0 +1,80 @@
+# Frequency Domain Analysis of Linear Systems
+
+## Learning Outcomes {.unnumbered}
+
+After completing this module, you should be able to:
+
+- Analytically compute the frequency response of a second order system
+
+- Determine various frequency domain specifications such as bandwidth, resonant frequency etc.
+
+- Correlate the frequency domain specifications with time domain response.
+
+## What is the Frequency Response of a System?
+
+The frequency Response of a system is the steady state response of the system to a sinusoidal input. 
+
+Define: Frequency Range, Amplitude
+
+1. Apply one frequency
+
+2. Study resulting response to make a valid amplitude and phase
+
+3. Repeat with another frequency
+
+
+For linear systems, the frequency of input and output signals remains the same. i.e. in linear systems, energy transfer from input to output occurs at the **same frequency**, while the ratio of magnitude of output signal to the input signal and the phase between the two signals may change.
+
+## Root Locus Method vs. Frequency Response Method
+
+::::{layout-ncol="2" layout-valign="top"}
+
+:::{#first-column}
+**Advantages of the Root Locus Method:**
+
+- Good indicator of transient response
+- Explicitly shows location of all closed-loop poles
+- Trade-offs in the design are fairly clear
+
+:::
+
+:::{#second-column}
+**Disadvantages of the Root Locus Method:**
+
+- Requires a transfer function model (poles and zeros);
+- Difficult to infer all performance metrics;
+- Hard to determine response to steady-state (sinusoids)
+- Hard to infer stability margins
+
+:::
+
+::::
+
+Advantages of the Frequency Response Method:
+
+- Frequency response methods are a good complement to the root locus techniques
+- Can infer performance and stability from the same plot
+- Can use measured data rather than a transfer function model
+- Design process can be independent of the system order
+- Time delays are handled correctly
+- Graphical techniques (analysis and synthesis) are quite simple
+
+## Computing Steady State Response of a Linear System to a Sinusoidal Input
+
+### Example
+
+## Frequency Response of Closed Loop Systems
+
+## Frequency Domain Characteristics \& Specifications
+
+## A Second Order System: $M_r$, $\omega_r$, and BW
+
+## Frequency Domain Analysis of Linear Systems
+
+### Examples
+
+#### Example 1
+
+#### Example 2
+
+#### Example 3

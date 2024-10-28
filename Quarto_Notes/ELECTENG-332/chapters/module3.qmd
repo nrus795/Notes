@@ -244,8 +244,9 @@ c. Possibility of instability. This may mean undesired/persistent oscillations o
 Before we begin, let us first find the input-output relation in a feedback system. The block diagram of a feedback system is shown below.
 
 <!-- To be updated with higher res/embedded diagram -->
-
-![](images/feedback-block-diagram-from-notes.png)
+:::{#fig-feedback-diagram fig-align="center" fig-pos="h!"}
+![](images/feedback-block-diagram-from-notes.png){width=50%}
+:::
 
 From the schematic, the relation between the output and input is computed as:
 
@@ -528,66 +529,64 @@ Thus we can make [the output track the input]{color=red} even if [we do not know
 
 ## Advantages and Disadvantages of Closed Loop Control
 
+:::: {layout=[[50,-5,50,-1]] layout-valign="top" fig-pos="h!"}
+
+::: {#first-column}
 [**Advantages of a Closed Loop Control System:**]{color=red}
 
-1. Closed loop control systems are [more accurate even in the presence of non-linearity]{color=red}.
-
-2. Highly accurate as any error arising is corrected due to the presence of the feedback signal.
-
+1. [More accurate even in the presence of non-linearity]{color=red}.
+2. Highly accurate as any error is corrected due to the presence of the feedback signal.
 3. [Bandwidth range is large]{color=blue}.
-
-4. Facilitates automation. (See the Industrial Automation section of COMPSYS-303)
-
+4. Facilitates automation. 
 5. The sensitivity of the system may be made small to make the system more stable.
-
 6. The system is [less affected by noise.]{color=red}
 
+:::
 
+::: {#second-column}
 [**Disadvantages of a Closed Loop Control System:**]{color=red}
 
-1. They are more expensive, more complex, complicated and harder to design and hence, require more maintenance.
+1. Costly to implement
+2. Complexity is increased.
+3. More maintenance is required.
+4. Feedback can lead to oscillations.
+5. Feedback reduces overall gain.
+6. [Stability is the most major problem]{color=red} and more care is needed to design a stable closed loop system.
 
-2. Feedback can lead to an unwanted oscillatory response.
+:::
 
-3. Overall gain is reduced due to the presence of feedback.
-
-4. [Stability is the most major problem]{color=red} and more care is needed to design a stable closed loop system.
+::::
 
 
 ### Comparison Between Open Loop and Closed Loop Control
 
+:::: {layout=[[1,1]] fig-pos="H"}
+
+::: {#first-column}
 [**Open Loop Control**]{color=red}
 
 1. The feedback element is absent.
-
 2. An error detector is not present.
-
 3. Easy to construct.
-
 4. Have small bandwidth
-
 5. Often Stable.
-
 6. Less maintenance.
-
 7. Often unreliable.
+:::
 
+::: {#second-column}
 [**Closed Loop Control**]{color=red}
 
 1. The feedback element is present.
-
 2. An error detector is always present.
-
 3. Complicated construction.
-
 4. Have large bandwidth.
-
 5. May become unstable.
-
 6. More maintenance.
-
 7. Reliable.
+:::
 
+::::
 
 ## Summary of Important Characteristics of a Feedback System
 
