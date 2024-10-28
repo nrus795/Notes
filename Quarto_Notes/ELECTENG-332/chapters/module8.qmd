@@ -50,7 +50,7 @@ For linear systems, the frequency of input and output signals remains the same. 
 
 ::::
 
-Advantages of the Frequency Response Method:
+**Advantages of the Frequency Response Method:**
 
 - Frequency response methods are a good complement to the root locus techniques
 - Can infer performance and stability from the same plot
