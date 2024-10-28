@@ -3,3 +3,600 @@
 ## Learning Outcomes {.unnumbered}
 
 After completing this module, you should be able to:
+
+1. Understand the Basic advantages of closed-loop control system compared to open loop control system.
+
+2. Understand the Sensitivity reduction due to parameter variations.
+
+3. Understand the Reduction of effects of noise due to feedback.
+
+4. Understand the Control of transient response (speed) by feedback.
+
+## Introduction to the Block Diagram Representation
+
+A typical control systems is often complex and consists of interconnection of several components/elements which are practically nonlinear. Although, their input-output behaviour can be approximated by linear differential equations, it is difficult to derive the complete behaviour of a complex control system via a single equation or function. Therefore, it is always desirable to represent the dynamics of each of the components separately, and then connect them together to represent the whole system. This is the motivation of block diagram representation of control systems where each component of the control system is represented with a block.
+
+**Advantages:**
+
+1. Possible to represent a complex system by merely connecting the blocks of the components according to the signal flow.
+
+2. The contribution of each component to the overall system performance can be evaluated.
+
+3. It becomes easier to visualize the the functional operation of the system by examining the block diagram.
+
+4. The overall transfer function can easily be computed.
+
+**Disadvantages:**
+
+1. No information about the physical construction of the system can be obtained. Therefore, a block diagram may represent many dissimilar and unrelated systems
+
+2. The main source of energy is not explicitly shown.
+
+3. The same system can be represented by different block diagrams.
+
+## Basic Elements of Block Diagrams
+
+A block diagram essentially has three basic elements: the **block**, the **summing point** and the **junction or pick-off/take-off point**. In the following we will discuss each of these elements.
+
+### The Block
+
+A block is used to represent the proportional relationship between two Laplace transformed signals which are the input and output of the block. The proportionally function is the transfer function or transmittance which relates the incoming and outgoing signals of the block. Thus, each of the individual blocks is the symbolic representation of the transfer function of a particular component of the control system (i.e. a piece of a larger puzzle). The complete control system is represented by the interconnection of required number of blocks. The steps of for block diagram representation are as follows:
+
+1. Express the dynamics of each component by linear differential equations.
+
+2. Take the Laplace transform ($\mathcal{L}$) of these differential equations. This converts these into the s-domain, meaning that they are now algebraic equations in terms of the complex frequency variable $s$.
+
+3. Select the input and output variable of each component.
+
+4. Compute the transfer function of each component. This is defined as the ratio of the Laplace transform of the output and the input under zero initial conditions.
+
+5. Represent this transfer function in block form.
+
+Note that for each block, the input may be regarded as the "cause", and the output as the "effect". Since the "effect" cannot produce the "cause", [the block diagram is **"unidirectional"**]{color=red}. The transfer function $G(s)$ relates the Laplace transform $Y(s)$ of the output $y(t)$ to the laplace transform $X(s)$ of the input $x(s)$ through the relationship:
+
+$$
+	Y(s) = G(s)X(s)
+$$
+
+Main Block Diagram Rule
+:	*The output signal of a block is the product of the transfer function of the given block and the input signal of the block.*
+
+### The Summing Point
+
+The summing point is used to represent the addition or subtraction of signals. It can have any number of incoming signals. However, it can only have one outgoing signal. The algebraic sign of each incoming signal is shown next to the arrowhead of this signal.
+
+<!-- ! later lmao -->
+
+### The Junction or Pick-off/Take-off Point
+
+The junction or pick-off/take-off point is the point in the block diagram where the same signal goes to more than one place. This is shown by a circle at the intersection where the signal splits. 
+
+<!-- ! lol another short section due to diagrams -->
+
+## Modelling of an Armature Controlled DC Motor
+
+<!-- ! too complex to do myself skipping so i can copy paste later -->
+
+Consider an armature controlled D.C. Motor shown in the figure above, where:
+
+$R_a$ is the resistance of the armature ($\unit{\ohm}$). $L_a$ is the inductance of the armature ($\unit{\henry}$). $i_a$ is the armature current ($\unit{\ampere}$). $i_f$ is the field current ($\unit{\ampere}$). $e_a$ is the applied armature voltage ($\unit{\volt}$). $e_b$ is the back emf ($\unit{\volt}$). $T_m$ is the mechanical torque developed by the motor ($\unit{\newton\meter}$). $T_d$ is the disturbance torque ($\unit{\newton\meter}$). $\theta$ is the angular displacement of the motor shaft and load referred to the motor shaft ($\unit{\radian}$). $J$ is the equivalent moment of inertia of the motor and load referred to the motor shaft ($\unit{\kilogram\meter^2}$). $f_0$ is the equivalent viscous friction coefficient of the motor and load referred to the motor shaft ($\left(\dfrac{\unit{\newton\meter}}{\unit{\radian\per\second}}\right)$).
+
+When DC motors are used for servo applications, their operation is restricted in the linear range of the magnetization curve. The air gap flux $\phi$ is therefore proportional to the field current i.e. 
+
+$$
+	\phi = K_f i_f
+$${#eq-armature-controlled-dc-motor-flux}
+
+where $K_f$ is a constant.
+
+The Torque $T_m$ developed by the motor is proportional to the product of the armature current $i_a$ and the air gap flux $\phi$, i.e.
+
+$$
+	T_m \propto \phi i_a \implies T_m = K_1 K_f i_f i_a
+$${#eq-armature-controlled-dc-motor-torque}
+
+Since in an armature controlled DC motor, the field current is kept constant, eqn(@eq-armature-controlled-dc-motor-torque) can be written as:
+
+$$
+	T_m = K_T i_a
+$${#eq-armature-controlled-dc-motor-torque-constant}
+
+where $K_T = K_1 K_f i_f$, and is called the motor torque constant.
+
+The motor back emf is proportional to the speed and is given as
+
+$$
+	e_b = K_b \dv{\theta}{t}
+$${#eq-armature-controlled-dc-motor-back-emf}
+
+where $K_b$ is the back emf constant.
+
+Note that the DC motor is an electro-mechanical system. This means it has both electrical and mechanical dynamics.
+
+The electrical dynamics of the DC motor associated with the armature circuit is given by
+
+$$
+	R_a i_a + L_a \dv{i_a}{t} + e_b = e_a \qqtext{where} e_b = K_b \dv{\theta}{t}
+$${#eq-armature-controlled-dc-motor-electrical-dynamics}
+
+The mechanical dynamics of the DC motor is given by
+
+$$
+	J \dv[2]{\theta}{t} + f_0 \dv{\theta}{t} + T_d = T_m \qqtext{where} T_m = K_T i_a
+$${#eq-armature-controlled-dc-motor-mechanical-dynamics}
+
+Taking the Laplace transform of eqn(@eq-armature-controlled-dc-motor-torque-constant), eqn(@eq-armature-controlled-dc-motor-back-emf), eqn(@eq-armature-controlled-dc-motor-electrical-dynamics) and eqn(@eq-armature-controlled-dc-motor-mechanical-dynamics) with the assumption of zero initial conditions gives
+
+$$
+\begin{aligned}
+	\mathcal{L}\left[T_m \right] = K_T \mathcal{L}\left[ i_a \right] &\implies T_m(s) = K_TI_a(s) \\
+	\mathcal{L}\left[e_b \right] = K_b \mathcal{L}\left[\dv{\theta}{t} \right] &\implies E_b(s) = K_bs \theta(s) \\
+	\mathcal{L}\left[R_ai_a \right] + \mathcal{L}\left[L_a\dv{i_a}{t}\right] + \mathcal{L}\left[e_b\right] = \mathcal{L}\left[e_a\right] &\implies (L_as + R_a)I_a(s) = E_a(s) - E_b(s) \\
+	\mathcal{L}\left[J\dv[2]{\theta}{t}\right] + \mathcal{L}\left[f_0 \dv{\theta}{t}\right] + \mathcal{L}\left[T_d\right] = \mathcal{L}\left[T_m\right] &\implies (Js^2+f_0s)\theta(s) = T_m(s) - T_d(s)
+\end{aligned}
+$${#eq-armature-controlled-dc-motor-laplace-transformed}
+
+<!-- ! some bs about the block diagrams of each eqn -->
+
+From the complete block diagram, if the torque disturbance $T_d(s) = 0$, then the transfer function between the angular position and the armature voltage is given by
+
+$$
+	G(s) = \dfrac{\theta(s)}{E_a(s)} = \dfrac{K_T}{s[(R_a + L_a s)(Js + f_0) + K_T K_b]}
+$${#eq-armature-controlled-dc-motor-transfer-function}
+
+If the armature circuit inductance $L_a$ is neglected, then the transfer function in eqn(@eq-armature-controlled-dc-motor-transfer-function) simplifies to
+
+$$
+	G(s) = \dfrac{\theta(s)}{E_a(s)} = \dfrac{\dfrac{K_T}{R_a}}{Js^2 + s\left(f_0 + \dfrac{K_T K_b}{R_a}\right)}
+$${#eq-armature-controlled-dc-motor-transfer-function-no-inductance}
+
+The term $f_0 + \dfrac{K_T K_b}{R_a}$ indicates that due to back emf, the effective damping (viscous friction) of the system increases. Let us us define the effective viscous friction as:
+
+$$
+	f = f_0 + \dfrac{K_T K_b}{R_a}
+$$
+
+Then the transfer function in eqn(@eq-armature-controlled-dc-motor-transfer-function-no-inductance) reduces to
+
+$$
+	\dfrac{\theta(s)}{E_a(s)} = \dfrac{\dfrac{K_T}{R_a}}{s(Js + f)}
+$${#eq-armature-controlled-dc-motor-transfer-function-effective-friction}
+
+The transfer function in eqn(@eq-armature-controlled-dc-motor-transfer-function-effective-friction) can be expressed in the form
+
+$$
+	\dfrac{\theta(s)}{E_a(s)} = \dfrac{K_m}{s(s\tau_m + 1)}
+$${#eq-armature-controlled-dc-motor-transfer-function-standard}
+
+where $K_m = \dfrac{K_T}{f R_a}$ is the motor gain constant, and $\tau_m = \dfrac{J}{f}$ is the motor time constant.
+
+## Simple Rules of Block Diagram Reduction
+
+The pictorial representation of a complex control system with several interconnected components by block diagram can provide better physical insight about the structure of the control system represented. If the various components of the system are non-interacting, i.e. there is no loading effect of one component on another, then it is possible to obtain the overall transfer function of the system by algebraically manipulating the block diagram using some simple rules of block diagram transformations.
+
+### Serially/Cascade Connected Blocks
+
+> When the blocks are connected in series/cascade, then the overall transfer function of all the blocks in this way, is the multiplication of the transfer functions of the individual blocks. i.e.
+
+$$
+\begin{aligned}
+	\text{If } G_1(s), G_2(s), \ldots, G_n(s) & \text{ are connected in series, then:} \\
+	\forall i \in \mathbb{N}\qcomma G(s) &= \prod\limits_{i=1}^{n} G_i(s)
+\end{aligned}
+$$
+
+Where $\mathbb{N} \equiv \{1, 2, \ldots, n\}$, i.e. the set of natural numbers, and $G(s)$ is the overall transfer function of the system connected in series.
+
+<!-- ! some stupid figure -->
+
+### Parallel Connected Blocks
+
+> When the blocks are connected in parallel, then the overall transfer function of all the blocks in this way, is the sum of the transfer functions of the individual blocks. i.e.
+
+$$
+\begin{aligned}
+	\text{If } G_1(s), G_2(s), \ldots, G_n(s) & \text{ are connected in parallel, then:} \\
+	\forall i \in \mathbb{N}\qcomma G(s) &= \sum\limits_{i=1}^{n} \pm G_i(s)
+\end{aligned}
+$$
+
+Where $\mathbb{N} \equiv \{1, 2, \ldots, n\}$, i.e. the set of natural numbers, and $G(s)$ is the overall transfer function of the system connected in parallel.
+
+## Desired Properties of a Control System
+
+1. Accuracy
+
+2. Sensitivity: Any control system should be insensitive to internal disturbances but sensitive to input signals only.
+
+3. Noise: An undesired input signal is known as noise. A good control system should be able to reduce the effects of noise for better performance.
+
+4. Stability: It is an important characteristic of the control system. For the bounded input signal, the output must be bounded (BIBO Stability) and if the input is zero, then the output must be zero. Then, such a control system is said to be a stable system.
+
+5. Bandwidth: An operating frequency range decides the bandwidth of the control system. Bandwidth should be as large as possible for the frequency response of a good control system.
+
+6. Speed (Speed of Response): It is the time taken by the control system to achieve its stable output. A good control system possesses high speed. The transient period for such a system is very small.
+
+7. Oscillation: A small number of oscillations or constant oscillation of the output tend to indicate that the system is stable.
+
+## Characteristics of Feedback Systems
+
+Some of the beneficial effects of feedback with high loop gain are:
+
+1. The controlled variable accurately follows the desired value.
+
+2. The effects of external disturbances on the controlled variable are significantly reduced.
+
+3. The effects of variations of process and controller parameters is reduced.
+	i. These variations occur due to wear, aging, environmental changes, etc.
+
+4. The speed of response can be improved.
+
+The cost of achieving these improvements includes:
+
+a. Greater system complexity.
+
+b. Need for much larger forward path gain
+
+c. Possibility of instability. This may mean undesired/persistent oscillations of the output variable.
+
+## What is Feedback and What are its Effects?
+
+Before we begin, let us first find the input-output relation in a feedback system. The block diagram of a feedback system is shown below.
+
+<!-- To be updated with higher res/embedded diagram -->
+
+![](images/feedback-block-diagram-from-notes.png)
+
+From the schematic, the relation between the output and input is computed as:
+
+$$
+	\textcolor{blue}{C(s) = G(s)E(s)}\qcomma \qqtext{where} \textcolor{red}{E(s) = R(s) - B(s) = R(s) - C(s)H(s)}
+$$
+
+Simple algebraic manipulation gives:
+
+$$
+\begin{aligned}
+	C(s) &= G(s)E(s) \\
+	&= G(s)[R(s) - C(s)H(s)] \\
+	&= G(s)R(s) - G(s)C(s)H(s) \\
+	\qor& C(s)[1 + G(s)H(s)] = G(s)R(s) \\
+    \text{Therefore} & \qcomma \dfrac{C(s)}{R(s)} = \dfrac{G(s)}{1+G(s)H(s)} 
+\end{aligned}
+$$
+
+Using this basic relationship of the feedback system structure, we can uncover some of the significant effects of feedback.
+
+### Effects of Feedback on System Gain
+
+We can relate the input and output of a system *without* feedback as:
+
+$$
+	C(s) = G(s)R(s) \qqtext{or,} \dfrac{C(s)}{R(s)} = G(s)
+$$
+
+As computed previously, based on the schematic of a feedback system, the input-output relation is:
+
+$$
+\begin{aligned}
+	E(s) &= R(s) - B(s) = R(s) - C(s)H(s) \\
+	C(s) &= G(s)E(s) = G(s)[R(s) - C(s)H(s)] \\
+	\qqtext{or,} C(s) &= G(s)R(s) - G(s)C(s)H(s) \\
+	\qqtext{or,} C(s)&[1+G(s)H(s)] = G(s)R(s) \\
+	\qqtext{Therefore,} \dfrac{C(s)}{R(s)} &= \dfrac{G(s)}{1+G(s)H(s)}
+\end{aligned}
+$$
+
+Thus, the feedback affects the gain of the open loop system by a factor $1+G(s)H(s)$.
+
+### Effects of Feedback on Noise
+
+To know the effect of feedback on noise, let us compare the transfer functions with and without feedback due to the noise signal alone. Consider an open loop system with noise signal as shown below.
+
+<!-- ! skipped for time -->
+{{< placeholder >}}
+
+The output is expressed as:
+
+$$
+	C(s) = [G_a(s)R(s) + N(s)]G_b(s) = G_a(s)G_b(s)R(s) + G_b(s)N(s)
+$$
+
+The open loop transfer function due to noise alone can be obtained by making $R(s) = 0$ which gives:
+
+$$
+	\dfrac{C(s)}{N(s)} = G_b(s)
+$$
+
+Consider the closed loop system with noise signal as shown below.
+
+<!-- ! skipped for time -->
+{{< placeholder >}}
+
+The output is expressed as:
+
+$$
+	C(s) = [(R(s) - H(s)C(s))G_a(s) + N(s)]G_b(s) = [G_a(s)R(s) - G_a(s)H(s)C(s) + N(s)]G_b(s)
+$$
+
+Further simplification gives:
+
+$$
+\begin{aligned}
+	C(s) + G_a(s)G_b(s)H(s)C(s) &= G_a(s)G_b(s)R(s) + G_b(s)N(s) \\
+\text{or,} \quad C(s)[1+G_a(s)G_b(s)H(s)] &= G_a(s)G_b(s)R(s) + G_b(s)N(s)
+\end{aligned}
+$$
+
+Thus
+
+$$
+	\textcolor{red}{C(s) = \dfrac{G_a(s)G_b(s)}{1+G_a(s)G_b(s)H(s)}R(s) + \dfrac{G_b(s)}{1+G_a(s)G_b(s)H(s)}N(s)}
+$$
+
+The closed loop transfer function due to noise alone can be obtained by making $R(s) = 0$ which gives:
+
+$$
+	\dfrac{C(s)}{N(s)} = \dfrac{G_b(s)}{1+G_a(s)G_b(s)H(s)} N(s)
+$$
+
+This shows that in the closed loop control system, the gain due to the noise signal is decreased by a factor of $1+G_a(s)G_b(s)H(s)$. Note that, in most practical control systems, $(1+G_a(s)G_b(s)H(s))$ is greater than 1.
+
+### Effects of Feedback on Speed of Response
+
+#### Case 1: Open Loop System
+
+Consider an open loop system with
+
+$$
+	G(s) = \dfrac{C(s)}{R(s)} = \dfrac{K}{s+a}
+$$
+
+The impulse response of this system is given by
+
+$$	
+	\textcolor{blue}{c(t) = \mathcal{L}^{-1}\left[C(s)\right]} = \mathcal{L}^{-1}\left[\dfrac{K}{s+\textcolor{red}{a}}\right] = K\textcolor{red}{e^{-at}}
+$$
+
+The time constant of the system $\tau$ or $T$ associated with this mode of response equals to $\textcolor{red}{\dfrac{1}{a}}$.
+
+#### Case 2: Closed Loop System
+
+When the feedback loop is closed with unity feedback, then
+
+$$
+	\textcolor{blue}{G(s) = \dfrac{C(s)}{R(s)} = \dfrac{G(s)}{1+G(s)} = \dfrac{\dfrac{K}{s+a}}{1+\dfrac{K}{s+a}}} = \dfrac{K}{s+\textcolor{red}{(a+K)}}
+$$
+
+The impulse response of this system is given by
+
+$$	
+	\textcolor{blue}{c(t) = \mathcal{L}^{-1}\left[C(s)\right]} = \mathcal{L}^{-1}\left[\dfrac{K}{s+\textcolor{red}{a + K}}\right] = K\textcolor{red}{e^{-(a+K)t}}
+$$
+
+The time constant of the system $\tau$ or $T$ associated with this mode of response equals to $\textcolor{red}{\dfrac{1}{a+K}}$.
+
+### Effects of Feedback on Stability
+
+Consider the basic feedback system.
+
+The input output relation is given by:
+
+$$
+	\dfrac{C(s)}{R(s)} = \dfrac{G(s)}{1+G(s)H(s)}
+$$
+
+From this it is obvious that when $G(s)H(s) = -1$, the output of the system will be infinite for any finite input, and the system is said to be unstable. 
+
+Thus, Feedback can cause a system that is originally stable to become unstable.
+
+We will demonstrate that feedback can stabilize an unstable system.
+
+Let us introduce another feedback loop through a negative feedback gain $F(s)$ as shown. Then
+
+![](images/feedback-block-diagram-with-2-loop.png)
+
+$$
+	\dfrac{C(s)}{R(s)} = \dfrac{G(s)}{1+G(s)H(s) + G(s)F(s)}
+$$
+
+The overall system can be made stable by properly selecting the outer feedback gain $F(s)$.
+
+### Reduction of the Effects of Parameter Variations
+
+Let us define sensitivity on a quantitative basis. In the open loop case
+
+$$
+	C(s) = G(s)R(s)
+$$
+
+Suppose, due to parameter variations, [$G(s)$ changes to $[G(s) + \Delta G(s)]$]{color=red}.
+
+The output of the open-loop system therefore changes to
+
+$$
+	C(s) + \Delta C(s) = [G(s) + \Delta G(s)]R(s)\qcomma \qqtext{Thus} \textcolor{red}{\Delta C(s) = \Delta G(s)R(s)}
+$$
+
+Similarly in the closed loop case, the output is given by
+
+$$
+	C(s) = \dfrac{G(s)}{1+G(s)H(s)}R(s)
+$$
+
+Due to variation $\Delta G(s)$ in the forward path transfer function, this changes to
+$$
+	\textcolor{blue}{C(s) + \Delta C(s) = \dfrac{G(s) + \Delta G(s)}{1+[G(s) + \Delta G(s)]H(s)}R(s) = \dfrac{G(s) + \Delta G(s)}{1+G(s)H(s)+\Delta G(s)H(s)}R(s)}
+$$
+
+Since $\abs{G(s)} \gg \abs{\Delta G(s)}$, the variation in the output can be expressed as:
+
+$$
+	\textcolor{red}{\Delta C(s) = \dfrac{\Delta G(s)}{1+G(s)H(s)}R(s)}
+$$
+
+1. [**Open Loop System**]{color=blue}
+$$
+	\textcolor{red}{\Delta C(s) = \Delta G(s)R(s)}
+$$
+
+2. [**Closed Loop System**]{color=blue}
+
+$$
+	\textcolor{red}{\Delta C(s) = \dfrac{\Delta G(s)}{1+G(s)H(s)}R(s)}
+$$
+
+Thus, compared to the open loop system, the change in the output of the closed loop system due to variations in $G(s)$ is [reduced by a factor of $[1+G(s)H(s)]$]{color=red} which often much greater than unity or 1.
+
+### Sensitivity Reduction Due to Feedback
+
+The term [*system sensitivity*]{color=red} is used to describe the relative variation in the overall transfer function $T(s) = \dfrac{C(s)}{R(s)}$ due to variation in $G(s)$ and is defined as:
+
+$$
+	\textcolor{red}{\text{Sensitivity}} = \dfrac{\textcolor{blue}{\text{Percentage change in }T(s)}}{\textcolor{blue}{\text{Percentage change in }G(s)}}
+$$
+
+For a small incremental variation in $G(s)$, the sensitivity of $T$ with respect to $G$ is expressed quantitatively as:
+
+$$
+	\textcolor{red}{S^{T(s)}_{G(s)} = \pdv{T(s)/T(s)}{G(s)/G(s)} = \pdv{\ln{T(s)}}{\ln{G(s)}}}
+$$
+
+The sensitivity of the closed loop system is
+
+$$
+	\textcolor{blue}{S^{T(s)}_{G(s)} = \pdv{T(s)}{G(s)} \times \dfrac{G(s)}{T(s)} = \dfrac{(1+G(s)H(s))-G(s)H(s)}{(1+G(s)H(s))^2} \times \dfrac{G(s)}{\dfrac{G(s)}{1+G(s)H(s)}} = \dfrac{1}{1+G(s)H(s)}}
+$$
+
+The sensitivity of the open loop system is
+
+$$
+	\textcolor{red}{S^{T(s)}_{G(s)} = \pdv{T(s)}{G(s)} \times \dfrac{G(s)}{T(s)} = 1 \qcomma (\because \text{Here } T(s) = G(s))}
+$$
+
+Thus due to variations in $G(s)$, the sensitivity of the closed loop system is reduced by a factor of $1+G(s)H(s)$ compared to the open loop system. 
+
+The sensitivity of $T(s)$ with respect to the feedback sensor $H(s)$ is given as
+
+$$
+	\textcolor{red}{S^{T(s)}_{H(s)} = \pdv{T(s)}{H(s)} \times \dfrac{H(s)}{T(s)} = G(s)\left[\dfrac{-G(s)}{(1+G(s)H(s))^2} \right] \times \dfrac{H(s)}{\dfrac{G(s)}{1+G(s)H(s)}} = \dfrac{-G(s)H(s)}{1+G(s)H(s)}}
+$$
+
+This shows that for large values of $G(s)H(s)$ the sensitivity of the feedback system with respect to $H$ is unity. This implies that [changes in $H$ directly affect the system output]{color=blue}. Therefore, it is [important to use feedback elements]{color=red} [which remain substantially constant and do not vary with environmental changes]{color=blue}.
+
+
+Very often, we are interested to find the sensitivity of a system with respect to variation in a particular parameter or set of parameters.
+
+Let the transfer function of the system be expressed as
+
+$$
+	T(s) = \dfrac{N(s,\alpha)}{D(s,\alpha)}; \quad \alpha = \text{parameter under consideration}
+$$
+
+The sensitivity of $T(s)$ with respect to the parameter $\alpha$ is given by
+
+$$
+	\textcolor{red}{S^{T(s)}_{\alpha} = \pdv{\ln{N(s)}}{\ln{\alpha}}\Bigg|_{\alpha_0} - \pdv{\ln{D(s)}}{\ln{\alpha}}\Bigg|_{\alpha_0} = S^{N(s)}_{\alpha} - S^{D(s)}_{\alpha}}
+$$
+
+where $\alpha_0$ is the nominal value of the parameter around which variation occurs.
+
+To have a highly accurate open-loop system, the components of $G(s)$ must be selected to rigidly meet the specifications. 
+However, in a closed loop system, [$G(s)$ may be less rigidly specified,]{color=blue} [since the effects of parameter variations can be mitigated by use of feedback]{color=red}.
+Furthermore, however, a closed loop system requires [careful selection of components of the feedback sensor $H(s)$]{color=blue}.
+Note that $H(s)$ is often made up of measuring elements which operate at lower power levels and are less costly.
+
+### Effect of High Gain in a Feedback System
+
+It will be shown that using high gain in a feedback system can make the output track the input. 
+
+Consider a system with [gain $K$]{color=red}.
+
+The closed loop output ($C(s)$) and the error ($E(s)$) response can be expressed as:
+
+$$
+	C(s) = \dfrac{KG(s)}{1+KG(s)}R(s) \qcomma E(s) = \dfrac{1}{1+KG(s)}R(s)
+$$
+
+From these, it is obvious that as $K \to \infty$, $C(s) \to R(s)$ and $\textcolor{red}{E(s) \to 0}$.
+
+- Open Loop Gain: $\textcolor{blue}{\abs{KG(s)}\gg 1}$
+
+- Closed Loop Gain: $\textcolor{red}{\abs{\dfrac{KG(s)}{1+KG(s)}}\approx 1}$
+
+Thus we can make [the output track the input]{color=red} even if [we do not know the exact value of the open loop gain]{color=blue}.
+
+## Advantages and Disadvantages of Closed Loop Control
+
+[**Advantages of a Closed Loop Control System:**]{color=red}
+
+1. Closed loop control systems are [more accurate even in the presence of non-linearity]{color=red}.
+
+2. Highly accurate as any error arising is corrected due to the presence of the feedback signal.
+
+3. [Bandwidth range is large]{color=blue}.
+
+4. Facilitates automation. (See the Industrial Automation section of COMPSYS-303)
+
+5. The sensitivity of the system may be made small to make the system more stable.
+
+6. The system is [less affected by noise.]{color=red}
+
+
+[**Disadvantages of a Closed Loop Control System:**]{color=red}
+
+1. They are more expensive, more complex, complicated and harder to design and hence, require more maintenance.
+
+2. Feedback can lead to an unwanted oscillatory response.
+
+3. Overall gain is reduced due to the presence of feedback.
+
+4. [Stability is the most major problem]{color=red} and more care is needed to design a stable closed loop system.
+
+
+### Comparison Between Open Loop and Closed Loop Control
+
+[**Open Loop Control**]{color=red}
+
+1. The feedback element is absent.
+
+2. An error detector is not present.
+
+3. Easy to construct.
+
+4. Have small bandwidth
+
+5. Often Stable.
+
+6. Less maintenance.
+
+7. Often unreliable.
+
+[**Closed Loop Control**]{color=red}
+
+1. The feedback element is present.
+
+2. An error detector is always present.
+
+3. Complicated construction.
+
+4. Have large bandwidth.
+
+5. May become unstable.
+
+6. More maintenance.
+
+7. Reliable.
+
+
+## Summary of Important Characteristics of a Feedback System
+
+1. [Decreased Sensitivity]{color=red} of the system to variations in the process parameters.
+
+2. Improved [rejection of disturbances]{color=red}.
+
+3. Improved [measurement noise attenuation]{color=red}.
+
+4. Improved [reduction in steady state error]{color=red} of the system.
+
+5. Easy [control and adjustment of the transient response]{color=red} of the system.
