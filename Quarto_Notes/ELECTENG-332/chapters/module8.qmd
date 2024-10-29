@@ -61,6 +61,8 @@ For linear systems, the frequency of input and output signals remains the same. 
 
 ## Computing Steady State Response of a Linear System to a Sinusoidal Input
 
+The steady-state output of a transfer function system can be obtained directly from the sinusoidal transfer function. That is, the transfer function in which the laplace variable $s$ is replaced by $j\omega$, where $\omega$ is frequency.
+
 ### Example
 
 ## Frequency Response of Closed Loop Systems

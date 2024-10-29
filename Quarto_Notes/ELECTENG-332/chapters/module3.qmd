@@ -295,7 +295,6 @@ Thus, the feedback affects the gain of the open loop system by a factor $1+G(s)H
 To know the effect of feedback on noise, let us compare the transfer functions with and without feedback due to the noise signal alone. Consider an open loop system with noise signal as shown below.
 
 <!-- ! skipped for time -->
-{{< placeholder >}}
 
 The output is expressed as:
 
@@ -312,7 +311,6 @@ $$
 Consider the closed loop system with noise signal as shown below.
 
 <!-- ! skipped for time -->
-{{< placeholder >}}
 
 The output is expressed as:
 
