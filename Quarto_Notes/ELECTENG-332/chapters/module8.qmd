@@ -4,79 +4,401 @@
 
 After completing this module, you should be able to:
 
-- Analytically compute the frequency response of a second order system
+-   Analytically compute the frequency response of a second order system
 
-- Determine various frequency domain specifications such as bandwidth, resonant frequency etc.
+-   Determine various frequency domain specifications such as bandwidth, resonant frequency etc.
 
-- Correlate the frequency domain specifications with time domain response.
+-   Correlate the frequency domain specifications with time domain response.
 
 ## What is the Frequency Response of a System?
 
-The frequency Response of a system is the steady state response of the system to a sinusoidal input. 
+The frequency Response of a system is the steady state response of the system to a sinusoidal input.
 
 Define: Frequency Range, Amplitude
 
-1. Apply one frequency
+1.  Apply one frequency
 
-2. Study resulting response to make a valid amplitude and phase
+2.  Study resulting response to make a valid amplitude and phase
 
-3. Repeat with another frequency
-
+3.  Repeat with another frequency
 
 For linear systems, the frequency of input and output signals remains the same. i.e. in linear systems, energy transfer from input to output occurs at the **same frequency**, while the ratio of magnitude of output signal to the input signal and the phase between the two signals may change.
 
 ## Root Locus Method vs. Frequency Response Method
 
-::::{layout-ncol="2" layout-valign="top"}
-
-:::{#first-column}
+::::: {layout-ncol="2" layout-valign="top"}
+::: {#first-column}
 **Advantages of the Root Locus Method:**
 
-- Good indicator of transient response
-- Explicitly shows location of all closed-loop poles
-- Trade-offs in the design are fairly clear
-
+-   Good indicator of transient response
+-   Explicitly shows location of all closed-loop poles
+-   Trade-offs in the design are fairly clear
 :::
 
-:::{#second-column}
+::: {#second-column}
 **Disadvantages of the Root Locus Method:**
 
-- Requires a transfer function model (poles and zeros);
-- Difficult to infer all performance metrics;
-- Hard to determine response to steady-state (sinusoids)
-- Hard to infer stability margins
-
+-   Requires a transfer function model (poles and zeros);
+-   Difficult to infer all performance metrics;
+-   Hard to determine response to steady-state (sinusoids)
+-   Hard to infer stability margins
 :::
-
-::::
+:::::
 
 **Advantages of the Frequency Response Method:**
 
-- Frequency response methods are a good complement to the root locus techniques
-- Can infer performance and stability from the same plot
-- Can use measured data rather than a transfer function model
-- Design process can be independent of the system order
-- Time delays are handled correctly
-- Graphical techniques (analysis and synthesis) are quite simple
+-   Frequency response methods are a good complement to the root locus techniques
+-   Can infer performance and stability from the same plot
+-   Can use measured data rather than a transfer function model
+-   Design process can be independent of the system order
+-   Time delays are handled correctly
+-   Graphical techniques (analysis and synthesis) are quite simple
 
 ## Computing Steady State Response of a Linear System to a Sinusoidal Input
 
-The steady-state output of a transfer function system can be obtained directly from the sinusoidal transfer function. That is, the transfer function in which the laplace variable $s$ is replaced by $j\omega$, where $\omega$ is frequency.
+The steady-state output of a transfer function system can be obtained directly from the sinusoidal transfer function. That is, the transfer function in which the Laplace variable $s$ is replaced by $j\omega$, where $\omega$ is frequency.
+
+<!-- ! figure skipped -->
+
+Consider the stable, linear time-invariant system with transfer function $G(s)$ shown above. \
+The input and output of the system are denoted by $x(t)$ and $y(t)$, respectively. \
+If the input $x(t)$ is a sinusoidal signal, the steady-state output will also be a sinusoidal signal of the same frequency, but with possibly different magnitude and phase angle.
+
+Let us assume that the input signal is given by
+
+$$
+    x(t) = X \sin(\omega t)
+$$
+
+Suppose that the transfer function $G(s)$ can be written as a ratio of two polynomials in $s$ as:
+
+$$
+    G(s) = \dfrac{p(s)}{q(s)} = \dfrac{p(s)}{(s+p_1)(s+p_2)\cdots(s+p_n)}
+$$
+
+Without the loss of generality, it is assumed that the transfer function has only distinct poles located at $-p_1, -p_2, \cdots, -p_n$. The Laplace Transform of the output $Y(s)$ is expressed as:
+
+$$
+    Y(s) = G(s)X(s) = \dfrac{p(s)}{q(s)}X(s)
+$$
+
+It is worth noting that the steady-state response of a stable, linear, time-invariant system to a sinusoidal input does not depend on the initial conditions. (Thus, we can assume the zero initial condition.)
+
+The Laplace Transform of the input signal $x(t) = X \sin(\omega t)$ is given by
+
+$$
+    X(s) = \dfrac{\omega X}{s^2 + \omega^2}
+$$
+
+Hence,
+
+$$
+\begin{aligned}
+    Y(s) &= G(s)X(s) = G(s)\dfrac{\omega X}{s^2 + \omega^2} \\
+    &= \dfrac{a}{s+j\omega} + \dfrac{\bar{a}}{s-j\omega} + \dfrac{b_1}{(s+p_1)} + \dfrac{b_2}{(s+p_2)} + \cdots + \dfrac{b_n}{(s+p_n)} 
+\end{aligned}
+$$
+
+where $a$, and the $b_i$, ($i = 1, 2, \cdots, n$ aka $\forall i \in \mathbb{N}$) are constants and $\bar{a}$ is the complex conjugate of $a$.
+
+Thus, the inverse Laplace Transform ($\mathcal{L}^{-1}$) of $Y(s)$ gives the output response to a sinusoidal input
+
+$$
+    y(t) = ae^{-j\omega t} + \bar{a}e^{j\omega t} + b_1e^{-p_1t} + b_2e^{-p_2t} + \cdots + b_ne^{-p_nt}
+$$
+
+For a stable system, the poles lie in the left half of the $s$-plane. Therefore, as time approaches infinity, the terms $e^{-p_1t}, e^{-p_2t},\cdots e^{-p_nt}$ approach zero. i.e.
+
+$$
+    \lim\limits_{t \to \infty} e^{-p_it} = 0, \qqtext{where,} i = 1, 2, \cdots, n \equiv \forall i \in \mathbb{N}
+$$
+
+Thus, all the terms on the right hand side of the above equation, except the first two, drop out at steady state.
+
+The steady-state response of the system is therefore given by:
+
+$$
+    y_{ss}(t) = ae^{-j\omega t} + \bar{a}e^{j\omega t}
+$$
+
+Where the constants $a$ and $\bar{a}$ can be evaluated as:
+
+$$
+\begin{aligned}
+    a &= G(s) = \dfrac{\omega X}{s^2 + \omega^2}(s+j\omega) \Big|_{s = -j\omega} = \dfrac{XG(-j\omega)}{\complexnum[output-complex-root=j]{2j}} \\
+    \bar{a} &= G(s) = \dfrac{\omega X}{s^2 + \omega^2}(s+j\omega) \Big|_{s = +j\omega} = \dfrac{XG(+j\omega)}{\complexnum[output-complex-root=j]{2j}}
+\end{aligned}
+$$
+
+Since $G(j\omega)$ is a complex quantity, it can be written in the following form:
+
+$$
+    G(j\omega) = \abs{G(j\omega)}e^{j\phi}
+$$
+
+where $\abs{G(j\omega)}$ represents the magnitude and $\phi$ represents the angle of $G(j\omega)$ i.e.,
+
+$$
+    \phi = \angle G(j\omega) = \tan^{-1} \left[\dfrac{\text{Imaginary part of } G(j\omega)}{\text{Real part of } G(j\omega)} \right] \equiv \tan^{-1} \left[\dfrac{\Im(G(j\omega))}{\Re(G(j\omega))} \right]
+$$
+
+Also,
+
+$$
+    G(-j\omega) = \abs{G(-j\omega)}e^{-j\phi} = \abs{G(j\omega)}e^{-j\phi}
+$$
+
+The expression for the steady-state output can now be simplified as:
+
+$$
+\begin{aligned}
+    y_{ss}(t) &= ae^{-j\omega t} + \bar{a}e^{j\omega t} \\
+    &= X\abs{G(j\omega)}\dfrac{e^{j(\omega t + \phi)}-e^{-j(\omega t + \phi)}}{\complexnum[output-complex-root=j]{2j}} \\
+    &= X\abs{G(j\omega)}\dfrac{\exp(j(\omega t + \phi))-\exp(-j(\omega t + \phi))}{\complexnum[output-complex-root=j]{2j}} \\
+    &= X\abs{G(j\omega)} \sin(\omega t + \phi)\\
+    &= Y \sin(\omega t + \phi)
+\end{aligned}
+$$
+
+where $Y = X\abs{G(j\omega)}$.
+
+Thus, the input $x(t) = X \sin(\omega t)$ results in $y_{ss}(t) = Y \sin(\omega t + \phi)$. i.e.
+
+-   If a stable, linear, time-invariant system is excited by a sinusoidal input, then at stead-state, the output will be sinusoidal.
+-   The frequency of the output will be equal to that of the input
+-   But the amplitude and phase of the output will, in general, be different from those of the input.
+
+The amplitude of the output is given by the product of that of the input and $\abs{G(j\omega)}$, while the phase angle differs from that of the input by the amount $\phi = \angle G(j\omega)$.
+
+An example of input and output sinusoidal signals is shown below.
+
+<!-- ! figure skipped -->
+
+For sinusoidal inputs,
+
+$$
+    \abs{G(j\omega)} = \abs{\dfrac{Y(j\omega)}{X(j\omega)}}\qcomma G(j\omega) = \dfrac{Y(j\omega)}{X(j\omega)} \qand \angle G(j\omega) = \angle \dfrac{Y(j\omega)}{X(j\omega)}
+$$
+
+where $G(j\omega)$ is called the sinusoidal transfer function.
+
+The sinusoidal transfer function of any linear system is obtained by substituting $j\omega$ for $s$ in the transfer function of the system.
 
 ### Example
 
+Consider the system shown below
+
+<!-- !figure skipped -->
+
+The transfer function $G(s)$ is given by
+
+$$
+    G(s) = \dfrac{K}{1+Ts}
+$$
+
+For sinusoidal input $x(t) = X \sin(\omega t)$, the steady-state output $y_{ss}(t)$ can be found as follows:
+
+Substituting $j\omega$ for $s$ in $G(s)$ yields
+
+$$
+    G(j\omega) = \dfrac{K}{1+j\omega T}
+$$
+
+The amplitude ratio of the output to the input $\abs{G(j\omega)}$ and the phase angle $\phi$ is given by
+
+$$
+    \abs{G(j\omega)} = \dfrac{K}{\sqrt{1+\omega^2T^2}} \qand \phi = \angle G(j\omega) = -\tan^{-1}(\omega T)
+$$
+
+Thus, for the input $x(t) = X \sin(\omega t)$, the steady-state output $y_{ss}(t)$ is given by
+
+$$
+    y_{ss}(t) = \dfrac{XK}{\sqrt{1+\omega^2T^2}} \sin(\omega t - \tan^{-1}(\omega T))
+$$
+
+Note that for small values of $\omega$, the amplitude of the steady-state output $y_{ss}(t)$ is almost equal to $K$ times the amplitude of the input. The phase shift of the output is small for small values of $\omega$. For large $\omega$, the amplitude of the output is small and almost inversely proportional to $\omega$. The phase shift approaches $\SI{-90}{\degree}$ as $\omega$ approaches infinity. This is a phase-lag network.
+
 ## Frequency Response of Closed Loop Systems
 
-## Frequency Domain Characteristics \& Specifications
+The closed loop transfer function of a single loop feedback control system is expressed as:
+
+$$
+M(s) = \dfrac{C(s)}{R(s)} = \dfrac{G(s)}{1+G(s)H(s)}
+$$
+
+Under the sinusoidal steady state, $s=j\omega$ and the above equation becomes
+
+$$
+M(j\omega) = \dfrac{C(j\omega)}{R(j\omega)} = \dfrac{G(j\omega)}{1+G(j\omega)H(j\omega)}
+$$
+
+The sinusoidal steady-state transfer function $M(j\omega)$ may be expressed in terms of its magnitude and phase as:
+
+$$
+M(j\omega) = \abs{M(j\omega)} \angle M(j\omega) = M(\omega) \angle \phi_m (\omega)
+$$
+
+where
+
+$$
+M(\omega) = \abs{\dfrac{G(j\omega)}{1+G(j\omega)H(j\omega)}} \dfrac{\abs{G(j\omega)}}{\abs{1+G(j\omega)H(j\omega)}}
+$$
+
+$$
+\phi_m (j\omega) = \angle G(j\omega) - \angle 1+G(j\omega) H(j\omega)
+$$
+
+### Significance and Desired Characteristics of $M(\omega)$ 
+
+$M(\omega)$ can be regarded as a magnification of the feedback control system. It is similar to the gain or amplification of an electronic amplifier. Ideally, an amplifier must have a flat gain for all frequencies; realistically, it should have a flat gain in the audio frequency range. In control systems, the ideal design criterion is similar. However, if it is desirable to keep the output $C(j\omega)$ identical to the input $R(j\omega)$ at all frequencies, then $M(j\omega)$ must be unity for all frequencies. However, $M(j\omega)$ can be unity only when $G(j\omega)$ is infinite, while $H(j\omega)$ is finite and nonzero.
+
+An infinite magnitude for $G(j\omega)$ is impossible to achieve in practice, nor would it be desirable because
+
+-   Most control systems become unstable when its loop gain becomes very high.
+
+-   Furthermore, all control systems are subjected to noise. Thus, in addition to responding to the input signal, the system should be able to reject and suppress noise and unwanted signals.
+
+**This means that the frequency response of a control system should have a cutoff characteristic in general, and sometimes even a band-pass characteristic.**
+
+The figure below shows the gain and phase characteristics of an **ideal** low-pass filter which has a sharp cut-off frequency at $\omega_c$.
+
+<!-- ! figure skipped -->
+
+**Typical** gain and phase characteristics of a feedback control system are shown below.
+
+<!-- ! figure skipped -->
+
+Note that, the great majority of control systems have the characteristics of a low-pass filter, so the gain decreases as the frequency increases.
+
+## Frequency Domain Characteristics & Specifications
+
+In the design of linear control systems using frequency-domain methods, it is necessary to define a set of specifications so that the performance of the system can be identified. Specifications such as the maximum overshoot, damping ratio, and the like used in the time domain can no longer be used directly in the frequency domain. The following frequency domain specifications are often used in practice.
+
+### Resonant Peak, $M_r$ and Resonant Frequency, $\omega_r$
+
+The resonant peak $M_r$ is the maximum value of $\abs{M(j\omega)}$. The magnitude of $M_r$ gives indication on the relative stability of a stable closed-loop system. Normally, $M_r$ corresponds to a large maximum overshoot of the step response. In practice the desirable value of $M_r$ should be between $1.1$ and $1.5$.
+
+The resonant frequency, $\omega_r$, is the frequency at which the peak resonance $M_r$ occurs.
+
+### Bandwidth, BW
+
+The bandwidth BW is the frequency at which $\abs{M(j\omega)}$ drops to $70.7\%$ or $\SI{3}{\decibel}$ down from its zero-frequency value. The bandwidth of a control system gives indication on the transient response properties in the time domain.
+
+- A large bandwidth corresponds to a faster rise time, since higher-frequency signals are more easily passed through the system.
+- Conversely, if the bandwidth is small, only signals of relatively low frequencies are passed, and the time response will be slow and sluggish.
+- Thus, the **bandwidth and rise time are inversely proportional** to each other.
+
+Bandwidth also indicates the noise-filtering characteristics and the robustness of the system. Robustness represents a measure of the sensitivity of a system to parameter variations.
+
+### Cutoff Rate
+
+Often, bandwidth alone is inadequate to indicate the ability of a system in distinguishing signals from noise. Sometimes it may be necessary to look at the slope of $\abs{M(j\omega)}$, which is called the cutoff rate of the frequency response, at high frequencies. Two systems can have the same bandwidth, but the cutoff rates may be different.  
 
 ## A Second Order System: $M_r$, $\omega_r$, and BW
 
-## Frequency Domain Analysis of Linear Systems
+Consider the closed loop transfer function of a second-order system
 
-### Examples
+$$
+    M(s) = \dfrac{C(s)}{R(s)} = \dfrac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2}
+$$
 
-#### Example 1
+At sinusoidal steady-state, $s=j\omega$,
 
-#### Example 2
+$$
+    M(j\omega) = \dfrac{C(j\omega)}{R(j\omega)} = \dfrac{\omega_n^2}{(j\omega)^2 + 2\zeta\omega_n(j\omega) + \omega_n^2} = \dfrac{1}{1+j2 \left(\dfrac{\omega}{\omega_n}\right)\zeta - \left(\dfrac{\omega}{\omega_n}\right)^2}
+$$
 
-#### Example 3
+Let $u = \dfrac{\omega}{\omega_n}$. Therefore,
+
+$$
+    \dfrac{1}{1+j2 \left(\dfrac{\omega}{\omega_n}\right)\zeta - \left(\dfrac{\omega}{\omega_n}\right)^2} = \dfrac{1}{1+j2(u)\zeta - (u)^2} = M(ju)
+$$
+
+Hence,
+
+$$
+    \abs{M(ju)} = \dfrac{1}{\left[(1-u^2)^2 + (2\zeta u)^2 \right]^{\frac{1}{2}}}
+$$
+
+$$
+    \angle M(ju) = \phi_m(ju) = -\tan^{-1} \left(\dfrac{2\zeta u}{1-u^2} \right)
+$$
+
+The resonant frequency is determined by setting the derivative of $\abs{M(ju)}$ to zero
+
+$$
+    \dv{\abs{M(ju)}}{u} = -\dfrac{1}{2} \left[(1-u^2)^2 +(2\zeta u)^2 \right]^{\frac{-3}{2}} \left(4u^3 -4u+8u\zeta^2 \right) = 0
+$$
+
+Thus, $4u^3-4u+8u\zeta^2 = 4u(u^2-1+2\zeta^2) = 0$
+
+The roots of this quadratic are $u_r = 0$ and $u_r = \sqrt{1-2\zeta^2}$.
+
+Note:
+
+- The solution $u_r=0$ indicates that the slope of the $\abs{M(ju)}$ vs. $\omega$ curve is zero at $\omega =0$.
+- If $\zeta \leq \dfrac{1}{\sqrt{2}}$, then $u_r = \sqrt{1-2\zeta^2}$ is real.
+- If $\zeta > \dfrac{1}{\sqrt{2}}$, then $u_r$ is complex.
+
+Since $u=\dfrac{\omega}{\omega_n}$ hence $u_r= \dfrac{\omega_r}{\omega_n} = \sqrt{1-2\zeta^2}$, hence
+
+$$
+    \omega_r = \omega_n \sqrt{1-2\zeta^2} \qand M_r = \dfrac{1}{2\zeta\sqrt{1-\zeta^2}} \qcomma \zeta \leq \dfrac{1}{\sqrt{2}}
+$$
+
+Note:
+
+- Since the frequency, $\omega$, is real, $\omega_r=\omega_n\sqrt{1-2\zeta^2}$ is meaningful only if $\zeta \leq \dfrac{1}{\sqrt{2}}$.
+- If $\zeta \geq \dfrac{1}{\sqrt{2}}$, then $\omega_r = 0$ and $M_r = 1$.
+
+It is important to note that, for the prototype second-order system, $M_r$ is a function of the damping ratio $\zeta$ only, and $omega_r$ is a function of both $\zeta$ and $\omega_n$. Furthermore, although taking the derivative of $\abs{M(ju)}$ with respect to $u$ is a valid method of determining $M_r$ and $\omega_r$, for higher-order systems, this analytical method is quite tedious and is not recommended.
+
+By definition, the bandwidth is determined from $\abs{M(ju)} = \dfrac{1}{\sqrt{2}}$. Thus
+
+$$
+    \abs{M(ju)} = \dfrac{1}{\left[(1-u^2)^2 + (2\zeta u)^2 \right]^{\frac{1}{2}}} = \dfrac{1}{\sqrt{2}}
+$$
+
+Then,
+
+$$
+    \left[(1-u^2)^2 + (2\zeta u)^2 \right]^{\frac{1}{2}} = \sqrt{2}
+$$
+
+Hence, 
+
+$$
+    u^2 = (1-\zeta^2) \pm \sqrt{4\zeta^4 - 4\zeta^2 + 2}
+$$
+
+Since $u$ must be real and positive, the bandwidth of the prototype second-order system is given by
+
+$$
+    BW = \omega_n \left[(1-2\zeta^2) + \sqrt{4\zeta^4-4\zeta^2+2} \right]^{\frac{1}{2}}
+$$
+
+The maximum overshoot of the unit step response in the time domain depends on $\zeta$ only.
+
+$$
+    M_p = e^{-\dfrac{\pi\zeta}{\sqrt{1-\zeta^2}}}
+$$
+
+The resonance peak of the closed-loop frequency response $M_r$ depends upon $\zeta$ only.
+
+$$
+    M_r = \dfrac{1}{2\zeta\sqrt{1-\zeta^2}}
+$$
+
+The rise time increases with $\zeta$, and the bandwidth decreases with the increase of $\zeta$, for a fixed $\omega_n$.
+
+$$
+    BW = \omega_n \left[(1-2\zeta^2) + \sqrt{4\zeta^4-4\zeta^2+2} \right]^{\frac{1}{2}}
+$$
+
+Therefore, bandwidth and rise time are inversely proportional to each other.
+
+$$
+    t_r \approx \dfrac{1+1.1\zeta + 1.4\zeta^2}{\omega_n}
+$$
+
+Bandwidth is directly proportional to $\omega_n$. Higher bandwidth corresponds to larger $M_r$.
