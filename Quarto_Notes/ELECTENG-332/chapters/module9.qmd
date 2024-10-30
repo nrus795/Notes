@@ -1,0 +1,209 @@
+# Frequency Domain Analysis of Linear Systems - Bode Plots
+
+## Learning Outcomes {.unnumbered}
+
+After completing this module, you should be able to:
+
+-   Plot Bode Magnitude and Phase Plots
+
+-   Determine the stability information about the system from gain and phase margins
+
+-   Do Relative stability analysis.
+
+## Bode Plot (Corner Plot) of a Transfer Function
+
+The Bode plot of the function $G(j\omega)$ is comprised of two plots
+
+1.  Amplitude Plot: Plot of the amplitude of $G(j\omega)$ in decibels ($\unit{\decibel}$) versus $\log{\omega}$ or $\omega$ and
+
+2.  Phase Plot: Plot of the phase of $G(j\omega)$ in degrees as a function of $\log{\omega}$ or $\omega$. Note: This is $\log(\cdots)$ and not $\ln(\cdots)$ i.e. $\log_e(\cdots)$.
+
+A bode plot is also known as a corner plot or an asymptotic plot of $G(j\omega)$. These names stem from the fact that the Bode plot can be constructed by using straight-line approximations that are asymptotic to the actual plot.
+
+**Advantages of the Bode Plot**
+
+1.  The magnitude of $G(j\omega)$ in the Bode plot is expressed in decibels, the product and division factors in $G(j\omega)$ become additions and subtractions, respectively. The phase relations are also added and subtracted from each other in a natural way.
+
+2.  The magnitude plot of the Bode plots of most $G(j\omega)$ functions encountered in control systems may be approximated by straight-line segments. This makes the construction of the Bode plot very simple.
+
+### Pole-Zero vs. Bode Notation
+
+Consider the function
+
+$$
+    G(s) = \dfrac{K_1(s+z_1)(s+z_2)\cdots(s+z_m)}{s^N(s+p_1)(s+p_2)\cdots(s+p_n)} e^{-T_ds}
+$$
+
+where $K_1$ and $T_d$ are real constants, and the $z$'s and the $p$'s may be real or complex (in conjugate pairs) numbers.
+
+Note: The equation above is the preferred form for root-locus construction, because the poles and zeros of $G(s)$ are easily identified.
+
+However, for constructing the Bode plot manually, $G(s)$ is preferably written in the following form:
+
+$$
+    G(s) = \dfrac{K(1+T_1s)(1+T_2s)\cdots(1+T_ms)}{s^N(1+T_as)(1+T_bs)\cdots(1+T_ns)} e^{-T_ds}
+$$
+
+where $K$ is a real constant, the $T$'s may be real or complex (in conjugate pairs) numbers and $T_d$ is the real time delay.
+
+#### Example
+
+The transfer function
+
+$$
+    G(s) = \dfrac{150(s+2)}{s^2(s+3)(s+5)(s+10)}
+$$
+
+Can be represented as
+
+$$
+\begin{aligned}
+    G(s) &= \dfrac{150 \cdot 2(1+0.5s)}{s^2\cdot 3\cdot 5\cdot 10(1+0.333s)(1+0.2s)(1+0.1s)}\\
+    &= \dfrac{2(1+0.5s)}{s^2(1+0.333s)(1+0.2s)(1+0.1s)}
+\end{aligned}
+$$
+
+### Magnitude & Phase Angle
+
+The magnitude of $G(s)$ in $\unit{\decibel}$ and its phase angle $\phi(\omega)$ can be expressed as
+
+$$
+\begin{aligned}
+    \abs{G(j\omega)}_{dB} &= 20\log_{10}\abs{G(j\omega)} \\
+    &= 20\log_{10}\abs{K} + 20\log_{10}\abs{1+j\omega T_1} + \cdots + 20\log_{10}\abs{1+j\omega T_m} \\
+    &- 20\log_{10}\abs{j\omega} - 20\log_{10}\abs{1+j\omega T_a} - \cdots - 20\log_{10}\abs{1+j\omega T_n}
+\end{aligned}
+$$
+
+The phase of $G(j\omega)$ is
+
+$$
+\begin{aligned}
+    \phi(\omega) &= \angle G(j\omega) = \angle K + \angle (1+j\omega T_1) + \angle (1+j\omega T_2) + \cdots+ \angle (1+j\omega T_m) \\
+    &-\SI{90}{\degree}N - \angle(1+j\omega T_a) - \angle(1+j\omega T_b) - \cdots - \angle(1+j\omega T_n)
+\end{aligned}
+$$
+
+Note: The magnitude and phase angle of the complex factor $1+j\omega T$ is given as:
+
+$$
+    \abs{1+j\omega T} = \sqrt{1+\omega^2 T^2}\qand \angle(1+j\omega T) = \tan^{-1}(\omega T)
+$$
+
+### Common Factor Types
+
+$G(j\omega)$ can contain just five simple types of factors:
+
+1.  Constant factor: $K$
+
+2.  Poles or zeros at the origin of order $N$: $(j\omega)^{\pm N}$
+
+3.  Poles or zeros at $s=-\dfrac{1}{T}$ of order $q$: $(1+j\omega T)^{\pm q}$
+
+4.  Complex poles and zeros of order $r$: $\left(1+ 2\zeta \dfrac{\omega}{\omega_n} - \dfrac{\omega^2}{\omega_n^2} \right)^{\pm r}$
+
+5.  Pure time delay $e^{-j\omega T_d}$
+
+where $T_d$, $N$, $q$, and $r$ are positive integers.
+
+Once we become familiar with the logarithmic plots of these basic factors, it is possible to utilise them in constructing a composite logarithmic plot for any general form of $G(j\omega)H(j\omega)$ by sketching the curves for each factor and adding or subtracting the individual curves graphically, because adding the logarithms of the gains corresponds to multiplying them together.
+
+## Bode Plot of a Pure Constant
+
+Here, $G(s) = K$
+
+The magnitude of $G(j\omega)$ in $\unit{\decibel}$ is given by
+
+$$
+    \abs{G(j\omega)}_{dB} = 20\log_{10}\abs{G(j\omega)} = 20\log_{10}\abs{K} 
+$$
+
+The phase angle of $G(j\omega)$ is given by
+
+$$
+    \angle G(j\omega) = \angle K = 
+    \begin{cases}
+        \SI{0}{\degree} & K > 0 \\
+        \SI{-180}{\degree} & K < 0
+    \end{cases}
+$$
+
+### Example
+
+:::::{layout=[[50,-5,50]] fig-pos="h!"}
+:::{#first-column}
+Let $G(s)=5$
+
+$$
+\begin{aligned}
+    \abs{G(j\omega)} &= 5 \\
+    \abs{G(j\omega)}_{dB} &= 20\log_{10}\abs{5} = \SI{13.9}{\decibel} \\
+    \angle G(j\omega) &= \angle 5 = \SI{0}{\degree}
+\end{aligned}
+$$
+
+Let $G(s) = -5$
+
+$$
+\begin{aligned}
+    \abs{G(j\omega)} &= \abs{-5} \\
+    \abs{G(j\omega)}_{dB} &= 20\log_{10}\abs{-5} = \SI{13.9}{\decibel} \\
+    \angle G(j\omega) &= \angle -5 = \SI{-90}{\degree}
+\end{aligned}
+$$
+:::
+
+:::{#second-column}
+{{< placeholder >}}
+:::
+:::::
+
+## Bode Plot of a Differentiator
+
+:::::{layout=[[50,-5,50]] fig-pos="h!"}
+
+:::{#first-column}
+
+:::
+
+:::{#second-column}
+{{< placeholder >}}
+:::
+:::::
+
+## Bode Plot of an Integrator
+
+:::::{layout=[[50,-5,50]] fig-pos="h!"}
+
+:::{#first-column}
+
+:::
+
+:::{#second-column}
+{{< placeholder >}}
+:::
+:::::
+
+## Bode Plot of a Simple Zero $1+sT$
+
+### Advantages of Approximate Bode Plot using Asymptotes
+
+## Bode Plot of a Simple Pole $\dfrac{1}{1+sT}$
+
+## Bode Plot of Quadratic Factors
+
+## Rules for Drawing Bode Magnitude Plots with Simple Poles and Zeros
+
+### Example 1
+
+### Example 2
+
+## Relative Stability Analysis Using Bode Plots
+
+## Measures of Relative Stability
+
+### Example 3
+
+## Frequency Domain Stability: Summary
+
+### Example 4

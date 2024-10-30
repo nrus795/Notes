@@ -26,6 +26,7 @@ book:
     - part: "Nitish's Content"
       chapters: 
         - "chapters/module8.qmd"
+        - "chapters/module9.qmd"
 
 filters: 
   - color-filter
