@@ -130,8 +130,6 @@ $$
 
 ### Example
 
-:::::{layout="[[40,-6,60],[40,-5,60]]" fig-pos="H" layout-align="center"}
-:::{#first-column-row1}
 Let $G(s)=5$
 
 $$
@@ -141,35 +139,32 @@ $$
     \angle G(j\omega) &= \angle 5 = \SI{0}{\degree}
 \end{aligned}
 $$
-:::
 
 
-:::{#second-column-row1}
 ```{=latex}
-\begin{tikzpicture}
-\begin{semilogxaxis}[
-    width=8cm, 
-    height=8cm,
-    ylabel={Gain, dB},
-    grid=both,
-    xmin=1e-2, xmax=1e2,
-    ymin=-40, ymax=20,
-    ytick={-40,-20,0,20},
-    xtick={1e-2, 1e-1, 1, 10, 100},
-    minor x tick num=8,        % 8 minor ticks per decade (log scale)
-    minor y tick num = 9,
-    grid style={line width=.1pt, draw=gray!50},
-    major grid style={thick,draw=gray},
+\begin{figure}
+\begin{center}
+\BodeZPK[%
+samples=1000,
+axes/mag/{ymin=-40,ymax=20, minor x tick num =8, minor y tick num=9},
+axes/ph/{ymin=-200,ymax=10, minor x tick num =8, minor y tick num=9},
+plot/mag/{red,ultra thick},
+plot/ph/{red,ultra thick},
+group/{group style={group size=2 by 1,horizontal sep=2cm},width=6cm,height=6cm},
 ]
-    % Draw a horizontal line for the constant gain
-    \addplot[domain=1e-2:1e2, samples=2, red, ultra thick] {13.9};
-\end{semilogxaxis}
-\end{tikzpicture}
+{%
+z/{},
+p/{},
+k/{5}%
+}
+{0.01}
+{100}
+\end{center}
+\caption{Bode Plot of $G(s) = 5$}
+\label{fig-bode-plot-constant-1}
+\end{figure}
 ```
-:::
-
-
-:::{#first-column-row2}
+{{< pagebreak >}}
 Let $G(s) = -5$
 
 $$
@@ -179,60 +174,41 @@ $$
     \angle G(j\omega) &= \angle -5 = \SI{-90}{\degree}
 \end{aligned}
 $$
-:::
 
-:::{#second-column-row2}
+
 ```{=latex}
-\begin{tikzpicture}
-\begin{semilogxaxis}[
-    width=8cm, 
-    height=8cm,
-    xlabel={Frequency},
-    ylabel={Phase, deg},
-    grid=both,
-    xmin=1e-2, xmax=1e2,
-    ymin=-200, ymax=20,
-    xtick={1e-2, 1e-1, 1, 10, 100},
-    minor x tick num=8,        % 8 minor ticks per decade (log scale)
-    minor y tick num = 9,
-    ytick={-200,-150,-100,-50,0,50},
-    grid style={line width=.1pt, draw=gray!50},
-    major grid style={thick,draw=gray},
+\begin{figure}
+\begin{center}
+\BodeZPK[%
+samples=1000,
+axes/mag/{ymin=-40,ymax=20, minor x tick num =8, minor y tick num=9},
+axes/ph/{ymin=-200,ymax=10, minor x tick num =8, minor y tick num=9},
+plot/mag/{red,ultra thick},
+plot/ph/{red,ultra thick},
+group/{group style={group size=2 by 1,horizontal sep=2cm},width=6cm,height=6cm},
 ]
-    % Draw a horizontal line for the constant phase
-    \addplot[domain=1e-2:1e2, samples=2, red, ultra thick] {0};
-    \addplot[domain=1e-2:1e2, samples=2, red, ultra thick] {-180};
-\end{semilogxaxis}
-\end{tikzpicture}
+{%
+z/{},
+p/{},
+k/{-5}%
+}
+{0.01}
+{100}
+\end{center}
+\caption{Bode Plot of $G(s) = -5$}
+\label{fig-bode-plot-constant-2}
+\end{figure}
 ```
-:::
-:::::
+
+
 
 ## Bode Plot of a Differentiator
 
-:::::{layout=[[50,-5,50]] fig-pos="H"}
 
-:::{#first-column}
-
-:::
-
-:::{#second-column}
-{{< placeholder >}}
-:::
-:::::
 
 ## Bode Plot of an Integrator
 
-:::::{layout=[[50,-5,50]] fig-pos="H"}
 
-:::{#first-column}
-
-:::
-
-:::{#second-column}
-{{< placeholder >}}
-:::
-:::::
 
 ## Bode Plot of a Simple Zero $1+sT$
 
