@@ -130,8 +130,8 @@ $$
 
 ### Example
 
-:::::{layout=[[50,-5,50]] fig-pos="h!"}
-:::{#first-column}
+:::::{layout="[[40,-6,60],[40,-5,60]]" fig-pos="H" layout-align="center"}
+:::{#first-column-row1}
 Let $G(s)=5$
 
 $$
@@ -141,7 +141,35 @@ $$
     \angle G(j\omega) &= \angle 5 = \SI{0}{\degree}
 \end{aligned}
 $$
+:::
 
+
+:::{#second-column-row1}
+```{=latex}
+\begin{tikzpicture}
+\begin{semilogxaxis}[
+    width=8cm, 
+    height=8cm,
+    ylabel={Gain, dB},
+    grid=both,
+    xmin=1e-2, xmax=1e2,
+    ymin=-40, ymax=20,
+    ytick={-40,-20,0,20},
+    xtick={1e-2, 1e-1, 1, 10, 100},
+    minor x tick num=8,        % 8 minor ticks per decade (log scale)
+    minor y tick num = 9,
+    grid style={line width=.1pt, draw=gray!50},
+    major grid style={thick,draw=gray},
+]
+    % Draw a horizontal line for the constant gain
+    \addplot[domain=1e-2:1e2, samples=2, red, ultra thick] {13.9};
+\end{semilogxaxis}
+\end{tikzpicture}
+```
+:::
+
+
+:::{#first-column-row2}
 Let $G(s) = -5$
 
 $$
@@ -153,14 +181,36 @@ $$
 $$
 :::
 
-:::{#second-column}
-{{< placeholder >}}
+:::{#second-column-row2}
+```{=latex}
+\begin{tikzpicture}
+\begin{semilogxaxis}[
+    width=8cm, 
+    height=8cm,
+    xlabel={Frequency},
+    ylabel={Phase, deg},
+    grid=both,
+    xmin=1e-2, xmax=1e2,
+    ymin=-200, ymax=20,
+    xtick={1e-2, 1e-1, 1, 10, 100},
+    minor x tick num=8,        % 8 minor ticks per decade (log scale)
+    minor y tick num = 9,
+    ytick={-200,-150,-100,-50,0,50},
+    grid style={line width=.1pt, draw=gray!50},
+    major grid style={thick,draw=gray},
+]
+    % Draw a horizontal line for the constant phase
+    \addplot[domain=1e-2:1e2, samples=2, red, ultra thick] {0};
+    \addplot[domain=1e-2:1e2, samples=2, red, ultra thick] {-180};
+\end{semilogxaxis}
+\end{tikzpicture}
+```
 :::
 :::::
 
 ## Bode Plot of a Differentiator
 
-:::::{layout=[[50,-5,50]] fig-pos="h!"}
+:::::{layout=[[50,-5,50]] fig-pos="H"}
 
 :::{#first-column}
 
@@ -173,7 +223,7 @@ $$
 
 ## Bode Plot of an Integrator
 
-:::::{layout=[[50,-5,50]] fig-pos="h!"}
+:::::{layout=[[50,-5,50]] fig-pos="H"}
 
 :::{#first-column}
 
