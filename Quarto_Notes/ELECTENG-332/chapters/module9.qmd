@@ -128,7 +128,9 @@ $$
     \end{cases}
 $$
 
-### Example
+### Examples
+
+#### Example 1
 
 Let $G(s)=5$
 
@@ -140,31 +142,56 @@ $$
 \end{aligned}
 $$
 
-
 ```{=latex}
-\begin{figure}
-\begin{center}
-\BodeZPK[%
-samples=1000,
-axes/mag/{ymin=-40,ymax=20, minor x tick num =8, minor y tick num=9},
-axes/ph/{ymin=-200,ymax=10, minor x tick num =8, minor y tick num=9},
-plot/mag/{red,ultra thick},
-plot/ph/{red,ultra thick},
-group/{group style={group size=2 by 1,horizontal sep=2cm},width=6cm,height=6cm},
-]
-{%
-z/{},
-p/{},
-k/{5}%
-}
-{0.01}
-{100}
-\end{center}
-\caption{Bode Plot of $G(s) = 5$}
-\label{fig-bode-plot-constant-1}
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
+                \nextgroupplot[%
+                    xmode=log,
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    ylabel={Gain, $\unit{\decibel}$},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-40, ymax=20,
+                    ytick={-40,-20,0,20},
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,       
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,thick,domain=1e-2:1e2}]
+                        {magnitude}
+                        {z/{},p/{},k/{5}}
+                \nextgroupplot[%
+                    xmode=log,
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    ylabel={Phase, deg},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-200, ymax=10,
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,        
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,thick,domain=1e-2:1e2}]
+                        {phase}
+                        {z/{},p/{},k/{5}}
+            \end{groupplot}
+        \end{tikzpicture}
+    \end{center}
+    \caption{Bode Plot of $G(s) = 5$}
+    \label{fig-bode-plot-constant-1}
 \end{figure}
 ```
+
 {{< pagebreak >}}
+
+#### Example 2
+
 Let $G(s) = -5$
 
 $$
@@ -175,61 +202,617 @@ $$
 \end{aligned}
 $$
 
+```{=latex}
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
+                \nextgroupplot[%
+                    xmode=log,
+                    ylabel={Gain, $\unit{\decibel}$},
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-40, ymax=20,
+                    ytick={-40,-20,0,20},
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,       
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,thick,domain=1e-2:1e2}]
+                        {magnitude}
+                        {z/{},p/{},k/{-5}}
+                \nextgroupplot[%
+                    xmode=log,
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    ylabel={Phase, deg},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-200, ymax=10,
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,        
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,thick,domain=1e-2:1e2}]
+                        {phase}
+                        {z/{},p/{},k/{-5}}
+            \end{groupplot}
+        \end{tikzpicture}
+    \end{center}
+    \caption{Bode Plot of $G(s) = -5$}
+    \label{fig-bode-plot-constant-2}
+\end{figure}
+```
+
+{{< pagebreak >}}
+
+## Bode Plot of a Differentiator
+
+Here, $G(s) = s$ The magnitude of $G(j\omega) = j\omega$ in $\unit{\decibel}$ is given by
+
+$$
+\begin{aligned}
+    \abs{G(j\omega)}_{dB} &= 20\log_{10}\abs{G(j\omega)} \\
+    &= 20\log_{10}\abs{j\omega} = 20\log_{10}(\omega) \; \unit{\decibel}
+\end{aligned}
+$$
+
+The log-magnitude curve is a straight line with a slope of $\SI{20}{\decibel}$/decade.
+
+The phase angle of $G(j\omega)$ is given by
+
+$$
+    \angle G(j\omega) = \angle j\omega = \SI{90}{\degree}
+$$
 
 ```{=latex}
-\begin{figure}
-\begin{center}
-\BodeZPK[%
-samples=1000,
-axes/mag/{ymin=-40,ymax=20, minor x tick num =8, minor y tick num=9},
-axes/ph/{ymin=-200,ymax=10, minor x tick num =8, minor y tick num=9},
-plot/mag/{red,ultra thick},
-plot/ph/{red,ultra thick},
-group/{group style={group size=2 by 1,horizontal sep=2cm},width=6cm,height=6cm},
-]
-{%
-z/{},
-p/{},
-k/{-5}%
-}
-{0.01}
-{100}
-\end{center}
-\caption{Bode Plot of $G(s) = -5$}
-\label{fig-bode-plot-constant-2}
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
+                \nextgroupplot[%
+                    xmode=log,
+                    ylabel={Gain, $\unit{\decibel}$},
+                    xlabel={Frequency},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-40, ymax=20,
+                    ytick={-40,-20,0,20},
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,       
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,solid,thick,domain=1e-2:1e2}]
+                        {magnitude}
+                        {z/{0},p/{},k/{1}}
+                \nextgroupplot[%
+                    xmode=log,
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    ylabel={Phase, deg},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=0, ymax=100,
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,        
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,solid,thick,domain=1e-2:1e2}]
+                        {phase}
+                        {z/{0},p/{},k/{1}}
+            \end{groupplot}
+        \end{tikzpicture}
+    \end{center}
+    \caption{Bode Plot of $G(s) = s$}
+    \label{fig-bode-plot-differentiator}
+\end{figure}
+```
+
+{{< pagebreak >}}
+
+## Bode Plot of an Integrator
+
+Here, $G(s) = \dfrac{1}{s}$ The magnitude of $G(j\omega)$ in $\unit{\decibel}$ is given by
+
+$$
+\begin{aligned}
+    \abs{G(j\omega)}_{dB} &= 20\log_{10}\abs{G(j\omega)} \\
+    &= 20\log_{10}\abs{\dfrac{1}{j\omega}} = 20\log_{10}\left(\dfrac{1}{\omega}\right) \\
+    &= -20\log_{10}(\omega) \; \unit{\decibel}
+\end{aligned}
+$$
+
+The log-magnitude curve is a straight line with a slope of $\SI{-20}{\decibel}$/decade.
+
+The phase angle of $G(j\omega) = \dfrac{1}{j\omega}$ is constant and equal to $\SI{-90}{\degree}$.
+
+$$
+    \angle G(j\omega) = \angle \dfrac{1}{j\omega} = \SI{-90}{\degree}
+$$
+
+```{=latex}
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
+                \nextgroupplot[%
+                    xmode=log,
+                    ylabel={Gain, $\unit{\decibel}$},
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-40, ymax=20,
+                    ytick={-40,-20,0,20},
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,       
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,solid,thick,domain=1e-2:1e2}]
+                        {magnitude}
+                        {z/{},p/{0},k/{1}}
+                \nextgroupplot[%
+                    xmode=log,
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    ylabel={Phase, deg},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-100, ymax=0,
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,        
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,solid,thick,domain=1e-2:1e2}]
+                        {phase}
+                        {z/{},p/{0},k/{1}}
+            \end{groupplot}
+        \end{tikzpicture}
+    \end{center}
+    \caption{Bode Plot of $G(s) = \dfrac{1}{s}$}
+    \label{fig-bode-plot-integrator}
+\end{figure}
+```
+
+{{< pagebreak >}}
+
+## Bode Plot of a Simple Zero $1+sT$
+
+Here, $G(s) = 1+sT$, where $T$ is a positive real constant.
+
+### Magnitude
+
+The magnitude of $G(j\omega)$ is given by 
+
+$$
+\abs{G(j\omega)}_{\unit{\decibel}} = 20\log_{10}\abs{G(j\omega)} = 20\log_{10}\sqrt{1+\omega^2 T^2}
+$$
+
+To obtain asymptotic approximations of $\abs{G(j\omega)}_{\unit{\decibel}}$, we consider both very large and very small values of $\omega$.
+
+-   At very low frequencies where $\omega T \ll 1$, $\omega^2 T^2$ is very very small compared to 1 and can be neglected. Hence\
+    $$
+    \abs{G(j\omega)}_{\unit{\decibel}} \cong 20\log_{10} 1 = \SI{0}{\decibel}
+    $$
+-   At very high frequencies where $\omega T \gg 1$, we can approximate $1+\omega^2 T^2$ by $\omega^2 T^2$. Thus,\
+    $$
+    \abs{G(j\omega)}_{\unit{\decibel}} \cong 20\log_{10} \left(\sqrt{\omega^2 T^2} \right) \cong 20\log_{10}(\omega T)
+    $$
+
+Thus, the Bode magnitude plot at the low frequencies (i.e. $\omega T \ll 1$), is the constant $\SI{0}{\decibel}$ line.
+
+The Bode magnitude plot at high frequencies (i.e. $\omega T \gg 1$), is a straight line with a slope of $+\SI{20}{\decibel}$/decade of frequency.
+
+The frequency at which the two straight lines (called asymptotes) meet is called the *corner frequency* or *break frequency* and is given by 
+
+$$
+\omega = \dfrac{1}{T}
+$$
+
+The corner frequency divides the frequency-response curve into two regions: a curve for the low-frequency region and a curve for the high-frequency region.
+
+Note: The corner frequency is very important in sketching logarithmic frequency-response curves.
+
+```{=latex}
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
+                \nextgroupplot[%
+                    xmode=log,
+                    ylabel={Gain, $\unit{\decibel}$},
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-40, ymax=40,
+                    ytick={-40,-20,0,20,40},
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,       
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,dashed,semithick,domain=1e-2:1e2},
+                        linear/{red,solid,thick,domain=1e-2:1e2}]
+                        {magnitude}
+                        {z/{-1},p/{},k/{1}}
+                \nextgroupplot[%
+                    xmode=log,
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    ylabel={Phase, deg},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-5, ymax=95,
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,        
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,dashed,semithick,domain=1e-2:1e2},
+                        linear/{red,solid,thick,domain=1e-2:1e2}]
+                        {phase}
+                        {z/{-1},p/{},k/{1}}
+            \end{groupplot}
+        \end{tikzpicture}
+    \end{center}
+    \caption{Bode Plot of $G(s) = 1+sT$}
+    \label{fig-bode-plot-simple-zero}
+\end{figure}
+```
+
+### Phase Angle
+
+The exact phase angle $\phi$ of the factor $1+j\omega T$ is: $\phi =\tan^{-1} \omega T$. 
+
+At zero frequency, the phase angle is $\SI{0}{\degree}$.
+
+At the corner frequency, the phase angle is: $\phi = \tan^{-1} \dfrac{T}{T} = \tan^{-1} 1 = +\SI{45}{\degree}$. 
+
+At infinity, the phase angle becomes $\SI{90}{\degree}$. Since the phase angle is given by an inverse tangent function, the phase angle is skew symmetric about the inflection point at $\phi=+\SI{45}{\degree}$. 
+
+Similar to the magnitude curve, a straight-line approximation can be made for the phase curve. 
+
+Because the phase varies from $\SI{0}{\degree}$ to $\SI{90}{\degree}$, we can draw a line from $\SI{0}{\degree}$ at 1 decade below the corner frequency to $\SI{90}{\degree}$ at 1 decade above the corner frequency. 
+
+The maximum deviation between the straight-line approximation and the actual curve is less than $\SI{6}{\degree}$.
+
+{{< pagebreak >}}
+
+## Bode Plot of a Simple Pole $\dfrac{1}{1+sT}$
+
+Here $G(s) = \dfrac{1}{1+sT}$, where $T$ is a positive real constant.
+
+### Magnitude
+
+The magnitude of $G(j\omega)$ is given by
+
+$$
+\abs{G(j\omega)}_{\unit{\decibel}} = 20\log_{10}\abs{G(j\omega)} = -20\log_{10}\sqrt{1+\omega^2 T^2}
+$$
+
+To obtain asymptotic approximations of $\abs{G(j\omega)}_{\unit{\decibel}}$, we consider both very large and very small values of $\omega$.
+
+-   At very low frequencies where $\omega T \ll 1$, $\omega^2 T^2$ is very very small compared to 1 and can be neglected. Hence\
+    $$
+    \abs{G(j\omega)}_{\unit{\decibel}} \cong 20\log_{10} 1 = \SI{0}{\decibel}
+    $$
+-   At very high frequencies where $\omega T \gg 1$, we can approximate $1+\omega^2 T^2$ by $\omega^2 T^2$. Thus,\
+    $$
+    \abs{G(j\omega)}_{\unit{\decibel}} \cong -20\log_{10} \left(\sqrt{\omega^2 T^2} \right) \cong -20\log_{10}(\omega T)
+    $$
+
+Thus, the Bode magnitude plot at the low frequencies (i.e. $\omega T \ll 1$), is the constant $\SI{0}{\decibel}$ line.
+
+The Bode magnitude plot at high frequencies (i.e. $\omega T \gg 1$), is a straight line with a slope of $\SI{-20}{\decibel}$/decade of frequency.
+
+The frequency at which the two straight lines (called asymptotes) meet is called the *corner frequency* or *break frequency* and is given by 
+
+$$
+\omega = \dfrac{1}{T}
+$$
+
+The corner frequency divides the frequency-response curve into two regions: a curve for the low-frequency region and a curve for the high-frequency region.
+
+Note: The corner frequency is very important in sketching logarithmic frequency-response curves.
+
+```{=latex}
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
+                \nextgroupplot[%
+                    xmode=log,
+                    ylabel={Gain, $\unit{\decibel}$},
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-40, ymax=20,
+                    ytick={-40,-20,0,20},
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,       
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,dashed,semithick,domain=1e-2:1e2},
+                        linear/{red,solid,thick,domain=1e-2:1e2}]
+                        {magnitude}
+                        {z/{},p/{-1},k/{1}}
+                \nextgroupplot[%
+                    xmode=log,
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    ylabel={Phase, deg},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-95, ymax=5,
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,        
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeZPKPlots[%
+                        true/{red,dashed,semithick,domain=1e-2:1e2},
+                        linear/{red,solid,thick,domain=1e-2:1e2}]
+                        {phase}
+                        {z/{},p/{-1},k/{1}}
+            \end{groupplot}
+        \end{tikzpicture}
+    \end{center}
+    \caption{Bode Plot of $G(s) = \dfrac{1}{1+sT}$}
+    \label{fig-bode-plot-simple-pole}
+\end{figure}
+```
+
+### Phase Angle
+
+The exact phase angle $\phi$ of the factor $\dfrac{1}{1+j\omega T}$ is: $\phi = -\tan^{-1} \omega T$.
+
+At zero frequency, the phase angle is $\SI{0}{\degree}$.
+
+At the corner frequency, the phase angle is: $\phi = -\tan^{-1} \dfrac{T}{T} = -\tan^{-1} (1) = \SI{-45}{\degree}$. 
+
+At infinity, the phase angle becomes $\SI{-90}{\degree}$. Since the phase angle is given by an inverse tangent function, the phase angle is skew symmetric about the inflection point at $\phi=\SI{-45}{\degree}$. 
+
+Similar to the magnitude curve, a straight-line approximation can be made for the phase curve. 
+
+Because the phase varies from $\SI{0}{\degree}$ to $\SI{-90}{\degree}$, we can draw a line from $\SI{0}{\degree}$ at 1 decade below the corner frequency to $\SI{-90}{\degree}$ at 1 decade above the corner frequency. 
+
+The maximum deviation between the straight-line approximation and the actual curve is less than $\SI{6}{\degree}$.
+
+{{< pagebreak >}}
+
+## Advantages of Approximate Bode Plot using Asymptotes
+
+The asymptotes are quite easy to draw and are sufficiently close to the exact curve.
+
+The use of such approximations in drawing Bode diagrams is convenient in establishing the general nature of the frequency-response characteristics quickly with a minimum amount of calculation and may be used for most preliminary design work.
+
+The actual $\abs{G(j\omega)}\unit{\decibel}$ plot is a smooth curve and deviates only slightly from the straight line approximation.
+
+If accurate frequency-response curves are desired, corrections may easily be made.
+
+The error between the actual magnitude curve and the straight-line asymptotes is symmetrical with respect to the corner frequency $\omega=\dfrac{1}{T}$.
+
+In practice, an accurate frequency-response curve can be drawn by introducing a correction of $\SI{3}{\decibel}$ at the corner frequency and a correction of $\SI{1}{\decibel}$ at points one octave below and above the corner frequency and then connecting these points by a smooth curve.
+
+{{< pagebreak >}}
+
+## Bode Plot of Quadratic Factors
+
+Consider the function
+
+$$
+    G(s) = \dfrac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2} = \dfrac{1}{1+\left(\dfrac{2\zeta}{\omega_n}\right)s + \left(\dfrac{1}{\omega_n^2}\right)s^2}
+$$
+
+We are interested only in the case when $\zeta < 1$, because otherwise $G(s)$ would have two unequal real poles, and the Bode plot can be obtained by considering $G(s)$ as the product of two transfer functions with simple poles. Now by letting $s=j\omega$, the above function can be written as
+
+$$
+\begin{aligned}
+    G(j\omega) &= \dfrac{1}{1+\left(\dfrac{2\zeta}{\omega_n} \right)j\omega + \left(\dfrac{1}{\omega_n^2}\right)(j\omega)^2} = \dfrac{1}{1+j\left(\dfrac{2\zeta}{\omega_n}\right)\omega - \left(\dfrac{1}{\omega_n^2}\right)\omega^2} \\ 
+    &= \dfrac{1}{\left[1-\left(\dfrac{\omega}{\omega_n}\right)^2 \right] + \complexnum[output-complex-root = j, complex-root-position = before-number, print-complex-unity]{2j}\zeta\left(\dfrac{\omega}{\omega_n}\right)}
+\end{aligned}
+$$
+
+### Magnitude
+
+The magnitude of $G(j\omega)$ in $\unit{\decibel}$ is given by
+
+$$
+\begin{aligned}
+    \abs{G(j\omega)}_{\unit{\decibel}} &= 20\log_{10}\abs{G(j\omega)} = 20\log_{10}\dfrac{1}{\sqrt{\left[1-\left(\dfrac{\omega}{\omega_n}\right)^2 \right]^2 + 4\zeta^2\left(\dfrac{\omega}{\omega_n}\right)^2}} \\
+    &= -20\log_{10}\sqrt{\left[1-\left(\dfrac{\omega}{\omega_n}\right)^2 \right]^2 + 4\zeta^2\left(\dfrac{\omega}{\omega_n}\right)^2}
+\end{aligned}
+$$
+
+Asymptotic approximations to the frequency-response curves are not accurate for a factor with low values of $\zeta$.
+
+This is because the magnitude and phase of the quadratic factor depend on both the corner frequency and the damping ratio $\zeta$.
+
+To obtain the asymptotic frequency-response curve, we consider the two cases as follows:
+
+1.  At very low frequencies such that $\omega \ll \omega_n$, i.e. $\left(\dfrac{\omega}{\omega_n}\right) \ll 1$, then the log magnitude $\abs{G(j\omega)}_{\unit{\decibel}}$ becomes:\
+$$
+    \abs{G(j\omega)}_{\unit{\decibel}} \cong -20\log_{10}(1) = \SI{0}{\decibel}
+$$
+The low-frequency asymptote is thus a horizontal line at $\SI{0}{\decibel}$.
+
+2. At very high frequencies such that $\omega \gg \omega_n$, i.e. $\left(\dfrac{\omega}{\omega_n}\right) \gg 1$, then the log magnitude $\abs{G(j\omega)}_{\unit{\decibel}}$ becomes:\
+$$
+    \abs{G(j\omega)}_{\unit{\decibel}} \cong -20\log_{10}\left(\dfrac{\omega^2}{\omega_n^2}\right) = -40\log_{10}\left(\dfrac{\omega}{\omega_n}\right)
+$$
+The equation for the high-frequency asymptote is a straight line having the slope $\SI{-40}{\decibel}$/decade.
+
+The high-frequency asymptote intersects the low-frequency asymptote at $\omega = \omega_n$.
+
+This frequency, $\omega_n$, is the corner frequency for the quadratic factor considered.
+
+Note that the two asymptotes just derived are independent of the value of $\zeta$.
+
+Near the frequency $\omega = \omega_n$, a resonant peak occurs.
+
+The damping ratio $\zeta$ determines the magnitude of this resonant peak
+
+There exist errors in the approximation by straight-line asymptotes.
+
+The actual magnitude curve of $G(j\omega)$ differs strikingly from the asymptotic curve. Because, the amplitude and phase curves of the second-order $G(j\omega)$ depend on not only the corner frequency, $\omega_n$, but also on the damping ratio, $\zeta$, which does not enter the asymptotic curve.
+
+The magnitude of the error depends on the value of $\zeta$. It is large for small values of $\zeta$.
+
+### Phase Angle
+
+The phase angle of the quadratic factor $\left[1+2\zeta\left(\dfrac{j\omega}{\omega_n}\right) + \left(\dfrac{j\omega}{\omega_n}\right)^2\right]^{-1}$ is
+
+$$
+    \phi = \angle\dfrac{1}{1+2\zeta\left(\dfrac{j\omega}{\omega_n}\right) + \left(\dfrac{j\omega}{\omega_n}\right)^2} = -\tan^{-1}\left[\dfrac{2\zeta \dfrac{\omega}{\omega_n}}{1-\left(\dfrac{\omega}{\omega_n}\right)^2}\right]
+$$
+
+The phase angle is a function of both $\omega$ and $\zeta$.
+
+At $\zeta = 0$, the phase angle equals $\SI{0}{\degree}$.
+
+At the corner frequency, $\omega = \omega_n$, the phase angle is $\SI{-90}{\degree}$, regardless of $\zeta$ because
+
+$$
+    \phi = -\tan^{-1} \left(\dfrac{2\zeta}{0}\right) = -\tan^{-1} \infty = \SI{-90}{\degree}
+$$
+
+i.e. Division by zero leads to tangent of $\infty$.
+
+The Bode plot of the phase angle of the quadratic factor is shown in the figure below.
+
+```{=latex}
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
+                \nextgroupplot[%
+                    xmode=log,
+                    ylabel={Gain, $\unit{\decibel}$},
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-40, ymax=20,
+                    ytick={-40,-30,-20,-10,0,10,20},
+                    xtick={1e-2, 1e-1, 1, 10, 100},
+                    minor x tick num=8,       
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.1}{1}}
+                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.2}{1}}
+                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.3}{1}}
+                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.5}{1}}
+                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.7071067812}{1}}
+                \addBodeComponentPlot[blue,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{1}{1}}
+                \nextgroupplot[%
+                    xmode=log,
+                    xlabel={Frequency, $\unit{\radian\per\second}$},
+                    ylabel={Phase, deg},
+                    grid=both,
+                    xmin=1e-2, xmax=1e2,
+                    ymin=-190, ymax=10,
+                    ytick={-180,-160,-140,-120,-100,-80,-60,-40,-20,0},
+                    xtick={1e-2, 1e-1, 1, 10,100},
+                    minor x tick num=8,        
+                    minor y tick num = 9,
+                    grid style={line width=.1pt, draw=gray!50},
+                    major grid style={line width=.2pt,draw=gray}]
+                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.1}{1}}
+                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.2}{1}}
+                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.3}{1}}
+                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.5}{1}}
+                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.7071067812}{1}}
+                \addBodeComponentPlot[blue,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{1}{1}}
+            \end{groupplot}
+        \end{tikzpicture}
+    \end{center}
+    \caption{Bode Plot of $G(s) = \dfrac{\omega^2}{s^2+2\zeta\omega_n s + \omega_n^2}$}
+    \label{fig-bode-plot-quadratic-factor}
 \end{figure}
 ```
 
 
-
-## Bode Plot of a Differentiator
-
-
-
-## Bode Plot of an Integrator
-
-
-
-## Bode Plot of a Simple Zero $1+sT$
-
-### Advantages of Approximate Bode Plot using Asymptotes
-
-## Bode Plot of a Simple Pole $\dfrac{1}{1+sT}$
-
-## Bode Plot of Quadratic Factors
-
 ## Rules for Drawing Bode Magnitude Plots with Simple Poles and Zeros
 
-### Example 1
-
-### Example 2
+- First determine all the break points (pole and zero locations) and arrange in order of increasing frequency.
+- Choose a frequency range for the plot that encompasses all these points, adding an extra decade of frequency
+above and below this range.
+- Based on the poles and zeroes, make a quick sketch of the expected shape of the Bode plot. This will help you find the appropriate vertical scales.
+- For a simple pole or zero of the form $(s+a)$, the slope of the uncorrected Bode plot changes at the break point $\omega = a$, increasing by $\SI{20}{\decibel}$/decade for a zero and decreasing by $\SI{20}{\decibel}$/decade for a pole.
+- For a repeated pole or zero $(s+a)^r$, the slop changes by $r\times\SI{20}{\decibel}$/decade, or $\SI{20}{\decibel}$ for each time the pole or zero is repeated.
+- To find a reference level we first find the behaviour of the function for low frequencies $\omega \to 0$ or high frequencies $\omega \to \infty$. If the limiting behaviour approaches a constant value at these extremes, that is a good starting point. Otherwise we must evaluate the function numerically at some particular frequency, preferably in a region with a constant-value plateau.
+- Once the uncorrected Bode plot is finished, a corrected version can be drawn. For simple/repeated roots the true
+response passes through a point that is $r\times\SI{3}{\decibel}$ below the uncorrected curve at the break point, or $\SI{3}{\decibel}$ for each time the pole or zero is repeated.
 
 ## Relative Stability Analysis Using Bode Plots
 
+Motivation: Stability is paramount.
+
+- In practice it is not enough that a system is stable due to modelling uncertainties
+- There must also be some margins of stability that describe how stable the system is
+- We shall concentrate on minimum phase systems
+- In time-domain, the closer the dominant closed-loop poles are to the imaginary axis, the poorer the system's relative stability.
+
 ## Measures of Relative Stability
 
-### Example 3
+**__Gain Crossover Frequency__**
+
+The frequency at which the magnitude of the open-loop transfer function gain ($\abs{G(j\omega)}$) is unity or $\SI{0}{\decibel}$ is called the *Gain Cross Over Frequency*. It is denoted by $\omega_{gc}$.
+
+**__Phase Crossover Frequency__**
+
+The frequency at which the phase angle of the open loop transfer function ($\angle G(j\omega)$) equals $-\SI{180}{\degree}$ is called the *Phase Cross Over Frequency*. It is denoted by $\omega_{pc}$.
+
+**__Gain Margin__**
+
+It is the amount of gain that can be allowed to increase -- in the loop -- at the phase crossover frequency, before the closed-loop system reaches instability.
+
+In other words, the gain margin is the reciprocal of the magnitude $\abs{G(j\omega)}$ at the frequency at which the phase angle is $-\SI{180}{\degree}$, i.e. at the phase crossover frequency, $\omega_{pc}$. If $K_g$ denotes the gain margin of the system. Then
+
+$$
+    K_g = \dfrac{1}{\abs{G(j\omega_{pc})}}\qcomma K_g \unit{\decibel} = 20\log_{10} K_g = -20\log_{10}\abs{G(j\omega_{pc})}
+$$
+
+The gain margin expressed in decibels, is positive if $K_g$ is greater than unity, and negative if $K_g$ is smaller than unity.
+
+Thus, a positive gain margin (in decibels) means that the system is stable, and a negative gain margin (in decibels) means that the system is unstable.
+
+For a stable minimum-phase system, the gain margin indicates how much the gain can be increased before the system becomes unstable. For an unstable system, the gain margin is indicative of how much the gain must be decreased to make the system stable.
+
+**__Phase Margin__**
+
+The phase margin is the amount of additional phase lag at the gain crossover frequency required to bring the system to the verge of instability.
+
+The phase margin $\gamma$ is $\SI{180}{\degree}$ plus the phase angle $\phi_{gc}$ (in degrees) of the open-loop transfer function at the gain crossover frequency, or
+
+$$
+    \gamma = 180 + \phi_{gc}
+$$
+
+<!-- !figures skipped -->
+
 
 ## Frequency Domain Stability: Summary
 
-### Example 4
+The stability of the control system based on the relation between the phase cross over frequency and the gain cross over frequency is listed below
+
+1. If the phase cross over frequency $\omega_{pc}$ is greater than the gain cross over frequency $\omega_{gc}$, (i.e. $\omega_{pc} > \omega_{gc}$), the control system is stable.
+2. If the phase cross over frequency $\omega_{pc}$ is equal to the gain cross over frequency $\omega_{gc}$, (i.e. $\omega_{pc} = \omega_{gc}$), the control system is marginally stable.
+3. If the phase cross over frequency $\omega_{pc}$ is less than the gain cross over frequency $\omega_{gc}$, (i.e. $\omega_{pc} < \omega_{gc}$), the control system is unstable.
+
+The stability of the control system based on the relation between gain margin and phase margin is listed below.
+
+1. If both the gain margin, GM, amd the phase margin, PM, are positive, then the control system is stable.
+2. If both the gain margin, GM, and the phase margin, PM, are equal to zero, then the control system is marginally stable.
+3. If the gain margin, GM, and/or the phase margin, PM, are/is negative, then the control system is unstable. 

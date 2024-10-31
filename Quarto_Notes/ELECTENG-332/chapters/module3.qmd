@@ -244,9 +244,9 @@ c. Possibility of instability. This may mean undesired/persistent oscillations o
 Before we begin, let us first find the input-output relation in a feedback system. The block diagram of a feedback system is shown below.
 
 <!-- To be updated with higher res/embedded diagram -->
-:::{#fig-feedback-diagram fig-align="center" fig-pos="h!"}
-![](images/feedback-block-diagram-from-notes.png){width=50%}
-:::
+
+![Feedback System Block Diagram](images/feedback-block-diagram-from-notes.png){#fig-feedback-diagram fig-align="center" fig-pos="H" width=50%}
+
 
 From the schematic, the relation between the output and input is computed as:
 
@@ -391,9 +391,10 @@ Thus, Feedback can cause a system that is originally stable to become unstable.
 
 We will demonstrate that feedback can stabilize an unstable system.
 
-Let us introduce another feedback loop through a negative feedback gain $F(s)$ as shown. Then
 
-![](images/feedback-block-diagram-with-2-loop.png)
+![Two Loop Feedback System Block Diagram](images/feedback-block-diagram-with-2-loop.png){#fig-feedback-diagram-2 fig-align="center" fig-pos="H" width=50%}
+
+Let us introduce another feedback loop through a negative feedback gain $F(s)$ as shown above. Then
 
 $$
 	\dfrac{C(s)}{R(s)} = \dfrac{G(s)}{1+G(s)H(s) + G(s)F(s)}

@@ -45,6 +45,7 @@ format:
       - "-lualatex"
       - "-shell-escape"
     toc: true
+    lof: true
     toc-depth: 4
     number-sections: true
     # keep-tex: true
