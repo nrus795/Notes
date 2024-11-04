@@ -1,0 +1,316 @@
+# Frequency Domain Based Controller Design of Linear Systems
+
+## Learning Outcomes {.unnumbered}
+
+After completing this module, you should be able to:
+
+-   Explain the purpose and applications of control system compensators, including lead, lag, and lead-lag compensators.
+
+-   Identify different types of compensators and their effects on system performance, particularly in terms of transient response, steady-state accuracy, and high-frequency noise.
+
+-   Apply methods for designing series and feedback compensators in control systems.
+
+-   Analyze and interpret Bode plots to assess the frequency response of lead and lag compensators.
+
+-   Calculate phase margins, gain margins, and error constants to determine appropriate compensator configurations.
+
+-   Design compensators to meet specified performance criteria, including stability, phase margin, and error constants.
+
+-   Utilize the design procedures to calculate the required parameters for lead compensators in a control system.
+
+## Compensators: Lead, Lag & Lag-Lead Compensators
+
+### Why do we need Compensators?
+
+Control system compensation is a strategy used by the control system designer to improve system dynamic performance through the addition of dynamic elements in order to mitigate some of the undesirable features of the control elements present in the system.
+
+A compensating network is one which makes some adjustments in order to make up for deficiencies in the system. Compensating devices may be in the form of electrical, mechanical, hydraulic etc components. Most electric compensators are RC filters.
+
+Some undesirable features may include
+
+1.  Slow response of some transducers and sensors and process delays
+
+2.  System stability margin is low; to improve the stability margin
+
+3.  Non-linearities and other undesirable characteristics
+
+### Methods of Compensation
+
+-   **Series Compensation:** When the compensating circuit is between the error detector and the plant.
+-   **Feedback Compensation:** When the compensating circuit is in the feedback path, it is called feedback compensation.
+
+### Different Types of Compensators
+
+Most commonly used compensators are:
+
+1.  Phase Lead Compensator (Network)
+
+2.  Phase Lag Compensator (Network)
+
+3.  Phase Lag-Lead (Lead-Lag) Compensator (Network)
+
+Basic Characteristics of Lead, Lag and Lag-Lead Compensation:
+
+-   Lead Compensator: Improves the transient response; small improvement in steady state accuracy; often, may accentuate high-frequency noise effects
+
+-   Lag Compensator: Improves steady state accuracy; but increases transient-response time; suppress the effects of high-frequency noise signals.
+
+-   Lag-Lead Compensator: This combines the characteristics of both lead compensation and lag compensation; increases the order of the system by 2 (unless cancellation occurs between zero(s) of the lag–lead compensator and pole(s) of the uncompensated open-loop transfer function.)
+
+Note: We can regard the design of controllers of control systems as a filter design problem; then there are a large number of possible schemes. From the filtering standpoint, depending on the values of the controller parameters
+
+1.  The PD controller is a high-pass filter (Phase-Lead Controller); because positive phase is introduced to the system over some frequency range.
+
+2.  The PI controller is a low-pass filter (Phase-Lag Controller), because negative phase is introduced to the system over some frequency range and
+
+3.  The PID controller is a band-pass or band-attenuate filter (Lag-Lead/Lead-Lag Controller)
+
+## Lead Compensator
+
+The transfer function of a lead compensator is expressed as:
+
+$$
+\begin{aligned}
+    G_c(s) &= \dfrac{s+z_c}{s+p_c} = \dfrac{s+\frac{1}{\tau}}{s + \frac{1}{\alpha\tau}}; \quad \alpha = \dfrac{z_c}{p_c} < 1 \qcomma \tau > 0 \\
+    &= \alpha \left(\dfrac{1+\tau s}{1+\alpha \tau s} \right)
+\end{aligned}
+$$
+
+Where $\alpha$ is the attenuation factor of the lead compensator. It has zero at $s = -\dfrac{1}{\tau}$ and a pole at $s=-\dfrac{1}{\alpha\tau}$.
+
+<!-- ! skip pzmap -->
+
+Since $0 < \alpha < 1$, the zero is always located to the right of the pole in the complex plane.
+
+Note that for a small value of $\alpha$ the pole is located far to the left. The minimum value of $\alpha$ is limited by the physical construction of the lead compensator.
+
+The minimum value of $\alpha$ is usually taken to be about $\sim 0.05$ which corresponds to the maximum phase lead of $\SI{65}{\degree}$ that may be produced by a lead compensator.
+
+{{< pagebreak >}}
+
+### Circuit Realization of Lead Compensator
+
+The figure below shows the circuit realization of a lead compensator.
+
+![Lead Compensator]
+
+  [Lead Compensator]: ./figures/lead-comp.tex {#fig-lead-compensator fig-align="center"}
+
+From @fig-lead-compensator,
+
+$$
+    \dfrac{E_o(s)}{E_i(s)} = \dfrac{R_2}{R_2 + \frac{\flatfrac{R_1}{sC}}{R_1+\flatfrac{1}{sC}}} = \dfrac{s+\flatfrac{1}{(R_1C)}}{s+\frac{1}{[\flatfrac{R_2}{R_1+R_2}]R_1C}} = \dfrac{s+\frac{1}{\tau}}{s+\frac{1}{\alpha \tau}}
+$$
+
+where $\tau = R_1C$ and $\alpha = \dfrac{R_2}{(R_1+R_2)} < 1$.
+
+### Frequency Response Analysis of Lead Compensator
+
+The sinusoidal transfer function of the lead compensator is given by
+
+$$
+    G_c(j\omega) = \alpha \left[\dfrac{1+j\omega\tau}{1+j\omega\alpha\tau} \right]; \quad \alpha < 1
+$$
+
+At zero frequency, the network has a gain of $\alpha < 1$ or an attenuation of $\flatfrac{1}{\alpha}$. Often in frequency domain compensation technique, it is convenient to cancel DC attenuation of the network with an amplification, $A= \flatfrac{1}{\alpha}$. The lead compensator is then visualized as a combination of a network and an amplifier. The sinusoidal transfer function of the lead compensator is then given by:
+
+$$
+    G_c(j\omega) =  \dfrac{1+j\omega\tau}{1+j\omega\alpha\tau}; \quad \alpha < 1
+$$
+
+Since $\alpha < 1$, the network output leads the sinusoidal input under steady state and hence the name lead compensator.
+
+<!-- ! some bode plot or something -->
+
+{{< pagebreak >}}
+
+The phase lead of the compensator is given by
+
+$$
+\begin{aligned}
+    \phi &= \tan^{-1}\omega\tau - \tan^{-1}\omega\alpha\tau \\
+    \tan\phi &= \dfrac{-\omega\tau}{1+\alpha\omega^2\tau^2}
+\end{aligned}
+$$
+
+The frequency $\omega_m$ at which the compensator provides maximum phase lead is computed by solving $\dv{\phi}{\omega}=0$. This gives:
+
+$$
+    \omega_m = \dfrac{1}{\tau \sqrt{\alpha}} = \sqrt{\left(\dfrac{1}{\tau}\right)\left(\dfrac{1}{\alpha\tau}\right)} = \sqrt{\omega_1\omega_2}
+$$
+
+Thus, $\omega_m$ is the geometric mean of the two corner frequencies of the compensator.
+
+At $\omega = \omega_m$, the maximum phase lead $\phi_m$ is given by
+
+$$
+\begin{aligned}
+    \tan\phi_m &= \dfrac{1-\alpha}{2\sqrt{\alpha}}, \text{i.e.}, \\
+    \sin\phi_m &= \dfrac{1-\alpha}{1+\alpha} \\
+    \abs{G_c(j\omega_m)} &= \dfrac{1}{\sqrt{\alpha}}
+\end{aligned}
+$$
+
+To obtain $\alpha$ for the desired phase lead,
+
+$$
+    \alpha = \dfrac{1-\sin\phi_m}{1+\sin\phi_m}
+$$
+
+<!-- ! some bode plot with a bunch of arrows -->
+
+<!-- ! bunch more bode plots as well. make these all .tex files -->
+
+{{< pagebreak >}}
+
+From $\phi_m$ versus $\flatfrac{1}{\alpha}$ it is observed that
+
+-   To obtain a phase lead more than $\SI{60}{\degree}$, (i.e. $\alpha = 0.08$), the attenuation of the network increases sharply.
+
+-   Therefore, if we require a phase more than $\SI{60}{\degree}$, it is advisable to use two cascaded lead networks with moderate values of $\alpha$, rather than a single lead network with too small a value of $\alpha$.
+
+-   The choice of $\alpha$ is often decided considering the noise in the control system. (Note that the noise signal frequencies are higher than the control signal frequencies.)
+
+-   From the Bode plot, it is obvious that in a lead network, the high frequency noise signals are amplified by a factor of $\flatfrac{1}{\alpha}$, while the (low frequency) control signals undergo unit amplification ($\SI{0}{\decibel}$ gain).
+
+-   Thus the signal-to-noise ratio at the output of the lead compensator is poorer than at its input.
+
+-   To prevent the signal-to-noise ratio at the output from deteriorating excessively, it is recommended that the value of $\alpha$ be chosen such that it is not less than 0.07. A commonly chosen value due to this reason, is $\alpha = 0.1$.
+
+### Design Procedure of a Lead Compensator
+
+1.  Determine loop gain, $K$, to satisfy the specified error constant.
+
+2.  Using this value of K, determine the phase margin of the uncompensated system.
+
+3.  Determine the phase-lead required using the relation:
+
+    $$
+    \phi_l = \phi_s - \phi_1 + \epsilon
+    $$
+
+    where $\phi_s$ is the specified phase margin, $\phi_1$ is the phase margin of the fixed part of the system i.e, the uncompensated system and $\epsilon$ is the margin of safety required due to the increase in the crossover frequency because of compensation (usually $\SI{5}{\degree} - \SI{10}{\degree}$).
+
+4.  Let $\phi_m = \phi_l$ and determine the value of the $\alpha$ parameter of the network from:
+
+    $$
+    \alpha = \dfrac{1-\sin\phi_m}{1+\sin\phi_m}
+    $$
+
+    If the required $\phi_m$ is more than $\SI{60}{\degree}$, it is recommended to use two identical networks each contributing a maximum lead of $\flatfrac{\phi_l}{2}$.
+
+5.  Calculate the $\unit{\decibel}$ gain, $10\log(\flatfrac{1}{\alpha})$ provided by the network at $\omega_m$.
+
+    a)  Locate the frequency at which the uncompensated system has a gain of $-10\log(\flatfrac{1}{\alpha})$.
+
+    b)  This is the cross-over frequency $\omega_{c2} = \omega_m$ of the compensated system
+
+6.  Compute two corner frequencies of the network as
+
+    $$
+    \omega_1 = \dfrac{1}{\tau}=\omega_m \sqrt{\alpha}\qcomma \omega_2 = \dfrac{1}{\alpha\tau} = \dfrac{\omega_m}{\sqrt{\alpha}}
+    $$
+
+7.  Draw the magnitude and phase plots of the compensated system and check the resulting phase margin. If the phase margin is still low, increase the value of $\epsilon$ and repeat from step-3 above.
+
+## Lag Compensator
+
+The transfer function of a lag compensator is expressed as:
+
+$$
+    G_c(s) = \dfrac{s+z_c}{s+p_c} = \dfrac{s+\frac{1}{\tau}}{s+\frac{1}{\beta\tau}}; \quad \beta = \dfrac{}{} > 1 \qcomma \tau > 0
+$$
+
+It has a zero at $s=-\flatfrac{1}{\tau}$ and a pole at $s=-\flatfrac{1}{(\beta\tau)}$. Since $\beta > 1$, the zero is always located to the left of the pole in the complex plane.
+
+<!-- ! skip pzmap -->
+
+### Circuit Realization of Lag Compensator
+
+The figure below shows the circuit realization of a lag compensator.
+
+![Lag Compensator]
+
+  [Lag Compensator]: ./figures/lag-comp.tex {#fig-lag-compensator fig-align="center"}
+
+
+From @fig-lag-compensator,
+
+$$
+    \dfrac{E_o(s)}{E_i(s)} = \dfrac{R_2+\frac{1}{sC}}{R_1+R_2+\frac{1}{sC}} = \dfrac{1+sR_2C}{1+s(R_1+R_2)C} = \dfrac{R_2}{(R_1+R_2)}\dfrac{s+\frac{1}{R_2C}}{s+\frac{1}{(R_1+R_2)C}}
+$$
+
+If $\tau = R_2C$ and $\beta = \dfrac{R_1+R_2}{R_2}$, then
+
+$$
+    G_c(s) = \dfrac{R_2}{(R_1+R_2)}\dfrac{s+\frac{1}{R_2C}}{s+\frac{R_2}{(R_1+R_2)R_2C}} = \dfrac{1}{\beta}\dfrac{s+\frac{1}{\tau}}{s+\frac{1}{\beta\tau}} = \dfrac{1+s\tau}{1+s\beta\tau}
+$$
+
+### Frequency Response Analysis of Lag Compensator
+
+The sinusoidal transfer function of the lag compensator is given by
+
+$$
+    G_c(j\omega) = \left[\dfrac{1+j\omega\tau}{1+j\omega\beta\tau}\right]; \quad \beta > 1
+$$
+
+Since $\beta > 1$, the steady state output has a lagging phase angle with respect to the sinusoidal input and hence the name lag compensator.
+
+The phase lag of the compensator is given by
+
+$$
+\begin{aligned}
+    \phi &= \tan^{-1}\omega\tau - \tan^{-1}\beta\omega\tau \\
+    \tan\phi &= \dfrac{-\omega\tau}{1+\beta\omega^2\tau^2}
+\end{aligned}
+$$
+
+The frequency, $\omega_m$, at which the compensator provides maximum phase lag is computed by solving $\dv{\phi}{\omega}=0$. This gives:
+
+$$
+    \omega_m = \dfrac{1}{(\tau\sqrt{\beta})} = \sqrt{\left(\dfrac{1}{\tau}\right)\left(\dfrac{1}{\beta\tau}\right)} = \sqrt{\omega_2\omega_1}
+$$
+
+Thus, $\omega_m$ is the geometric mean of the two corner frequencies of the compensator.
+
+At $\omega = \omega_m$, the maximum phase lag $\phi_m$ is given by
+
+$$
+\begin{aligned}
+    \tan\phi_m &= \dfrac{\beta-1}{2\sqrt{\beta}}, \qqtext{or,} \sin\phi_m = \dfrac{1-\beta}{1+\beta}  \\
+    \beta &= \dfrac{1-\sin\phi_m}{1+\sin\phi_m}
+\end{aligned}
+$$
+
+The lag network has a D.C. gain of unity while it offers a high frequency gain of $\flatfrac{1}{\beta}$. Since $\beta > 1$, the high frequency noise is attenuated while passing through the network. In contrast to the lead network, this network improves the signal-to-noise ratio.
+
+### Design Procedure of a Lag Compensator
+
+1. Determine the loop gain, $K$, which satisfies the specified error constant.
+
+2. Using this value of $K$, sketch the Bode plot and determine the gain cross-over frequency, $\omega_g$ and the phase margin of the uncompensated system.
+
+3. Determine the frequency at which the phase angle of the uncompensated system is $\SI{-180}{\degree} + \phi_s + \epsilon$.
+    where $\phi_s$ is the specified phase margin.
+
+    a) Select this frequency as the new gain cross-over frequency, $\omega_g^\prime$.
+
+    b) Select $\epsilon$ between $\SI{5}{\degree}$ to $\SI{15}{\degree}$ which would compensate for the phase lag of the network at the new gain cross-over frequency $\omega_g^\prime$.
+
+4. Determine the value of the parameter $\beta$ of the network as follows:
+
+    a) Find the gain of the uncompensated system at $\omega_g^\prime$.
+
+    b) Equate this gain to $20\log\beta$ and compute the value of the parameter $\beta$.
+
+5. Choose the upper corner frequency $\omega_2 = \flatfrac{1}{\tau}$ of the network one octave to one decade below $\omega_g^\prime$ i.e.
+
+    $$
+        \omega_2 = \dfrac{1}{\tau} = \dfrac{\omega_g^\prime}{2} \text{ to } \dfrac{\omega_g^\prime}{10}
+    $$
+
+    a) Note that a large value of $\tau$ than calculated from the above guideline is undesirable. Because, for large $\tau$, the circuit realization requires an excessively large sized capacitor.
+
+    b) Compute teh lower corner frequency $\omega_1 = \flatfrac{1}{(\beta\tau)}$; as $\beta$ is known.
+
+6. Draw the magnitude and phase plots of the compensated system and check if the desired specifications are satisfied. If not, redesign the compensator with a different value of $\epsilon$ beginning from step-3 above. 

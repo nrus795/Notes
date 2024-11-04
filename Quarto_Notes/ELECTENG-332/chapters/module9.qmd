@@ -142,51 +142,9 @@ $$
 \end{aligned}
 $$
 
-```{=latex}
-\begin{figure}[H]
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
-                \nextgroupplot[%
-                    xmode=log,
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    ylabel={Gain, $\unit{\decibel}$},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-40, ymax=20,
-                    ytick={-40,-20,0,20},
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,       
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,thick,domain=1e-2:1e2}]
-                        {magnitude}
-                        {z/{},p/{},k/{5}}
-                \nextgroupplot[%
-                    xmode=log,
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    ylabel={Phase, deg},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-200, ymax=10,
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,        
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,thick,domain=1e-2:1e2}]
-                        {phase}
-                        {z/{},p/{},k/{5}}
-            \end{groupplot}
-        \end{tikzpicture}
-    \end{center}
-    \caption{Bode Plot of $G(s) = 5$}
-    \label{fig-bode-plot-constant-1}
-\end{figure}
-```
+![Bode Plot of $G(s) = 5$]
+
+  [Bode Plot of $G(s) = 5$]: ./figures/constant-1-bode.tex {#fig-bode-plot-constant-1 fig-align="center" fig-width="50%"}
 
 {{< pagebreak >}}
 
@@ -202,51 +160,9 @@ $$
 \end{aligned}
 $$
 
-```{=latex}
-\begin{figure}[H]
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
-                \nextgroupplot[%
-                    xmode=log,
-                    ylabel={Gain, $\unit{\decibel}$},
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-40, ymax=20,
-                    ytick={-40,-20,0,20},
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,       
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,thick,domain=1e-2:1e2}]
-                        {magnitude}
-                        {z/{},p/{},k/{-5}}
-                \nextgroupplot[%
-                    xmode=log,
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    ylabel={Phase, deg},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-200, ymax=10,
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,        
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,thick,domain=1e-2:1e2}]
-                        {phase}
-                        {z/{},p/{},k/{-5}}
-            \end{groupplot}
-        \end{tikzpicture}
-    \end{center}
-    \caption{Bode Plot of $G(s) = -5$}
-    \label{fig-bode-plot-constant-2}
-\end{figure}
-```
+![Bode Plot of $G(s) = -5$]
+
+  [Bode Plot of $G(s) = -5$]: ./figures/constant-2-bode.tex {#fig-bode-plot-constant-2 fig-align="center" fig-width="50%"}
 
 {{< pagebreak >}}
 
@@ -269,51 +185,9 @@ $$
     \angle G(j\omega) = \angle j\omega = \SI{90}{\degree}
 $$
 
-```{=latex}
-\begin{figure}[H]
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
-                \nextgroupplot[%
-                    xmode=log,
-                    ylabel={Gain, $\unit{\decibel}$},
-                    xlabel={Frequency},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-40, ymax=20,
-                    ytick={-40,-20,0,20},
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,       
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,solid,thick,domain=1e-2:1e2}]
-                        {magnitude}
-                        {z/{0},p/{},k/{1}}
-                \nextgroupplot[%
-                    xmode=log,
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    ylabel={Phase, deg},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=0, ymax=100,
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,        
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,solid,thick,domain=1e-2:1e2}]
-                        {phase}
-                        {z/{0},p/{},k/{1}}
-            \end{groupplot}
-        \end{tikzpicture}
-    \end{center}
-    \caption{Bode Plot of $G(s) = s$}
-    \label{fig-bode-plot-differentiator}
-\end{figure}
-```
+![Bode Plot of $G(s) = s$]
+
+  [Bode Plot of $G(s) = s$]: ./figures/differentiator-bode.tex {#fig-bode-plot-differentiator fig-align="center" fig-width="50%"}
 
 {{< pagebreak >}}
 
@@ -337,51 +211,9 @@ $$
     \angle G(j\omega) = \angle \dfrac{1}{j\omega} = \SI{-90}{\degree}
 $$
 
-```{=latex}
-\begin{figure}[H]
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
-                \nextgroupplot[%
-                    xmode=log,
-                    ylabel={Gain, $\unit{\decibel}$},
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-40, ymax=20,
-                    ytick={-40,-20,0,20},
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,       
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,solid,thick,domain=1e-2:1e2}]
-                        {magnitude}
-                        {z/{},p/{0},k/{1}}
-                \nextgroupplot[%
-                    xmode=log,
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    ylabel={Phase, deg},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-100, ymax=0,
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,        
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,solid,thick,domain=1e-2:1e2}]
-                        {phase}
-                        {z/{},p/{0},k/{1}}
-            \end{groupplot}
-        \end{tikzpicture}
-    \end{center}
-    \caption{Bode Plot of $G(s) = \dfrac{1}{s}$}
-    \label{fig-bode-plot-integrator}
-\end{figure}
-```
+![Bode Plot of $G(s) = \dfrac{1}{s}$]
+
+  [Bode Plot of $G(s) = \dfrac{1}{s}$]: ./figures/integrator-bode.tex {#fig-bode-plot-integrator fig-align="center" fig-width="50%"}
 
 {{< pagebreak >}}
 
@@ -422,53 +254,9 @@ The corner frequency divides the frequency-response curve into two regions: a cu
 
 Note: The corner frequency is very important in sketching logarithmic frequency-response curves.
 
-```{=latex}
-\begin{figure}[H]
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
-                \nextgroupplot[%
-                    xmode=log,
-                    ylabel={Gain, $\unit{\decibel}$},
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-40, ymax=40,
-                    ytick={-40,-20,0,20,40},
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,       
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,dashed,semithick,domain=1e-2:1e2},
-                        linear/{red,solid,thick,domain=1e-2:1e2}]
-                        {magnitude}
-                        {z/{-1},p/{},k/{1}}
-                \nextgroupplot[%
-                    xmode=log,
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    ylabel={Phase, deg},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-5, ymax=95,
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,        
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,dashed,semithick,domain=1e-2:1e2},
-                        linear/{red,solid,thick,domain=1e-2:1e2}]
-                        {phase}
-                        {z/{-1},p/{},k/{1}}
-            \end{groupplot}
-        \end{tikzpicture}
-    \end{center}
-    \caption{Bode Plot of $G(s) = 1+sT$}
-    \label{fig-bode-plot-simple-zero}
-\end{figure}
-```
+![Bode Plot of $G(s) = 1+sT$]
+
+  [Bode Plot of $G(s) = 1+sT$]: ./figures/simple-zero-bode.tex {#fig-bode-plot-simple-zero fig-align="center" fig-width="50%"}
 
 ### Phase Angle
 
@@ -525,53 +313,9 @@ The corner frequency divides the frequency-response curve into two regions: a cu
 
 Note: The corner frequency is very important in sketching logarithmic frequency-response curves.
 
-```{=latex}
-\begin{figure}[H]
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
-                \nextgroupplot[%
-                    xmode=log,
-                    ylabel={Gain, $\unit{\decibel}$},
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-40, ymax=20,
-                    ytick={-40,-20,0,20},
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,       
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,dashed,semithick,domain=1e-2:1e2},
-                        linear/{red,solid,thick,domain=1e-2:1e2}]
-                        {magnitude}
-                        {z/{},p/{-1},k/{1}}
-                \nextgroupplot[%
-                    xmode=log,
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    ylabel={Phase, deg},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-95, ymax=5,
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,        
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeZPKPlots[%
-                        true/{red,dashed,semithick,domain=1e-2:1e2},
-                        linear/{red,solid,thick,domain=1e-2:1e2}]
-                        {phase}
-                        {z/{},p/{-1},k/{1}}
-            \end{groupplot}
-        \end{tikzpicture}
-    \end{center}
-    \caption{Bode Plot of $G(s) = \dfrac{1}{1+sT}$}
-    \label{fig-bode-plot-simple-pole}
-\end{figure}
-```
+![Bode Plot of $G(s) = \dfrac{1}{1+sT}$]
+
+  [Bode Plot of $G(s) = \dfrac{1}{1+sT}$]: ./figures/simple-pole-bode.tex {#fig-bode-plot-simple-pole fig-align="center" fig-width="50%"}
 
 ### Phase Angle
 
@@ -691,57 +435,9 @@ i.e. Division by zero leads to tangent of $\infty$.
 
 The Bode plot of the phase angle of the quadratic factor is shown in the figure below.
 
-```{=latex}
-\begin{figure}[H]
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
-                \nextgroupplot[%
-                    xmode=log,
-                    ylabel={Gain, $\unit{\decibel}$},
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-40, ymax=20,
-                    ytick={-40,-30,-20,-10,0,10,20},
-                    xtick={1e-2, 1e-1, 1, 10, 100},
-                    minor x tick num=8,       
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.1}{1}}
-                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.2}{1}}
-                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.3}{1}}
-                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.5}{1}}
-                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.7071067812}{1}}
-                \addBodeComponentPlot[blue,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{1}{1}}
-                \nextgroupplot[%
-                    xmode=log,
-                    xlabel={Frequency, $\unit{\radian\per\second}$},
-                    ylabel={Phase, deg},
-                    grid=both,
-                    xmin=1e-2, xmax=1e2,
-                    ymin=-190, ymax=10,
-                    ytick={-180,-160,-140,-120,-100,-80,-60,-40,-20,0},
-                    xtick={1e-2, 1e-1, 1, 10,100},
-                    minor x tick num=8,        
-                    minor y tick num = 9,
-                    grid style={line width=.1pt, draw=gray!50},
-                    major grid style={line width=.2pt,draw=gray}]
-                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.1}{1}}
-                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.2}{1}}
-                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.3}{1}}
-                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.5}{1}}
-                \addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.7071067812}{1}}
-                \addBodeComponentPlot[blue,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{1}{1}}
-            \end{groupplot}
-        \end{tikzpicture}
-    \end{center}
-    \caption{Bode Plot of $G(s) = \dfrac{\omega^2}{s^2+2\zeta\omega_n s + \omega_n^2}$}
-    \label{fig-bode-plot-quadratic-factor}
-\end{figure}
-```
+![Bode Plot of a Quadratic Factor $G(s) = \dfrac{\omega^2}{s^2+2\zeta\omega_n s + \omega_n^2}$]
 
+  [Bode Plot of a Quadratic Factor $G(s) = \dfrac{\omega^2}{s^2+2\zeta\omega_n s + \omega_n^2}$]: ./figures/quad-factor-bode.tex {#fig-bode-plot-quadratic-factor fig-align="center" fig-width="50%"}
 
 ## Rules for Drawing Bode Magnitude Plots with Simple Poles and Zeros
 

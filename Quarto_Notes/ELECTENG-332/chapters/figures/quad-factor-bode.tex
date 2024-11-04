@@ -1,0 +1,42 @@
+\begin{tikzpicture}
+	\begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
+		\nextgroupplot[%
+			xmode=log,
+			ylabel={Gain, $\unit{\decibel}$},
+			xlabel={Frequency, $\unit{\radian\per\second}$},
+			grid=both,
+			xmin=1e-2, xmax=1e2,
+			ymin=-40, ymax=20,
+			ytick={-40,-30,-20,-10,0,10,20},
+			xtick={1e-2, 1e-1, 1, 10, 100},
+			minor x tick num=8,       
+			minor y tick num = 9,
+			grid style={line width=.1pt, draw=gray!50},
+			major grid style={line width=.2pt,draw=gray}]
+		\addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.1}{1}}
+		\addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.2}{1}}
+		\addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.3}{1}}
+		\addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.5}{1}}
+		\addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{0.7071067812}{1}}
+		\addBodeComponentPlot[blue,semithick,domain=1e-2:1e2,samples=100]{\MagCSPoles{1}{1}}
+		\nextgroupplot[%
+			xmode=log,
+			xlabel={Frequency, $\unit{\radian\per\second}$},
+			ylabel={Phase, deg},
+			grid=both,
+			xmin=1e-2, xmax=1e2,
+			ymin=-190, ymax=10,
+			ytick={-180,-160,-140,-120,-100,-80,-60,-40,-20,0},
+			xtick={1e-2, 1e-1, 1, 10,100},
+			minor x tick num=8,        
+			minor y tick num = 9,
+			grid style={line width=.1pt, draw=gray!50},
+			major grid style={line width=.2pt,draw=gray}]
+		\addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.1}{1}}
+		\addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.2}{1}}
+		\addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.3}{1}}
+		\addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.5}{1}}
+		\addBodeComponentPlot[red,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{0.7071067812}{1}}
+		\addBodeComponentPlot[blue,semithick,domain=1e-2:1e2,samples=100]{\PhCSPoles{1}{1}}
+	\end{groupplot}
+\end{tikzpicture}

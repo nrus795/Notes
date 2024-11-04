@@ -1,0 +1,37 @@
+\begin{tikzpicture}
+	\begin{groupplot}[group style={group size=2 by 1,horizontal sep=5em}, width=8cm, height=8cm]
+		\nextgroupplot[%
+			xmode=log,
+			ylabel={Gain, $\unit{\decibel}$},
+			xlabel={Frequency, $\unit{\radian\per\second}$},
+			grid=both,
+			xmin=1e-2, xmax=1e2,
+			ymin=-40, ymax=20,
+			ytick={-40,-20,0,20},
+			xtick={1e-2, 1e-1, 1, 10, 100},
+			minor x tick num=8,       
+			minor y tick num = 9,
+			grid style={line width=.1pt, draw=gray!50},
+			major grid style={line width=.2pt,draw=gray}]
+		\addBodeZPKPlots[%
+				true/{red,thick,domain=1e-2:1e2}]
+				{magnitude}
+				{z/{},p/{},k/{-5}}
+		\nextgroupplot[%
+			xmode=log,
+			xlabel={Frequency, $\unit{\radian\per\second}$},
+			ylabel={Phase, deg},
+			grid=both,
+			xmin=1e-2, xmax=1e2,
+			ymin=-200, ymax=10,
+			xtick={1e-2, 1e-1, 1, 10, 100},
+			minor x tick num=8,        
+			minor y tick num = 9,
+			grid style={line width=.1pt, draw=gray!50},
+			major grid style={line width=.2pt,draw=gray}]
+		\addBodeZPKPlots[%
+				true/{red,thick,domain=1e-2:1e2}]
+				{phase}
+				{z/{},p/{},k/{-5}}
+	\end{groupplot}
+\end{tikzpicture}
