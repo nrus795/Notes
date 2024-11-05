@@ -99,7 +99,7 @@ The figure below shows the circuit realization of a lead compensator.
 From @fig-lead-compensator,
 
 $$
-    \dfrac{E_o(s)}{E_i(s)} = \dfrac{R_2}{R_2 + \frac{\flatfrac{R_1}{sC}}{R_1+\flatfrac{1}{sC}}} = \dfrac{s+\flatfrac{1}{(R_1C)}}{s+\frac{1}{[\flatfrac{R_2}{R_1+R_2}]R_1C}} = \dfrac{s+\frac{1}{\tau}}{s+\frac{1}{\alpha \tau}}
+    \dfrac{E_o(s)}{E_i(s)} = \dfrac{R_2}{R_2 + \frac{\flatfrac{R_1}{sC}}{R_1+\flatfrac{1}{sC}}} = \dfrac{s+\flatfrac{1}{(R_1C)}}{s+\frac{1}{\left[\flatfrac{R_2}{R_1+R_2}\right]R_1C}} = \dfrac{s+\frac{1}{\tau}}{s+\frac{1}{\alpha \tau}}
 $$
 
 where $\tau = R_1C$ and $\alpha = \dfrac{R_2}{(R_1+R_2)} < 1$.
@@ -112,7 +112,7 @@ $$
     G_c(j\omega) = \alpha \left[\dfrac{1+j\omega\tau}{1+j\omega\alpha\tau} \right]; \quad \alpha < 1
 $$
 
-At zero frequency, the network has a gain of $\alpha < 1$ or an attenuation of $\flatfrac{1}{\alpha}$. Often in frequency domain compensation technique, it is convenient to cancel DC attenuation of the network with an amplification, $A= \flatfrac{1}{\alpha}$. The lead compensator is then visualized as a combination of a network and an amplifier. The sinusoidal transfer function of the lead compensator is then given by:
+At zero frequency, the network has a gain of $\alpha < 1$ or an attenuation of $\flatfrac{1}{\alpha}$. Often in frequency domain compensation technique, it is convenient to cancel DC attenuation of the network with an amplification, $A=\flatfrac{1}{\alpha}$. The lead compensator is then visualized as a combination of a network and an amplifier. The sinusoidal transfer function of the lead compensator is then given by:
 
 $$
     G_c(j\omega) =  \dfrac{1+j\omega\tau}{1+j\omega\alpha\tau}; \quad \alpha < 1
@@ -133,7 +133,7 @@ $$
 \end{aligned}
 $$
 
-The frequency $\omega_m$ at which the compensator provides maximum phase lead is computed by solving $\dv{\phi}{\omega}=0$. This gives:
+The frequency $\omega_m$ at which the compensator provides maximum phase lead is computed by solving $\odv{\phi}{\omega}=0$. This gives:
 
 $$
     \omega_m = \dfrac{1}{\tau \sqrt{\alpha}} = \sqrt{\left(\dfrac{1}{\tau}\right)\left(\dfrac{1}{\alpha\tau}\right)} = \sqrt{\omega_1\omega_2}
@@ -218,7 +218,7 @@ From $\phi_m$ versus $\flatfrac{1}{\alpha}$ it is observed that
 The transfer function of a lag compensator is expressed as:
 
 $$
-    G_c(s) = \dfrac{s+z_c}{s+p_c} = \dfrac{s+\frac{1}{\tau}}{s+\frac{1}{\beta\tau}}; \quad \beta = \dfrac{}{} > 1 \qcomma \tau > 0
+    G_c(s) = \dfrac{s+z_c}{s+p_c} = \dfrac{s+\frac{1}{\tau}}{s+\frac{1}{\beta\tau}}; \quad \beta = \dfrac{z_c}{p_c} > 1 \qcomma \tau > 0
 $$
 
 It has a zero at $s=-\flatfrac{1}{\tau}$ and a pole at $s=-\flatfrac{1}{(\beta\tau)}$. Since $\beta > 1$, the zero is always located to the left of the pole in the complex plane.
@@ -265,7 +265,7 @@ $$
 \end{aligned}
 $$
 
-The frequency, $\omega_m$, at which the compensator provides maximum phase lag is computed by solving $\dv{\phi}{\omega}=0$. This gives:
+The frequency, $\omega_m$, at which the compensator provides maximum phase lag is computed by solving $\odv{\phi}{\omega}=0$. This gives:
 
 $$
     \omega_m = \dfrac{1}{(\tau\sqrt{\beta})} = \sqrt{\left(\dfrac{1}{\tau}\right)\left(\dfrac{1}{\beta\tau}\right)} = \sqrt{\omega_2\omega_1}

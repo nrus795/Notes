@@ -14,7 +14,7 @@ After completing this module, you should be able to:
 
 ## Introduction to the Block Diagram Representation
 
-A typical control systems is often complex and consists of interconnection of several components/elements which are practically nonlinear. Although, their input-output behaviour can be approximated by linear differential equations, it is difficult to derive the complete behaviour of a complex control system via a single equation or function. Therefore, it is always desirable to represent the dynamics of each of the components separately, and then connect them together to represent the whole system. This is the motivation of block diagram representation of control systems where each component of the control system is represented with a block.
+A typical control system is often complex and consists of interconnection of several components/elements which are practically nonlinear. Although, their input-output behaviour can be approximated by linear differential equations, it is difficult to derive the complete behaviour of a complex control system via a single equation or function. Therefore, it is always desirable to represent the dynamics of each of the components separately, and then connect them together to represent the whole system. This is the motivation of block diagram representation of control systems where each component of the control system is represented with a block.
 
 **Advantages:**
 
@@ -106,7 +106,7 @@ where $K_T = K_1 K_f i_f$, and is called the motor torque constant.
 The motor back emf is proportional to the speed and is given as
 
 $$
-	e_b = K_b \dv{\theta}{t}
+	e_b = K_b \odv{\theta}{t}
 $${#eq-armature-controlled-dc-motor-back-emf}
 
 where $K_b$ is the back emf constant.
@@ -116,13 +116,13 @@ Note that the DC motor is an electro-mechanical system. This means it has both e
 The electrical dynamics of the DC motor associated with the armature circuit is given by
 
 $$
-	R_a i_a + L_a \dv{i_a}{t} + e_b = e_a \qqtext{where} e_b = K_b \dv{\theta}{t}
+	R_a i_a + L_a \odv{i_a}{t} + e_b = e_a \qqtext{where} e_b = K_b \odv{\theta}{t}
 $${#eq-armature-controlled-dc-motor-electrical-dynamics}
 
 The mechanical dynamics of the DC motor is given by
 
 $$
-	J \dv[2]{\theta}{t} + f_0 \dv{\theta}{t} + T_d = T_m \qqtext{where} T_m = K_T i_a
+	J \odv[2]{\theta}{t} + f_0 \odv{\theta}{t} + T_d = T_m \qqtext{where} T_m = K_T i_a
 $${#eq-armature-controlled-dc-motor-mechanical-dynamics}
 
 Taking the Laplace transform of eqn(@eq-armature-controlled-dc-motor-torque-constant), eqn(@eq-armature-controlled-dc-motor-back-emf), eqn(@eq-armature-controlled-dc-motor-electrical-dynamics) and eqn(@eq-armature-controlled-dc-motor-mechanical-dynamics) with the assumption of zero initial conditions gives
@@ -130,9 +130,9 @@ Taking the Laplace transform of eqn(@eq-armature-controlled-dc-motor-torque-cons
 $$
 \begin{aligned}
 	\mathcal{L}\left[T_m \right] = K_T \mathcal{L}\left[ i_a \right] &\implies T_m(s) = K_TI_a(s) \\
-	\mathcal{L}\left[e_b \right] = K_b \mathcal{L}\left[\dv{\theta}{t} \right] &\implies E_b(s) = K_bs \theta(s) \\
-	\mathcal{L}\left[R_ai_a \right] + \mathcal{L}\left[L_a\dv{i_a}{t}\right] + \mathcal{L}\left[e_b\right] = \mathcal{L}\left[e_a\right] &\implies (L_as + R_a)I_a(s) = E_a(s) - E_b(s) \\
-	\mathcal{L}\left[J\dv[2]{\theta}{t}\right] + \mathcal{L}\left[f_0 \dv{\theta}{t}\right] + \mathcal{L}\left[T_d\right] = \mathcal{L}\left[T_m\right] &\implies (Js^2+f_0s)\theta(s) = T_m(s) - T_d(s)
+	\mathcal{L}\left[e_b \right] = K_b \mathcal{L}\left[\odv{\theta}{t} \right] &\implies E_b(s) = K_bs \theta(s) \\
+	\mathcal{L}\left[R_ai_a \right] + \mathcal{L}\left[L_a\odv{i_a}{t}\right] + \mathcal{L}\left[e_b\right] = \mathcal{L}\left[e_a\right] &\implies (L_as + R_a)I_a(s) = E_a(s) - E_b(s) \\
+	\mathcal{L}\left[J\odv[2]{\theta}{t}\right] + \mathcal{L}\left[f_0 \odv{\theta}{t}\right] + \mathcal{L}\left[T_d\right] = \mathcal{L}\left[T_m\right] &\implies (Js^2+f_0s)\theta(s) = T_m(s) - T_d(s)
 \end{aligned}
 $${#eq-armature-controlled-dc-motor-laplace-transformed}
 
@@ -323,7 +323,7 @@ Further simplification gives:
 $$
 \begin{aligned}
 	C(s) + G_a(s)G_b(s)H(s)C(s) &= G_a(s)G_b(s)R(s) + G_b(s)N(s) \\
-\text{or,} \quad C(s)[1+G_a(s)G_b(s)H(s)] &= G_a(s)G_b(s)R(s) + G_b(s)N(s)
+\qqtext{or,}  C(s)[1+G_a(s)G_b(s)H(s)] &= G_a(s)G_b(s)R(s) + G_b(s)N(s)
 \end{aligned}
 $$
 

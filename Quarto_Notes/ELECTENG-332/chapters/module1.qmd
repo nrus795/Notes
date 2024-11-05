@@ -22,22 +22,22 @@ The Exponential function, written as either $e^{ax}$ or $e^{at}$ depending on wh
 
 1.  The derivative (rate of change) of the exponential function is the exponential function itself. More generally, this is a function whose rate of change is proportional to the function itself.
 
-    $$
-        \dv{e^{ax}}{x} = a e^{ax}
-    $$ {#eq-exp-derivative}
+$$
+    \odv{e^{ax}}{x} = a e^{ax}
+$${#eq-exp-derivative}
 
 2.  The integral of the exponential function is also the exponential function itself.
 
-    $$
-        \int e^{ax} \dd{x} = \frac{1}{a} e^{ax} 
-    $$ {#eq-exp-integral}
+$$
+    \int e^{ax} \odif{x} = \dfrac{1}{a} e^{ax} 
+$${#eq-exp-integral}
 
 ## The Concept of Engineering Infinity
 
-Consider a signal $e^{-at}$. The time constant for this signal is $T = \frac{1}{a}$. Theoretically, the signal is meant to decay to zero as time approaches infinity, i.e.
+Consider a signal $e^{-at}$. The time constant for this signal is $T = \dfrac{1}{a}$. Theoretically, the signal is meant to decay to zero as time approaches infinity, i.e.
 
 $$
-    \lim_{t \to \infty} e^{-at} = 0  
+    \lim\limits_{t \to \infty} e^{-at} = 0  
 $$ {#eq-engineering-infinity}
 
 But in practice, this is not the case, as its value will be very, very small after five time constants $5T$ (or $5\tau$). This is the [***Concept of Engineering Infinity***]{color="red"}. The signal will never reach zero, but it will be so small that it can be considered zero for all practical purposes. This is a very important concept in control systems, as it allows us to simplify our calculations and analysis.
@@ -46,28 +46,33 @@ But in practice, this is not the case, as its value will be very, very small aft
 
 Complex frequency is found commonly in electrical engineering. It is often notated as $j\omega$ or $s = \sigma \pm j\omega$. These frequencies always come in pairs, so the use of $\pm$ is implicit to this, as complex numbers have complex conjugates (normally notated by $z^*$ or $\bar{z}$). i.e. $s = \sigma + j\omega$ has the conjugate $s=\sigma - j\omega$. This is backed up by De Moivre's formula which is defined mathematically as:
 
-\begin{gather}
-    \forall x \in \mathbb{R}, \quad \forall n \in \mathbb{Z} \\
+$$
+\begin{gathered}
+    \forall x \in \mathbb{R}\qcomma\forall n \in \mathbb{Z} \\
     e^{jnx} = \cos(n x) + j \sin(n x)  
-\end{gather}
+\end{gathered}
+$${#eq-de-moivre}
 
 Or more generally for our applications (this is also known as Euler's formula):
 
-\begin{gather}
+$$
+\begin{gathered}
     e^{jx} = \cos(x) + j \sin(x) \\
-    \text{Where} \, x \in \mathbb{R}\, \text{($x$ is real)} \\
-    \text{and} \, j \equiv i = \sqrt{-1}
-\end{gather}
+    \text{Where}\; x \in \mathbb{R} \\
+    \text{and}\; j \equiv i = \sqrt{-1}
+\end{gathered}
+$${#eq-euler}
+
 
 This means that:
 
-> [A complex frequency $j\omega$ represents a pure sinusoidal signal of frequency $\omega$ $\unit{\rads}$]{color="red"}
+> [A complex frequency $j\omega$ represents a pure sinusoidal signal of frequency $\omega\;\unit{\radian\per\second}$]{color="red"}
 
-For example, if a signal has a complex frequency $\complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\rads}$, then this responds to a pure sinusoid of frequency $\qty{314}{\rads}$ (i.e. $\qty{50}{\hertz}$).
+For example, if a signal has a complex frequency $\complexqty[output-complex-root=j, complex-root-position=before-number]{314i}{\radian\per\second}$, then this responds to a pure sinusoid of frequency $\SI{314}{\radian\per\second}$ (i.e. $\SI{50}{\hertz}$).
 
 Furthermore:
 
-> [A complex frequency $s = \sigma + j\omega$ represents an exponentially damped signal of frequency $j\omega$ $\unit{\rads}$, and decays/amplifies at a rate decided by $\sigma$]{color="red"}
+> [A complex frequency $s = \sigma + j\omega$ represents an exponentially damped signal of frequency $j\omega\;\unit{\radian\per\second}$, and decays/amplifies at a rate decided by $\sigma$]{color="red"}
 
 ## What are Signals?
 
@@ -91,27 +96,33 @@ Examples of such signals include: Voltage, Current, Speech, Television, Images f
 
 **Instantaneous Power**
 
-> The instantaneous power $p(t)$ of a signal $x(t)$ is expressed as: $$
-> p(t) = x^2(t)
-> $$ {#eq-instantaneous-power-def}
+> The instantaneous power $p(t)$ of a signal $x(t)$ is expressed as: 
+$$
+    p(t) = x^2(t)
+$${#eq-instantaneous-power-def}
 
 **Continuous-Time Signal Energy**
 
-> The total energy of a continuous-time signal $x(t)$ is given by: $$
-> E = \lim_{T \to \infty}\int_{-T/2}^{T/2} x^2(t) \dd{t} = \int_{-\infty}^{\infty} x^2(t) \dd{t}
-> $$
+> The total energy of a continuous-time signal $x(t)$ is given by: 
+
+$$
+    E = \lim\limits_{T \to \infty}\int\limits_{-T/2}^{T/2} x^2(t) \odif{t} = \int\limits_{-\infty}^{\infty} x^2(t) \odif{t}
+$$
 
 **Complex Valued Signal Energy**
 
-> For a complex valued signal: $$
-> E = \int_{-\infty}^{\infty} \abs{x(t)}^2 \dd{t}
-> $$
+> For a complex valued signal: 
+
+$$
+    E = \int\limits_{-\infty}^{\infty} \abs{x(t)}^2 \odif{t}
+$$
 
 **Average Power**
 
-> Since power equals to the time average of the energy, the average power is given by: $$
-> P = \lim_{T \to \infty} \dfrac{1}{T} \int_{-T/2}^{T/2} x^2(t) \dd{t} = \dfrac{E}{T}
-> $$
+> Since power equals to the time average of the energy, the average power is given by: 
+$$
+    P = \lim\limits_{T \to \infty} \dfrac{1}{T} \int\limits_{-T/2}^{T/2} x^2(t) \odif{t} = \dfrac{E}{T}
+$$
 
 Note that during calculation of energy, we average the power over an indefinitely large interval.
 
@@ -127,7 +138,7 @@ c.  The signals which are both deterministic and non-periodic have finite energy
 
 d.  Periodic signals and random signals are essentially power signals.
 
-e.  Periodic signals for which the area under $|x(t)|^2$ over one period is finite are energy signals.
+e.  Periodic signals for which the area under $\abs{x(t)}^2$ over one period is finite are energy signals.
 
 ### Examples
 
@@ -147,13 +158,13 @@ Determine whether this is an energy signal or a power signal or neither.
 **Solution:** Let us compute the energy of this signal as:
 
 $$
-    E = \int_{-\infty}^{\infty} {[u(t)]}^2 \dd{t} = \int_{0}^{\infty} {[0]}^2 \dd{t} = \int_{0}^{\infty} {[1]}^2 \dd{t} = \infty 
+    E = \int\limits_{-\infty}^{\infty} {[u(t)]}^2 \odif{t} = \int\limits_{0}^{\infty} {[0]}^2 \odif{t} = \int\limits_{0}^{\infty} {[1]}^2 \odif{t} = \infty 
 $$ {#eq-unit-step-energy}
 
 Since the energy of this signal is infinite, it cannot be an energy signal. Let us compute the power of this signal as:
 
 $$
-    P = \lim_{T \to \infty} \dfrac{1}{T} \int_{-T/2}^{T/2} {[u(t)]}^2 \dd{t} = \lim_{T \to \infty} \dfrac{1}{T} \int_{0}^{T/2} {[u(t)]}^2 \dd{t} = \dfrac{1}{2}
+    P = \lim\limits_{T \to \infty} \dfrac{1}{T} \int\limits_{-T/2}^{T/2} {[u(t)]}^2 \odif{t} = \lim\limits_{T \to \infty} \dfrac{1}{T} \int\limits_{0}^{T/2} {[u(t)]}^2 \odif{t} = \dfrac{1}{2}
 $$ {#eq-unit-step-power}
 
 The power of this signal is finite. Hence, [this is a power signal]{color="red"}.
@@ -163,7 +174,7 @@ The power of this signal is finite. Hence, [this is a power signal]{color="red"}
 Consider an exponential function defined as:
 
 $$
-    x(t) = e^{-at}u(t), \, \text{where} \; u(t) \;\text{is the unit step signal},\, a > 0 
+    x(t) = e^{-at}u(t)\qqtext{where} u(t) \text{ is the unit step signal}, \; a > 0 
 $$ {#eq-exp-function-example}
 
 Classify this signal as an energy, power, or neither.
@@ -171,7 +182,7 @@ Classify this signal as an energy, power, or neither.
 **Solution:** Let us compute the energy of this signal as:
 
 $$
-    E = \int_{-\infty}^{\infty} {[x(t)]}^2  \dd{t} = \int_{0}^{\infty} {[e^{-at}]}^2 \dd{t} = \int_{0}^{\infty} e^{-2at} \dd{t} = \frac{1}{2a} < \infty 
+    E = \int\limits_{-\infty}^{\infty} {[x(t)]}^2  \odif{t} = \int\limits_{0}^{\infty} {[e^{-at}]}^2 \odif{t} = \int\limits_{0}^{\infty} e^{-2at} \odif{t} = \dfrac{1}{2a} < \infty 
 $$ {#eq-exp-function-energy}
 
 Thus, $x(t) = e^{-at} u(t)$ is an [energy signal]{color="red"}.
@@ -193,13 +204,13 @@ Classify this signal as an energy, power, or neither.
 **Solution:** Let us compute the energy of this signal as:
 
 $$
-    E = \int_{-\infty}^{\infty} {r(t)}^2 \dd{t} = \int_{-\infty}^{0} {[0]}^2 \dd{t} = \int_{0}^{\infty} A^2 t^2 \dd{t} = A^2 \dfrac{T^3}{3} \Bigg|_{0}^{\infty} = \infty 
+    E = \int\limits_{-\infty}^{\infty} {r(t)}^2 \odif{t} = \int\limits_{-\infty}^{0} {[0]}^2 \odif{t} = \int\limits_{0}^{\infty} A^2 t^2 \odif{t} = A^2 \dfrac{T^3}{3} \Bigg|_{0}^{\infty} = \infty 
 $$ {#eq-ramp-function-energy}
 
 Since the energy of this signal is infinite, it cannot be an energy signal. Let us compute the power of this signal as:
 
 $$
-    P = \lim_{T \to \infty} \dfrac{1}{T} \int_{-T/2}^{T/2} {[r(t)]}^2 \dd{t} = \lim_{T \to \infty} \dfrac{1}{T} \int_{0}^{T/2} A^2 t^2 \dd{t} = A^2 \lim_{T \to \infty} \dfrac{1}{T} \dfrac{T^3}{3} \Bigg|_{0}^{\infty} = \infty 
+    P = \lim\limits_{T \to \infty} \dfrac{1}{T} \int\limits_{-T/2}^{T/2} {[r(t)]}^2 \odif{t} = \lim\limits_{T \to \infty} \dfrac{1}{T} \int\limits_{0}^{T/2} A^2 t^2 \odif{t} = A^2 \lim\limits_{T \to \infty} \dfrac{1}{T} \dfrac{T^3}{3} \Bigg|_{0}^{\infty} = \infty 
 $$ {#eq-ramp-function-power}
 
 The power of this signal is infinite. Hence, this is [neither a power nor an energy signal]{color="red"}.
@@ -231,8 +242,10 @@ b.  Similarly, in mechanical systems, the laws of operation are Newton’s laws.
 A system is defined mathematically as a transformation which maps an input signal $x(t)$ to an output signal $y(t)$. For a continuous time system, the input-output mapping is expressed as:
 
 $$
-    \textcolor{red}{y(t) = \mathcal{S}[x(t)]}, \; \text{where} \; \mathcal{S} \; \text{is the system operator}
+    \textcolor{red}{y(t) = \mathcal{S}[x(t)]}
 $$ {#eq-system-operator}
+
+where $\mathcal{S}$ is the system operator. 
 
 [A Control system may be defined as an interconnection of components which are configured to provide a desired response.]{color="red"}
 
@@ -255,7 +268,7 @@ d.  Nature and type of components: *(static or dynamic, linear or nonlinear, tim
 3.  Static (memory-less) and dynamic (with memory) systems
 4.  Causal and Non-causal systems
 5.  Lumped and distributed parameter systems
-6.  Determinisitc and stochastic systems
+6.  Deterministic and stochastic systems
 7.  Continuous and discrete systems
 
 ### Linear and Nonlinear Systems

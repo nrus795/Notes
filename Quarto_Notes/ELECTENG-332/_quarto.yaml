@@ -33,7 +33,6 @@ filters:
   - color-filter
   - latex-environment
 
-
 include-in-header: 
   - "preamble.tex"
 format:
@@ -65,6 +64,7 @@ format:
       - "marginparsep=2cm"
     fontfamily: lmodern
     latex-clean: true
+  
     titlepage: academic
     titlepage-logo: "images/DECSE-HC-4C-01.png"
     titlepage-theme:

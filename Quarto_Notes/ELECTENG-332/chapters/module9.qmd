@@ -231,11 +231,12 @@ $$
 
 To obtain asymptotic approximations of $\abs{G(j\omega)}_{\unit{\decibel}}$, we consider both very large and very small values of $\omega$.
 
--   At very low frequencies where $\omega T \ll 1$, $\omega^2 T^2$ is very very small compared to 1 and can be neglected. Hence\
+-   At very low frequencies where $\omega T \ll 1$, $\omega^2 T^2$ is very very small compared to 1 and can be neglected. Hence
     $$
     \abs{G(j\omega)}_{\unit{\decibel}} \cong 20\log_{10} 1 = \SI{0}{\decibel}
     $$
--   At very high frequencies where $\omega T \gg 1$, we can approximate $1+\omega^2 T^2$ by $\omega^2 T^2$. Thus,\
+
+-   At very high frequencies where $\omega T \gg 1$, we can approximate $1+\omega^2 T^2$ by $\omega^2 T^2$. Thus,
     $$
     \abs{G(j\omega)}_{\unit{\decibel}} \cong 20\log_{10} \left(\sqrt{\omega^2 T^2} \right) \cong 20\log_{10}(\omega T)
     $$
@@ -356,15 +357,15 @@ In practice, an accurate frequency-response curve can be drawn by introducing a 
 Consider the function
 
 $$
-    G(s) = \dfrac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2} = \dfrac{1}{1+\left(\dfrac{2\zeta}{\omega_n}\right)s + \left(\dfrac{1}{\omega_n^2}\right)s^2}
+    G(s) = \dfrac{\omega_n^2}{s^2 + 2\zeta\omega_n s + \omega_n^2} = \dfrac{1}{1+\left(\frac{2\zeta}{\omega_n}\right)s + \left(\frac{1}{\omega_n^2}\right)s^2}
 $$
 
 We are interested only in the case when $\zeta < 1$, because otherwise $G(s)$ would have two unequal real poles, and the Bode plot can be obtained by considering $G(s)$ as the product of two transfer functions with simple poles. Now by letting $s=j\omega$, the above function can be written as
 
 $$
 \begin{aligned}
-    G(j\omega) &= \dfrac{1}{1+\left(\dfrac{2\zeta}{\omega_n} \right)j\omega + \left(\dfrac{1}{\omega_n^2}\right)(j\omega)^2} = \dfrac{1}{1+j\left(\dfrac{2\zeta}{\omega_n}\right)\omega - \left(\dfrac{1}{\omega_n^2}\right)\omega^2} \\ 
-    &= \dfrac{1}{\left[1-\left(\dfrac{\omega}{\omega_n}\right)^2 \right] + \complexnum[output-complex-root = j, complex-root-position = before-number, print-complex-unity]{2j}\zeta\left(\dfrac{\omega}{\omega_n}\right)}
+    G(j\omega) &= \dfrac{1}{1+\left(\frac{2\zeta}{\omega_n} \right)j\omega + \left(\frac{1}{\omega_n^2}\right)(j\omega)^2} = \dfrac{1}{1+j\left(\frac{2\zeta}{\omega_n}\right)\omega - \left(\frac{1}{\omega_n^2}\right)\omega^2} \\ 
+    &= \dfrac{1}{\left[1-\left(\frac{\omega}{\omega_n}\right)^2 \right] + \complexnum[output-complex-root = j, complex-root-position = before-number, print-complex-unity]{2j}\zeta\left(\frac{\omega}{\omega_n}\right)}
 \end{aligned}
 $$
 

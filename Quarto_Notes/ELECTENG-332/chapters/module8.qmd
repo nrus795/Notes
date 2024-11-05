@@ -327,7 +327,7 @@ $$
 The resonant frequency is determined by setting the derivative of $\abs{M(ju)}$ to zero
 
 $$
-    \dv{\abs{M(ju)}}{u} = -\dfrac{1}{2} \left[(1-u^2)^2 +(2\zeta u)^2 \right]^{\frac{-3}{2}} \left(4u^3 -4u+8u\zeta^2 \right) = 0
+    \odv{\abs{M(ju)}}{u} = -\dfrac{1}{2} \left[(1-u^2)^2 +(2\zeta u)^2 \right]^{\frac{-3}{2}} \left(4u^3 -4u+8u\zeta^2 \right) = 0
 $$
 
 Thus, $4u^3-4u+8u\zeta^2 = 4u(u^2-1+2\zeta^2) = 0$

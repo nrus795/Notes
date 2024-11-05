@@ -328,7 +328,7 @@ $$
 - The step response under this case will be expressed as:
 
 $$
-	c(t)= 1- \mathrm{e}^{-(\zeta-\sqrt{\zeta^2-1})\omega_n t}
+	c(t)= 1- e^{-(\zeta-\sqrt{\zeta^2-1})\omega_n t}
 $$
 
 - This type of response is called an [**over damped**]{color=red} response.

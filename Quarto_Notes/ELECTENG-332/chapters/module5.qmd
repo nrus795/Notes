@@ -232,11 +232,11 @@ This gives rise to an unbounded response, and the system is unstable.
 
 ### Summary
 
-1.  If all the roots of the characteristic equation lie in the left half s-plane, the system is stable. In this case, the impulse response is bounded and eventually converges to zero and therefore $\int\limits_{0}^{\infty} \abs{g(\tau)} \dd{\tau}$ is finite and the system is BIBO stable.
+1.  If all the roots of the characteristic equation lie in the left half s-plane, the system is stable. In this case, the impulse response is bounded and eventually converges to zero and therefore $\int\limits_{0}^{\infty} \abs{g(\tau)} \odif{\tau}$ is finite and the system is BIBO stable.
 
-2.  If any root of the characteristic equation lies in the right half of the s-plane or if there is a repeated root on the $j\omega$ axis, the system is *unstable*. In this case the impulse response is unbounded and $\int\limits_{0}^{\infty} \abs{g(\tau)} \dd{\tau}$ is infinite leading to instability.
+2.  If any root of the characteristic equation lies in the right half of the s-plane or if there is a repeated root on the $j\omega$ axis, the system is *unstable*. In this case the impulse response is unbounded and $\int\limits_{0}^{\infty} \abs{g(\tau)} \odif{\tau}$ is infinite leading to instability.
 
-3.  If the characteristic equation has one or more non-repeated roots on the $j\omega$ axis, but no right half plane roots, the system is *marginally stable* or limitedly stable. In this case, the impulse response is finite, but $\int\limits_{0}^{\infty} \abs{g(\tau)} \dd{\tau}$ is infinite.
+3.  If the characteristic equation has one or more non-repeated roots on the $j\omega$ axis, but no right half plane roots, the system is *marginally stable* or limitedly stable. In this case, the impulse response is finite, but $\int\limits_{0}^{\infty} \abs{g(\tau)} \odif{\tau}$ is infinite.
 
 ## Necessary Conditions of Stability
 
@@ -330,7 +330,7 @@ To apply the Routh-Hurwitz criterion, we need to form the Routh Table or Routh A
 
 1.  If all the coefficients of the characteristic polynomial are positive, we begin by arranging the coefficients into the first two rows of the Routh Array.
 
-2.  The [first row of the Routh Array consists of the **first, third, fifth, ...** coefficients (even values of $n$ in $a_n$)]{color=red}, where the [second row consists of the **second, fourth, sixth, ...** coefficients (odd values of $n$ in $a_n$)]{color=blue}, as shown below.
+2.  The [first row of the Routh Array consists of the **first, third, fifth, $\ldots$** coefficients (even values of $n$ in $a_n$)]{color=red}, where the [second row consists of the **second, fourth, sixth, $\ldots$** coefficients (odd values of $n$ in $a_n$)]{color=blue}, as shown below.
 
 
 ```{=latex}
@@ -361,13 +361,13 @@ To apply the Routh-Hurwitz criterion, we need to form the Routh Table or Routh A
 The evaluation of the $b_i$ coefficients are computed as follows:
 
 $$
-    \textcolor{blue}{b_1 = \dfrac{a_1 a_2 - a_0 a_3}{a_1}, \; b_2 = \dfrac{a_1 a_4 - a_0 a_5}{a_1}, \; b_3 = \dfrac{a_1 a_6 - a_0 a_7}{a_1}, \ldots}
+    \textcolor{blue}{b_1 = \dfrac{a_1 a_2 - a_0 a_3}{a_1}\qcomma b_2 = \dfrac{a_1 a_4 - a_0 a_5}{a_1}\qcomma b_3 = \dfrac{a_1 a_6 - a_0 a_7}{a_1}\qcomma \ldots}
 $$
 
 Following a similar procedure, the evaluation of the $c_i$ coefficients are computed as follows:
 
 $$
-    \textcolor{blue}{c_1 = \dfrac{b_1 a_3 - a_1 b_2}{b_1}, \; c_2 = \dfrac{b_1 a_5 - a_1 b_3}{b_1}, \; c_3 = \dfrac{b_1 a_7 - a_1 b_4}{b_1}, \ldots}
+    \textcolor{blue}{c_1 = \dfrac{b_1 a_3 - a_1 b_2}{b_1}\qcomma c_2 = \dfrac{b_1 a_5 - a_1 b_3}{b_1}\qcomma c_3 = \dfrac{b_1 a_7 - a_1 b_4}{b_1}\qcomma \ldots}
 $$
 
 These can be more formally expressed via set notation as:
@@ -379,7 +379,7 @@ These can be more formally expressed via set notation as:
 Let $B$ denote the set of the coefficients in the third row of the Routh Array, $b_i$.
 We can define $B$ as:
 $$
-    B = \left\{ b_i \in \mathbb{R} \; \middle| \; b_i = \dfrac{a_1 a_{2i} - a_0 a_{2i+1}}{a_1}\qcomma i\in \mathbb{N}\qcomma 1 \leq i \leq m \right\}
+    B = \left\{ b_i \in \mathbb{R} \quad \middle| \quad b_i = \dfrac{a_1 a_{2i} - a_0 a_{2i+1}}{a_1}\qcomma i\in \mathbb{N}\qcomma 1 \leq i \leq m \right\}
 $$
 \end{definition}
 
@@ -387,7 +387,7 @@ $$
 Let $C$ denote the set of the coefficients in the fourth row of the Routh Array, $c_i$.
 We can define $C$ as:
 $$
-    C = \left\{ c_i \in \mathbb{R} \; \middle| \; c_i = \dfrac{b_1 a_{2i+1} - a_1 b_{i+1}}{b_1}\qcomma i\in \mathbb{N}\qcomma 1 \leq i \leq n \right\}
+    C = \left\{ c_i \in \mathbb{R} \quad \middle| \quad c_i = \dfrac{b_1 a_{2i+1} - a_1 b_{i+1}}{b_1}\qcomma i\in \mathbb{N}\qcomma 1 \leq i \leq n \right\}
 $$
 \end{definition}
 ``` 
@@ -464,7 +464,7 @@ Actual Roots: $-2, -1$ and $\complexnum[output-complex-root = j, complex-root-po
 
 ### Examples: Case 2
 
-If any term in the [first column is zero]{color=blue}; [but the remaining terms are non-zero]{color=red}, we cannot proceed with Routh Table formation. Instead, we [replace the zero term]{color=red} with a [very small, positive, non-zero number]{color=red} $\textcolor{red}{\varepsilon}$ and evaluate the rest of the array elements.
+If any term in the [first column is zero]{color=blue}; [but the remaining terms are non-zero]{color=red}, we cannot proceed with Routh Table formation. Instead, we [replace the zero term]{color=red} with a [very small, positive, non-zero number]{color=red} $\textcolor{red}{\epsilon}$ and evaluate the rest of the array elements.
 
 #### Example 1
 <!-- ! skip -->
@@ -491,7 +491,7 @@ There are roots of equal magnitude lying radially opposite each other in the s-p
 
 2. Take the derivative of the Auxiliary Polynomial with respect to $s$.
 
-3. Replace the row of zeros with the coefficients of the resultant equation $\dv{A(s)}{s}$.
+3. Replace the row of zeros with the coefficients of the resultant equation $\odv{A(s)}{s}$.
 
 4. Carry on the Routh test in the usual manner with the newly formed tabulation.
 

@@ -139,8 +139,8 @@ The number of branches of the root locus is [equal to the number of closed-loop 
 - Let $\textcolor{red}{m}$ be the number of finite open loop zeros.
 - Let $\textcolor{red}{N}$ be the number of root locus branches, then
 \begin{gather}
-	N = n, \quad \text{if} \; n \geq m \\
-	N = m, \quad \text{if} \; m < n
+	N = n, \qif \; n \geq m \\
+	N = m, \qif \; m < n
 \end{gather}
 
 #### [Rule 2:]{color=red} [Where the Root Locus Starts and Terminates]{color=blue} {.unnumbered}
@@ -185,7 +185,7 @@ ii. If there exists a real axis root locus branch between two open loop zeros, t
 
 The break away and re-entry points on the root locus are determined from the roots of
 $$
-	\dv{K}{s} = 0
+	\odv{K}{s} = 0
 $$
 
 if r-number of branches meet at a point, they breakaway at an angle of $\qty{180}{\degree}/r$.

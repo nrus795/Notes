@@ -3,3 +3,300 @@
 ## Learning Outcomes {.unnumbered}
 
 After completing this module, you should be able to:
+
+- Explain the purpose of mathematical models in analyzing and controlling dynamic systems, and identify the importance of modeling in engineering design and analysis.
+
+- Differentiate between differential equation models, transfer function models, and impulse response models, and recognize when each type is appropriate to use.
+
+- Develop mathematical models for electrical systems (RLC circuits) and mechanical systems (mass-spring-damper, rotational systems) by applying first principles.
+
+- Analyze the characteristics of a system using poles, zeros, and system order, and explain their physical significance in a transfer function.
+
+- Translate differential equation models to transfer functions using Laplace transforms and express these transfer functions in terms of poles and zeros for frequency-domain analysis.
+
+- Evaluate system responses to different types of inputs, including calculating zero-input, zero-state, and impulse responses for linear time-invariant systems.
+
+- Classify transfer functions as proper, strictly proper, bi-proper, or improper, and explain the implications of each classification for system behavior.
+
+- Apply the concepts of system modeling to solve practical problems, including calculating poles, zeros, and time constants, and using models to predict system responses to various inputs.
+
+::: {.callout-important title="Philosophy Ahead!"}
+Some of the more philosophical concepts and ideas presented in this chapter are not necessarily fact, nor are they to be taken as such. They are also not examinable, but are added here to provide a broader perspective on the more abstract concepts of modeling and system dynamics. 
+:::
+
+## Introduction
+
+<!-- ! something something philosophy -->
+
+Loosely put, a model of a system is a tool we use to answer questions about the system without having to conduct experimentation upon the system itself. It is a collection of mathematical relationships between system variables or process variables which purport to describe the behaviour of the physical system being represented. It is a convenient surrogate & substitution for the real, physical system. 
+
+The main purpose of a model such as this, is to allow us to investigate the system response. Primarilly, it allows us to analyze the system under various input conditions, both rapidly and inexpensively, without having to tamper with, or even have access to the physical entity. It also allows us to analytically design controllers that can be used to manipulate the system in a desired manner.
+
+Determination of a mathematical model of a real world system is a difficult task (see prior courses such as ENGSCI 111, 211 and 313, for example, which are the "Mathematical Modeling" courses previously sat.) in almost all fields of engineering and science. The difficulties arise due to various reasons. Some of them include:
+
+> The diverse nature and complexities of dynamic systems. These range from linear to non-linear; time-invariant to time-variant; lumped parameter to distributed parameter and so on.
+
+A mathematical model should capture the underlying physics of the system, and should define the cause and effect relationships between various system variables/parameters in a quantitative manner. A model should not be overcomplicated by including every phenomena that may affect the system in microscopic detail, however. Doing so would make the model unsuitable for analysis and controller design. On the other hand, a model should not be oversimplified to the extent such that it loses the dynamic resemblance to the original, physical, system. If this were the case, the system model would be inaccurate and would result in incorrect predictions.
+
+For all intents and purposes, there are two approaches to find a model for a given system that system designers commonly use.
+
+1. Break down the complex system into smaller components/elements/modules and establish a mathematical model for each of these elements using basic and fundamental physical laws/principles. This is known as the ***first principles*** approach or a ***first principles model***. (You may be familiar with the term "first principles" from the prior course, ELECTENG 292, where Mark Andrews extensively reinforced the use of first principles in the analysis of problems from that course.)
+
+2. Collect a set of input-output (I/O) data from the system by conducting experiments and process these using various techniques to establish a mathematical model. This approach comes under the purview of ***system identification***. In other words, F.A.F.O until something sticks.
+
+::: {.callout-important}
+It is important to not confuse the use of models for the phenomena they represent. A model can be thought of as an imaginary universe of sorts. This universe is not a photograph or copy of reality; it captures the aspects deemed necessary by the designer to be important enough to consider. It is also to be of note that specific phenomena may also have different models; Models can be numerous and many. Phenomena are one.
+
+> **A Map is not the Territory; A Map is the Model of the Territory.**
+:::
+
+> Everything in the cosmos is energy and every object vibrates at certain frequencies.
+
+When interpreted in a broad, metaphorical sense, the above statement encapsulates the idea that **energy is a fundamental aspect of the cosmos**, and everything, at its most fundamental and atomic level, can be understood in terms of energy and vibrations. This idea is "grounded" both in physics and metaphysics.
+
+> Energy cannot be created or destroyed; it can only be changed from one form to another. - Albert Einstein
+
+Einstein's research and discoveries in the fundamental nature of energy and matter led to his most famous attribution, the equation:
+
+$$
+	E = mc^2
+$$
+
+which describes the relationship between energy and mass -- hence matter -- and the interchangeability between them, and how they are interconnected, not much unlike the two sides of a single coin. Some more, "out there", perspectives and interpretations suggest the fact that **everything in the universe is interconnected and resonates with a universal energy or consciousness**. This perspective draws heavily from Eastern philosophies, where the idea of interconnectedness and vibrational energies is prevalent.
+
+When an impulse disturbance is applied to an object or a system and left to respond freely, it tends to vibrate preferentially at its characteristic modes. These modes represent the natural frequencies at which the system oscillates most efficiently. That is, every physical object or system has a unique set of characteristic modes, which are the frequencies at which it naturally oscillates when disturbed. These frequencies are determined by the physical properties of the object, such as its mass, stiffness, and shape. 
+
+In the context of the cosmos, various celestial bodies like planets, stars, and even galaxies can exhibit natural frequencies of vibration. These vibrations can arise from internal processes, such as seismic activity within planets or oscillations in stars, or from external influences, such as gravitational interactions between celestial bodies.
+
+For stable systems, these characteristic modes decay exponentially and eventually vanish as time approaches infinity. This does not mean that these modes do not significantly affect the system behaviour and response.
+
+::: {.callout-note appearance="minimal" title="An Analogy"}
+The seed of a plant contains all the genetic information necessary for the development of the plant. It serves as the blueprint for the plant's structure, growth pattern, and eventual form. The inherent characteristics of a plant, such as its species, traits, and features, are encoded within the seed. Similarly the dynamic behaviour of a system are embedded in the characteristic modes.
+:::
+
+Physical Phenomena can be categorized essentially into two main groups:
+
+1. Energy dissipation
+2. Energy absorption or storage
+
+
+Some Familiar models are:
+
+i. Resistance, which models the phenomenon of energy dissipation.
+
+ii. Capacitance and Inductance, which model the phenomenon of energy absorption or storage.
+
+iii. Usually, Potential energy (related to displacement) is modeled by a capacitor $\left(0.5CV^2=\dfrac{0.5Q^2}{C}\right)$ (by charge)
+
+iv. Kinetic energy (related to velocity; derivative of displacement) is modeled by an inductor $\left(\dfrac{1}{2}LI^2\right)$ (by current; derivative of charge)
+
+## Concept of Static & Dynamic Systems, and System Order
+
+### Static Systems
+
+A static system does not have an energy storing element present, and hence no memory. It is because of the absence of a memory element that it is also referred to as a memoryless system. The response of a static system to an input at a particular given time is dependent on only the input at that given time. An example of a static system is a purely resistive circuit.
+
+<!-- ! add silly little tikz diagram to pad space -->
+
+### Dynamic Systems
+
+A dynamic system, however, has at least, one energy storing element present, and hence has a memory. Due to this, a dynamic system is often referred to as a system with memory. The response of a dynamic system to an input at a particular given time is dependant, not only on the input at that given time, but also on the energy stored in the system's energy storing elements, otherwise known as initial conditions. An example(s) of a dynamic system is an RLC or RC or RL circuit.
+
+<!-- ! add silly little tikz diagram to pad space -->
+
+### System Order
+
+The order of a system is defined as being equal to the number of energy storage elements present within the system. It can also be mathematically interpreted as the highest power a derivative is raised to in the model that describes the system, or in the s-domain, the highest power of $s$ in the transfer function of the system. For example, a purely resistive circuit has no energy storage elements, meaning that it is a system of order zero. A system with one energy storage element, such as a RL or RC circuit, for example, has one energy storage element (either an inductor or a capacitor), and is therefore a system of order one. A system with two energy storage elements, such as an RLC circuit, for example, is a system of order two. TL;DR: an $n$-th order system has $n$ energy storage elements.
+
+## Differential Equation Models of Simple Dynamical Systems
+
+We can map the input-output (I/O) relationships of systems such as electrical, mechanical, hydraulic, and thermal systems via differential equations. Irrespective of their complexity, each of these systems is composed of a set of a few basic components, such as resistors, capacitors, inductors, masses, springs, dampers, cross-sectional areas of fluid tanks and thermal capacities. It is because of this, that we can use approach 1, the first principles approach, to model these systems given these basic components.
+
+## Modeling of Electrical Systems
+
+The basic elements, as most taking this course will be -- or should be -- familiar with, of electrical systems are the resistor, the capacitor and the inductor, where the variables of interest associated with these elements are voltages and currents. The differential equation models of electrical networks/systems are derived by balancing the voltages and currents through application of the well known (hopefully by now) Ohm's Law and Kirchhoff's Laws.
+
+<!-- ! diagrams of a resistor, inductor and capacitor in tikz -->
+
+1. **Resistor**: If a Resistor, with resistance $R$, is linear, then the voltage drop, $v$, across the resistor is proportional to the current $i(t)$ flowing through the resistor and is given by:
+$$
+	v(t) = R \cdot i(t)
+$${#eq-elecsys-resistor}
+
+
+2. **Inductor**: At any instant in time, the voltage drop, $v$, across the inductor $L$ is proportional to the rate of change of current $i(t)$ flowing through the inductor and is given by:
+
+$$
+	v(t) = L \cdot \odv{i(t)}{t}
+$${#eq-elecsys-inductor}
+
+3. **Capacitor**: The voltage drop, $v$, across the capacitor $C$ is proportional to the integral of the current $i(t)$ flowing through the capacitor and is given by:
+
+$$
+	v(t) = \dfrac{1}{C} \cdot \int i(t) \odif{t}
+$${#eq-elecsys-capacitor-1}
+
+Alternatively, the current through the capacitor $i(t)$ is proportional to the rate of change of voltage $v(t)$ across the capacitor and is given by:
+
+$$
+	i(t) = C \cdot \odv{v(t)}{t}
+$${#eq-elecsys-capacitor-2}
+
+### RL Circuit
+
+Consider the electrical circuit consisting of a resistor and an inductor shown in .
+
+<!-- ! add silly little tikz diagram to pad space -->
+
+Applying Kirchhoff's Voltage Law (KVL) to the circuit, we get:
+
+$$
+	R\cdot i(t) + L \cdot \odv{i(t)}{t} = v(t)
+$${#eq-elecsys-rl}
+
+### RC Circuit
+
+Next, consider the electrical circuit consisting of a resistor and a capacitor shown in .
+
+<!-- ! add silly little tikz diagram to pad space -->
+
+Applying Kirchhoff's Voltage Law (KVL) to the circuit, we get:
+
+$$
+	R\cdot i(t) + \dfrac{1}{C} \cdot \int i(t) \odif{t} = v(t)
+$${#eq-elecsys-rc-1}
+
+or, by taking the derivative with respect to (w.r.t) time $t$ on either side of the equation, we get (i.e. using @eq-elecsys-capacitor-2):
+
+$$
+	R\cdot \odv{i(t)}{t} + \dfrac{1}{C} \cdot i(t) = \odv{v(t)}{t}
+$${#eq-elecsys-rc-2}
+
+### RLC Circuit
+
+Let us finally consider and model a circuit where all three passive, basic elements -- the resistor, the inductor and the capacitor -- are present and are connected in series as shown in .
+
+<!-- ! add silly little tikz diagram to pad space -->
+
+Applying Kirchhoff's Voltage Law (KVL) to the circuit, we get:
+
+$$
+	R\cdot i(t) + L \cdot \odv{i(t)}{t} + \dfrac{1}{C} \cdot \int i(t) \odif{t} = v(t)
+$${#eq-elecsys-rlc-1}
+
+or, by doing the same as we did for @eq-elecsys-rc-2, we get:
+
+$$
+	L\cdot \odv[2]{i(t)}{t} + R \cdot \odv{i(t)}{t} + \dfrac{1}{C} \cdot i(t) = \odv{v(t)}{t}
+$$
+
+## Modeling of Mechanical Systems
+
+A mechanical system can either be translational, rotational or a combination of both. The differential equation models of these systems are obtained by balancing forces, energy and mass by direct or indirect application of Newton's Laws of Motion and D'Alembert's Principle (see ). The basic components of a **translational** system are **masses, springs and dampers** and the variables of interest are **displacement, velocity, acceleration** and **force**. Similarly, the variables in **rotational** systems are **angular displacement, angular velocity, angular acceleration** and **torque**. Which, are represented using inertia, torsional springs and damping elements.
+
+### Translational Systems
+
+When an object or a body is moving along a straight or curved path, the resulting motion is said to be translational motion. This motion is characterised by four variables -- force, displacement, velocity and acceleration -- each of which can be related to one another either via integration or differentiation, or as a function. The three basic components of a translational mechanical system are the **mass**, the **spring** and the **dash pot** (damper).
+
+<!-- ! silly diagram of silly mechanical system -->
+
+1. **Mass**: This is a property of an element/body/object which stores the kinetic energy of translational motion. For a rigid body of mass, $m$, the relationship between the applied force $f(t)$ and its acceleration $a(t)$ is given by Newton's second law of motion -- the algebraic sum of the external forces acting on a rigid body in a particular direction is equal to the product of the mass of the body and its acceleration in that same direction, i.e. the famous $F=ma$ -- and is given by:
+
+$$
+	f(t) = m\cdot a(t) = m \cdot \odv[2]{x(t)}{t} = m \cdot \odv{v(t)}{t}
+$${#eq-mechsys-mass}
+
+where $v(t)$ denotes linear velocity and $x(t)$ is the displacement.
+
+2. **Spring**: A spring is an elastic object that stores mechanical (potential) energy. For a linear spring, the force $f(t)$ is directly proportional to the displacement (deformation) $x(t)$, that is,
+
+$$
+	f(t) = K\cdot x(t) = K\cdot \int v(t) \odif{t}
+$${#eq-mechsys-spring}
+
+where $K$ is the spring constant defined as the spring stiffness ($\unit{\newton\per\meter}$), and $v(t)$ is the velocity.
+
+3. **Damper**: Friction is one of the most significant phenomena in the physical world. It arises whenever one body moves or tries to move, over another. It is a force between two surfaces, which opposes movement between those surfaces and is usually of a non-linear nature. The three most commonly observed types of friction, in practice, are **viscous friction**, **static friction** and **Coulomb friction**. Here, we model the damper as a **viscous damper**, or **dash pot**, and hence are dealing with **viscous friction**. With this, the friction force is linearly proportional to the velocity of the mass and is given by:
+
+$$
+	f(t) = B\cdot \odv{x(t)}{t} = B\cdot v(t)
+$${#eq-mechsys-damper}
+
+where $B$ is the viscous frictional coefficient.
+
+#### Example
+
+<!-- !skip >:( -->
+
+### Rotational Systems
+
+When an object or a body moves about a fixed axis, the resulting motion is called rotational motion. This motion is characterised by four variables -- torque, angular displacement, angular velocity and angular acceleration -- each of which can be related to one another either via integration or differentiation, or as a function. The three basic components of a rotational mechanical system are the **inertia**, the **torsional spring** and the **dash pot** (damper).
+
+<!-- ! silly diagram of silly mechanical system -->
+
+1. **Inertia**: The inertia of a rotational system is represented by the moment of inertia of a
+mass. The moment of inertia plays a role analogous to that of mass in the case of rectilinear and uniform motion. It is a property of a body which stores the kinetic energy of rotational motion. For a body with inertia $J$, the relationship between the applied torque $\tau(t)$ and the resulting angular acceleration $\alpha(t)$ is obtained using Newton's Second Law of Motion for rotational motion. This states (it's the same as the linear case... but variables are different.) that the algebraic sum of moments or torques about a fixed axis is equal to the product of the inertia and the angular acceleration about this axis. Thus,
+
+$$
+	\tau(t) = J\cdot \alpha(t) = J\cdot \odv{\omega(t)}{t} = J\cdot \odv[2]{\theta(t)}{t}
+$${#eq-mechsys-inertia}
+
+where $\theta(t)$ denotes the angular displacement and $\omega(t)$ is the angular velocity.
+
+2. **Torsional Spring**: The torsional spring can store and release rotational energy and operate with a twisting force. For a torsional spring, the torque $\tau(t)$ is directly proportional to the angular displacement, $\theta(t)$, that is,
+
+$$
+	\tau(t) = K\cdot\theta(t) = K\cdot\int \omega(t) \odif{t}
+$${#eq-mechsys-torsional-spring}
+
+where $K$, in $\unit{\newton\meter\per\radian}$ (torque per unit angular displacement), is the torsional spring constant.
+
+3. **Rotational Dash Pot/Damper**: Similar to translational motion, the commonly observed friction in a rotational system are are **viscous friction, static friction** and **Coulomb friction**. The rotary dampers/dash pot can absorb and slow down rotary motion and helps in reducing vibration, noise, and machine component wear. Here, we will model the viscous friction as a viscous damper or dash pot, where the friction force is linearly proportional to the angular velocity and is given by:
+
+$$
+	\tau(t) = B\cdot \odv{\theta(t)}{t} = B\cdot \omega(t)
+$${#eq-mechsys-rotational-damper}
+
+where $B$ is the rotary viscous frictional coefficient.
+
+#### Example
+
+<!-- !skip >:( -->
+
+## Impulse Response of a Linear Time-Invariant System
+
+The impulse response of a linear time-invariant (LTI) system is the system's output when the input is an impulse function. If we know the impulse response function (model) of a system i.e the response of a system to an impulse input, the response of the system to any arbitrary input $u(t)$ can be found by convolving the impulse response function $h(t)$ with the input $u(t)$. The convolution relation is given as:
+
+$$
+\begin{aligned}
+	y(t) &= \int\limits_{0}^{t} g(\tau)\cdot u(t-\tau) \odif{\tau} \\
+	&= \int\limits_{0}^{t} g(t-\tau)\cdot u(\tau) \odif{\tau}
+\end{aligned}
+$${#eq-impulse-response-convolution}
+
+Since $g(t − \tau)$ is the response due to an input applied at $t = \tau$, it is not defined for $t < \tau$ i.e $g(t − \tau) = 0$, for $t < \tau$.
+
+## Transfer Function Models of Linear Time-Invariant System
+
+Note that the impulse response model @eq-impulse-response-convolution is the time domain description of the system. Let us apply Laplace transform to the impulse response model of @eq-impulse-response-convolution. This gives:
+
+$$
+	Y(s) \overset{\Delta}{=} \mathcal{L}[y(t)] = \int\limits_{0}^{\infty} y(t) \cdot e^{-st} \odif{t} = \int\limits_{0}^{\infty} \left[ \int\limits_{0}^{t} g(t-\tau)\cdot u(\tau) \odif{\tau} \right] \cdot e^{-st} \odif{t}
+$${#eq-transfer-function-1-laplace}
+
+Since $g(t − \tau) = 0$ for $\tau > t$, the upper limit of the integration in @eq-transfer-function-1-laplace can be set at $\infty$. Thus
+
+$$
+	Y(s) = \int\limits_{0}^{\infty} \left[ \int\limits_{0}^{\infty} g(t-\tau)\cdot u(\tau) \odif{\tau} \right] \cdot e^{-st} \odif{t}
+$$
+
+
+
+
+
+
+
+
+
+
+

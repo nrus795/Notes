@@ -73,11 +73,12 @@ $$
 $$
 By applying the final value theorem, the steady state error is computed from
 
-\begin{align}
+$$
+\begin{aligned}
 	e_{ss} = e(\infty) &= \lim_{t \to \infty} e(t) \\
 	&= \lim_{s \to 0} sE(s) = \lim_{s \to 0} \dfrac{sR(s)}{1+G(s)}
-\end{align}
-
+\end{aligned}
+$$
 
 Thus the steady state error is expressed as
 
@@ -124,15 +125,17 @@ In the following, we define three static error constants such as **Position Erro
 This is calculated when the input signal is [a unit step signal]{color=blue}.
 
 $$
-	r(t) = 1(t), \; \implies \; R(s) = \dfrac{1}{s}
+	r(t) = 1(t)\qcomma \implies R(s) = \dfrac{1}{s}
 $$
 
 The steady state error due to this input is given by
 
-\begin{align}
+$$
+\begin{aligned}
 	e(\infty) &= \lim_{s \to 0} \dfrac{sR(s)}{1+G(s)} = \lim_{s \to 0} \dfrac{s}{1+G(s)} \dfrac{1}{s} \\
 	&= \lim_{s \to 0} \dfrac{1}{1+G(s)} = \dfrac{1}{1+ \lim\limits_{s \to 0} G(s)}
-\end{align}
+\end{aligned}
+$$
 
 The [static position error constant]{color=blue} $\textcolor{blue}{K_p}$, is defined as
 
@@ -157,18 +160,18 @@ $$
 For a Type-1 or higher Type system, $N \geq 1$, the static position error constant is given by
 
 $$
-	K_p = \lim_{s \to 0} G(s) = \lim_{s \to 0} \dfrac{K(s+z_1)(s+z_2) \ldots (s+z_m)}{s^N(s+p_1)(s+p_2) \ldots (s+p_n)} = \textcolor{red}{\infty}, \quad N \geq 1
+	K_p = \lim_{s \to 0} G(s) = \lim_{s \to 0} \dfrac{K(s+z_1)(s+z_2) \ldots (s+z_m)}{s^N(s+p_1)(s+p_2) \ldots (s+p_n)} = \textcolor{red}{\infty}\qcomma N \geq 1
 $$
 
 Hence, for a Type-0 system, the static position error constant $K_p$ has a finite value, whereas for a Type-1 or higher system, $K_p$ is infinite.
 
 Summary: The steady state error $e_{ss}$ for a unit-step input:
 $$
-	\textcolor{red}{e_{ss} = \dfrac{1}{K_1}, \quad \text{for Type-0 System}}
+	\textcolor{red}{e_{ss} = \dfrac{1}{K_1} \qcomma \text{for Type-0 System}}
 $$
 
 $$
-	\textcolor{red}{e_{ss} = 0, \quad \text{for Type-1 or higher System}}
+	\textcolor{red}{e_{ss} = 0 \qcomma \text{for Type-1 or higher System}}
 $$
 
 ### Static Velocity Error Constant $K_v$
@@ -176,15 +179,17 @@ $$
 This is calculated when the input signal is [a unit ramp signal]{color=blue}
 
 $$
-	\textcolor{red}{r(t) = t, \; \implies \; R(s) = \dfrac{1}{s^2}}
+	\textcolor{red}{r(t) = t\qcomma \implies R(s) = \dfrac{1}{s^2}}
 $$
 
 The steady state error due to this input is given by
 
-\begin{align}
+$$
+\begin{aligned}
 	e(\infty) &= \lim_{s \to 0} \dfrac{sR(s)}{1+G(s)} = \lim_{s \to 0} \dfrac{s}{1+G(s)} \dfrac{1}{s^2} \\
 	&= \lim_{s \to 0} \dfrac{1}{s+sG(s)} = \dfrac{1}{\lim\limits_{s \to 0} sG(s)}
-\end{align}
+\end{aligned}
+$$
 
 The [static velocity error constant]{color=blue} $\textcolor{blue}{K_v}$, is defined by
 
@@ -221,15 +226,15 @@ $$
 Summary: The steady state error $e_{ss}$, for a unit ramp input:
 
 $$
-	\textcolor{red}{e_{ss} = \dfrac{1}{K_v}=\infty, \quad \text{for Type-0 System}}
+	\textcolor{red}{e_{ss} = \dfrac{1}{K_v}=\infty\qcomma \text{for Type-0 System}}
 $$
 
 $$
-	\textcolor{red}{e_{ss} = \dfrac{1}{K_v} = \dfrac{1}{K_1}, \quad \text{for Type-1 System}}
+	\textcolor{red}{e_{ss} = \dfrac{1}{K_v} = \dfrac{1}{K_1}\qcomma \text{for Type-1 System}}
 $$
 
 $$
-	\textcolor{red}{e_{ss}=0, \quad \text{for Type-2 or higher System}}
+	\textcolor{red}{e_{ss}=0\qcomma \text{for Type-2 or higher System}}
 $$
 
 ### Static Acceleration Error Constant $K_a$
@@ -237,15 +242,17 @@ $$
 This is calculated when the input signal is [a unit parabolic signal]{color=blue}
 
 $$
-	\textcolor{red}{r(t) = \dfrac{t^2}{2}, \quad \forall t \geq 0, \quad r(t) = 0, \quad \forall t < 0 \quad \implies \quad R(s) = \dfrac{1}{s^3}}
+	\textcolor{red}{r(t) = \dfrac{t^2}{2}\qcomma \forall t \geq 0\qcomma r(t) = 0\qcomma \forall t < 0 \quad \implies \quad R(s) = \dfrac{1}{s^3}}
 $$
 
 The steady state error due to this input is given by
 
-\begin{align}
+$$
+\begin{aligned}
 	e(\infty) &= \lim_{s \to 0} \dfrac{sR(s)}{1+G(s)} = \lim_{s \to 0} \dfrac{s}{1+G(s)} \dfrac{1}{s^3} \\
 	&= \lim_{s \to 0} \dfrac{1}{s^2+s^2G(s)} = \dfrac{1}{\lim\limits_{s \to 0} s^2G(s)}
-\end{align}
+\end{aligned}
+$$
 
 The [static acceleration error constant]{color=blue} $\textcolor{blue}{K_a}$, is defined by
 
@@ -282,21 +289,21 @@ $$
 For a Type-3 or higher type system, $N \geq 3$, the static acceleration error constant is given by
 
 $$
-	K_a = \lim_{s \to 0} s^2G(s) = \lim_{s \to 0} \dfrac{s^2K(s+z_1)(s+z_2)\ldots(s+z_m)}{s^N(s+p_1)(s+p_2)\ldots(s+p_n)} = \textcolor{red}{\infty}, \quad N \geq 3
+	K_a = \lim_{s \to 0} s^2G(s) = \lim_{s \to 0} \dfrac{s^2K(s+z_1)(s+z_2)\ldots(s+z_m)}{s^N(s+p_1)(s+p_2)\ldots(s+p_n)} = \textcolor{red}{\infty}\qcomma N \geq 3
 $$
 
 Summary: The steady state error $e_{ss}$, for a unit parabolic input:
 
 $$
-	\textcolor{red}{e_{ss} = \dfrac{1}{K_a} = \infty, \quad \text{for Type-0 and Type-1 Systems}}
+	\textcolor{red}{e_{ss} = \dfrac{1}{K_a} = \infty \qcomma \text{for Type-0 and Type-1 Systems}}
 $$
 
 $$
-	\textcolor{red}{e_{ss} = \dfrac{1}{K_a} = \dfrac{1}{K_1}, \quad \text{for Type-2 System}}
+	\textcolor{red}{e_{ss} = \dfrac{1}{K_a} = \dfrac{1}{K_1}\qcomma \text{for Type-2 System}}
 $$
 
 $$
-	\textcolor{red}{e_{ss} = 0, \quad \text{for Type-3 or higher System}}
+	\textcolor{red}{e_{ss} = 0\qcomma \text{for Type-3 or higher System}}
 $$
 
 ## Summary: Steady State Error and Static Error Constants
@@ -312,15 +319,15 @@ $$
 the various steady state error constants and associated steady state error are
 
 $$
-	\textcolor{red}{K_p = \lim_{s \to 0} G(s), \quad e(\infty) = \dfrac{1}{1+K_p}}
+	\textcolor{red}{K_p = \lim_{s \to 0} G(s)\qcomma e(\infty) = \dfrac{1}{1+K_p}}
 $$
 
 $$
-	\textcolor{red}{K_v = \lim_{s \to 0} sG(s), \quad e(\infty) = \dfrac{1}{K_v}}
+	\textcolor{red}{K_v = \lim_{s \to 0} sG(s)\qcomma e(\infty) = \dfrac{1}{K_v}}
 $$
 
 $$
-	\textcolor{red}{K_a = \lim_{s \to 0} s^2G(s), \quad e(\infty) = \dfrac{1}{K_a}}
+	\textcolor{red}{K_a = \lim_{s \to 0} s^2G(s)\qcomma e(\infty) = \dfrac{1}{K_a}}
 $$
 
 For a general input of the form
@@ -332,15 +339,15 @@ $$
 the various steady state error constants and associated steady state error are
 
 $$
-	\textcolor{red}{K_p = \lim_{s \to 0} G(s), \quad e(\infty) = \dfrac{a}{1+K_p}}
+	\textcolor{red}{K_p = \lim_{s \to 0} G(s)\qcomma e(\infty) = \dfrac{a}{1+K_p}}
 $$
 
 $$
-	\textcolor{red}{K_v = \lim_{s \to 0} sG(s), \quad e(\infty) = \dfrac{b}{K_v}}
+	\textcolor{red}{K_v = \lim_{s \to 0} sG(s)\qcomma e(\infty) = \dfrac{b}{K_v}}
 $$
 
 $$
-	\textcolor{red}{K_a = \lim_{s \to 0} s^2G(s), \quad e(\infty) = \dfrac{2c}{K_a}}
+	\textcolor{red}{K_a = \lim_{s \to 0} s^2G(s)\qcomma e(\infty) = \dfrac{2c}{K_a}}
 $$
 
 ### Examples
