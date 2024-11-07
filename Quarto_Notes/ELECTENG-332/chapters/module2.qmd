@@ -274,7 +274,7 @@ $$
 \end{aligned}
 $${#eq-impulse-response-convolution}
 
-Since $g(t − \tau)$ is the response due to an input applied at $t = \tau$, it is not defined for $t < \tau$ i.e $g(t − \tau) = 0$, for $t < \tau$.
+Since $g(t - \tau)$ is the response due to an input applied at $t = \tau$, it is not defined for $t < \tau$ i.e $g(t - \tau) = 0$, for $t < \tau$.
 
 ## Transfer Function Models of Linear Time-Invariant System
 
@@ -284,7 +284,7 @@ $$
 	Y(s) \overset{\Delta}{=} \mathcal{L}[y(t)] = \int\limits_{0}^{\infty} y(t) \cdot e^{-st} \odif{t} = \int\limits_{0}^{\infty} \left[ \int\limits_{0}^{t} g(t-\tau)\cdot u(\tau) \odif{\tau} \right] \cdot e^{-st} \odif{t}
 $${#eq-transfer-function-1-laplace}
 
-Since $g(t − \tau) = 0$ for $\tau > t$, the upper limit of the integration in @eq-transfer-function-1-laplace can be set at $\infty$. Thus
+Since $g(t - \tau) = 0$ for $\tau > t$, the upper limit of the integration in @eq-transfer-function-1-laplace can be set at $\infty$. Thus
 
 $$
 	Y(s) = \int\limits_{0}^{\infty} \left[ \int\limits_{0}^{\infty} g(t-\tau)\cdot u(\tau) \odif{\tau} \right] \cdot e^{-st} \odif{t}
