@@ -95,7 +95,7 @@ $$
 	T_m \propto \phi i_a \implies T_m = K_1 K_f i_f i_a
 $${#eq-armature-controlled-dc-motor-torque}
 
-Since in an armature controlled DC motor, the field current is kept constant, eqn(@eq-armature-controlled-dc-motor-torque) can be written as:
+Since in an armature controlled DC motor, the field current is kept constant, @eq-armature-controlled-dc-motor-torque can be written as:
 
 $$
 	T_m = K_T i_a
@@ -125,7 +125,7 @@ $$
 	J \odv[2]{\theta}{t} + f_0 \odv{\theta}{t} + T_d = T_m \qqtext{where} T_m = K_T i_a
 $${#eq-armature-controlled-dc-motor-mechanical-dynamics}
 
-Taking the Laplace transform of eqn(@eq-armature-controlled-dc-motor-torque-constant), eqn(@eq-armature-controlled-dc-motor-back-emf), eqn(@eq-armature-controlled-dc-motor-electrical-dynamics) and eqn(@eq-armature-controlled-dc-motor-mechanical-dynamics) with the assumption of zero initial conditions gives
+Taking the Laplace transform of @eq-armature-controlled-dc-motor-torque-constant, @eq-armature-controlled-dc-motor-back-emf, @eq-armature-controlled-dc-motor-electrical-dynamics and @eq-armature-controlled-dc-motor-mechanical-dynamics with the assumption of zero initial conditions gives
 
 $$
 \begin{aligned}
@@ -144,7 +144,7 @@ $$
 	G(s) = \dfrac{\theta(s)}{E_a(s)} = \dfrac{K_T}{s[(R_a + L_a s)(Js + f_0) + K_T K_b]}
 $${#eq-armature-controlled-dc-motor-transfer-function}
 
-If the armature circuit inductance $L_a$ is neglected, then the transfer function in eqn(@eq-armature-controlled-dc-motor-transfer-function) simplifies to
+If the armature circuit inductance $L_a$ is neglected, then the transfer function in @eq-armature-controlled-dc-motor-transfer-function simplifies to
 
 $$
 	G(s) = \dfrac{\theta(s)}{E_a(s)} = \dfrac{\dfrac{K_T}{R_a}}{Js^2 + s\left(f_0 + \dfrac{K_T K_b}{R_a}\right)}
@@ -156,13 +156,13 @@ $$
 	f = f_0 + \dfrac{K_T K_b}{R_a}
 $$
 
-Then the transfer function in eqn(@eq-armature-controlled-dc-motor-transfer-function-no-inductance) reduces to
+Then the transfer function in @eq-armature-controlled-dc-motor-transfer-function-no-inductance reduces to
 
 $$
 	\dfrac{\theta(s)}{E_a(s)} = \dfrac{\dfrac{K_T}{R_a}}{s(Js + f)}
 $${#eq-armature-controlled-dc-motor-transfer-function-effective-friction}
 
-The transfer function in eqn(@eq-armature-controlled-dc-motor-transfer-function-effective-friction) can be expressed in the form
+The transfer function in @eq-armature-controlled-dc-motor-transfer-function-effective-friction can be expressed in the form
 
 $$
 	\dfrac{\theta(s)}{E_a(s)} = \dfrac{K_m}{s(s\tau_m + 1)}
