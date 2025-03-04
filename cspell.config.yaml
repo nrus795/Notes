@@ -5,11 +5,16 @@ dictionaryDefinitions:
     path: C:\Users\narus\.cspell\custom-dictionary-user.txt
     addWords: true
     scope: user
+  - name: custom-dictionary-user-linux
+    path: /home/nrus795/custom-dictionary-user.txt
+    addWords: true
+    scope: user
 dictionaries:
   - fonts
   - en-gb
   - softwareTerms
   - custom-dictionary-user
+  - custom-dictionary-user-linux
   - fonts
   - python
   - cpp

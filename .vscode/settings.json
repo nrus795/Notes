@@ -69,9 +69,9 @@
 		"scminput": false,
 		"quarto": true
 	},
-	"projectManager.git.baseFolders": [
-		"C:\\Users\\narus\\Documents\\University\\LaTeX_Notes"
-	],
+	// "projectManager.git.baseFolders": [
+	// 	"C:\\Users\\narus\\Documents\\University\\LaTeX_Notes"
+	// ],
 	"git.confirmSync": false,
 	"quarto.visualEditor.markdownReferenceLinks": true,
 	"notebook.lineNumbers": "on",
@@ -96,7 +96,7 @@
 	},
 	"editor.insertSpaces": false,
 	"markdown.math.enabled": false,
-	"quarto.path": "C:\\Users\\narus\\AppData\\Local\\Programs\\Quarto\\bin\\quarto.exe",
+	// "quarto.path": "C:\\Users\\narus\\AppData\\Local\\Programs\\Quarto\\bin\\quarto.exe",
 	"quarto.assist.updateMode": "live",
 	"extensions.experimental.affinity": {
 		"asvetliakov.vscode-neovim": 1
